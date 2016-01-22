@@ -147,15 +147,15 @@ The method parameter can have a value of "GET", "POST", or "HEAD". Other HTTP me
 
 Possible values for the readyState property:
 
-0	The request is not initialized.
+```0```	The request is not initialized.
 
-1	The request has been set up.
+```1```	The request has been set up.
 
-2	The request has been sent.
+```2```	The request has been sent.
 
-3	The request is in process.
+```3```	The request is in process.
 
-4	The request is completed.
+```4```	The request is completed.
 
 ```readyState = 0``` After you have created the XMLHttpRequest object, but before you have called the ```open()``` method.
 
