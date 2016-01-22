@@ -43,3 +43,7 @@ to assign first pocket in the array:
 ```javascript
 cars[0] = "Toyota";
 ```
+to initiate the array and assign *Toyota* to the first pocket in the array:
+```javascript
+var cars = ["Toyota"];
+```
