@@ -29,8 +29,7 @@ To call a function in HTML body:
 <script>name();</script>
 ```
 ### Arrays
-Arrays are variables that can hold more than one value.
-To initiate array:
+Arrays are variables that can hold more than one value. To initiate array:
 ```javascript
 var cars = new Array();
 ```
@@ -47,5 +46,11 @@ To initiate the array and assign *Toyota* to the first pocket in the array:
 var cars = ["Toyota"];
 ```
 ### Loops
-Most popular loops are **while** and **for** loops.
-To create a while loop:
+Most popular loops are **while** and **for** loops. To create a while loop first assign an index (i) variable:
+```javascript
+var i = 0;
+while (i < 5) {
+  document.write("Hello!");
+  i++;  // increment by one
+}
+```
