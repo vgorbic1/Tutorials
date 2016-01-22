@@ -5,8 +5,8 @@ function CreateAjaxObject(callback) {
     try {
         var ajax = new XMLHttpRequest();
     } catch(e1) {
-	try {
-	    ajax = new ActiveXObject("Msxml2.XMLHTTP");
+        try {
+            ajax = new ActiveXObject("Msxml2.XMLHTTP");
 	} catch(e2) {
 	    try {
 	        ajax = new ActiveXObject("Microsoft.XMLHTTP");
