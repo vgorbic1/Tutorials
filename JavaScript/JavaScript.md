@@ -4,7 +4,7 @@ JavaScript is a scripting language, mostly used on the client-side (browser).
 
 ###Document Object Model (DOM)
 DOM is a convention for representing objects in HTML document.
-###Variables
+### Variables
 to create (initiate) a variable use var and the variable name or just a variable name: 
 ```javascript
 var name;
@@ -13,7 +13,7 @@ to assign value to variable:
 ```javascript
 name = "John";
 ```
-###Functions
+### Functions
 Functions are premade blocks of code:
 ```javascript
 function name() {
@@ -28,9 +28,9 @@ to call a function in HTML body:
 ```javascript
 <script>name();</script>
 ```
-###Arrays
+### Arrays
 Arrays are variables that can hold more than one value.
-to initiate array:
+to initiate array: 
 ```javascript
 var cars = new Array();
 ```
