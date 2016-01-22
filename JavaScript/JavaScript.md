@@ -62,9 +62,9 @@ for (i=0; i<5; i++) {
 ### Conditionals
 Make sure **else if** are spelled separately. Not like in PHP!
 ```javascript
-if (i > 5) {
+if (i === 5) {
   do something...
-} else if {
+} else if (i === 2) {
   do something...
 } else {
   do something...
