@@ -18,6 +18,7 @@ function CreateAjaxObject(callback) {
 	    }
 	}
     }
+    
     if (ajax) ajax.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
 	    callback.call(this.responseText)
@@ -25,6 +26,7 @@ function CreateAjaxObject(callback) {
            return false
         }
     return ajax
+    }
 }
 ```
 Create functions that will call CreateAjaxObject function to complete the Ajax process. This function takes three arguments: the name of your callback function to receive data from the server, the url with which to communicate with the server, and string with arguments to post to the server. It sends the data using Post request.
