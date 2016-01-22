@@ -3,17 +3,14 @@ To use ajax on the webserver first create a JavaScript object with CreateAjaxObj
 ```php
 function CreateAjaxObject(callback) {
     try {
-	var ajax = new XMLHttpRequest()
-    }
-    catch(e1) {
+        var ajax = new XMLHttpRequest()
+    } catch(e1) {
 	try {
 	    ajax = new ActiveXObject("Msxml2.XMLHTTP")
-	}
-	catch(e2) {
+	} catch(e2) {
 	    try {
 	        ajax = new ActiveXObject("Microsoft.XMLHTTP")
-	    }
-	    catch(e3) {
+	    } catch(e3) {
 	        ajax = false
 	    }
 	}
