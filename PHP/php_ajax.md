@@ -7,13 +7,13 @@ function CreateAjaxObject(callback) {
     } catch(e1) {
         try {
             ajax = new ActiveXObject("Msxml2.XMLHTTP");
-	} catch(e2) {
-	    try {
-	        ajax = new ActiveXObject("Microsoft.XMLHTTP");
-	    } catch(e3) {
-	        ajax = false;
-	    }
-	}
+        } catch(e2) {
+            try {
+                ajax = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch(e3) {
+                ajax = false;
+            }
+        }
     }
     
     if (ajax) ajax.onreadystatechange = function() {
