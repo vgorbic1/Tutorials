@@ -25,17 +25,17 @@ The XMLHttpRequest Object is Created.
 ```javascript
 var ajaxRequest;  // The variable that makes Ajax possible!
 function ajaxFunction(){
-   try{      
+   try {      
       // Opera 8.0+, Firefox, Safari
       ajaxRequest = new XMLHttpRequest();
-   }catch (e){   
+   } catch (e) {   
       // Internet Explorer Browsers
-      try{
+      try {
          ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-      }catch (e) {   
-         try{
+      } catch (e) {   
+         try {
             ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-         }catch (e){      
+         } catch (e) {      
             // Something went wrong
             alert("Your browser broke!");
             return false;
@@ -306,8 +306,9 @@ echo $display_string;
 ?>
 ```
 
-### AJAX SECURITY: SERVER SIDE
+### AJAX SECURITY
+#### Server side
 AJAX-based Web applications use the same server-side security schemes of regular Web applications. You specify authentication, authorization, and data protection requirements in your web.xml file (declarative) or in your program (programmatic). AJAX-based Web applications are subject to the same security threats as regular Web applications.
 
-### AJAX SECURITY: CLIENT SIDE
+#### Client side 
 JavaScript code is visible to a user/hacker. Hacker can use JavaScript code for inferring server-side weaknesses. JavaScript code is downloaded from the server and executed ("eval") at the client and can compromise the client by mal-intended code. Downloaded JavaScript code is constrained by the sand-box security model and can be relaxed for signed JavaScript.
