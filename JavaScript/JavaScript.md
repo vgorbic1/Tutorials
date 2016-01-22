@@ -34,7 +34,7 @@ to initiate array:
 ```javascript
 var cars = new Array();
 ```
-or just
+or
 ```javascript
 cars = Array();
 ```
