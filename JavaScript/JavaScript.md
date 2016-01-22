@@ -6,3 +6,7 @@ JavaScript is a scripting language, mostly used on the client-side (browser).
 DOM is a convention for representing objects in HTML document.
 ###Variables
 To create a variable use var and the variable name or just a variable name: 
+'''javascript
+var name;  // initiates a variable
+name = "John" // assigns to the variable
+...
