@@ -17,10 +17,10 @@ function CreateAjaxObject(callback) {
     }
     
     if (ajax) ajax.onreadystatechange = function() {
-	if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
-	    callback.call(this.responseText);
-	} else {
-           return false;
+        if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
+            callback.call(this.responseText);
+        } else {
+            return false;
         }
     return ajax;
     }
