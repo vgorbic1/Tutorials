@@ -1,22 +1,21 @@
-# PHP
-## AJAX
+# AJAX
 To use ajax on the webserver first create a JavaScript object with CreateAjaxObject() function:
 ```php
 function CreateAjaxObject(callback) {
     try {
-	    var ajax = new XMLHttpRequest()
+	var ajax = new XMLHttpRequest()
     }
     catch(e1) {
 	try {
-		ajax = new ActiveXObject("Msxml2.XMLHTTP")
+	    ajax = new ActiveXObject("Msxml2.XMLHTTP")
 	}
 	catch(e2) {
-		try {
-			ajax = new ActiveXObject("Microsoft.XMLHTTP")
-		}
-		catch(e3) {
-			ajax = false
-		}
+	    try {
+	        ajax = new ActiveXObject("Microsoft.XMLHTTP")
+	    }
+	    catch(e3) {
+	        ajax = false
+	    }
 	}
     }
     if (ajax) ajax.onreadystatechange = function() {
@@ -62,7 +61,7 @@ Supply HTML:
 <div id='mydiv'></div>
 
 Now we are ready to call either the ```PostAjaxRequest()``` or ```GetAjaxRequest()```:
-```
+```javascript
 <script>
    PostAjaxRequest(function() {
       document.getElementById('mydiv').innerHTML = this
@@ -73,8 +72,5 @@ In either instance, a program in the same folder as the calling code (called aja
 
 Write the ajax.php program that will reside on server and communicate with the web browser. It tests whether the key url has been sent to it, either in a Post request (as $_POST['url']) or Get request (as $_GET['url']). This fetches the web page referred to and returned to the calling Ajax function using the PHP echo keyword:
 ```php
-  echo isset($_POST['url']) ?
-    file_get_contents($_POST['url']) :
-    file_get_contents($_GET['url']);
-?>
+  echo isset($_POST['url']) ? file_get_contents($_POST['url']) : file_get_contents($_GET['url']);
 ```
