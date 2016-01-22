@@ -30,6 +30,7 @@ to call a function in HTML body:
 ```
 ### Arrays
 Arrays are variables that can hold more than one value.
+
 to initiate array:
 ```javascript
 var cars = new Array();
