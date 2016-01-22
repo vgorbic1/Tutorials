@@ -28,6 +28,7 @@ To call a function in HTML body:
 ```javascript
 <script>name();</script>
 ```
+
 ### Arrays
 Arrays are variables that can hold more than one value. To initiate array:
 ```javascript
@@ -49,6 +50,15 @@ To see content of array use F-12 and check console:
 ```javascript
 console.log(nameOfArray);
 ```
+To walk through an array use **for** loop and a ```length``` property:
+```javascript
+var cars = new Array("Toyota", "Ford");
+
+for (i=0; i<cars.length; i++) {
+    document.write(cars[i]);
+}
+```
+
 ### Loops
 Most popular loops are **while** and **for** loops. To create a **while** loop first assign an index (*i*) variable:
 ```javascript
