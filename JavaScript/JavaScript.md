@@ -72,6 +72,7 @@ To create a **for** loop:
 ```javascript
 for (i=0; i<5; i++) {
   document.write("Hello!");
+}
 ```
 If you don't know the value of the tested variable, use **while** loop. If you know the value of the tested variable,
 use **for** loop.
