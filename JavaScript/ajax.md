@@ -119,21 +119,22 @@ function setMessageUsingDOM(message) {
 #### XMLHttpRequest
 XMLHttpRequest (XHR) is an API that can be used by JavaScript, JScript, VBScript, and other web browser scripting languages to transfer and manipulate XML data to and from a webserver using HTTP, establishing an independent connection channel between a webpage's Client-Side and Server-Side. The data returned from XMLHttpRequest calls will often be provided by back-end databases. Besides XML, XMLHttpRequest can be used to fetch data in other formats, e.g. JSON or even plain text.
 
-#### XMLHttpRequest Methods:
-```abort()``` Cancels the current request.
-```getAllResponseHeaders()``` Returns the complete set of HTTP headers as a string.
-```getResponseHeader( headerName )``` Returns the value of the specified HTTP header.
-```open( method, URL )```
-```open( method, URL, async )```
-```open( method, URL, async, userName )```
-```open( method, URL, async, userName, password )``` Specifies the method, URL, and other optional attributes of a request.
-The method parameter can have a value of "GET", "POST", or "HEAD". Other HTTP methods, such as "PUT" and "DELETE" (primarily used in REST applications) may be possible. The "async" parameter specifies whether the request should be handled asynchronously or not. "true" means that the script processing carries on after the send() method without waiting for a response, and "false" means that the script waits for a response before continuing script processing.
-```send( content )``` Sends the request.
-```setRequestHeader( label, value )``` Adds a label/value pair to the HTTP header to be sent.
+#### XMLHttpRequest Methods
+*```abort()``` Cancels the current request.
+*```getAllResponseHeaders()``` Returns the complete set of HTTP headers as a string.
+*```getResponseHeader( headerName )``` Returns the value of the specified HTTP header.
+*```open( method, URL )```
+*```open( method, URL, async )```
+*```open( method, URL, async, userName )```
+*```open( method, URL, async, userName, password )``` Specifies the method, URL, and other optional attributes of a request.
+The method parameter can have a value of "GET", "POST", or "HEAD". Other HTTP methods, such as "PUT" and "DELETE" (primarily used in REST applications) may be possible. The "async" parameter specifies whether the request should be handled asynchronously or not. "true" means that the script processing carries on after the ```send()``` method without waiting for a response, and "false" means that the script waits for a response before continuing script processing.
+*```send( content )``` Sends the request.
+*```setRequestHeader( label, value )``` Adds a label/value pair to the HTTP header to be sent.
 
-#### XMLHttpRequest Properties:
-onreadystatechange An event handler for an event that fires at every state change.
-readyState Defines the current state of the XMLHttpRequest object.
+#### XMLHttpRequest Properties
+*```onreadystatechange``` An event handler for an event that fires at every state change.
+*```readyState``` Defines the current state of the XMLHttpRequest object.
+
 Possible values for the readyState property:
 0	The request is not initialized.
 1	The request has been set up.
