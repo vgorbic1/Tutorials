@@ -45,6 +45,10 @@ To initiate the array and assign *Toyota* to the first pocket in the array:
 ```javascript
 var cars = ["Toyota"];
 ```
+To see content of array use F-12 and check console:
+```javascript
+console.log(nameOfArray);
+```
 ### Loops
 Most popular loops are **while** and **for** loops. To create a **while** loop first assign an index (*i*) variable:
 ```javascript
