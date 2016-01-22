@@ -5,11 +5,11 @@ JavaScript is a scripting language, mostly used on the client-side (browser).
 ###Document Object Model (DOM)
 DOM is a convention for representing objects in HTML document.
 ### Variables
-to create (initiate) a variable use var and the variable name or just a variable name: 
+To create (initiate) a variable use var and the variable name or just a variable name: 
 ```javascript
 var name;
 ```
-to assign value to variable:
+To assign value to variable:
 ```javascript
 name = "John";
 ```
@@ -20,18 +20,17 @@ function name() {
   // do something ...
 }
 ```
-to call a function in HTML header:
+To call a function in HTML header:
 ```javascript
 name();
 ```
-to call a function in HTML body:
+To call a function in HTML body:
 ```javascript
 <script>name();</script>
 ```
 ### Arrays
 Arrays are variables that can hold more than one value.
-
-to initiate array:
+To initiate array:
 ```javascript
 var cars = new Array();
 ```
@@ -39,11 +38,14 @@ or
 ```javascript
 cars = Array();
 ```
-to assign first pocket in the array:
+To assign first pocket in the array:
 ```javascript
 cars[0] = "Toyota";
 ```
-to initiate the array and assign *Toyota* to the first pocket in the array:
+To initiate the array and assign *Toyota* to the first pocket in the array:
 ```javascript
 var cars = ["Toyota"];
 ```
+### Loops
+Most popular loops are **while** and **for** loops.
+To create a while loop:
