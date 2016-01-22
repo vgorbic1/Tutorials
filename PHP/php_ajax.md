@@ -63,14 +63,14 @@ Supply HTML:
 Now we are ready to call either the ```PostAjaxRequest()``` or ```GetAjaxRequest()```:
 ```javascript
 <script>
-   PostAjaxRequest(function() {
-      document.getElementById('mydiv').innerHTML = this
-      }, 'ajax.php', 'url=http://wikipedia.org/wiki/AJAX')
+   PostAjaxRequest(function() { document.getElementById('mydiv').innerHTML = this },
+                   'ajax.php', 
+                   'url=http://wikipedia.org/wiki/AJAX');
 </script>
 ````
 In either instance, a program in the same folder as the calling code (called ajax.php) is chosen for communication, and the URL is sent to the program as the value of the key url.
 
-Write the ajax.php program that will reside on server and communicate with the web browser. It tests whether the key url has been sent to it, either in a Post request (as $_POST['url']) or Get request (as $_GET['url']). This fetches the web page referred to and returned to the calling Ajax function using the PHP echo keyword:
+Write the ajax.php program that will reside on server and communicate with the web browser. It tests whether the key url has been sent to it, either in a Post request (as ```$_POST['url']```) or Get request (as ```$_GET['url']```). This fetches the web page referred to and returned to the calling Ajax function using the PHP echo keyword:
 ```php
   echo isset($_POST['url']) ? file_get_contents($_POST['url']) : file_get_contents($_GET['url']);
 ```
