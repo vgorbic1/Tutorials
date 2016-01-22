@@ -1,59 +1,60 @@
 # AJAX
-To use ajax on the webserver first create a JavaScript object with CreateAjaxObject() function:
-```php
+To use ajax on the webserver first create a JavaScript object with ```CreateAjaxObject()``` function:
+```javascript
 function CreateAjaxObject(callback) {
     try {
-        var ajax = new XMLHttpRequest()
+        var ajax = new XMLHttpRequest();
     } catch(e1) {
 	try {
-	    ajax = new ActiveXObject("Msxml2.XMLHTTP")
+	    ajax = new ActiveXObject("Msxml2.XMLHTTP");
 	} catch(e2) {
 	    try {
-	        ajax = new ActiveXObject("Microsoft.XMLHTTP")
+	        ajax = new ActiveXObject("Microsoft.XMLHTTP");
 	    } catch(e3) {
-	        ajax = false
+	        ajax = false;
 	    }
 	}
     }
     
     if (ajax) ajax.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200 && this.responseText != null) {
-	    callback.call(this.responseText)
+	    callback.call(this.responseText);
 	} else {
-           return false
+           return false;
         }
-    return ajax
+    return ajax;
     }
 }
 ```
 Create functions that will call CreateAjaxObject function to complete the Ajax process. This function takes three arguments: the name of your callback function to receive data from the server, the url with which to communicate with the server, and string with arguments to post to the server. It sends the data using Post request.
-```php
+```javascript
 function PostAjaxRequest(callback, url, args) {
-	var contenttype = 'application/x-www-form-urlencoded'
-	var ajax        = new CreateAjaxObject(callback)
-	if (!ajax) return false
-	ajax.open('POST', url, true)
-	ajax.setRequestHeader('Content-type', contenttype)
-	ajax.setRequestHeader('Content-length', args.length)
-	ajax.setRequestHeader('Connection', 'close')
-	ajax.send(args)
-	return true
+	var contenttype = 'application/x-www-form-urlencoded';
+	var ajax        = new CreateAjaxObject(callback);
+	if (!ajax) return false;
+	ajax.open('POST', url, true);
+	ajax.setRequestHeader('Content-type', contenttype);
+	ajax.setRequestHeader('Content-length', args.length);
+	ajax.setRequestHeader('Connection', 'close');
+	ajax.send(args);
+	return true;
 }
 ```
 Similar function, but sends Get request. Always have both functions in one document to allow for proper server interaction:
-```php
+```javascript
 function GetAjaxRequest(callback, url, args) {
-	var nocache = '&nocache=' + Math.random() * 1000000 // prevent caching
-	var ajax    = new CreateAjaxObject(callback)
-	if (!ajax) return false
-	ajax.open('GET', url + '?' + args + nocache, true)
-	ajax.send(null)
-	return true
+	var nocache = '&nocache=' + Math.random() * 1000000; // prevent caching
+	var ajax    = new CreateAjaxObject(callback);
+	if (!ajax) return false;
+	ajax.open('GET', url + '?' + args + nocache, true);
+	ajax.send(null);
+	return true;
 }
-
-Create a callback() function that will receive the data sent back to PHP via Ajax:
+```
+Create a ```callback()``` function that will receive the data sent back to PHP via Ajax:
+```javascript
 function callback() {
-    document.getElementById('mydiv').inner = this
+    document.getElementById('mydiv').inner = this;
 }
 ```
 Supply HTML:
