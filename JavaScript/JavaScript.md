@@ -46,11 +46,27 @@ To initiate the array and assign *Toyota* to the first pocket in the array:
 var cars = ["Toyota"];
 ```
 ### Loops
-Most popular loops are **while** and **for** loops. To create a while loop first assign an index (i) variable:
+Most popular loops are **while** and **for** loops. To create a **while** loop first assign an index (*i*) variable:
 ```javascript
 var i = 0;
 while (i < 5) {
   document.write("Hello!");
   i++;  // increment by one
+}
+```
+To create a **for** loop:
+```javascript
+for (i=0; i<5; i++) {
+  document.write("Hello!");
+```
+### Conditionals
+Make sure **else if** are spelled separately. Not like in PHP!
+```javascript
+if (i > 5) {
+  do something...
+} else if {
+  do something...
+} else {
+  do something...
 }
 ```
