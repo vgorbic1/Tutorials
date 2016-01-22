@@ -62,6 +62,7 @@ Webserver returns the result containing XML document. You can implement your ser
 * Parse the input from the client.
 * Do required processing.
 * Send the output to the client.
+
 If we assume that you are going to write a Java servlet, then here is the piece of code:
 ```java
 public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
