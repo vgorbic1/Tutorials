@@ -21,5 +21,28 @@ HTML forms are able to impose constraints on the input used to complete the form
     <input type="submit" name="submit" value="Submit" />
 </form>
 ```
-However, any attacker can create a custom form that doesn’t include any of the constraints in your original form markup.
+However, any attacker can create a custom form that doesn’t include any of the constraints in your original form markup. For example, if a HTML form imposes a maxlength attribute but we receive input that exceeds that lenght, it may be wise to consider this as an attempted bypass of validation controls by a user. 
+
+PHP is not a strongly typed language and most of its functions and operations are therefore not type safe. This can pose serious problems from a security perspective. Validators are particularly vulnerable to this problem when comparing values. When designing validators, be sure to prefer strict comparisons and use manual type conversion where input or output values might be strings. Web forms, as an example, always return string data so to work with a resulting expected integer from a form you would have to verify its type:
+```
+function checkIntegerRange($int, $min, $max)
+{
+    if (is_string($int) && !ctype_digit($int)) {
+        return false; // contains non digit characters
+    }
+    if (!is_int((int) $int)) {
+        return false; // other non-integer value or exceeds PHP_MAX_INT
+    }
+    return ($int >= $min && $int <= $max);
+}
+```
+You should never do this:
+```
+function checkIntegerRangeTheWrongWay($int, $min, $max)
+{
+    return ($int >= $min && $int <= $max);
+}
+```
+
+
 [Padraic Brady](http://phpsecurity.readthedocs.org/en/latest/Input-Validation.html)
