@@ -38,3 +38,16 @@ var Person = {
 var peter = new Person(10, 1975);  // create an object 
 document.write(peter.year_now());  // use the function to calculate the year
 ```
+Using **constructor notation**:
+```javascript
+function Person(age, birth_year) {
+    this.age = age;
+    this.birth_year = birth_year,
+    this.year_now = function() {
+        this.age + this.birth_year;
+    };
+};
+
+var peter = new Person(10, 1975);  // create an object 
+document.write(peter.year_now());  // use the function to calculate the year
+```
