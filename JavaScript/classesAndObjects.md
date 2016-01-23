@@ -1,5 +1,4 @@
 ## Object Oriented Programming with JavaScript
-### Objects
 #### Creating objects
 To create an object, one can use **literal notation**:
 ```javascript
@@ -17,7 +16,6 @@ function Person(job, married) {
 
 var james = new Person("programmer", "no");
 ````
-### Classes
 #### Creating a class
 ```javascript
 function Dog(breed) {
@@ -25,4 +23,18 @@ function Dog(breed) {
 }
 
 var sparky = new Dog("poodle");
+```
+#### Adding Functions (Methods) to an object
+Using **literal notation**:
+```javascript
+var Person = {
+    age: age;
+    birth_year: birth_year,
+    year_now: function() {
+        age + birth_year;
+    }
+};
+
+var peter = new Person(10, 1975);  // create an object 
+document.write(peter.year_now());  // use the function to calculate the year
 ```
