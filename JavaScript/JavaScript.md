@@ -105,8 +105,23 @@ for (i=0; i<5; i++) {
   document.write("Hello!");
 }
 ```
-If you don't know the value of the tested variable, use **while** loop. If you know the value of the tested variable,
-use **for** loop.
+If you don't know the value of the tested variable (do not know when to stop the loop), use **while** loop. If you know the value of the tested variable (do know when to stop the loop), use **for** loop.
+
+It is possible to inititate several variables as a statement:
+```javascript
+if (i=0, len=cars.length; i<len; i++) {
+  ...
+}
+```
+It is possible to omit a statement, if index variable set globally:
+```javascript
+var i = 0;
+var len = cars.length;
+if (; i<len; i++) {
+  ...
+}
+```
+
 
 ### Conditionals
 Make sure **else if** are spelled separately. Not like in PHP!
