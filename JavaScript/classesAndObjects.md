@@ -24,7 +24,7 @@ function Dog(breed) {
 
 var sparky = new Dog("poodle");
 ```
-#### Adding Functions (Methods) to an object
+#### Adding functions (Methods) to an object
 Using **literal notation**:
 ```javascript
 var Person = {
@@ -63,4 +63,16 @@ myObject["nameProperty"];
 var myObject = {nameProperty: someValue};
 var myProperty = "nameProperty";
 myObject[myProperty];
+```
+
+#### Methods included into every object
+To chek if an object has a particular property and if yes, return true use ```hasOwnProperty()```:
+```javascript
+var myObject = {name: "John", age: "39"};
+console.log(myObject.hasOwnProperty("name");  // returns true
+console.log(myObject.hasOwnProperty("year");  // returns false
+```
+To figure out the type of the variable (string, number, function, or object), use ```typeof``` operator:
+```javascript
+console.log(typeof myVariable);
 ```
