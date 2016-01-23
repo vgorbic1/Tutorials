@@ -76,3 +76,18 @@ To figure out the type of the variable (string, number, function, or object), us
 ```javascript
 console.log(typeof myVariable);
 ```
+To print all names/values of properties of an object use **for in** loop:
+```javascript
+var nyc = {
+    fullName: "New York City",
+    mayor: "Whoever",
+    population: 8000000};
+    
+for (var key in nyc) {
+    console.log(key);  // get properties' names
+}
+
+for (var key in nyc) {
+    console.log(nyc[key]);  // get properties' values
+}
+```
