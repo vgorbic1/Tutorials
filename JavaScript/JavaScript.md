@@ -13,6 +13,37 @@ To assign value to variable:
 ```javascript
 name = "John";
 ```
+If a variable is not declared, but is given a value, it is authomatically GLOBAL.
+
+GLOBAL variables are declared outside of functions.
+LOCAL variables are declared within a function.
+
+### Assignment operators
+```javascript
+y = 5
+x = ++y  // result x = 6 and y = 6
+x = y++  // result x = 5 and y = 6
+x = --y  // result x = 4 and y = 4
+x = y--  // result x = 5 and y = 4
+
+x = 10 and y = 5
+Operator  Example    Same as      Result
+=         x = y                   x = 5
++=        x += y     x = x + y    x = 15
+-=        x -= y     x = x - y    x = 5
+*=        x *= y     x = x * y    x = 50
+/=        x /= y     x = x / y    x = 2
+
+Adding strings and numbers:
+x = 5 + 5  // result 10
+x = "5" + 5  // result 55
+x = "Hello" + 5  // result Hello5
+
+Adding (appending) strings:
+text = "Hello ";
+text += "World!";  // result "Hello World!"
+```
+
 ### Functions
 Functions are premade blocks of code:
 ```javascript
@@ -76,6 +107,7 @@ for (i=0; i<5; i++) {
 ```
 If you don't know the value of the tested variable, use **while** loop. If you know the value of the tested variable,
 use **for** loop.
+
 ### Conditionals
 Make sure **else if** are spelled separately. Not like in PHP!
 ```javascript
@@ -86,4 +118,8 @@ if (i === 5) {
 } else {
   do something...
 }
+```
+Conditional operator:
+```javascript
+var voteable = (age < 18) ? "yes" : "no";
 ```
