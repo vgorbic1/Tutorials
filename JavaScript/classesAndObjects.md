@@ -51,3 +51,16 @@ function Person(age, birth_year) {
 var peter = new Person(10, 1975);  // create an object 
 document.write(peter.year_now());  // use the function to calculate the year
 ```
+#### Getting value of an object
+Using **dot notation**:
+```javascript
+myObject.nameProperty;
+```
+Using **bracket notation**, which has an advantage, since we can use another variable, not just a string:
+```javascript
+myObject["nameProperty"];
+
+var myObject = {nameProperty: someValue};
+var myProperty = "nameProperty";
+myObject[myProperty];
+```
