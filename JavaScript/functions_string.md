@@ -1,5 +1,6 @@
 ### Functions 
-```isNaN()
+```
+isNaN()
 ```
 This function checks to see if the parameter is not a number:
 ```
