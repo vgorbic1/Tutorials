@@ -44,10 +44,10 @@ So the browser knows how to interpret data that your web server sends to it. How
 #### Database
 When connecting to the database, there's an implicit or explicit connection encoding. That means any textual data you send over this connection, the database will interpret in that encoding and any textual data you receive from the database will be encoded in that encoding. 
 ```sql
-CREATE TABLE `texts` (
-  `id` INT(11) unsigned NOT NULL AUTO_INCREMENT,
-  `content` TEXT,
-  PRIMARY KEY (`id`)
+CREATE TABLE 'texts' (
+  'id' INT(11) unsigned NOT NULL AUTO_INCREMENT,
+  'content' TEXT,
+  PRIMARY KEY ('id')
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
 This creates a table with a default character set of UTF-8. This does not actually mean anything yet, since the encoding is specific per text column. Any column that does not explicitly specify an encoding will be set to this DEFAULT CHARSET. Consider this:
@@ -97,7 +97,6 @@ There should be no encoding conversion at any point along the chain browser → 
 Test if everything is working properly with this simple test application:
 ```PHP
 <?php
-
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
@@ -112,18 +111,15 @@ if (!empty($_POST['text'])) {
 }
 
 $results = $pdo->query('SELECT * FROM `texts`')->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
 <head>
     <title>UTF-8 encoding test</title>
 </head>
 <body>
-
 <h1>Display test</h1>
-
 <p>
 A good day, World!<br>
 Schönen Tag, Welt!<br>
@@ -133,21 +129,16 @@ Une bonne journée, tout le monde!<br>
 Một ngày tốt lành, thế giới!<br>
 こんにちは、世界！<br>
 </p>
-
 <h1>Submission test</h1>
-
 <form action="" method="post" accept-charset="utf-8">
     <textarea name="text"></textarea>
     <input type="submit" value="Submit">
 </form>
-
 <?php if (!empty($_POST['text'])) : ?>
     <h2>Last received data</h2>
     <pre><?php echo htmlspecialchars($_POST['text'], ENT_NOQUOTES, 'UTF-8'); ?></pre>
 <?php endif; ?>
-
 <h1>Output test</h1>
-
 <ul>
     <?php foreach ($results as $result) : ?>
         <li>
@@ -155,7 +146,6 @@ Một ngày tốt lành, thế giới!<br>
         </li>
     <?php endforeach; ?>
 </ul>
-
 </body>
 </html>
 ```
@@ -163,7 +153,7 @@ Copy and paste this into a .php file, edit the database connection settings as n
 - Is the text editor saving the source code as UTF-8? If not, the display test will screw up.
 - Is the browser submitting data as UTF-8? If not, the "last received data" will screw up.
 - Is the round-trip to the database working properly? If not, the output test will screw up.
-- 
+
 You should additionally use your favorite database administration tool to look at the data as it's stored in the database.
 
 *SRC:* [David C. Zentgraf](http://kunststube.net/frontback/)
