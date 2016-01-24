@@ -77,10 +77,10 @@ waste space if these signal bits need to be used often. UTF-16 is in the middle,
 character	encoding	bits
 A	        UTF-8	    01000001
 A	        UTF-16	    00000000 01000001
-A	        UTF-32	   00000000 00000000 00000000 01000001
-あ	         UTF-8	    11100011 10000001 10000010
-あ	         UTF-16	   00110000 01000010
-あ	         UTF-32	   00000000 00000000 00110000 01000010
+A	        UTF-32	    00000000 00000000 00000000 01000001
+あ	         UTF-8	     11100011 10000001 10000010
+あ	         UTF-16	     00110000 01000010
+あ	         UTF-32	     00000000 00000000 00110000 01000010
 ```
 Unicode is a large table mapping characters to numbers and the different UTF encodings specify how these numbers are encoded as bits. Overall, Unicode 
 is yet another encoding scheme.
