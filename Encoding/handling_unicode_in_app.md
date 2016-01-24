@@ -35,4 +35,18 @@ These tags are only fallbacks though which are only used when no HTTP Content-Ty
 header('Content-Type: text/html; charset=utf-8');
 ```
 
-#### Forms
+#### Form
+So the browser knows how to interpret data that your web server sends to it. How should the web server know how to interpret data sent to it by the browser? The default behavior is that the browser will reply to the server in the same encoding that the server sent content to it. So by setting the above Content-Type header, you're pretty much already set to receive UTF-8 encoded data from the browser. To make this really explicit, you can set the accept-charset attribute on forms:
+```
+<form action="action.php" accept-charset="utf-8">
+```
+
+#### Database
+When connecting to the database, there's an implicit or explicit connection encoding. That means any textual data you send over this connection, the database will interpret in that encoding and any textual data you receive from the database will be encoded in that encoding. 
+```sql
+CREATE TABLE `texts` (
+  `id` INT(11) unsigned NOT NULL AUTO_INCREMENT,
+  `content` TEXT,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+```
