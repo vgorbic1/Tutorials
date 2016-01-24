@@ -19,7 +19,7 @@ b        i        t        s
 The above encoding scheme happens to be ASCII. A string of 1s and 0s is broken down into parts of eight bit each (a byte for short). 
 The ASCII encoding specifies a table translating bytes into human readable letters:
 ```
-bits	character
+bits	    character
 01000001	A
 01000010	B
 01000011	C
@@ -47,7 +47,7 @@ Instead of breaking a string of bits into blocks of eight, it breaks it into blo
 character each combination of bits maps to. BIG-5 in its basic form covers mostly Traditional Chinese characters. GB18030 is another encoding which 
 essentially does the same thing, but includes both Traditional and Simplified Chinese characters.
 ```
-bits	 character
+bits	             character
 10000001 01000000	丂
 10000001 01000001	丄
 10000001 01000010	丅
