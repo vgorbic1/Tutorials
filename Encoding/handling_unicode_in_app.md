@@ -50,3 +50,11 @@ CREATE TABLE `texts` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
+This creates a table with a default character set of UTF-8. This does not actually mean anything yet, since the encoding is specific per text column. Any column that does not explicitly specify an encoding will be set to this DEFAULT CHARSET. Consider this:
+```sql
+CREATE TABLE 'texts' (
+  'id' INT(11) unsigned NOT NULL AUTO_INCREMENT,
+  'text' TEXT CHARACTER SET latin1,
+  PRIMARY KEY ('id')
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+```
