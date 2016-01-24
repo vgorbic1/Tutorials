@@ -14,5 +14,25 @@ If the text ever appears any different at any stage in your app, you have an enc
 Handling encodings correctly within one system is not hard. Problems usually arise when exchanging data between two different systems. In our application, there will be two such interfaces between systems:
 - PHP to browser/browser to PHP
 - PHP to MySQL/MySQL to PHP
+
 Text is exchanged as binary data behind the scenes. This series of bits and bytes may represent anything at all; what exactly it represents depends on the encoding it was created with and which it is interpreted with. Since the text itself does not specify what it was encoded with, this information needs to be transported as meta information between different systems.
 
+#### Browser
+To specify to the browser what kind of content you are giving it, there's the HTTP Content-Type header:
+```
+Content-Type: text/html; charset=utf-8
+```
+There are also the HTML meta tags:
+```
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+```
+and its newer HTML5 version
+```
+<meta charset="utf-8" />
+```
+These tags are only fallbacks though which are only used when no HTTP Content-Type header was encountered (the wording "http-equiv" hints at this). So, the web server should always emit an HTTP header specifying the site's type and encoding. This can be configured in the web server itself, or it can be done using PHP by using header somewhere at the start of the application, before any content has been output:
+```PHP
+header('Content-Type: text/html; charset=utf-8');
+```
+
+#### Forms
