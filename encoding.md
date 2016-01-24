@@ -1,12 +1,12 @@
 ## Encoding
 
-*Text is always a sequence of bits which needs to be translated into human readable text using lookup tables. 
+- Text is always a sequence of bits which needs to be translated into human readable text using lookup tables. 
 If the wrong lookup table is used, the wrong character is used.
-*You're never actually directly dealing with "characters" or "text", you're always dealing with bits as seen through several layers of abstractions. 
+- You're never actually directly dealing with "characters" or "text", you're always dealing with bits as seen through several layers of abstractions. 
 Incorrect results are a sign of one of the abstraction layers failing.
-*If two systems are talking to each other, they always need to specify what encoding they want to talk to each other in. The simplest example of this 
+- If two systems are talking to each other, they always need to specify what encoding they want to talk to each other in. The simplest example of this 
 is this website telling your browser that it's encoded in UTF-8.
-*In this day and age, the standard encoding is UTF-8 since it can encode virtually any character of interest, is backwards compatible with the 
+- In this day and age, the standard encoding is UTF-8 since it can encode virtually any character of interest, is backwards compatible with the 
 de-facto baseline ASCII and is relatively space efficient for the majority of use cases nonetheless.
 
 #### ASCII
