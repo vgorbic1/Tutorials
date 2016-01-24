@@ -91,7 +91,7 @@ for (i=0; i<cars.length; i++) {
 ```
 
 ### Loops
-Most popular loops are **while** and **for** loops. To create a **while** loop first assign an index (*i*) variable:
+Most popular loops are **while** and **for** loops. To create a **while** loop first assign an index *(i)* variable:
 ```javascript
 var i = 0;
 while (i < 5) {
@@ -121,6 +121,13 @@ if (; i<len; i++) {
   ...
 }
 ```
+To create **for in** loop:
+```javascript
+for (var key in dogs) {
+    console.log(key);
+}
+```
+Everytime you go over the loop, the key becomes next property of the object *dogs*.
 
 
 ### Conditionals
