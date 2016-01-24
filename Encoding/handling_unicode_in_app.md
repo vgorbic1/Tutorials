@@ -58,3 +58,112 @@ CREATE TABLE 'texts' (
   PRIMARY KEY ('id')
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
+The actual column that stores the text is set to the latin1 character set. So any text that is stored in it will be stored in the latin1 encoding. This means this column can't store anything but the 256 characters defined in the latin1 encoding (a.k.a. ISO-8859-1 a.k.a. CP1252). The first thing then is to make sure that either all defaults are set to use utf8, or that at least the individual columns are set to it.
+
+The database server has a default character set, a database can have a default character set, a database table can have a default character set and finally the column has a character set setting. The rule is simple: if no explicit character set is specified for a column, the next higher default is used for it. The server, database and table defaults all have no influence whatsoever if the column has an explicit character set.
+
+The collation setting does not have anything to do with character or encoding support, it only relates to your ability to search for data. This simply refers to the rules governing character comparison. This setting can also be overridden on a per-query basis, so it does not actually have any permanent effect on how the data is stored.
+
+#### Connection
+Let's connect to the server:
+```PHP
+$pdo = new PDO('mysql:dbname=encoding_test;host=localhost', 'user', 'pass');
+
+// or maybe:
+
+$con = mysql_connect('localhost', 'user', 'pass');
+mysql_select_db('encoding_test', $con);
+```
+OK now, when querying data from the database, what encoding will it be returned in? When sending data to the database, what encoding should it be in? The answer is: it depends. In practice it often defaults to latin1. So when sending data encoded in UTF-8 to a database expecting Latin-1 encoded data, the database will misinterpret the received data and convert it to something else. Even with the database, the table, the column and all collation defaults set to UTF-8, you still won't be able to properly store UTF-8 data in it, because the connection defaults to latin1.
+
+The easiest and most reliable way to handle this is on the application level. How exactly depends on how exactly you connect to the database, but these are the most common ways:
+```PHP
+$pdo = new PDO('mysql:host=localhost;dbname=encoding_test;charset=utf8', 'user', 'pass');
+
+// or, before PHP 5.3.6:
+
+$pdo = new PDO('mysql:host=localhost;dbname=encoding_test', 'user', 'pass',
+                array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+
+// or:
+
+$con = mysql_connect('localhost', 'user', 'pass');
+mysql_select_db('encoding_test', $con);
+mysql_set_charset('utf8', $con);
+```
+There should be no encoding conversion at any point along the chain browser → PHP → database → PHP → browser.
+
+#### Test
+Test if everything is working properly with this simple test application:
+```PHP
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+
+header('Content-Type: text/html; charset=utf-8');
+
+$pdo = new PDO('mysql:dbname=encoding_test;host=localhost', 'user', 'pass',
+               array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+
+if (!empty($_POST['text'])) {
+    $stmt = $pdo->prepare('INSERT INTO `texts` (`text`) VALUES (:text)');
+    $stmt->execute(array('text' => $_POST['text']));
+}
+
+$results = $pdo->query('SELECT * FROM `texts`')->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>UTF-8 encoding test</title>
+</head>
+<body>
+
+<h1>Display test</h1>
+
+<p>
+A good day, World!<br>
+Schönen Tag, Welt!<br>
+Une bonne journée, tout le monde!<br>
+يوم جيد، العالم<br>
+좋은 일, 세계!<br>
+Một ngày tốt lành, thế giới!<br>
+こんにちは、世界！<br>
+</p>
+
+<h1>Submission test</h1>
+
+<form action="" method="post" accept-charset="utf-8">
+    <textarea name="text"></textarea>
+    <input type="submit" value="Submit">
+</form>
+
+<?php if (!empty($_POST['text'])) : ?>
+    <h2>Last received data</h2>
+    <pre><?php echo htmlspecialchars($_POST['text'], ENT_NOQUOTES, 'UTF-8'); ?></pre>
+<?php endif; ?>
+
+<h1>Output test</h1>
+
+<ul>
+    <?php foreach ($results as $result) : ?>
+        <li>
+            <pre><?php echo htmlspecialchars($result['text'], ENT_NOQUOTES, 'UTF-8'); ?></pre>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+</body>
+</html>
+```
+Copy and paste this into a .php file, edit the database connection settings as necessary, create the database as shown above, make sure to save the file as UTF-8 and open it in your browser. Feel free to input any data into the form or copy and paste the text from the display test for a good test sample. 
+- Is the text editor saving the source code as UTF-8? If not, the display test will screw up.
+- Is the browser submitting data as UTF-8? If not, the "last received data" will screw up.
+- Is the round-trip to the database working properly? If not, the output test will screw up.
+- 
+You should additionally use your favorite database administration tool to look at the data as it's stored in the database.
+
+*SRC:* [David C. Zentgraf](http://kunststube.net/frontback/)
