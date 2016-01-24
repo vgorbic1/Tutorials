@@ -47,7 +47,7 @@ Instead of breaking a string of bits into blocks of eight, it breaks it into blo
 character each combination of bits maps to. BIG-5 in its basic form covers mostly Traditional Chinese characters. GB18030 is another encoding which 
 essentially does the same thing, but includes both Traditional and Simplified Chinese characters.
 ```
-bits	             character
+bits	            character
 10000001 01000000	丂
 10000001 01000001	丄
 10000001 01000010	丅
@@ -76,11 +76,11 @@ waste space if these signal bits need to be used often. UTF-16 is in the middle,
 ```
 character	encoding	bits
 A	        UTF-8	    01000001
-A	        UTF-16	   00000000 01000001
+A	        UTF-16	    00000000 01000001
 A	        UTF-32	   00000000 00000000 00000000 01000001
-あ	       UTF-8	    11100011 10000001 10000010
-あ	       UTF-16	   00110000 01000010
-あ	       UTF-32	   00000000 00000000 00110000 01000010
+あ	         UTF-8	    11100011 10000001 10000010
+あ	         UTF-16	   00110000 01000010
+あ	         UTF-32	   00000000 00000000 00110000 01000010
 ```
 Unicode is a large table mapping characters to numbers and the different UTF encodings specify how these numbers are encoded as bits. Overall, Unicode 
 is yet another encoding scheme.
@@ -170,3 +170,5 @@ Javascript for example supports Unicode. In fact, any string in Javascript is UT
 cannot have a string in Javascript that is not UTF-16 encoded. Javascript worships Unicode to the extent that there's no facility to deal with any 
 other encoding in the core language. Since Javascript is most often run in a browser that's not a problem, since the browser can handle the mundane 
 logistics of encoding and decoding input and output.
+
+> SRC: [David C. Zentgraf] (http://kunststube.net/encoding/)
