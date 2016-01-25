@@ -44,21 +44,26 @@ So the browser knows how to interpret data that your web server sends to it. How
 #### Database
 When connecting to the database, there's an implicit or explicit connection encoding. That means any textual data you send over this connection, the database will interpret in that encoding and any textual data you receive from the database will be encoded in that encoding. 
 ```sql
-CREATE TABLE 'texts' (
-  'id' INT(11) unsigned NOT NULL AUTO_INCREMENT,
-  'content' TEXT,
-  PRIMARY KEY ('id')
+CREATE TABLE texts (
+  id INT(11) unsigned NOT NULL AUTO_INCREMENT,
+  content TEXT,
+  PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
 This creates a table with a default character set of UTF-8. This does not actually mean anything yet, since the encoding is specific per text column. Any column that does not explicitly specify an encoding will be set to this DEFAULT CHARSET. Consider this:
 ```sql
-CREATE TABLE 'texts' (
-  'id' INT(11) unsigned NOT NULL AUTO_INCREMENT,
-  'text' TEXT CHARACTER SET latin1,
-  PRIMARY KEY ('id')
+CREATE TABLE texts (
+  id INT(11) unsigned NOT NULL AUTO_INCREMENT,
+  text TEXT CHARACTER SET latin1,
+  PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
 The actual column that stores the text is set to the latin1 character set. So any text that is stored in it will be stored in the latin1 encoding. This means this column can't store anything but the 256 characters defined in the latin1 encoding (a.k.a. ISO-8859-1 a.k.a. CP1252). The first thing then is to make sure that either all defaults are set to use utf8, or that at least the individual columns are set to it.
+
+To change the character set for a column after the table is defined use the following:
+```sql
+ALTER TABLE texts MODIFY text CHAR(50) CHARACTER SET utf8; --The datatype is requred here.
+```
 
 The database server has a default character set, a database can have a default character set, a database table can have a default character set and finally the column has a character set setting. The rule is simple: if no explicit character set is specified for a column, the next higher default is used for it. The server, database and table defaults all have no influence whatsoever if the column has an explicit character set.
 
@@ -99,7 +104,6 @@ Test if everything is working properly with this simple test application:
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', true);
-
 header('Content-Type: text/html; charset=utf-8');
 
 $pdo = new PDO('mysql:dbname=encoding_test;host=localhost', 'user', 'pass',
@@ -110,7 +114,7 @@ if (!empty($_POST['text'])) {
     $stmt->execute(array('text' => $_POST['text']));
 }
 
-$results = $pdo->query('SELECT * FROM `texts`')->fetchAll(PDO::FETCH_ASSOC);
+$results = $pdo->query('SELECT * FROM texts')->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
