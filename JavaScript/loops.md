@@ -1,5 +1,5 @@
 ## Loops
-Most popular loops are **while** and **for** loops. 
+Most popular are **while** and **for** loops. 
 
 #### while loop
 To create a **while** loop first assign an index (i) variable:
