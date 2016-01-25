@@ -15,16 +15,27 @@ document.getElementById('email').innerHTML;
 To find an element on the page use the following methods:
 ```javascript
 document.getElementById();
-document.getElementsByTagName();
-document.getElementsByClassName();
-document.forms[];
+document.getElementsByTagName(); // returns an array of tags found. The
+document.getElementsByClassName(); // returns an array of elements of this class
+document.forms[]; // name of the form goes inside of []
+document.anchors[]; // name of the anchor goes inside of []
+document.images[]; // name of the image goes inside of []
+document.links[]; // name of the link goes inside of []
 ```
-To change the element on the page use the following properties:
+To change the element on the page:
 ```javascript
-.innerHTML =    // change HTML
-.attribute =   // change attribute
-.setAttribute(attribute, value) // replacing attribute
-.style.property = // change syle
+document.getElementById('text').innerHTML = 'another text'
+ or
+var element = document.getElementById('text');
+element.innerHTML = 'another text';
+```
+To change the value of the attribute:
+```javascript
+document.getElementById('img').src = 'file.jpg';
+```
+To change the element style:
+```javascript
+document.getElementById('text').style.color = 'blue';
 ```
 To add or delete an element on the page use the following methods:
 ```javascript
@@ -34,7 +45,16 @@ document.appendChild()   // add element
 document.replaceChild()  // replace element
 document.write(text)     // write into the object
 ```
-To add an event handler:
-```javascript
-document.getElementById('email').onclick = function() { ... }
+
+#### Events
+Events are happend when
+- an element is clicked on
+- the page is loaded
+- input fields are changed
+
+**onclick** event
 ```
+<h1 id="header">Header</h1>
+<input type="button" onclick="document.getElementById('header').style.color = 'red'" />
+```
+
