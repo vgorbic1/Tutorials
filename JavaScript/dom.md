@@ -19,12 +19,22 @@ document.getElementsByTagName();
 document.getElementsByClassName();
 document.forms[];
 ```
-To change the element on the page use the following methods:
+To change the element on the page use the following properties:
 ```javascript
-.innerHTML    // create element
-.removeChild  // remove element
-.appendChild  // add element
-.replaceChild // replace element
-.write        // write into the object
+.innerHTML =    // change HTML
+.attribute =   // change attribute
+.setAttribute(attribute, value) // replacing attribute
+.style.property = // change syle
 ```
-
+To add or delete an element on the page use the following methods:
+```javascript
+document.createElement() // create element
+document.removeChild()   // remove element
+document.appendChild()   // add element
+document.replaceChild()  // replace element
+document.write(text)     // write into the object
+```
+To add an event handler:
+```javascript
+document.getElementById('email').onclick = function() { ... }
+```
