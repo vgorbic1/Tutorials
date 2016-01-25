@@ -64,7 +64,7 @@ for (i=0; i<10; i++) {
 ```
 
 #### continue statement
-Continue statement breaks one iteration in the loop and continues with the next one. In other words, it scips one iteration.
+Continue statement breaks one iteration in the loop and continues with the next one. In other words, it skips one iteration.
 ```javascript
 for (i=0; i<10; i++) {
   if (i == 3) continue;
