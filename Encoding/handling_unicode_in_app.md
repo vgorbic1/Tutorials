@@ -119,38 +119,39 @@ $results = $pdo->query('SELECT * FROM texts')->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>UTF-8 encoding test</title>
-</head>
-<body>
-<h1>Display test</h1>
-<p>
-A good day, World!<br>
-Schönen Tag, Welt!<br>
-Une bonne journée, tout le monde!<br>
-يوم جيد، العالم<br>
-좋은 일, 세계!<br>
-Một ngày tốt lành, thế giới!<br>
-こんにちは、世界！<br>
-</p>
-<h1>Submission test</h1>
-<form action="" method="post" accept-charset="utf-8">
-    <textarea name="text"></textarea>
-    <input type="submit" value="Submit">
-</form>
-<?php if (!empty($_POST['text'])) : ?>
-    <h2>Last received data</h2>
-    <pre><?php echo htmlspecialchars($_POST['text'], ENT_NOQUOTES, 'UTF-8'); ?></pre>
-<?php endif; ?>
-<h1>Output test</h1>
-<ul>
-    <?php foreach ($results as $result) : ?>
+  </head>
+  <body>
+    <h1>Display test</h1>
+    <p>A good day, World!<br />
+       Schönen Tag, Welt!<br />
+       Une bonne journée, tout le monde!<br />
+       يوم جيد، العالم<br / >
+       좋은 일, 세계!<br />
+       Một ngày tốt lành, thế giới!<br>
+       こんにちは、世界！<br />
+     </p>
+     <h1>Submission test</h1>
+     <form action="" method="post" accept-charset="utf-8">
+       <textarea name="text"></textarea>
+       <input type="submit" value="Submit">
+     </form>
+     
+     <?php if (!empty($_POST['text'])) : ?>
+     
+     <h2>Last received data</h2>
+     <pre><?php echo htmlspecialchars($_POST['text'], ENT_NOQUOTES, 'UTF-8'); ?></pre>
+     <?php endif; ?>
+     <h1>Output test</h1>
+     <ul>
+     <?php foreach ($results as $result) : ?>
         <li>
             <pre><?php echo htmlspecialchars($result['text'], ENT_NOQUOTES, 'UTF-8'); ?></pre>
         </li>
     <?php endforeach; ?>
-</ul>
-</body>
+    </ul>
+  </body>
 </html>
 ```
 Copy and paste this into a .php file, edit the database connection settings as necessary, create the database as shown above, make sure to save the file as UTF-8 and open it in your browser. Feel free to input any data into the form or copy and paste the text from the display test for a good test sample. 
