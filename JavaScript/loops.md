@@ -53,3 +53,21 @@ for (var key in dogs) {
 }
 ```
 Everytime you go over the loop, the key becomes next property of the object *dogs*.
+
+#### break statement
+Use break statement to jump from the loop. Usually used with a conditional statement:
+```javascript
+for (i=0; i<10; i++) {
+  if (i == 3) break;
+  document.write("Not three");
+}
+```
+
+#### continue statement
+Continue statement breaks one iteration in the loop and continues with the next one. In other words, it scips one iteration.
+```javascript
+for (i=0; i<10; i++) {
+  if (i == 3) continue;
+  document.write("Never three");
+}
+```
