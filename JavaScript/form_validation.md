@@ -23,3 +23,24 @@ Call the function from your form:
   <input type="submit" value="Submit" />
 </form>
 ```
+
+### Valid email
+To check whether the email is valid use the following script. This script only checks for positions of '@' and '.' symbols.
+```javascript
+function validateForm() {
+  x = document.forms['myForm']['email'].value;
+  at_pos = x.indexOf('@');
+  dot_pos = x.lastIndexOf('.');
+  if (at_pos < 1 || dot_pos < at_pos +2 || dot_pos + 2 > x.length) {
+    alert("The email is not valid");
+    return false;
+  }
+}
+```
+Call the function from your form:
+```
+<form name="myForm" onsubmit="return validateForm()">
+  <input type="text" name="email" />
+  <input type="submit" value="Submit" />
+</form>
+```
