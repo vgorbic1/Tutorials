@@ -2,7 +2,7 @@
 Most popular loops are **while** and **for** loops. 
 
 #### while loop
-To create a **while** loop first assign an index *(i)* variable:
+To create a **while** loop first assign an index (i) variable:
 ```javascript
 var i = 0;
 while (i < 5) {
@@ -10,6 +10,18 @@ while (i < 5) {
   i++;  // increment by one
 }
 ```
+Always use ```i++``` in the block of code.
+
+#### do while loop
+This loop will run at least one time.
+```javascript
+var i = 0;
+do {
+  document.write("Hello!");
+} while (i<2);
+```
+
+#### for loop
 To create a **for** loop:
 ```javascript
 for (i=0; i<5; i++) {
@@ -32,6 +44,8 @@ if (; i<len; i++) {
   ...
 }
 ```
+
+#### for in loop
 To create **for in** loop:
 ```javascript
 for (var key in dogs) {
