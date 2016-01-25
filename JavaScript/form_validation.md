@@ -9,7 +9,7 @@ Always validate data in HTTML forms before sending it to a server.
 To check whether required field is filled in, use this script:
 ```javascript
 function validateForm() {
-  x = document.forms['myForm']['file'].value;
+  var x = document.forms['myForm']['file'].value;
   if (x == null || x == "") {
       alert("no data in the field");
       return false;
@@ -28,9 +28,9 @@ Call the function from your form:
 To check whether the email is valid use the following script. This script only checks for positions of '@' and '.' symbols.
 ```javascript
 function validateForm() {
-  x = document.forms['myForm']['email'].value;
-  at_pos = x.indexOf('@');
-  dot_pos = x.lastIndexOf('.');
+  var x = document.forms['myForm']['email'].value;
+  var at_pos = x.indexOf('@');  // returns position of '@' symbol
+  var dot_pos = x.lastIndexOf('.');  // returns last position of '.' symbol
   if (at_pos < 1 || dot_pos < at_pos +2 || dot_pos + 2 > x.length) {
     alert("The email is not valid");
     return false;
