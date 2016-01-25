@@ -11,8 +11,15 @@ To check whether required field is filled in, use this script:
 function validateForm() {
   x = document.forms['myForm']['file'].value;
   if (x == null || x == "") {
-      alert("no data in dields");
+      alert("no data in the field");
       return false;
   }
 }
+```
+Call the function from your form:
+```
+<form name="myForm" onsubmit="return validateForm()">
+  <input type="text" name="file" />
+  <input type="submit" value="Submit" />
+</form>
 ```
