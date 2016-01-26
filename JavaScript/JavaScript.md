@@ -3,7 +3,7 @@
 JavaScript is a scripting language, mostly used on the client-side (browser). 
 
 ### Variables
-JavaScript is dynamically typed language meaning that a content of variable
+JavaScript is dynamically typed language, meaning that a content of variable
 may change from number to string and back. It is not possible in statically typed languages (Java).
 To create (initiate) a variable use var and the variable name or just a variable name: 
 ```javascript
@@ -11,10 +11,10 @@ var name;  // the value of the variable is undefined. It is impossible to say wh
 ```
 To assign value to variable:
 ```javascript
-name = "John";  // now, the datatype is *string*
+name = "John";  // now, the datatype is string
 ```
 If a variable is not declared (no "var" keyword), but is given a value, it is authomatically GLOBAL.
-There small numbter of datatypes:
+There are small numbter of datatypes:
 - number
 - string
 - object
