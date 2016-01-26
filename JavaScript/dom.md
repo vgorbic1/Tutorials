@@ -45,23 +45,3 @@ document.appendChild()   // add element
 document.replaceChild()  // replace element
 document.write(text)     // write into the object
 ```
-
-#### Events
-Events are happen when:
-- an element is clicked on
-- the page is loaded
-- input fields are changed
-
-**onclick** event
-```javascript
-<h1 id="header">Header</h1>
-<input type="button" onclick="document.getElementById('header').style.color = 'red'" />
-```
-To call the function from a script:
-```javascript
-<h1 onclick="changeThisHeader(this)">Header</h1>
-
-function changeThisHeader(id) {
-  id.innerHTML = 'Another Header';
-}
-```
