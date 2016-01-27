@@ -17,7 +17,7 @@ localStorage.lastName = 'Smith';
 To get the name/value:
 ```javascript
 document.getElementById('result').innerHtml = localStorage.getItem('lastName'); // insert the pair to the element with id "result"
-//or
+// or
 document.getElementById('result').innerHtml = localStorage.lastName;
 ```
 To remove a name from local storage:
