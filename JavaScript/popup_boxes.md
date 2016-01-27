@@ -1,7 +1,7 @@
 ## Popup Boxes
 
 #### Alert box
-User have to click "OK" to proceed. To make line brake use \n.
+User have to click "OK" to proceed. To make line brake use \n symbol.
 ```javascript
 alert('Hello! \n How are you?');
 ```
