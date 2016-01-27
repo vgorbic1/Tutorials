@@ -1,10 +1,5 @@
 ## Document Object Model
-DOM methods are actions.
-
-DOM properties are values.
-
-All HTML elements are objects.
-
+Everything in a HTML document is a node. All nodes can be accessed by JavaScript. Nodes have hierarchical relationship: root | parent | child | sibling. DOM methods are actions. DOM properties are values. All HTML elements are objects.
 ```javascript
 document.getElementById('email').innerHTML;
       //|--------method-------| |-property-| 
