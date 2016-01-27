@@ -21,6 +21,6 @@ if (cofirmation) {
 User have to put in a value and confirm clicking on "OK" or "Cancel". This box returns a value or null.
 ```javascript
 var yourName = prompt('Enter your name', 'John Doe'); // the second parameter is the default value
-if (!yourName = null) {
-  // return yourName
+if (yourName != null) {
+  document.getElementById('demo').innerHTML = 'Hello ' + yourName + '!';
 }
