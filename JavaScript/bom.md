@@ -3,7 +3,7 @@ BOM allows JavaScript to talk to browser
 
 #### window.
 The main object of BOM. Usualy ommited in the script:
-```javascript```
+```javascript
 window.document.getElementById('demo');
 // same thing as
 document.getElementById('demo');
@@ -37,3 +37,18 @@ location.assign('URL') // loads a new document that has given URL
 This object contains browser's history.
 ```javascript
 history.back()  // loads the previous URL in the history list
+history.forward()  // loads the next URL in the histroy list
+
+function goForward() {
+  history.forward();
+}
+```
+
+#### window.navigator
+This object contains infromation about the visitor's browser. However, the information may be faked!
+```javascript
+navigator.appName  // returns browser name
+navigator.appVersion  // returns browser version
+navigator.platform  // returns system platform
+navigator.language  // returns browser language
+```
