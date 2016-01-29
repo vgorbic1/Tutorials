@@ -5,3 +5,4 @@
 * HTML5
 * CSS
 * [PHP](../master/PHP/)
+* [Encoding](../master/Encoding/)
