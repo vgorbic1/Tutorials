@@ -21,20 +21,20 @@ There are two types of objects available with log4j framework.
 - Support Objects: They are optional and support core objects to perform additional but important tasks.
 
 #### Core Objects
--**Logger Object (layer)** is responsible for capturing logging information and they are stored in a namespace hierarchy.
--**Layout Object (layer)** provides support to appender objects before publishing logging information.
--**Append Object (layer)** is responsible for publishing logging information to various preferred destinations such as a 
+- **Logger Object (layer)** is responsible for capturing logging information and they are stored in a namespace hierarchy.
+- **Layout Object (layer)** provides support to appender objects before publishing logging information.
+- **Append Object (layer)** is responsible for publishing logging information to various preferred destinations such as a 
 database, file, console, UNIX Syslog, etc.
 
 IMAGE
 
 #### Support Objects
--**Level Object** defines the granularity and priority of any logging information. There are seven levels of logging defined 
+- **Level Object** defines the granularity and priority of any logging information. There are seven levels of logging defined 
 within the API: OFF, DEBUG, INFO, ERROR, WARN, FATAL, and ALL.
--**Filter Object** object is used to analyze logging information and make further decisions on whether that information should 
+- **Filter Object** object is used to analyze logging information and make further decisions on whether that information should 
 be logged or not. Used by Appender Object, that can have several filters.
--**Object Renderer**  is used by Layout objects to prepare the final logging information.
--**Log Manager** manages the logging framework. It is responsible for reading the initial configuration parameters from a 
+- **Object Renderer**  is used by Layout objects to prepare the final logging information.
+- **Log Manager** manages the logging framework. It is responsible for reading the initial configuration parameters from a 
 system-wide configuration file or a configuration class.
 
 #### Configuration
