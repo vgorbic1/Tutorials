@@ -127,3 +127,157 @@ public class LogClass {
 | TRACE	| Designates finer-grained informational events than the DEBUG |
 | WARN | Designates potentially harmful situations |
 
+To filter all our DEBUG and INFO messages usig `setLevel(Level.X)` to set a desired logging level. It prints 
+all the messages except Debug and Info:
+```java
+import org.apache.log4j.*;
+
+public class LogClass {
+   private static org.apache.log4j.Logger log = Logger.getLogger(LogClass.class);
+   
+   public static void main(String[] args) {
+      log.setLevel(Level.WARN);
+
+      log.trace("Trace Message!");
+      log.debug("Debug Message!");
+      log.info("Info Message!");
+      log.warn("Warn Message!");
+      log.error("Error Message!");
+      log.fatal("Fatal Message!");
+   }
+}
+```
+But it is better to use the property file to set the levels:
+```
+# Define the root logger with appender file
+log = /usr/home/log4j
+log4j.rootLogger = WARN, FILE
+
+# Define the file appender
+log4j.appender.FILE=org.apache.log4j.FileAppender
+log4j.appender.FILE.File=${log}/log.out
+
+# Define the layout for file appender
+log4j.appender.FILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.FILE.layout.conversionPattern=%m%n
+```
+Now, back to the Java code:
+```java
+import org.apache.log4j.*;
+
+public class LogClass {
+
+   private static org.apache.log4j.Logger log = Logger.getLogger(LogClass.class);
+   
+   public static void main(String[] args) {
+   
+      log.trace("Trace Message!");
+      log.debug("Debug Message!");
+      log.info("Info Message!");
+      log.warn("Warn Message!");
+      log.error("Error Message!");
+      log.fatal("Fatal Message!");
+   }
+}
+```
+
+#### Log Formatting
+All Layout objects receive a LoggingEvent object from the Appender objects. The 
+Layout objects then retrieve the message argument from the LoggingEvent and apply 
+the appropriate ObjectRenderer to obtain the String representation of the message.
+The Layout class is defined as abstract within an application, we never use this 
+class directly; instead, we work with its subclasses which are as follows:
+- DateLayout
+- HTMLLayout
+- PatternLayout
+- SimpleLayout
+- XMLLayout
+
+#### Logging in Files
+To write your logging information into a file, you would have to use 
+org.apache.log4j.FileAppender.
+
+Following is a sample configuration file log4j.properties for FileAppender:
+```
+# Define the root logger with appender file
+log4j.rootLogger = DEBUG, FILE
+
+# Define the file appender
+log4j.appender.FILE=org.apache.log4j.FileAppender
+
+# Set the name of the file
+log4j.appender.FILE.File=${log}/log.out
+
+# Set the immediate flush to true (default)
+log4j.appender.FILE.ImmediateFlush=true
+
+# Set the threshold to debug mode
+log4j.appender.FILE.Threshold=debug
+
+# Set the append to false, overwrite
+log4j.appender.FILE.Append=false
+
+# Define the layout for file appender
+log4j.appender.FILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.FILE.layout.conversionPattern=%m%n
+```
+You may want to write your log messages into multiple files 
+for certain reasons, for example, if the file size reached to a certain threshold.
+
+#### Logging in Database
+The log4j API provides the org.apache.log4j.jdbc.JDBCAppender object, which can put logging 
+information in a specified database.
+
+**Log Table Configuration**
+```sql
+CREATE TABLE LOGS
+   (USER_ID VARCHAR(20)    NOT NULL,
+    DATED   DATE           NOT NULL,
+    LOGGER  VARCHAR(50)    NOT NULL,
+    LEVEL   VARCHAR(10)    NOT NULL,
+    MESSAGE VARCHAR(1000)  NOT NULL
+   );
+```
+A sample configuration file log4j.properties for JDBCAppender which will is be used to log 
+messages to a LOGS table.
+```
+# Define the root logger with appender file
+log4j.rootLogger = DEBUG, DB
+
+# Define the DB appender
+log4j.appender.DB=org.apache.log4j.jdbc.JDBCAppender
+
+# Set JDBC URL
+log4j.appender.DB.URL=jdbc:mysql://localhost/DBNAME
+
+# Set Database Driver
+log4j.appender.DB.driver=com.mysql.jdbc.Driver
+
+# Set database user name and password
+log4j.appender.DB.user=user_name
+log4j.appender.DB.password=password
+
+# Set the SQL statement to be executed.
+log4j.appender.DB.sql=INSERT INTO LOGS VALUES('%x','%d','%C','%p','%m')
+
+# Define the layout for file appender
+log4j.appender.DB.layout=org.apache.log4j.PatternLayout
+```
+The following Java class is a very simple example that initializes and 
+then uses the Log4J logging library for Java applications:
+```java
+import org.apache.log4j.Logger;
+import java.sql.*;
+import java.io.*;
+import java.util.*;
+
+public class log4jExample{
+   /* Get actual class name to be printed on */
+   static Logger log = Logger.getLogger(log4jExample.class.getName());
+   
+   public static void main(String[] args)throws IOException,SQLException{
+      log.debug("Debug");
+      log.info("Info");
+   }
+}
+```
