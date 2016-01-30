@@ -84,7 +84,7 @@ public class MyTestRunner {
 #### Assert Statements
 JUnit provides static methods in the Assert class to test for certain conditions. These assert statements typically start with assert and allow you to specify the error message, the expected and the actual result. An assertion method compares the actual value returned by a test to the expected value, and throws an AssertionException if the comparison test fails.
 - **fail(message)**	Let the method fail. Might be used to check that a certain part of the code is not reached or to have a failing test before the test code is implemented. The message parameter is optional.
-- **assertTrue([message,] boolean condition)**	Checks that the boolean condition is true.
+- **assertTrue([message,] boolean condition)**	Checks that the boolean condition is true. ( [] - means optional )
 - **assertFalse([message,] boolean condition)**	Checks that the boolean condition is false.
 - **assertEquals([message,] expected, actual)**	Tests that two values are the same. Note: for arrays the reference is checked not the content of the arrays.
 - **assertEquals([message,] expected, actual, tolerance)**	Test that float or double values match. The tolerance is the number of decimals which must be the same.
