@@ -26,7 +26,7 @@ There are two types of objects available with log4j framework.
 - **Append Object (layer)** is responsible for publishing logging information to various preferred destinations such as a 
 database, file, console, UNIX Syslog, etc.
 
-IMAGE
+![alt text](https://cloud.githubusercontent.com/assets/13823751/12697069/66e0d202-c73f-11e5-95f1-2d5e7f47c67c.jpg)
 
 #### Support Objects
 - **Level Object** defines the granularity and priority of any logging information. There are seven levels of logging defined 
