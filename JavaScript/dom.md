@@ -40,3 +40,20 @@ document.appendChild()   // add element
 document.replaceChild()  // replace element
 document.write(text)     // write into the object
 ```
+
+#### Examples
+Append an item in a list:
+```javascript
+var node = document.createElement("li");                 // Create a <li> node
+var textnode = document.createTextNode("Water");         // Create a text node
+node.appendChild(textnode);                              // Append the text to <li>
+document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
+```
+Before appending:
+- Coffee
+- Tea
+After appending:
+- Coffee
+- Tea
+- Water
+
