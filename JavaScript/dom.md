@@ -58,11 +58,40 @@ After appending:
 - Tea
 - Water
 
-Create a <p> element with some text and append it to the end of the document body:
+Create an element with some text and append it to the end of the document body:
 ```javascript
 var paragraph = document.createElement("p");                        // Create a <p> node
 var text = document.createTextNode("This is a paragraph.");    // Create a text node
 paragraph.appendChild(text);                                           // Append the text to <p>
 document.body.appendChild(paragraph);                  // Add to <body> element
 ```
+Insert a new element before the first child element of another element:
+```javaScript
+var newItem = document.createElement("li");       // Create a <li> node
+var textnode = document.createTextNode("Water");  // Create a text node
+newItem.appendChild(textnode);                    // Append the text to <li>
+var list = document.getElementById("myList");    // Get the <ul> element to insert a new node
+list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>
+```
+Before inserting:
+- Coffee
+- Tea
 
+After inserting:
+- Water
+- Coffee
+- Tea
+
+Remove the first element from a list:
+```javascript
+var list = document.getElementById("myList");   // Get the <ul> element with id="myList"
+list.removeChild(list.childNodes[0]);           // Remove <ul>'s first child node (index 0)
+```
+Before removing:
+- Coffee
+- Tea
+- Milk
+
+After removing:
+- Tea
+- Milk
