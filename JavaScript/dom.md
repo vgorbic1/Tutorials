@@ -58,7 +58,24 @@ After appending:
 - Tea
 - Water
 
-**Append a new element before a known element without direct reference to a parent:**
+**Insert a new element before the first child element of another element:**
+```javaScript
+var newItem = document.createElement("li");       // Create a <li> node
+var textnode = document.createTextNode("Water");  // Create a text node
+newItem.appendChild(textnode);                    // Append the text to <li>
+var list = document.getElementById("myList");    // Get the <ul> element to insert a new node
+list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>
+```
+Before inserting:
+- Coffee
+- Tea
+
+After inserting:
+- Water
+- Coffee
+- Tea
+
+**Insert a new element before a known element without direct reference to the parent:**
 ```javascript
 var node = document.createElement('div');  // Create a <div> node
 var textnode = document.createTextNode('Water');         // Create a text node
@@ -79,22 +96,6 @@ var text = document.createTextNode("This is a paragraph.");    // Create a text 
 paragraph.appendChild(text);                                           // Append the text to <p>
 document.body.appendChild(paragraph);                  // Add to <body> element
 ```
-**Insert a new element before the first child element of another element:**
-```javaScript
-var newItem = document.createElement("li");       // Create a <li> node
-var textnode = document.createTextNode("Water");  // Create a text node
-newItem.appendChild(textnode);                    // Append the text to <li>
-var list = document.getElementById("myList");    // Get the <ul> element to insert a new node
-list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>
-```
-Before inserting:
-- Coffee
-- Tea
-
-After inserting:
-- Water
-- Coffee
-- Tea
 
 **Remove the first element from a list:**
 ```javascript
