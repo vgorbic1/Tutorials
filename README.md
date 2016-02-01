@@ -1,8 +1,8 @@
 # Tutorials
 ### Collection of tutorials, tips and code samples
-* Java
+* [Java](../master/Java)
 * [JavaScript](../master/JavaScript/)
-* HTML5
-* CSS
 * [PHP](../master/PHP/)
+* [HTML5](../master/HTML/)
+* [CSS](../master/HTML/)
 * [Encoding](../master/Encoding/)
