@@ -145,8 +145,7 @@ $myArray = array_reverse($myArray);
 This function returns a new array where key/value pairs are reversed. The key and values must be integers or strings.
 ```PHP
 $myArray = array('One' => 1, 'Two' => 2);
-$flippedArray = array_flip($myArray); 
-results in array (1 => 'One', 2 => 'Two');
+$flippedArray = array_flip($myArray); // results in array (1 => 'One', 2 => 'Two');
 ```
 
 #### FILO and FIFO Arrays
@@ -218,20 +217,25 @@ $students = array(
 	9 => array('name' => 'Stephen', 'grade' => 94.0),
 	364 => array('name' => 'Steve', 'grade' => 85.1),
 	68 => array('name' => 'Rob', 'grade' => 74.6));
+
 // Name sorting function:
 function name_sort($x, $y) {
 	return strcasecmp($x['name'], $y['name']);
 }
+
 // Grade sorting function:
 // Sort in DESCENDING order!
 function grade_sort($x, $y) {
 	return ($x['grade'] < $y['grade']);
 }
+
 // Print the array as is:
 echo '<h2>Array As Is</h2><pre>' . print_r($students, 1) . '</pre>';
+
 // Sort by name:
 uasort($students, 'name_sort');
 echo '<h2>Array Sorted By Name</h2><pre>' . print_r($students, 1) . '</pre>';
+
 // Sort by grade:
 uasort($students, 'grade_sort');
 echo '<h2>Array Sorted By Grade</h2><pre>' . print_r($students, 1) . '</pre>';
