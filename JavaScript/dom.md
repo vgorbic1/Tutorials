@@ -52,6 +52,7 @@ document.getElementById("myList").appendChild(node);     // Append <li> to <ul> 
 Before appending:
 - Coffee
 - Tea
+
 After appending:
 - Coffee
 - Tea
