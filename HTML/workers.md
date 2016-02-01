@@ -12,7 +12,7 @@ if (typeof(Worker) !== 'undefined') {
 ```
 
 #### Creating a Worker
-Create a worker is external JavaScript file.
+Create a worker is external JavaScript file:
 ```javascript
 var i = 0;
 function timedCount(){
@@ -20,5 +20,28 @@ function timedCount(){
   postMessage(i);  // post a message back to HTML page
   setTimeout('timedCount()', 500);
 }
-timedCount;
+timedCount();
 ```
+
+Create a Web worker object:
+We have to cal the worker file from the HTML page:
+```javascript
+if (typeof(w) == "undefined") {
+  w = new Worker("file.js");
+}
+```
+Check if the worker is already exists. If not, create a new worker object and run the code in file.js
+
+Receive and Send messages to worker:
+```javascript
+w.onmessage = function(event) {
+  documnent.getElementById('result').innerHTML = event.data;
+};
+```
+When the Web worker posts a message, the code within the event listener is excluded. The data from the worker is stored in `event.data`.
+
+To terminate worker:
+```javascript
+w.terminate();
+```
+The Web worker object runs until it is teminated!
