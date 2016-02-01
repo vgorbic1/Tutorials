@@ -58,3 +58,11 @@ After appending:
 - Tea
 - Water
 
+Create a <p> element with some text and append it to the end of the document body:
+```javascript
+var paragraph = document.createElement("p");                        // Create a <p> node
+var text = document.createTextNode("This is a paragraph.");    // Create a text node
+paragraph.appendChild(text);                                           // Append the text to <p>
+document.body.appendChild(paragraph);                  // Add to <body> element
+```
+
