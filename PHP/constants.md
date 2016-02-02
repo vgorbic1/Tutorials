@@ -1,7 +1,7 @@
 ## Constants
 Constants values remain the same once defined and cannot be changed.
 ```PHP
-define(‘SITE_NAME’, ‘Product Store’);
+define('SITE_NAME', 'Product Store');
 ```
 Refer to the constant:
 ```PHP
@@ -9,10 +9,10 @@ echo SITE_NAME;
 ```
 Define a document root depending on the platform:
 ```PHP
-switch($plaform) // Must be ‘win’, ‘mac’, or ‘lin’ 
-{ case ‘win’: define(‘DOC_ROOT’, ‘C:/xampp/htdocs’); break;
-  case ‘mac’: define(‘DOC_ROOT’, ‘/Applications/XAMPP/htdocs’); break;
-  case ‘lin’: define(‘DOC_ROOT’, ‘/opt/lamp/htdocs’); break; }
+switch($plaform) // Must be 'win', 'mac', or 'lin' 
+{ case 'win': define('DOC_ROOT', 'C:/xampp/htdocs'); break;
+  case 'mac': define('DOC_ROOT', '/Applications/XAMPP/htdocs'); break;
+  case 'lin': define('DOC_ROOT', '/opt/lamp/htdocs'); break; }
 ```
 
 #### Magic (Predefined) Constants
