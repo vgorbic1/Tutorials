@@ -1,5 +1,5 @@
-# AJAX
-To use ajax on the webserver first create a JavaScript object with ```CreateAjaxObject()``` function:
+## AJAX
+To use ajax on the webserver first create a JavaScript object with `CreateAjaxObject()` function:
 ```javascript
 function CreateAjaxObject(callback) {
     try {
