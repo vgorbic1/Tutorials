@@ -1,15 +1,24 @@
 ## Cookies
 Cookies mostly used to keep you logged in so that you can keep going back without having continually reenter the username and password. Cookies are set and retrieved by web browser via headers.
-To set cookie:
-setcookie(‘username’, ‘FJones’, time() + 60 * 60 * 24 * 7);
-To read cookie:
-$username = isset($_COOKIE[‘username’]) ? $_COOKIE[‘username’] : FALSE;
-You can read cookie only after they are set. Probably on the consecutive page load.
-To delete cookie:
-setcookie(‘username’, ‘’, time() – 3600);
 
-Browser Identification
-To extract browser info from the user agent string use GetBrowser() function:
+To set cookie:
+```PHP
+setcookie('username', 'FJones', time() + 60 * 60 * 24 * 7);
+```
+To read cookie:
+```PHP
+$username = isset($_COOKIE['username']) ? $_COOKIE['username'] : FALSE;
+```
+You can read cookie only after they are set. Probably on the consecutive page load.
+
+To delete cookie:
+```PHP
+setcookie('username', '', time() – 3600);
+```
+
+#### Browser Identification
+To extract browser info from the user agent string use `GetBrowser()` function:
+```
 <!DOCTYPE html>
 <html>
   <head>
@@ -41,3 +50,4 @@ To extract browser info from the user agent string use GetBrowser() function:
 ?>
   </body>
 </html>
+```
