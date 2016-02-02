@@ -18,7 +18,7 @@ setcookie('username', '', time() – 3600);
 
 #### Browser Identification
 To extract browser info from the user agent string use `GetBrowser()` function:
-```
+```PHP
 <!DOCTYPE html>
 <html>
   <head>
