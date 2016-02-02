@@ -17,6 +17,7 @@ switch($plaform) // Must be ‘win’, ‘mac’, or ‘lin’
 
 #### Magic (Predefined) Constants
 These are internal constants used by PHP engine:
+
 ```__LINE__``` The current line number of the file.
 
 ```__FILE__``` The full absolute path and filename of the current file. Symbolic links are resolved. If this is used inside an include, the name of the included file is returned. Example: ```dirname(__FILE__)``` gives the full path to the directory where the file sits.
@@ -35,5 +36,5 @@ These are internal constants used by PHP engine:
 
 These magic constants help with debugging:
 ```PHP
-echo “This is line “ . __LINE__ . “ of file “ . __FILE__;
+echo "This is line " . __LINE__ . " of file " . __FILE__;
 ```
