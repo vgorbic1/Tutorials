@@ -17,20 +17,22 @@ To document a return for a certain function use `@return`
 
 Full usage can be found [here](http://phpdoc.org/docs/latest/index.html)
 
-To download phpDocumentor:
+#### To download phpDocumentor
 In command line:
+```
 pear channel-discover pear.phpdoc.org
-
-To install phpDocumentor:
+```
+#### To install phpDocumentor
 In command line:
 ```
 pear install phpdoc/phpDocumentor-alpha
 ```
-To create PHP Document on your code, go to the directory with your code. In command line:
+#### To create PHP Document on your code
+Go to the directory with your code. In command line:
 ```
 phpdoc –f HelloWorld.php –t docs
 ```
-To create documentation of entire project:
+#### To create documentation of entire project
 ```
 phpdoc –d HelloWorld.php –t docs
 ```
