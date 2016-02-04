@@ -8,7 +8,7 @@ services.
 on a model object(s).
 - **DAO concrete class** implements above interface. This class is 
 responsible to get data from a data source which can be database, 
-xml or any other storage mechanism.
+XML or any other storage mechanism.
 - **Model Object or Value Object** is simple POJO containing 
 get/set methods to store data retrieved using DAO class.
 
@@ -103,6 +103,7 @@ public class StudentDaoImpl implements StudentDao {
 }
 ```
 **Step Four**
+
 Create a demo class to demonstrate DAO pattern usage *DaoPatternDemo.java*
 ```java
 public class DaoPatternDemo {
@@ -125,7 +126,7 @@ public class DaoPatternDemo {
    }
 }
 ```
-**The Output:**
+**The Output**
 ```
 Student: [RollNo : 0, Name : Robert ]
 Student: [RollNo : 1, Name : John ]
