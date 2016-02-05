@@ -3,6 +3,10 @@ Data Access Object Pattern (DAO) pattern is used to separate low
 level data accessing API or operations from high level business 
 services.
 
+#### Benefits
+- Separates parts of the application so changes can be isolated.
+- Makes unit testing easier.
+
 #### Participants in DAO
 - **DAO Interface** defines the standard operations to be performed 
 on a model object(s).
