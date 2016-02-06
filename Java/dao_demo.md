@@ -143,8 +143,9 @@ public class Employee {
 ```
 You may put the file into a subdirrectory of your project's packaged source files. Call the directory *entity*. This is a directory where all Model files will go.
 
-Create another directory next to *entity* for DAO files and call it *persistence*. 
+Create another directory next to *entity* for DAO files and name it *persistence*. 
 
+#### Step three
 Create a *Database.java* file and put it into *persistence*. This file provides database info and is needed for connection to the database.
 ```java
 import java.sql.Connection;
@@ -192,6 +193,88 @@ public class Database {
             }
         }
         connection = null;
+    }
+}
+```
+#### Step Four
+Create a DAO interface file. Name it *EmployeeDao.java*. Put it to *persistence* directory.
+```java
+import ... .entity.Employee;  // Import Employee class from entity subdirectory
+import java.util.List;  // Import list to represent all rows of the table
+
+public interface EmployeeDao {
+    public List<Employee> getAllEmployees();  // Manifest a method to display all employees (all rows of the table)
+    public void updateEmployee(Employee employee);  // Manifest a method to rewrite (insert) an employee
+    public void deleteEmployee(Employee employee);  // Manifest a method to remove an employee
+    public int addEmployee(Employee employee); // Manifest a method to add new emploee
+}
+```
+
+#### Step Five
+Create an implementation of the *EmploeeDao.java* interface. Name the file *EmployeeDaoWithSQL.java. Put the file into *persistence* directory.
+```java
+package ... .persistence; // Import persistence subdirectory
+import ... .entity.Employee; // Import Employee class from entity subdirectory
+import org.apache.log4j.Logger; // Optionally import a logger
+import java.sql.Connection; // We need this stuff to connect to database
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList; 
+import java.util.List;
+
+public class EmployeeDaoWithSQL implements EmployeeDao {
+    private final Logger log = Logger.getLogger(this.getClass());  // Optionally engage a logger
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        List<Employee> employees = new ArrayList<>();
+        Database database = Database.getInstance();
+        Connection connection = null;
+        String sql = "select * from employees order by emp_id";
+
+        try {
+            database.connect();
+            connection = database.getConnection();
+            Statement selectStatement = connection.createStatement();
+            ResultSet results = selectStatement.executeQuery(sql);
+            while (results.next()) {
+                Employee employee = createEmployeeFromResults(results); // iterate over the resultset, adding each user to the list
+                employees.add(employee);
+            }
+            database.disconnect();
+        } catch (SQLException e) {
+            log.error("SQL Exception: ", e);
+        } catch (Exception e) {
+            log.error(e);
+        }
+        return employees;
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+
+    }
+
+    @Override
+    public int addEmployee(Employee employee) {
+        return 0;
+    }
+
+    private Employee createEmployeeFromResults(ResultSet results) throws SQLException {  // Map the table column to object properties
+        Employee employee = new Employee();
+        employee.setEmployeeId(results.getInt("emp_id"));
+        employee.setFirstName(results.getString("first_name"));
+        employee.setLastName(results.getString("last_name"));
+        employee.setSsn(results.getString("ssn"));
+        employee.setDepartment(results.getString("room"));
+        employee.setPhone(results.getString("phone"));
+        return employee;
     }
 }
 ```
