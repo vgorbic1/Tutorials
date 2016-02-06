@@ -1,6 +1,6 @@
-### Functions 
+## Predefined Functions 
 To ckeck if the parameter is not a number:
-```
+```javascript
 isNaN(42); // false
 isNan("berry"); // true
 isNan("42"); // false
