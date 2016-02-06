@@ -51,7 +51,7 @@ poodle.setName('Fido');
 To create a public instance variable within a class, again use the keyword `this.`:
 ```javascript
 function Dog() {
-  this.email;  // public instance variable
+  this.email = 'dog@gmail.com';  // public instance variable
 }
 ```
 To access this public variable:
