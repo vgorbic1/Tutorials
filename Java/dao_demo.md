@@ -141,3 +141,57 @@ public class Employee {
     }
 }
 ```
+You may put the file into a subdirrectory of your project's packaged source files. Call the directory *entity*. This is a directory where all Model files will go.
+
+Create another directory next to *entity* for DAO files and call it *persistence*. 
+
+Create a *Database.java* file and put it into *persistence*. This file provides database info and is needed for connection to the database.
+```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import org.apache.log4j.*; // if you want to log errors. You need to plug in the log4j external library.
+
+public class Database {
+    private static Database instance = new Database();
+    private Connection connection;
+    private final Logger log = Logger.getLogger(this.getClass()); // Optional. use if you need to log errors.
+
+    private Database() {
+    }
+
+    // create Database singleton
+    public static Database getInstance() {
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void connect() throws Exception {
+        if (connection != null)
+            return;
+
+        // Following values should not be hard-coded in a real application.
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new Exception("Error: MySQL driver not found");
+        }
+        String url = "jdbc:mysql://localhost:3306/sample"; //Update with your database connection info
+        connection = DriverManager.getConnection(url, "admin", "admin"); //Update with your database connection info
+    }
+
+    public void disconnect() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                log.error("Cannot close connection",e);
+            }
+        }
+        connection = null;
+    }
+}
+```
