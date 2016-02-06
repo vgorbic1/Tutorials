@@ -12,7 +12,7 @@ var init = function() {
 - A function defenition is global by default.
 - A pair of parenthesis with function name mean execute the function right now.
 - JavaScript function always has a return type even when no `return` keyword provided (will be "undefined" in this case").
-- 
+
 #### Calling a function definition
 Call one function definition from another function. Check that called function signature has no parameters, because we want to call it only when a user click on button, not when the `init()` function executes.
 ```javascript
