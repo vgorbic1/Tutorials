@@ -204,9 +204,11 @@ import java.util.List;  // Import list to represent all rows of the table
 
 public interface EmployeeDao {
     public List<Employee> getAllEmployees();  // Manifest a method to display all employees (all rows of the table)
-    public void updateEmployee(Employee employee);  // Manifest a method to rewrite (insert) an employee
-    public void deleteEmployee(Employee employee);  // Manifest a method to remove an employee
-    public int addEmployee(Employee employee); // Manifest a method to add new emploee
+    public int updateEmployee(String firstName, String lastName, String ssn, String department, String room, 
+                                String phone, int employeeId); // Manifest a method to rewrite (insert) an employee
+    public int deleteEmployee(int employeeId);  // Manifest a method to remove an employee
+    public int addEmployee(String firstName, String lastName, String ssn, String department, String room, 
+                                String phone); // Manifest a method to add new emploee
 }
 ```
 
@@ -252,18 +254,100 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
+    public int updateEmployee(String firstName,
+                               String lastName,
+                               String ssn,
+                               String department,
+                               String room,
+                               String phone,
+                               int employeeId) {
+        Database database = Database.getInstance();
+        Connection connection = null;
+        String sql = "UPDATE employees SET first_name=?, last_name=?, ssn=?, dept=?, room=?, phone=? WHERE emp_id=?";
+        int rowsUpdated = 0;
 
+        try {
+            database.connect();
+            connection = database.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, ssn);
+            statement.setString(4, department);
+            statement.setString(5, room);
+            statement.setString(6, phone);
+            statement.setInt(7, employeeId);
+            rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated == 0) {
+                log.error("User was not updated. Maybe there is no such id any more?");
+            }
+            database.disconnect();
+        } catch (SQLException e) {
+            log.error("SQL Exception: ", e);
+        } catch (Exception e) {
+            log.error(e);
+        }
+        return rowsUpdated;
     }
 
     @Override
-    public void deleteEmployee(Employee employee) {
-
+    public int deleteEmployee(int employeeId) {
+        Database database = Database.getInstance();
+        Connection connection = null;
+        String sql = "DELETE FROM employees WHERE emp_id=?";
+        int rowsDeleted = 0;
+        try {
+            database.connect();
+            connection = database.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, String.valueOf(employeeId));
+            rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted == 0) {
+                log.error("User was not deleted. Maybe there is no such ID anymore?");
+            }
+            database.disconnect();
+        } catch (SQLException e) {
+            log.error("SQL Exception: ", e);
+        } catch (Exception e) {
+            log.error(e);
+        }
+        return rowsDeleted;
     }
 
     @Override
-    public int addEmployee(Employee employee) {
-        return 0;
+    public int addEmployee(String firstName,
+                           String lastName,
+                           String ssn,
+                           String department,
+                           String room,
+                           String phone) {
+        Database database = Database.getInstance();
+        Connection connection = null;
+        String sql = "INSERT INTO employees (first_name, last_name, ssn, dept, room, phone) VALUES (?, ?, ?, ?, ?, ?)";
+        int rowsInserted = 0;
+
+        try {
+            database.connect();
+            connection = database.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, ssn);
+            statement.setString(4, department);
+            statement.setString(5, room);
+            statement.setString(6, phone);
+
+            rowsInserted = statement.executeUpdate();
+            if (rowsInserted == 0) {
+                log.error("User was not inserted");
+            }
+            database.disconnect();
+        } catch (SQLException e) {
+            log.error("SQL Exception: ", e);
+        } catch (Exception e) {
+            log.error(e);
+        }
+        return rowsInserted;
     }
 
     private Employee createEmployeeFromResults(ResultSet results) throws SQLException {  // Map the table column to object properties
