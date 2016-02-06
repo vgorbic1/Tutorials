@@ -3,7 +3,7 @@ Java is a functional programming language, not object oriented. There are no cla
 However, there is a way to implement OO features to JavaScript.
 
 #### Class
-To crate a class use a function definition with uppercase name of the function (Classname):
+To crate a class (or a JavaScript representation of class) use a function definition with uppercase name of the function (Classname):
 ```javascript
 function Dog() {
   var name;  // private instance variable
@@ -42,4 +42,20 @@ function Dog() {
   }
   
 }
+```
+To set the name:
+```javaScript
+var poodle = new Dog();
+poodle.setName('Fido');
+```
+To create a public instance variable within a class, again use the keyword `this.`:
+```javascript
+function Dog() {
+  this.email;  // public instance variable
+}
+```
+To access this public variable:
+```javaScript
+var poodle = new Dog();
+console.log(poodle.email);
 ```
