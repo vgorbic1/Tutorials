@@ -145,7 +145,7 @@ You may put the file into a subdirrectory of your project's packaged source file
 
 Create another directory next to *entity* for DAO files and name it *persistence*. 
 
-#### Step three
+#### Step Three
 Create a *Database.java* file and put it into *persistence*. This file provides database info and is needed for connection to the database.
 ```java
 import java.sql.Connection;
@@ -278,3 +278,5 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
     }
 }
 ```
+#### Step Six
+Write tests for *EmployeeDaoWithSQL* class methods to test database functionality. (Automated with Intellij IDEA)
