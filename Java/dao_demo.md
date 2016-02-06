@@ -1,4 +1,4 @@
-## MySQL create new database
+## DAO demo with MySQL
 
 ####Step One
 Create a new database
