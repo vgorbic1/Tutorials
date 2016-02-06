@@ -30,7 +30,8 @@ To call a function definition with parameters:
 init () {
   var btn = document.getElementById("btn");
   btn.onclick = function() {
-      btnClick("button was clicked");  
+      btnClick("button was clicked"); 
+  }
 }
 
 btnClick(message) {
