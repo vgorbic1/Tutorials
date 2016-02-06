@@ -279,4 +279,4 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
 }
 ```
 #### Step Six
-Write tests for *EmployeeDaoWithSQL* class methods to test database functionality. (Automated with Intellij IDEA)
+Write tests for *EmployeeDaoWithSQL* class methods to test database functionality. They are automated with Intellij IDEA if you preinstall jUnit external library.
