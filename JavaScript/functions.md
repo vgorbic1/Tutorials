@@ -38,3 +38,5 @@ btnClick(message) {
   console.log(message);
 }
 ```
+If you execute a function in the HTML page the browser automatically will write a function definition for you:
+<input type="button" value="message" onclick="show('My message')" />
