@@ -1,4 +1,4 @@
-## Objec Oriented Programming
+## Object Oriented JavaScript
 Java is a functional programming language, not object oriented. There are no classes or scopes in JavaScript.
 However, there is a way to implement OO features to JavaScript.
 
@@ -6,6 +6,40 @@ However, there is a way to implement OO features to JavaScript.
 To crate a class use a function definition with uppercase name of the function (Classname):
 ```javascript
 function Dog() {
+  var name;  // private instance variable
 }
 ```
-
+To create an istance of the class:
+```javascript
+var poodle = new Dog();
+```
+Any variable or function to have a public acces from within a class should have `this.` keyword. To create an accessor to the private variable above, add a public function in the class with reference to the private field:
+```javascript
+function Dog() {
+  var name = 'Sparky';  // private instance variable
+  
+  this.getName = function() {  // public function
+    return name;
+  }
+}
+```
+To access the getter from outside the class:
+```javascript
+var poodle = new Dog();
+console.log(poodle.getName());
+```
+To set a priate field use a function:
+```javascript
+function Dog() {
+  var name = 'Sparky';  // private instance variable
+  
+  this.getName = function() {  // public function (getter)
+    return name;
+  }
+  
+  this.setName = function(value) {  // public function (setter)
+    name = value;
+  }
+  
+}
+```
