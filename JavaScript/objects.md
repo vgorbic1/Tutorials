@@ -97,3 +97,12 @@ function Dog() {
   }
 }
 ```
+#### Prototype
+Prototype is like a parent (object) to all objects created from a certain class. It is a place in the memory on the hip where all objects reside:
+```javascript
+Dog.prototype = new Object;
+```
+To set a property-value pair for all objects from prototype:
+```javascript
+Dog.prototype = {'city':'madison'}; // Now all objects of class Dog will have the instance variable with value of 'madison'
+```
