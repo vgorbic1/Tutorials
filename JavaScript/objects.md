@@ -59,3 +59,41 @@ To access this public variable:
 var poodle = new Dog();
 console.log(poodle.email);
 ```
+#### Adding instances dynamically
+In JavaScript, it is possible to add instances on the fly, if you don't have that field in the class definition!
+```javascript
+var poodle = new Dog();
+poodle.weight = 123;  // there is no such field in Dog class definition, but we still can set it automaically
+
+function Dog() {
+  this.email = 'dog@gmail.com';  // public instance variable
+}
+```
+We also can add a method on the fly to that particular object, that has no definition in class:
+```javascript
+var poodle = new Dog();
+poodle.bite = function() {
+  console.log('I can bite!');
+}
+
+function Dog() {
+  // no definition of 'bite' method
+}
+```
+It is even possible to modify a functionality of method within a class on the fly:
+```javascript
+var poodle = new Dog();
+poodle.bite = function() {   // method created on the fly
+  console.log('I can bite!');
+}
+poodle.getName = function() { // change original behavior on the fly
+  this.bite();
+}
+
+function Dog() {
+  var name;
+  this.getName = function() {  // original behavior
+    return name;
+  }
+}
+```
