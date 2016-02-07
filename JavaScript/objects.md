@@ -104,5 +104,63 @@ Dog.prototype = new Object;
 ```
 To set a property-value pair for all objects from prototype:
 ```javascript
+function Dog () {
+    var name;
+}
+
+var poodle = new Dog();
+var beagle = new Beagle();
+
 Dog.prototype = {'city':'madison'}; // Now all objects of class Dog will have the instance variable with value of 'madison'
+console.log(poodle.city); // prints madison
+console.log(beagle.city); // pirnts madison
 ```
+When JavaScript trys to find an instance variable it looks inside the class definition. If cannot find it there it looks inside the prototype.
+
+#### Inheritance
+To create a parent for a class use prototype. Create a class that represents a parent class:
+```javascript
+Dog.prototype = new ParentDog();
+
+function ParentDog() {
+  var city;
+  this.getCity() {
+    return city;
+  }
+  this.setCity(value) {
+    city = value;
+  }
+}
+```
+To change the property value set in prototype use its setters and getters:
+```javascript
+// Dog class
+function Dog() { 
+  var name;
+  this.getName = function() {  // original behavior
+    return name;
+  }
+}
+
+// objects of class Dog
+var poodel = new Dog();
+var beagle = new Dog();
+
+// parent class (prototype) to class Dog
+function ParentDog() {
+  var city; // use a private variable here
+  this.getCity() {
+    return city;
+  }
+  this.setCity(value) {
+    city = value;
+  }
+}
+
+// assign new property to all objects of class Dog
+console.log(poodel.setCity('Verona');  // All objects from class Dog will have the same property now with the same value 'Verona'
+```
+If a public variable is set in prototype, when changed in the script dynamically, JavaScript will create a copy of that particlular object!
+
+The use of prototype is helpful when you have a lot of objects to instantiate. If all objects will have similar functionality, define the functionality in prototype (parent) object and save a lot of memory.
+
