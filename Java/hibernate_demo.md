@@ -1,4 +1,5 @@
 ## Hibernate Demo
+This demonstrates Hibernate with MySQL database.
 
 #### Step One
 Add hibernate external libraries or plugin. Make sure you have geronimo.jar library plugged in.
@@ -16,20 +17,20 @@ Create the Hibernate configuration XML file in resources directory and name it h
             org.hibernate.dialect.MySQL5Dialect
         </property>
         <property name="connection.url">
-            jdbc:mysql://localhost:3306/sample
+            jdbc:mysql://localhost:3306/sample /// change to your database configuration
         </property>
         <property name="connection.driver_class">
             com.mysql.jdbc.Driver
         </property>
-        <property name="connection.username">
-            admin
-        </property>
-        <property name="connection.password">
-            admin
-        </property>
-        <mapping resource="Employee.hbm.xml" />
-        <mapping class="edu.madisoncollege.entjava.entity.Employee" />
+        <property name="connection.username">admin</property>  /// change to your database username
+        <property name="connection.password">admin</property>  /// change to your database password
+        <mapping resource="Employee.hbm.xml" />   /// change to your entity (Class that represents MySQL table) file name
+        <mapping class="my.package.name.entity.Employee" />  // change to the classpath within your package
     </session-factory>
 
 </hibernate-configuration>
+```
+
+#### Step Three
+Create a database and a table:
 ```
