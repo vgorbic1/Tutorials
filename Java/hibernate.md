@@ -71,6 +71,7 @@ A persistent framework is an ORM service that stores and retrieves objects into 
 -	Eclipse plug-ins
 -	Maven
 
+#### Architecture
 Detailed view of the Hibernate Application Architecture with few important core classes:
 
 
