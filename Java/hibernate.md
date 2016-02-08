@@ -74,6 +74,7 @@ A persistent framework is an ORM service that stores and retrieves objects into 
 #### Architecture
 Detailed view of the Hibernate Application Architecture with few important core classes:
 
+![hibernate-2](https://cloud.githubusercontent.com/assets/13823751/12891461/b6787b2a-ce4d-11e5-868f-265c9231e06e.jpg)
 
 Hibernate uses various existing Java APIs, like JDBC, Java Transaction API(JTA), and Java Naming and Directory Interface (JNDI). JDBC provides a rudimentary level of abstraction of functionality common to relational databases, allowing almost any database with a JDBC driver to be supported by Hibernate. JNDI and JTA allow Hibernate to be integrated with J2EE application servers. 
 
