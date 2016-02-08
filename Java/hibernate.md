@@ -71,5 +71,15 @@ A persistent framework is an ORM service that stores and retrieves objects into 
 -	Eclipse plug-ins
 -	Maven
 
+Detailed view of the Hibernate Application Architecture with few important core classes:
+
+
+Hibernate uses various existing Java APIs, like JDBC, Java Transaction API(JTA), and Java Naming and Directory Interface (JNDI). JDBC provides a rudimentary level of abstraction of functionality common to relational databases, allowing almost any database with a JDBC driver to be supported by Hibernate. JNDI and JTA allow Hibernate to be integrated with J2EE application servers. 
+
+**Configuration Object**
+
+The Configuration object is the first Hibernate object you create in any Hibernate application and usually created only once during application initialization. It represents a configuration or properties file required by the Hibernate. The Configuration object provides two keys components:
+-	Database Connection: This is handled through one or more configuration files supported by Hibernate. These files are hibernate.properties and hibernate.cfg.xml.
+-	Class Mapping Setup: This component creates the connection between the Java classes and database tables.
 
 
