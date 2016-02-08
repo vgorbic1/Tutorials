@@ -23,3 +23,53 @@ JDBC stands for Java Database Connectivity and provides a set of Java API for ac
 - Hard to implement MVC concept
 - Query is DBMS specific
 
+#### ORM
+ORM stands for Object-Relational Mapping (ORM) is a programming technique for converting data between relational databases and object oriented programming languages such as Java, C# etc. When we work with an object-oriented systems, there's a mismatch between the object model and the relational database. RDBMSs represent data in a tabular format whereas object-oriented languages, such as Java or C# represent it as an interconnected graph of objects. 
+
+**ORM Advantages:**
+-	Lets business code access objects rather than DB tables.
+-	Hides details of SQL queries from OO logic.
+-	Based on JDBC 'under the hood'
+-	No need to deal with the database implementation.
+-	Entities based on business concepts rather than database structure.
+-	Transaction management and automatic key generation.
+-	Fast development of application.
+
+**ORM Solutions:**
+- An API to perform basic CRUD operations on objects of persistent classes.
+- A language or API to specify queries that refer to classes and properties of classes.
+-	A configurable facility for specifying mapping metadata.
+-	A technique to interact with transactional objects to perform dirty checking, lazy association fetching, and other optimization functions.
+
+A persistent framework is an ORM service that stores and retrieves objects into a relational database.
+
+**Hibernate Advantages:**
+-	Hibernate takes care of mapping Java classes to database tables using XML files and without writing any line of code.
+-	Provides simple APIs for storing and retrieving Java objects directly to and from the database.
+-	If there is change in Database or in any table then the only need to change XML file properties.
+-	Abstract away the unfamiliar SQL types and provide us to work around familiar Java Objects.
+-	Hibernate does not require an application server to operate.
+-	Manipulates Complex associations of objects of your database.
+-	Minimize database access with smart fetching strategies.
+-	Provides Simple querying of data.
+
+**Supported Databases:**
+-	HSQL Database Engine
+-	DB2/NT
+-	MySQL
+-	PostgreSQL
+-	FrontBase
+-	Oracle
+-	Microsoft SQL Server Database
+-	Sybase SQL Server
+-	Informix Dynamic Server
+
+**Supported Technologies:**
+-	Hibernate supports a variety of other technologies, including the following:
+-	XDoclet Spring
+-	J2EE
+-	Eclipse plug-ins
+-	Maven
+
+
+
