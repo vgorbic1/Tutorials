@@ -42,6 +42,7 @@ insert into employees values (104, 'Barney', 'Curry', '444-55-6666', 'IT', '128'
 #### Step Two
 Create one javabean (Model) representing the data on one the table. *Employee.java*. As a normal javabean, the class should have private properties that represents columns of the table. The class should have an empty constructor as well as overloaded constructor with all properties as parameters. Also create setters and getters for each property. Create a 'toString()' method for debugging:
 ```java
+package /your package path/ .entity;
 public class Employee {
 
     private int employeeId;
@@ -148,6 +149,8 @@ Create another directory next to *entity* for DAO files and name it *persistence
 #### Step Three
 Create a *Database.java* file and put it into *persistence*. This file provides database info and is needed for connection to the database.
 ```java
+package /your package path/ .persistence;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -199,26 +202,24 @@ public class Database {
 #### Step Four
 Create a DAO interface file. Name it *EmployeeDao.java*. Put it to *persistence* directory.
 ```java
-import ... .entity.Employee;  // Import Employee class from entity subdirectory
-import java.util.List;  // Import list to represent all rows of the table
-
+package /your package path/ .persistence;
+import /your package path/ .entity.Employee;
+import java.util.List;
 public interface EmployeeDao {
-    public List<Employee> getAllEmployees();  // Manifest a method to display all employees (all rows of the table)
-    public int updateEmployee(String firstName, String lastName, String ssn, String department, String room, 
-                                String phone, int employeeId); // Manifest a method to rewrite (insert) an employee
-    public int deleteEmployee(int employeeId);  // Manifest a method to remove an employee
-    public int addEmployee(String firstName, String lastName, String ssn, String department, String room, 
-                                String phone); // Manifest a method to add new emploee
+    public List<Employee> getAllEmployees();
+    public void updateEmployee(Employee employee);
+    public void deleteEmployee(Employee employee);
+    public int addEmployee(Employee employee);
 }
 ```
 
 #### Step Five
-Create an implementation of the *EmploeeDao.java* interface. Name the file *EmployeeDaoWithSQL.java. Put the file into *persistence* directory.
+Create an implementation of the *EmployeeDao.java* interface. Name the file *EmployeeDaoWithSQL.java. Put the file into *persistence* directory.
 ```java
-package ... .persistence; // Import persistence subdirectory
-import ... .entity.Employee; // Import Employee class from entity subdirectory
+package /your package path/ .persistence; // Import persistence subdirectory
+import /your package path/ .entity.Employee; // Import Employee class from entity subdirectory
 import org.apache.log4j.Logger; // Optionally import a logger
-import java.sql.Connection; // We need this stuff to connect to database
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -228,12 +229,14 @@ import java.util.List;
 public class EmployeeDaoWithSQL implements EmployeeDao {
     private final Logger log = Logger.getLogger(this.getClass());  // Optionally engage a logger
 
+    private final Logger log = Logger.getLogger(this.getClass());
+
     @Override
     public List<Employee> getAllEmployees() {
         List<Employee> employees = new ArrayList<>();
         Database database = Database.getInstance();
         Connection connection = null;
-        String sql = "select * from employees order by emp_id";
+        String sql = "SELECT * FROM employees ORDER BY emp_id";
 
         try {
             database.connect();
@@ -241,7 +244,7 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
             Statement selectStatement = connection.createStatement();
             ResultSet results = selectStatement.executeQuery(sql);
             while (results.next()) {
-                Employee employee = createEmployeeFromResults(results); // iterate over the resultset, adding each user to the list
+                Employee employee = createEmployeeFromResults(results);
                 employees.add(employee);
             }
             database.disconnect();
@@ -254,32 +257,26 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
     }
 
     @Override
-    public int updateEmployee(String firstName,
-                               String lastName,
-                               String ssn,
-                               String department,
-                               String room,
-                               String phone,
-                               int employeeId) {
+    public void updateEmployee(Employee employee) {
         Database database = Database.getInstance();
         Connection connection = null;
         String sql = "UPDATE employees SET first_name=?, last_name=?, ssn=?, dept=?, room=?, phone=? WHERE emp_id=?";
-        int rowsUpdated = 0;
+        int rowsUpdated;
 
         try {
             database.connect();
             connection = database.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
-            statement.setString(3, ssn);
-            statement.setString(4, department);
-            statement.setString(5, room);
-            statement.setString(6, phone);
-            statement.setInt(7, employeeId);
+            statement.setString(1, employee.getFirstName());
+            statement.setString(2, employee.getLastName());
+            statement.setString(3, employee.getSsn());
+            statement.setString(4, employee.getDepartment());
+            statement.setString(5, employee.getRoom());
+            statement.setString(6, employee.getPhone());
+            statement.setInt(7, employee.getEmployeeId());
             rowsUpdated = statement.executeUpdate();
             if (rowsUpdated == 0) {
-                log.error("User was not updated. Maybe there is no such id any more?");
+                log.error("User was not updated");
             }
             database.disconnect();
         } catch (SQLException e) {
@@ -287,23 +284,22 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
         } catch (Exception e) {
             log.error(e);
         }
-        return rowsUpdated;
     }
 
     @Override
-    public int deleteEmployee(int employeeId) {
+    public void deleteEmployee(Employee employee) {
         Database database = Database.getInstance();
         Connection connection = null;
         String sql = "DELETE FROM employees WHERE emp_id=?";
-        int rowsDeleted = 0;
+        int rowsDeleted;
         try {
             database.connect();
             connection = database.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, String.valueOf(employeeId));
+            statement.setInt(1, employee.getEmployeeId());
             rowsDeleted = statement.executeUpdate();
             if (rowsDeleted == 0) {
-                log.error("User was not deleted. Maybe there is no such ID anymore?");
+                log.error("User was not deleted");
             }
             database.disconnect();
         } catch (SQLException e) {
@@ -311,35 +307,39 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
         } catch (Exception e) {
             log.error(e);
         }
-        return rowsDeleted;
     }
 
     @Override
-    public int addEmployee(String firstName,
-                           String lastName,
-                           String ssn,
-                           String department,
-                           String room,
-                           String phone) {
+    public int addEmployee(Employee employee) {
         Database database = Database.getInstance();
         Connection connection = null;
         String sql = "INSERT INTO employees (first_name, last_name, ssn, dept, room, phone) VALUES (?, ?, ?, ?, ?, ?)";
-        int rowsInserted = 0;
+        int employeeId = 0;
+        int rowsInserted;
 
         try {
             database.connect();
             connection = database.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, firstName);
-            statement.setString(2, lastName);
-            statement.setString(3, ssn);
-            statement.setString(4, department);
-            statement.setString(5, room);
-            statement.setString(6, phone);
+            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, employee.getFirstName());
+            statement.setString(2, employee.getLastName());
+            statement.setString(3, employee.getSsn());
+            statement.setString(4, employee.getDepartment());
+            statement.setString(5, employee.getRoom());
+            statement.setString(6, employee.getPhone());
 
             rowsInserted = statement.executeUpdate();
             if (rowsInserted == 0) {
-                log.error("User was not inserted");
+                log.error("Inserting employee failed. No rows affected");
+            }
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    employeeId = (generatedKeys.getInt(1));
+                    log.info("Employee with ID number " + employeeId + " was added.");
+                }
+                else {
+                    throw new SQLException("Creating user failed. No ID obtained.");
+                }
             }
             database.disconnect();
         } catch (SQLException e) {
@@ -347,10 +347,10 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
         } catch (Exception e) {
             log.error(e);
         }
-        return rowsInserted;
+        return employeeId;
     }
 
-    private Employee createEmployeeFromResults(ResultSet results) throws SQLException {  // Map the table column to object properties
+    private Employee createEmployeeFromResults(ResultSet results) throws SQLException {
         Employee employee = new Employee();
         employee.setEmployeeId(results.getInt("emp_id"));
         employee.setFirstName(results.getString("first_name"));
@@ -363,4 +363,65 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
 }
 ```
 #### Step Six
-Write tests for *EmployeeDaoWithSQL* class methods to test database functionality. They are automated with Intellij IDEA if you preinstall jUnit external library.
+Write tests for *EmployeeDaoWithSQL* class methods to test database functionality. They are automated with Intellij IDEA if you preinstall jUnit external library. This is a sample test class:
+```java
+package /your package path/ .persistence;
+import  /your package path/ .entity.Employee;
+import org.junit.Ignore;
+import org.junit.Test;
+import java.util.List;
+import static org.junit.Assert.*;
+
+public class EmployeeDaoWithSQLTest {
+
+    @Test
+    public void testGetAllEmployees() throws Exception {
+        EmployeeDaoWithSQL daoWithSql = new EmployeeDaoWithSQL();
+        List<Employee> employees = daoWithSql.getAllEmployees();
+        assertTrue(employees.size() > 0);
+    }
+
+    @Test
+    public void testUpdateEmployee() throws Exception {
+        EmployeeDaoWithSQL daoWithSql = new EmployeeDaoWithSQL();
+        Employee employee = new Employee();
+        // To make the test pass make sure ID exists in database
+        employee.setEmployeeId(116);
+        employee.setFirstName("testUpdateRecord");
+        employee.setLastName("testUpdateRecord");
+        employee.setSsn("DAO");
+        employee.setDepartment("DAO");
+        employee.setRoom("test");
+        employee.setPhone("test");
+        daoWithSql.updateEmployee(employee);
+        assertEquals(116, employee.getEmployeeId());
+        assertEquals("testUpdateRecord", employee.getFirstName());
+    }
+
+    @Ignore
+    @Test  // Needs some tweaks!!!!!
+    public void testDeleteEmployee() throws Exception {
+        EmployeeDaoWithSQL daoWithSql = new EmployeeDaoWithSQL();
+        Employee employee = new Employee();
+        // To make the test pass make sure ID exists in database
+        employee.setEmployeeId(116);
+        daoWithSql.deleteEmployee(employee);
+        assertNull(0);
+    }
+
+    @Test
+    public void testAddEmployee() throws Exception {
+        EmployeeDaoWithSQL daoWithSql = new EmployeeDaoWithSQL();
+        int insertedUserId;
+        Employee employee = new Employee();
+        employee.setFirstName("testAddRecord");
+        employee.setLastName("testAddRecord");
+        employee.setSsn("DAO");
+        employee.setDepartment("DAO");
+        employee.setRoom("test");
+        employee.setPhone("test");
+        insertedUserId = daoWithSql.addEmployee(employee);
+        assertTrue(insertedUserId > 0);
+    }
+}
+```
