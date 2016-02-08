@@ -6,7 +6,7 @@ Hibernate is an Object-Relational Mapping (ORM) solution for JAVA and it raised 
 by Gavin King in 2001. Hibernate sits between traditional Java objects and database server to handle all the work in persisting 
 those objects based on the appropriate O/R mechanisms and patterns:
 
-![hibernate](https://cloud.githubusercontent.com/assets/13823751/12888493/15eb4262-ce40-11e5-9040-6ce2d2005243.jpg)
+![hibernate](https://cloud.githubusercontent.com/assets/13823751/12891458/b26c4606-ce4d-11e5-80d4-27b9cd098848.jpg)
 #### JDBC
 JDBC stands for Java Database Connectivity and provides a set of Java API for accessing the relational databases from Java program.
 
