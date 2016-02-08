@@ -258,4 +258,106 @@ Create a mapping file to map your model class to the database table. Name it *Em
 ```
 
 #### Step Seven
-Create interface for the 
+Create a DAO interface file. Name it *EmployeeDao.java*. Put it to *persistence* directory.
+```java
+package /your package path/ .persistence;
+import /your package path/ .entity.Employee;
+import java.util.List;
+public interface EmployeeDao {
+    public List<Employee> getAllEmployees();
+    public void updateEmployee(Employee employee);
+    public void deleteEmployee(Employee employee);
+    public int addEmployee(Employee employee);
+}
+```
+
+#### Step Seven
+Implement the *EmployeeDao.java* in the new class, and name it *EmployeeDaoWithHibernate.java*
+```java
+package /your package path/ .persistence;
+
+import /your package path/ .entity.Employee;
+import org.apache.log4j.Logger; // Optional
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmployeeDaoWithHibernate implements EmployeeDao {
+    private final Logger log = Logger.getLogger(this.getClass()); // Optional
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        List<Employee> employees = new ArrayList<>();
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            employees = session.createCriteria(Employee.class).list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            log.error(e);
+        } finally {
+            session.close();
+        }
+        return employees;
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(employee);
+            tx.commit();
+            log.info("Employee updated");
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            log.error(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.delete(employee);
+            tx.commit();
+            log.info("Employee deleted");
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            log.error(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public int addEmployee(Employee employee) {
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction tx = null;
+        Integer EmployeeId = null;
+        try {
+            tx = session.beginTransaction();
+            EmployeeId = (Integer) session.save(employee);
+            tx.commit();
+            log.info("Added employee: " + employee + " with id of: " + EmployeeId);
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            log.error(e);
+        } finally {
+            session.close();
+        }
+        return EmployeeId;
+    }
+}
+```
+#### Step Eight
+Test the hibernate CRUD methods
