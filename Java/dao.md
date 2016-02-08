@@ -18,7 +18,7 @@ get/set methods to store data retrieved using DAO class.
 
 #### Implementation
 
-![DAO](https://cloud.githubusercontent.com/assets/13823751/12818538/ec62d30e-cb1c-11e5-9b60-e795bc07bf43.jpg)
+![dao](https://cloud.githubusercontent.com/assets/13823751/12891541/154e91b6-ce4e-11e5-8f15-b9a56349a549.jpg)
 
 **Step One**
 
