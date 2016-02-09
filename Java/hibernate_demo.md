@@ -239,7 +239,7 @@ Create a mapping file to map your model class to the database table. Name it *Em
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="your.package.path.entity.Employee" table="employee"> /// Change the path to the entity
+    <class name="your.package.path.entity.Employee" table="employees"> /// Change the path to the entity
         <meta attribute="class-description">This class contains the employee detail.</meta>
         <!-- Map primary key (id) to the corresponding column -->
         <id name="employeeId" type="int"
@@ -250,7 +250,7 @@ Create a mapping file to map your model class to the database table. Name it *Em
         <property name="firstName" column="first_name" type="string"/>
         <property name="lastName" column="last_name" type="string"/>
         <property name="ssn" column="ssn" type="string"/>
-        <property name="department" column="ssn" type="string"/>
+        <property name="department" column="dept" type="string"/>
         <property name="room" column="room" type="string"/>
         <property name="phone" column="phone" type="string"/>
     </class>
