@@ -394,3 +394,65 @@ public class SessionFactoryProvider {
 
 #### Step Eight
 Test the Hibernate CRUD methods
+```java
+package /your package path / .persistence;
+import /your package path / .entity.Employee;
+import org.junit.Test;
+import java.util.List;
+import static org.junit.Assert.*;
+
+public class EmployeeDaoWithHibernateTest {
+
+    @Test
+    public void testGetAllEmployees() throws Exception {
+        EmployeeDaoWithHibernate daoWithHibernate = new EmployeeDaoWithHibernate();
+        List<Employee> employees = daoWithHibernate.getAllEmployees();
+        assertTrue(employees.size() > 0);
+    }
+
+    @Test
+    public void testUpdateEmployee() throws Exception {
+        EmployeeDaoWithHibernate daoWithHibernate = new EmployeeDaoWithHibernate();
+        Employee employee = new Employee();
+        // To make the test pass make sure ID exists in database
+        employee.setEmployeeId(116);
+        employee.setFirstName("testUpdateRecord");
+        employee.setLastName("testUpdateRecord");
+        employee.setSsn("Hib");
+        employee.setDepartment("Hib");
+        employee.setRoom("test");
+        employee.setPhone("test");
+        daoWithHibernate.updateEmployee(employee);
+        assertEquals(116, employee.getEmployeeId());
+        assertEquals("testUpdateRecord", employee.getFirstName());
+    }
+
+    @Test
+    public void testDeleteEmployee() throws Exception {
+        EmployeeDaoWithHibernate daoWithHibernate = new EmployeeDaoWithHibernate();
+        Employee employee = new Employee();
+        // To have the test pass make sure ID exists in database
+        employee.setEmployeeId(113);
+        daoWithHibernate.deleteEmployee(employee);
+        List<Employee> employees = daoWithHibernate.getAllEmployees();
+        for (Employee testEmployee : employees){
+             assertFalse(testEmployee.getEmployeeId() == 113);
+        }
+    }
+
+    @Test
+    public void testAddEmployee() throws Exception {
+        EmployeeDaoWithHibernate daoWithHibernate = new EmployeeDaoWithHibernate();
+        int insertedUserId;
+        Employee employee = new Employee();
+        employee.setFirstName("testAddRecord");
+        employee.setLastName("testAddRecord");
+        employee.setSsn("Hib");
+        employee.setDepartment("Hib");
+        employee.setRoom("test");
+        employee.setPhone("test");
+        insertedUserId = daoWithHibernate.addEmployee(employee);
+        assertTrue(insertedUserId > 0);
+    }
+}
+```
