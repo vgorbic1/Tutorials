@@ -393,4 +393,4 @@ public class SessionFactoryProvider {
 ```
 
 #### Step Eight
-Test the hibernate CRUD methods
+Test the Hibernate CRUD methods
