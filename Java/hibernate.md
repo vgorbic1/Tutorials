@@ -99,5 +99,84 @@ Criteria object are used to create and execute object oriented criteria queries 
 #### Configuration
 Hibernate requires to know in advance where to find the mapping information that defines how your Java classes relate to the database tables. Hibernate also requires a set of configuration settings related to database and other related parameters. All such information is usually supplied as a standard Java properties file called hibernate.properties, or as an XML file named hibernate.cfg.xml.
 
+#### FAQ
+1. What is ORM?
 
+ORM stands for object/relational mapping. ORM is the automated persistence of objects in a Java application to the tables in a relational database.
 
+2. What does ORM consists of?
+
+An ORM solution consists of the followig four pieces:
+- API for performing basic CRUD operations
+- API to express queries refering to classes
+- Facilities to specify metadata
+- Optimization facilities: dirty checking, lazy associations fetching
+
+3. What are the ORM levels ?
+
+The ORM levels are:
+- Pure relational (stored procedure)
+- Light objects mapping (JDBC)
+- Medium object mapping
+- Full object Mapping (composition, inheritance, polymorphism, persistence by reachability)
+
+4. What is Hibernate?
+
+Hibernate is a pure Java object-relational mapping (ORM) and persistence framework that allows you to map plain old Java objects to relational database tables using (XML) configuration files. Its purpose is to relieve the developer from a significant amount of relational data persistence-related programming tasks.
+
+5. Why do you need ORM tools like hibernate?
+
+The main advantage of ORM like hibernate is that it shields developers from messy SQL.
+
+6. What Does Hibernate Simplify?
+
+- Saving and retrieving your domain objects
+- Making database column and table name changes
+- Centralizing pre save and post retrieve logic
+- Complex joins for retrieving related items
+- Schema creation from object model
+
+7. What is the need for Hibernate xml mapping file?
+
+Hibernate mapping file tells Hibernate which tables and columns to use to load and store objects.
+
+8. What are the Core interfaces are of Hibernate framework?
+ 
+The five core interfaces are used in just about every Hibernate application. Using these interfaces, you can store and retrieve persistent objects and control transactions.
+- Session interface
+- SessionFactory interface
+- Configuration interface
+- Transaction interface
+- Query and Criteria interfaces
+
+9. What role does the Session interface play in Hibernate?
+
+The Session interface is the primary interface used by Hibernate applications. It is a single-threaded, short-lived object representing a conversation between the application and the persistent store. It allows you to create query objects to retrieve persistent objects. `Session session = sessionFactory.openSession();`
+
+Session interface role:
+- Wraps a JDBC connection
+- Factory for Transaction
+- Holds a mandatory (first-level) cache of persistent objects, used when navigating the object graph or looking up objects by identifier
+
+10. What role does the SessionFactory interface play in Hibernate?
+
+The application obtains Session instances from a SessionFactory. There is typically a single SessionFactory for the whole applicationå¹¼reated during application initialization. The SessionFactory caches generate SQL statements and other mapping metadata that Hibernate uses at runtime. It also holds cached data that has been read in one unit of work and may be reused in a future unit of work `SessionFactory sessionFactory = configuration.buildSessionFactory();`
+
+11. What is the general flow of Hibernate communication with RDBMS?
+
+The general flow of Hibernate communication with RDBMS is:
+- Load the Hibernate configuration file and create configuration object. It will automatically load all hbm mapping files
+- Create session factory from configuration object
+- Get one session from this session factory
+- Create HQL Query
+- Execute query to get list containing Java objects
+
+12. What is Hibernate Query Language (HQL)?
+
+Hibernate offers a query language that embodies a very powerful and flexible mechanism to query, store, update, and retrieve objects from a database. This language, the Hibernate query Language (HQL), is an object-oriented extension to SQL.
+
+13. How do you map Java Objects with Database tables?
+- First we need to write Java domain objects (beans with setter and getter).
+- Write hbm.xml, where we map java class to table and database columns to Java class variables.
+
+*SOURCE: [developersbook.com](http://www.developersbook.com/hibernate/interview-questions/hibernate-interview-questions-faqs.php)
