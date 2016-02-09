@@ -100,12 +100,11 @@ Criteria object are used to create and execute object oriented criteria queries 
 Hibernate requires to know in advance where to find the mapping information that defines how your Java classes relate to the database tables. Hibernate also requires a set of configuration settings related to database and other related parameters. All such information is usually supplied as a standard Java properties file called hibernate.properties, or as an XML file named hibernate.cfg.xml.
 
 #### FAQ
-1 What is ORM?
 
+1. What is ORM?
 ORM stands for object/relational mapping. ORM is the automated persistence of objects in a Java application to the tables in a relational database.
 
-2 What does ORM consists of?
-
+2. What does ORM consists of?
 An ORM solution consists of the followig four pieces:
 - API for performing basic CRUD operations
 - API to express queries refering to classes
