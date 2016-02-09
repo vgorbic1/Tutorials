@@ -101,17 +101,19 @@ Hibernate requires to know in advance where to find the mapping information that
 
 #### FAQ
 
-1. What is ORM?
+1) What is ORM?
+
 ORM stands for object/relational mapping. ORM is the automated persistence of objects in a Java application to the tables in a relational database.
 
-2. What does ORM consists of?
+2) What does ORM consists of?
+
 An ORM solution consists of the followig four pieces:
 - API for performing basic CRUD operations
 - API to express queries refering to classes
 - Facilities to specify metadata
 - Optimization facilities: dirty checking, lazy associations fetching
 
-3. What are the ORM levels ?
+3) What are the ORM levels ?
 
 The ORM levels are:
 - Pure relational (stored procedure)
@@ -119,7 +121,7 @@ The ORM levels are:
 - Medium object mapping
 - Full object Mapping (composition, inheritance, polymorphism, persistence by reachability)
 
-4. What is Hibernate?
+4) What is Hibernate?
 
 Hibernate is a pure Java object-relational mapping (ORM) and persistence framework that allows you to map plain old Java objects to relational database tables using (XML) configuration files. Its purpose is to relieve the developer from a significant amount of relational data persistence-related programming tasks.
 
