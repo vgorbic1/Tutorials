@@ -1,6 +1,6 @@
 ## DAO demo with MySQL
 
-####Step One
+####Step 1
 Create a new database.
 ```
 mysql> CREATE DATABASE sample;
@@ -39,7 +39,7 @@ insert into employees values (102, 'Fred', 'Hensen', '222-33-4444', 'Eng', '126'
 insert into employees values (103, 'Ethyl', 'Roselle', '333-44-5555', 'Admin', '127', '555-3728');
 insert into employees values (104, 'Barney', 'Curry', '444-55-6666', 'IT', '128', '555-3729');
 ```
-#### Step Two
+#### Step 2
 Create one javabean (Model) representing the data on one the table. *Employee.java*. As a normal javabean, the class should have private properties that represents columns of the table. The class should have an empty constructor as well as overloaded constructor with all properties as parameters. Also create setters and getters for each property. Create a 'toString()' method for debugging:
 ```java
 package /your package path/ .entity;
@@ -146,7 +146,7 @@ You may put the file into a subdirrectory of your project's packaged source file
 
 Create another directory next to *entity* for DAO files and name it *persistence*. 
 
-#### Step Three
+#### Step 3
 Create a *Database.java* file and put it into *persistence*. This file provides database info and is needed for connection to the database.
 ```java
 package /your package path/ .persistence;
@@ -199,7 +199,7 @@ public class Database {
     }
 }
 ```
-#### Step Four
+#### Step 4
 Create a DAO interface file. Name it *EmployeeDao.java*. Put it to *persistence* directory.
 ```java
 package /your package path/ .persistence;
@@ -213,7 +213,7 @@ public interface EmployeeDao {
 }
 ```
 
-#### Step Five
+#### Step 5
 Create an implementation of the *EmployeeDao.java* interface. Name the file *EmployeeDaoWithSQL.java. Put the file into *persistence* directory.
 ```java
 package /your package path/ .persistence; // Import persistence subdirectory
@@ -362,7 +362,7 @@ public class EmployeeDaoWithSQL implements EmployeeDao {
     }
 }
 ```
-#### Step Six
+#### Step 6
 Write tests for *EmployeeDaoWithSQL* class methods to test database functionality. They are automated with Intellij IDEA if you preinstall jUnit external library. This is a sample test class:
 ```java
 package /your package path/ .persistence;
@@ -398,15 +398,17 @@ public class EmployeeDaoWithSQLTest {
         assertEquals("testUpdateRecord", employee.getFirstName());
     }
 
-    @Ignore
-    @Test  // Needs some tweaks!!!!!
+    @Test
     public void testDeleteEmployee() throws Exception {
         EmployeeDaoWithSQL daoWithSql = new EmployeeDaoWithSQL();
         Employee employee = new Employee();
-        // To make the test pass make sure ID exists in database
-        employee.setEmployeeId(116);
+        // To have the test pass make sure ID exists in database
+        employee.setEmployeeId(111);
         daoWithSql.deleteEmployee(employee);
-        assertNull(0);
+        List<Employee> employees = daoWithSql.getAllEmployees();
+        for (Employee testEmployee : employees){
+            assertFalse(testEmployee.getEmployeeId() == 111);
+        }
     }
 
     @Test
