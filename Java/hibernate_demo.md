@@ -1,10 +1,10 @@
 ## Hibernate Demo
 This demonstrates Hibernate with MySQL database.
 
-#### Step One
+#### Step 1
 Add hibernate external libraries or plugin. Make sure you have geronimo.jar library plugged in.
 
-#### Step Two
+#### Step 2
 Create the Hibernate configuration XML file in resources directory and name it *hibernate.cfh.xml*
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
@@ -31,7 +31,7 @@ Create the Hibernate configuration XML file in resources directory and name it *
 </hibernate-configuration>
 ```
 
-#### Step Three
+#### Step 3
 Create a new database.
 ```
 mysql> CREATE DATABASE sample;
@@ -70,7 +70,7 @@ insert into employees values (102, 'Fred', 'Hensen', '222-33-4444', 'Eng', '126'
 insert into employees values (103, 'Ethyl', 'Roselle', '333-44-5555', 'Admin', '127', '555-3728');
 insert into employees values (104, 'Barney', 'Curry', '444-55-6666', 'IT', '128', '555-3729');
 ```
-#### Step Four
+#### Step 4
 Create one javabean (Model) representing the data on one the table. *Employee.java*. As a normal javabean, the class should have private properties that represents columns of the table. The class should have an empty constructor as well as overloaded constructor with all properties as parameters. Also create setters and getters for each property. Create a 'toString()' method for debugging:
 ```java
 package /your package path/ .entity;
@@ -177,7 +177,7 @@ You may put the file into a subdirrectory of your project's packaged source file
 
 Create another directory next to *entity* for DAO files and name it *persistence*. 
 
-#### Step Five
+#### Step 5
 Create a *Database.java* file and put it into *persistence*. This file provides database info and is needed for connection to the database.
 ```java
 package /your package path/ .persistence;
@@ -231,7 +231,7 @@ public class Database {
 }
 ```
 
-#### Step Six
+#### Step 6
 Create a mapping file to map your model class to the database table. Name it *Employee.hbm.xml* and put to the resources directory.
 ```xml
 <!DOCTYPE hibernate-mapping PUBLIC
@@ -257,7 +257,7 @@ Create a mapping file to map your model class to the database table. Name it *Em
 </hibernate-mapping>
 ```
 
-#### Step Seven
+#### Step 7
 Create a DAO interface file. Name it *EmployeeDao.java*. Put it to *persistence* directory.
 ```java
 package /your package path/ .persistence;
@@ -271,7 +271,7 @@ public interface EmployeeDao {
 }
 ```
 
-#### Step Seven
+#### Step 8
 Implement the *EmployeeDao.java* in the new class, and name it *EmployeeDaoWithHibernate.java*
 ```java
 package /your package path/ .persistence;
@@ -359,7 +359,7 @@ public class EmployeeDaoWithHibernate implements EmployeeDao {
     }
 }
 ```
-#### Step Eight
+#### Step 9
 Add *SessionFactoryProvider.java* file into persistence directory to facilitate sessions:
 ```java
 package /your package path/ .persistence;
@@ -392,7 +392,7 @@ public class SessionFactoryProvider {
 }
 ```
 
-#### Step Nine
+#### Step 10
 Test the Hibernate CRUD methods
 ```java
 package /your package path / .persistence;
