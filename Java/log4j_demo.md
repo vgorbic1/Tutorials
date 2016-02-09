@@ -6,7 +6,7 @@
 - Click green "+" to add a new library.
 - Navigate to the IntelliJ application installation directory >> Contents >> lib and select the log4j.jar.
 - log4j.jar is now a global library.
-- Create a resources directory. Make sure it is set to "Resources".
+- Create a resources directory. Make sure it is marked as "Resources Root". (Mark Directory As >>> Resources Root)
 - Create a log4j.properties file in the resources directory. Sample:
 ```
 # Set root logger level to INFO, a console appender and a file appender.
