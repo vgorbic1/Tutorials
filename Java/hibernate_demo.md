@@ -359,7 +359,7 @@ public class EmployeeDaoWithHibernate implements EmployeeDao {
     }
 }
 ```
-#### Step Nine
+#### Step Eight
 Add *SessionFactoryProvider.java* file into persistence directory to facilitate sessions:
 ```java
 package /your package path/ .persistence;
@@ -392,7 +392,7 @@ public class SessionFactoryProvider {
 }
 ```
 
-#### Step Eight
+#### Step Nine
 Test the Hibernate CRUD methods
 ```java
 package /your package path / .persistence;
