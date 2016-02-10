@@ -245,9 +245,10 @@ When you prepare a Hibernate mapping document, we have seen that you map Java da
 |clob	|java.sql.Clob	|CLOB|
 |blob	|java.sql.Blob	|BLOB|
 
-**JDK-related types:**
+**JDK-related types**
 
 |Mapping type	|Java type	|ANSI SQL Type|
+| --- | --- | --- |
 |class|	java.lang.Class|VARCHAR|
 |locale	|java.util.Locale	|VARCHAR|
 |timezone	|java.util.TimeZone	|VARCHAR|
