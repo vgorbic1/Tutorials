@@ -61,7 +61,7 @@ function Person(job, married) {
 var james = new Person("programmer", "no");  // Constructor to create an object
 ````
 
-#### Adding functions (Methods) to an object
+#### Adding functions (methods) to an object
 Using **constructor notation**:
 ```javascript
 function Person(age, birth_year) {
