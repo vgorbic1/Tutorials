@@ -1,4 +1,4 @@
-## Self-calling Form (functional way)
+## Self-calling Form (simple way)
 
 #### Form
 Use this form to update database. Name it *adduser.php* Validate the form with JavaScript and PHP.
