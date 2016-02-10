@@ -37,11 +37,12 @@ console.log(poodle.name);
 It is possible to pass a parameter to the class:
 ```javascript
 function Dog(breed) {
-    this.breed = breed;
+    this.breed = 'breed';
 }
 
-var sparky = new Dog("poodle");
+var sparky = new Dog('poodle');
 ```
+
 #### Creating objects
 To create an object, one can use **literal notation**:
 ```javascript
@@ -57,23 +58,10 @@ function Person(job, married) {
     this.married = married;
 };
 
-var james = new Person("programmer", "no");
+var james = new Person("programmer", "no");  // Constructor to create an object
 ````
 
 #### Adding functions (Methods) to an object
-Using **literal notation**:
-```javascript
-var Person = {
-    age: age;
-    birth_year: birth_year,
-    year_now: function() {
-        age + birth_year;
-    }
-};
-
-var peter = new Person(10, 1975);  // create an object 
-document.write(peter.year_now());  // use the function to calculate the year
-```
 Using **constructor notation**:
 ```javascript
 function Person(age, birth_year) {
@@ -126,4 +114,30 @@ for (var key in nyc) {
 for (var key in nyc) {
     console.log(nyc[key]);  // get properties' values
 }
+```
+
+#### Prototype
+Every JavaScript object has a prototype. The prototype is also an object. All JavaScript objects inherit their properties and methods from their prototype. The `Object.prototype` is on the top of the prototype chain. All JavaScript objects (Date, Array, RegExp, Function, ....) inherit from the `Object.prototype`.
+
+The JavaScript prototype property allows you to add new properties to an existing prototype:
+```javascript
+function person(first, last, age, eyecolor) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eyecolor;
+}
+person.prototype.nationality = "English";
+```
+The JavaScript prototype property also allows you to add new methods to an existing prototype:
+```javascript
+function person(first, last, age, eyecolor) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eyecolor;
+}
+person.prototype.name = function() {
+    return this.firstName + " " + this.lastName;
+};
 ```
