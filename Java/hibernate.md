@@ -371,13 +371,169 @@ public class ManageEmployee {
 }
 ```
 
+**Collections Mapping**
 
+If an entity or class has collection of values for a particular variable, then we can map those values using any one of the collection interfaces available in java. Hibernate can persist instances of java.util.Map, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.List, and any array of persistent entities or values.
+
+**Association Mappings**
+
+The mapping of associations between entity classes and the relationships between tables is the soul of ORM. Following are the four ways in which the cardinality of the relationship between the objects can be expressed. An association mapping can be unidirectional as well as bidirectional. (Many-to-One, One-to-Many, One-to-One, Many-to-Many)
+
+** Components Mapping**
+
+It is very much possible that an Entity class can have a reference to another class as a member variable. If the referred class does not have it's own life cycle and completely depends on the life cycle of the owning entity class, then the referred class hence therefore is called as the Component class. The mapping of Collection of Components is also possible in a similar way just as the mapping of regular Collections with minor configuration differences. We will see these two mappings in detail with examples.
+
+#### Annotations
+Hibernate Annotations is the powerful way to provide the metadata for the Object and Relational Table mapping. All the metadata is clubbed into the POJO java file along with the code this helps the user to understand the table structure and POJO simultaneously during the development. Example:
+```java
+import javax.persistence.*;
+
+@Entity
+@Table(name = "EMPLOYEE")
+public class Employee {
+   @Id @GeneratedValue
+   @Column(name = "id")
+   private int id;
+
+   @Column(name = "first_name")
+   private String firstName;
+
+   @Column(name = "last_name")
+   private String lastName;
+
+   @Column(name = "salary")
+   private int salary;  
+
+   public Employee() {}
+   public int getId() {
+      return id;
+   }
+   public void setId( int id ) {
+      this.id = id;
+   }
+   public String getFirstName() {
+      return firstName;
+   }
+   public void setFirstName( String first_name ) {
+      this.firstName = first_name;
+   }
+   public String getLastName() {
+      return lastName;
+   }
+   public void setLastName( String last_name ) {
+      this.lastName = last_name;
+   }
+   public int getSalary() {
+      return salary;
+   }
+   public void setSalary( int salary ) {
+      this.salary = salary;
+   }
+}
+```
+
+#### HQL
+Hibernate Query Language (HQL) is an object-oriented query language, similar to SQL, but instead of operating on tables and columns, HQL works with persistent objects and their properties. HQL queries are translated by Hibernate into conventional SQL queries which in turns perform action on database. Keywords like SELECT , FROM and WHERE etc. are not case sensitive but properties like table and column names are case sensitive in HQL.
+
+**Pagination using Query**
+There are two methods of the Query interface for pagination. Using these two methods together, we can construct a paging component in our web or Swing application. Following is the example which you can extend to fetch 10 rows at a time:
+```java
+String hql = "FROM Employee";
+Query query = session.createQuery(hql);
+query.setFirstResult(1);
+query.setMaxResults(10);
+List results = query.list();
+```
+
+#### Criteria Queries
+The Hibernate Session interface provides createCriteria() method which can be used to create a Criteria object that returns instances of the persistence object's class when your application executes a criteria query. Following is the simplest example of a criteria query is one which will simply return every object that corresponds to the Employee class.
+```java
+Criteria cr = session.createCriteria(Employee.class);
+List results = cr.list();
+```
+Following are the few more examples covering different scenarios and can be used as per requirement:
+```java
+Criteria cr = session.createCriteria(Employee.class);
+
+// To get records having salary more than 2000
+cr.add(Restrictions.gt("salary", 2000));
+
+// To get records having salary less than 2000
+cr.add(Restrictions.lt("salary", 2000));
+
+// To get records having fistName starting with zara
+cr.add(Restrictions.like("firstName", "zara%"));
+
+// Case sensitive form of the above restriction.
+cr.add(Restrictions.ilike("firstName", "zara%"));
+
+// To get records having salary in between 1000 and 2000
+cr.add(Restrictions.between("salary", 1000, 2000));
+
+// To check if the given property is null
+cr.add(Restrictions.isNull("salary"));
+
+// To check if the given property is not null
+cr.add(Restrictions.isNotNull("salary"));
+
+// To check if the given property is empty
+cr.add(Restrictions.isEmpty("salary"));
+
+// To check if the given property is not empty
+cr.add(Restrictions.isNotEmpty("salary"));
+
+// AND and OR operators:
+Criterion salary = Restrictions.gt("salary", 2000);
+Criterion name = Restrictions.ilike("firstNname","zara%");
+
+// To get records matching with OR condistions
+LogicalExpression orExp = Restrictions.or(salary, name);
+cr.add( orExp );
+
+// To get records matching with AND condistions
+LogicalExpression andExp = Restrictions.and(salary, name);
+cr.add( andExp );
+
+List results = cr.list();
+
+// Sorting results:
+Criteria cr = session.createCriteria(Employee.class);
+// To get records having salary more than 2000
+cr.add(Restrictions.gt("salary", 2000));
+
+// To sort records in descening order
+crit.addOrder(Order.desc("salary"));
+
+// To sort records in ascending order
+crit.addOrder(Order.asc("salary"));
+
+List results = cr.list();
+
+// Projections & Aggregations:
+Criteria cr = session.createCriteria(Employee.class);
+// To get total row count.
+cr.setProjection(Projections.rowCount());
+
+// To get average of a property.
+cr.setProjection(Projections.avg("salary"));
+
+// To get distinct count of a property.
+cr.setProjection(Projections.countDistinct("firstName"));
+
+// To get maximum of a property.
+cr.setProjection(Projections.max("salary"));
+
+// To get minimum of a property.
+cr.setProjection(Projections.min("salary"));
+
+// To get sum of a property.
+cr.setProjection(Projections.sum("salary"));
+```
 
 
 
 
 #### FAQ
-
 **What is ORM?**
 
 ORM stands for object/relational mapping. ORM is the automated persistence of objects in a Java application to the tables in a relational database.
