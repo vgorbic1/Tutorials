@@ -41,7 +41,7 @@ ORM stands for Object-Relational Mapping (ORM) is a programming technique for co
 -	A configurable facility for specifying mapping metadata.
 -	A technique to interact with transactional objects to perform dirty checking, lazy association fetching, and other optimization functions.
 
-A persistent framework is an ORM service that stores and retrieves objects into a relational database.
+A **persistent framework** is an ORM service that stores and retrieves objects into a relational database.
 
 **Hibernate Advantages:**
 -	Hibernate takes care of mapping Java classes to database tables using XML files and without writing any line of code.
@@ -98,6 +98,16 @@ Criteria object are used to create and execute object oriented criteria queries 
 
 #### Configuration
 Hibernate requires to know in advance where to find the mapping information that defines how your Java classes relate to the database tables. Hibernate also requires a set of configuration settings related to database and other related parameters. All such information is usually supplied as a standard Java properties file called hibernate.properties, or as an XML file named hibernate.cfg.xml.
+
+**Hibernate Properties:**
+
+- *hibernate.dialect* This property makes Hibernate generate the appropriate SQL for the chosen database.
+- *hibernate.connection.driver_class* The JDBC driver class.
+- *hibernate.connection.url* The JDBC URL to the database instance.
+- *hibernate.connection.username* The database username.
+- *hibernate.connection.password* The database password.
+- *hibernate.connection.pool_size* Limits the number of connections waiting in the Hibernate database connection pool.
+- *hibernate.connection.autocommit* Allows autocommit mode to be used for the JDBC connection.
 
 #### FAQ
 
