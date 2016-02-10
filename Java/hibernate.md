@@ -208,6 +208,7 @@ An Object/relational mappings are usually defined in an XML document. This mappi
 ```
 When you prepare a Hibernate mapping document, we have seen that you map Java data types into RDBMS data types. The types declared and used in the mapping files are not Java data types; they are not SQL database types either. These types are called Hibernate mapping types, which can translate from Java to SQL data types and vice versa.
 **Primitive types:**
+
 | Mapping type |	Java type |	ANSI SQL Type |
 | --- | --- | --- |
 | integer |	int or java.lang.Integer | INTEGER |
