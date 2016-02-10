@@ -207,7 +207,8 @@ An Object/relational mappings are usually defined in an XML document. This mappi
 </hibernate-mapping>
 ```
 When you prepare a Hibernate mapping document, we have seen that you map Java data types into RDBMS data types. The types declared and used in the mapping files are not Java data types; they are not SQL database types either. These types are called Hibernate mapping types, which can translate from Java to SQL data types and vice versa.
-**Primitive types:**
+
+**Primitive types**
 
 | Mapping type |	Java type |	ANSI SQL Type |
 | --- | --- | --- |
@@ -224,6 +225,33 @@ When you prepare a Hibernate mapping document, we have seen that you map Java da
 | yes/no |	boolean or java.lang.Boolean |	CHAR(1) ('Y' or 'N')|
 | true/false |	boolean or java.lang.Boolean |	CHAR(1) ('T' or 'F')|
 
+**Date and time types**
+
+|Mapping type|	Java type|	ANSI SQL Type|
+| --- | --- | --- |
+|date|	java.util.Date or java.sql.Date	|DATE|
+|time	|java.util.Date or java.sql.Time|	TIME|
+|timestamp|	java.util.Date or java.sql.Timestamp	|TIMESTAMP|
+|calendar	|java.util.Calendar	|TIMESTAMP|
+|calendar_date	|java.util.Calendar	|DATE|
+
+**Binary and large object types**
+
+|Mapping type|	Java type|	ANSI SQL Type|
+| --- | --- | --- |
+|binary|	byte[]	|VARBINARY (or BLOB)|
+|text	|java.lang.String|	CLOB|
+|serializable|	any Java class that implements java.io.Serializable|	VARBINARY (or BLOB)|
+|clob	|java.sql.Clob	|CLOB|
+|blob	|java.sql.Blob	|BLOB|
+
+**JDK-related types:**
+
+|Mapping type	|Java type	|ANSI SQL Type|
+|class|	java.lang.Class|VARCHAR|
+|locale	|java.util.Locale	|VARCHAR|
+|timezone	|java.util.TimeZone	|VARCHAR|
+|currency|	java.util.Currency|	VARCHAR|
 
 
 
