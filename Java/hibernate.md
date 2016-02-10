@@ -109,6 +109,90 @@ Hibernate requires to know in advance where to find the mapping information that
 - *hibernate.connection.pool_size* Limits the number of connections waiting in the Hibernate database connection pool.
 - *hibernate.connection.autocommit* Allows autocommit mode to be used for the JDBC connection.
 
+#### Sessions
+A Session is used to get a physical connection with a database. The Session object is lightweight and designed to be instantiated each time an interaction is needed with the database. Persistent objects are saved and retrieved through a Session object. The session objects should not be kept open for a long time because they are not usually thread safe and they should be created and destroyed them as needed. The main function of the Session is to offer create, read and delete operations for instances of mapped entity classes. Instances may exist in one of the following three states at a given point in time:
+- **transient**: A new instance of a a persistent class which is not associated with a Session and has no representation in the database and no identifier value is considered transient by Hibernate.
+- **persistent**: You can make a transient instance persistent by associating it with a Session. A persistent instance has a representation in the database, an identifier value and is associated with a Session.
+- **detached**: Once we close the Hibernate Session, the persistent instance will become a detached instance.
+
+A Session instance is serializable if its persistent classes are serializable. A typical transaction should use the following idiom:
+```java
+Session session = factory.openSession();
+Transaction tx = null;
+try {
+   tx = session.beginTransaction();
+   // do some work
+   ...
+   tx.commit();
+}
+catch (Exception e) {
+   if (tx!=null) tx.rollback();
+   e.printStackTrace(); 
+}finally {
+   session.close();
+}
+```
+If the Session throws an exception, the transaction must be rolled back and the session must be discarded.
+
+There are number of methods provided by the Session interface. 
+
+#### Persistent Class
+Java classes whose objects or instances will be stored in database tables are called persistent classes in Hibernate. Hibernate works best if these classes follow some simple rules, also known as the Plain Old Java Object (POJO) programming model. The POJO name is used to emphasize that a given object is an ordinary Java Object, not a special object, and in particular not an Enterprise JavaBean.
+There are following main rules of persistent classes, however, none of these rules are hard requirements.
+- All Java classes that will be persisted need a default constructor.
+- All classes should contain an ID in order to allow easy identification of your objects within Hibernate and the database. This property maps to the primary key column of a database table.
+- All attributes that will be persisted should be declared private and have getters an setters defined in the JavaBean style.
+- A central feature of Hibernate, proxies, depends upon the persistent class being either non-final, or the implementation of an interface that declares all public methods.
+- All classes that do not extend or implement some specialized classes and interfaces required by the EJB framework.
+```java
+public class Employee {
+   private int id;
+   private String firstName; 
+   private String lastName;   
+   private int salary;  
+
+   public Employee() {}
+   public Employee(String fname, String lname, int salary) {
+      this.firstName = fname;
+      this.lastName = lname;
+      this.salary = salary;
+   }
+   public int getId() {
+      return id;
+   }
+   public void setId( int id ) {
+      this.id = id;
+   }
+   public String getFirstName() {
+      return firstName;
+   }
+   public void setFirstName( String first_name ) {
+      this.firstName = first_name;
+   }
+   public String getLastName() {
+      return lastName;
+   }
+   public void setLastName( String last_name ) {
+      this.lastName = last_name;
+   }
+   public int getSalary() {
+      return salary;
+   }
+   public void setSalary( int salary ) {
+      this.salary = salary;
+   }
+}
+```
+
+
+
+
+
+
+
+
+
+
 #### FAQ
 
 **What is ORM?**
