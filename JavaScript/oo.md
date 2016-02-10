@@ -1,4 +1,47 @@
 ## Object Oriented Programming with JavaScript
+JavaScript is a functional language, but it is possible to implement some features of object-oriented paradigm.
+
+#### Creating a class
+To create a class, just use a function keyword and the name the function with a capital letter.
+```javascript
+function Dog() {
+}
+```
+Create a class with a pirvate "instance" variable. To make the instance private, use var keyword. To access this variable we need a public getter and setter:
+```javascript
+function Dog() {
+  var name;
+
+  this.getName = function() {
+    return name;
+  }
+  
+  this.setName = function(value) {
+    name = value;
+  }
+}
+
+var poodle = new Dog(); // Constructor to create an object "Poodle"
+poodle.setName('Sparky');
+console.log(poodle.getName());
+```
+To create a class with a public variable, just add a keyword this to it:
+```javascript
+function Dog() {
+  this.name = "Sparky";
+}
+
+var poodle = new Dog();
+console.log(poodle.name);
+```
+It is possible to pass a parameter to the class:
+```javascript
+function Dog(breed) {
+    this.breed = breed;
+}
+
+var sparky = new Dog("poodle");
+```
 #### Creating objects
 To create an object, one can use **literal notation**:
 ```javascript
@@ -16,14 +59,7 @@ function Person(job, married) {
 
 var james = new Person("programmer", "no");
 ````
-#### Creating a class
-```javascript
-function Dog(breed) {
-    this.breed = breed;
-}
 
-var sparky = new Dog("poodle");
-```
 #### Adding functions (Methods) to an object
 Using **literal notation**:
 ```javascript
