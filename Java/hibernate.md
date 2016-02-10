@@ -184,6 +184,45 @@ public class Employee {
 }
 ```
 
+#### Mapping
+An Object/relational mappings are usually defined in an XML document. This mapping file instructs Hibernate how to map the defined class or classes to the database tables. Though many Hibernate users choose to write the XML by hand, a number of tools exist to generate the mapping document. These include XDoclet, Middlegen and AndroMDA for advanced Hibernate users. You should save the mapping document in a file with the format *<classname>.hbm.xml*. Sample mapping:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="Employee" table="EMPLOYEE">
+      <meta attribute="class-description">
+         This class contains the employee detail. 
+      </meta>
+      <id name="id" type="int" column="id">
+         <generator class="native"/>
+      </id>
+      <property name="firstName" column="first_name" type="string"/>
+      <property name="lastName" column="last_name" type="string"/>
+      <property name="salary" column="salary" type="int"/>
+   </class>
+</hibernate-mapping>
+```
+When you prepare a Hibernate mapping document, we have seen that you map Java data types into RDBMS data types. The types declared and used in the mapping files are not Java data types; they are not SQL database types either. These types are called Hibernate mapping types, which can translate from Java to SQL data types and vice versa.
+**Primitive types:**
+| Mapping type |	Java type |	ANSI SQL Type |
+| --- | --- | --- |
+| integer |	int or java.lang.Integer | INTEGER |
+| long |	long or java.lang.Long |	BIGINT |
+| short |	short or java.lang.Short |	SMALLINT|
+| float |	float or java.lang.Float |	FLOAT|
+| double |	double or java.lang.Double |	DOUBLE|
+| big_decimal |	java.math.BigDecimal |	NUMERIC|
+| character |	java.lang.String |	CHAR(1)|
+| string |	java.lang.String |	VARCHAR|
+| byte |	byte or java.lang.Byte |	TINYINT|
+| boolean |	boolean or java.lang.Boolean |	BIT|
+| yes/no |	boolean or java.lang.Boolean |	CHAR(1) ('Y' or 'N')|
+| true/false |	boolean or java.lang.Boolean |	CHAR(1) ('T' or 'F')|
+
 
 
 
