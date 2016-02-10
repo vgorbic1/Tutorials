@@ -1,7 +1,7 @@
-## Self-calling Form
+## Self-calling Form (functional way)
 
 #### Form
-Use this form to update database:
+Use this form to update database. Name it *adduser.php* Validate the form with JavaScript and PHP.
 ```php
 <!DOCTYPE html>
 <html lang="en">
@@ -85,4 +85,92 @@ Use this form to update database:
   <?php } ?>
 </body> 
 </html>
+```
+
+#### Database connection
+Use this *connectvars.php* to set up database connection:
+```php
+<?php
+    // Define database connection constants
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'demo');
+?>
+```
+
+#### Display Results
+This *manageusers.php* page displays all users in one table:
+```php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Manage Users</title>
+  <link rel="stylesheet" href="pure-min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table class="pure-table pure-table-bordered">
+      <thead>
+      <tr>
+        <th>User ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+<?php
+    require_once('connectvars.php');
+
+    $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME); 
+    $query = "SELECT * FROM users";
+    $data = mysqli_query($dbc, $query);
+    
+    $i = 0;
+    while ($row = mysqli_fetch_array($data)) { 
+        echo '<tr><td>' . $row['userID'] . '</td>';        
+        echo '<td>' . $row['first_name'] . '</td>';
+        echo '<td>' . $row['last_name'] . '</td>'; 
+        echo '<td>' . $row['login'] . '</td>';
+        echo '<td>' . $row['password'] . '</td>'; 
+        echo '<td>' . $row['action'] . '</td></tr>';         
+        $i++;
+    }
+    mysqli_close($dbc);
+?>
+    </tbody>
+  </table>
+  <br />
+  <navigation>
+  <div class="pure-menu pure-menu-horizontal">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a class="pure-menu-link" href="adduser.php">Add New User</a></li>
+    </ul>
+  </div>
+</navigation>
+</body> 
+</html>
+```
+
+#### Database
+Create a database named *demo* and a table *users*:
+```sql
+CREATE TABLE `users` (
+  `userID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(30) DEFAULT NULL,
+  `last_name` varchar(30) DEFAULT NULL,
+  `login` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `action` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`userID`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+```
+Populate the table:
+```php
+INSERT INTO `users` VALUES (1,'John','Doe','johny','doe56',NULL);
 ```
