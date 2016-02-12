@@ -18,7 +18,7 @@ function addToCart(product) {
     console.log(product + ' added to cart');
 }
 ```
-#### Dot-notation Invent Handling (better way to do it)
+#### Dot-notation Invent Handling (another way to do it)
 
 Remove all JavaScript from your HTML and use *this* keyword as a point of reference.
 ```javascript
@@ -40,9 +40,9 @@ function addToShoppingCart() {
 }
 ```
 
-#### Using Event Listener (the best way?)
+#### Using Event Listener (still another way)
 
-Add another (custom) event:
+Add another (custom) event and attache it with *addEventListener()* function. Old IE browsers do not have this function, so you need to use a feature detection with *if* statement:
 ```javascript
 // HTML
 <input type="button" id="iPhone" value="iPhone" />
@@ -56,13 +56,24 @@ function init() {
     btn2.onclick = addToShoppingCart;
 	
     // adding additional event to onclick event defined earlier
-    btn1.addEventListener('click', eventListenerEvent, false);
-    btn2.addEventListener('click', eventListenerEvent, false);
+    if (window.addEventListener) {  // if browser recognizes this function
+        btn1.addEventListener('click', eventListenerEvent, false);
+        btn2.addEventListener('click', eventListenerEvent, false);
+    } else {
+        btn1.attachEvent('onclick', eventListenerEvent);  // old IEs use this attacheEvent() function!
+        btn2.attachEvent('onclick', eventListenerEvent);
+    }
 }
 
 function eventListenerEvent() {
-    // stabdards compliant event handling
-    console.log(this.value);
+    // standards compliant event handling
+    var control;  // Create a var to handle control in both IE and other browsers
+    if (window.event) {  // If this property exists, we are using old version of IE
+        control = window.event.srcElement;  // we cannot use 'this' keyword 
+    } else {  // if not, all other browsers
+        control = this;  // we can use 'this' keyword
+    }
+    console.log('standards compliant event ' + this.value);
 }
 ```
 
