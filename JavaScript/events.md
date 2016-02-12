@@ -16,6 +16,24 @@ function addToCart(product) {
     console.log(product + ' added to cart');
 }
 ```
+#### Better way
+```javascript
+// HTML
+<input type="button" id="iPhone" value="iPhone" />
+<input type="button" id="iPad" value="iPad" />
+
+// JavaScript
+function init() {
+	var btn1 = document.getElementById('iPhone');
+	var btn2 = document.getElementById('iPad');
+	btn1.onclick = addToShoppingCart;
+	btn2.onclick = addToShoppingCart;
+}
+
+function addToShoppingCart() {
+	console.log(this);  // use 'this' keyword for debugging
+}
+``
 
 #### onclick
 ```javascript
