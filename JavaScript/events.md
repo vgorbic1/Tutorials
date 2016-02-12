@@ -4,7 +4,8 @@ Events are happen when:
 - the page is loaded
 - input fields are changed
 
-#### Inline Events
+#### Inline Event Handling (one and old way)
+
 This is a traditional way to handle events. You are writing JavaScript in HTML page, which is not always good:
 ```javascript
 // HTML
@@ -13,10 +14,13 @@ iPad <input type="button" value="add to cart" onclick="addToCart('iPhone');" />
 
 // JavaScript
 function addToCart(product) {
+    // We cannot use 'this' keyword. It is useless here.
     console.log(product + ' added to cart');
 }
 ```
-#### Better way
+#### Dot-notation Invent Handling (better way to do it)
+
+Remove all JavaScript from your HTML and use *this* keyword as a point of reference.
 ```javascript
 // HTML
 <input type="button" id="iPhone" value="iPhone" />
@@ -24,16 +28,43 @@ function addToCart(product) {
 
 // JavaScript
 function init() {
-	var btn1 = document.getElementById('iPhone');
-	var btn2 = document.getElementById('iPad');
-	btn1.onclick = addToShoppingCart;
-	btn2.onclick = addToShoppingCart;
+    var btn1 = document.getElementById('iPhone');
+    var btn2 = document.getElementById('iPad');
+    btn1.onclick = addToShoppingCart;
+    btn2.onclick = addToShoppingCart;
 }
 
 function addToShoppingCart() {
-	console.log(this);  // use 'this' keyword for debugging
+    // Now we can use 'this' keyword to access any element on the page  
+    console.log(this.value);  // gets the button text
 }
-``
+```
+
+#### Using Event Listener (the best way?)
+
+Add another (custom) event:
+```javascript
+// HTML
+<input type="button" id="iPhone" value="iPhone" />
+<input type="button" id="iPad" value="iPad" />
+
+// JavaScript
+function init() {
+    var btn1 = document.getElementById('iPhone');
+    var btn2 = document.getElementById('iPad');
+    btn1.onclick = addToShoppingCart;
+    btn2.onclick = addToShoppingCart;
+	
+    // adding additional event to onclick event defined earlier
+    btn1.addEventListener('click', eventListenerEvent, false);
+    btn2.addEventListener('click', eventListenerEvent, false);
+}
+
+function eventListenerEvent() {
+    // stabdards compliant event handling
+    console.log(this.value);
+}
+```
 
 #### onclick
 ```javascript
