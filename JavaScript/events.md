@@ -4,6 +4,19 @@ Events are happen when:
 - the page is loaded
 - input fields are changed
 
+#### Inline Events
+This is a traditional way to handle events. You are writing JavaScript in HTML page, which is not always good:
+```javascript
+// HTML
+iPhone <input type="button" value="add to cart" onclick="addToCart('iPhone');" />
+iPad <input type="button" value="add to cart" onclick="addToCart('iPhone');" />
+
+// JavaScript
+function addToCart(product) {
+    console.log(product + " added to cart");
+}
+```
+
 #### onclick
 ```javascript
 <h1 id="header">Header</h1>
