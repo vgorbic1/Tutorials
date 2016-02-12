@@ -13,7 +13,7 @@ iPad <input type="button" value="add to cart" onclick="addToCart('iPhone');" />
 
 // JavaScript
 function addToCart(product) {
-    console.log(product + " added to cart");
+    console.log(product + ' added to cart');
 }
 ```
 
