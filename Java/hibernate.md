@@ -41,7 +41,8 @@ ORM stands for Object-Relational Mapping (ORM) is a programming technique for co
 -	A configurable facility for specifying mapping metadata.
 -	A technique to interact with transactional objects to perform dirty checking, lazy association fetching, and other optimization functions.
 
-A **persistent framework** is an ORM service that stores and retrieves objects into a relational database.
+A **persistent framework** is an ORM service that stores and retrieves objects into a relational database. Object persistence
+means individual objects can outlive the application process; they can be saved to a data store and be re-created at a later point in time. When we talk about persistence in Java, we’re normally talking about mapping and storing object instances in a database using SQL.
 
 **Hibernate Advantages:**
 -	Hibernate takes care of mapping Java classes to database tables using XML files and without writing any line of code.
