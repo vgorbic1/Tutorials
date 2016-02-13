@@ -5,4 +5,5 @@
 * [PHP](../master/PHP/)
 * [HTML5](../master/HTML/)
 * [CSS](../master/HTML/)
+* [SQL](../master/SQL/)
 * [Encoding](../master/Encoding/)
