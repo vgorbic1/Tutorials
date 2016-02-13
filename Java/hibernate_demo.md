@@ -178,60 +178,6 @@ You may put the file into a subdirrectory of your project's packaged source file
 Create another directory next to *entity* for DAO files and name it *persistence*. 
 
 #### Step 5
-Create a *Database.java* file and put it into *persistence*. This file provides database info and is needed for connection to the database.
-```java
-package /your package path/ .persistence;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import org.apache.log4j.*; // if you want to log errors. You need to plug in the log4j external library.
-
-public class Database {
-    private static Database instance = new Database();
-    private Connection connection;
-    private final Logger log = Logger.getLogger(this.getClass()); // Optional. use if you need to log errors.
-
-    private Database() {
-    }
-
-    // create Database singleton
-    public static Database getInstance() {
-        return instance;
-    }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void connect() throws Exception {
-        if (connection != null)
-            return;
-
-        // Following values should not be hard-coded in a real application.
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new Exception("Error: MySQL driver not found");
-        }
-        String url = "jdbc:mysql://localhost:3306/sample"; //Update with your database connection info
-        connection = DriverManager.getConnection(url, "admin", "admin"); //Update with your database connection info
-    }
-
-    public void disconnect() {
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                log.error("Cannot close connection",e);
-            }
-        }
-        connection = null;
-    }
-}
-```
-
-#### Step 6
 Create a mapping file to map your model class to the database table. Name it *Employee.hbm.xml* and put to the resources directory.
 ```xml
 <!DOCTYPE hibernate-mapping PUBLIC
@@ -257,7 +203,7 @@ Create a mapping file to map your model class to the database table. Name it *Em
 </hibernate-mapping>
 ```
 
-#### Step 7
+#### Step 6
 Create a DAO interface file. Name it *EmployeeDao.java*. Put it to *persistence* directory.
 ```java
 package /your package path/ .persistence;
@@ -271,7 +217,7 @@ public interface EmployeeDao {
 }
 ```
 
-#### Step 8
+#### Step 7
 Implement the *EmployeeDao.java* in the new class, and name it *EmployeeDaoWithHibernate.java*
 ```java
 package /your package path/ .persistence;
@@ -359,7 +305,7 @@ public class EmployeeDaoWithHibernate implements EmployeeDao {
     }
 }
 ```
-#### Step 9
+#### Step 8
 Add *SessionFactoryProvider.java* file into persistence directory to facilitate sessions:
 ```java
 package /your package path/ .persistence;
@@ -392,7 +338,7 @@ public class SessionFactoryProvider {
 }
 ```
 
-#### Step 10
+#### Step 9
 Test the Hibernate CRUD methods
 ```java
 package /your package path / .persistence;
