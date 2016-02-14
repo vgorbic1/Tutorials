@@ -10,9 +10,14 @@ resource.
 -You usually define the USERS table as follows:
 ```sql
 create table USERS (
-USERNAME varchar(15) not null primary key,
+USERID int(11) not null primary key,
+USERNAME varchar(15) not null,
 ADDRESS_STREET varchar(255) not null,
 ADDRESS_ZIPCODE varchar(5) not null,
 ADDRESS_CITY varchar(255) not null
 );
 ```
+
+A **surrogate key** column is a primary key column with no meaning to the application user. Its only purpose is identifying data inside the application.
+
+**Lazy loading** is retrieving data on demand only.
