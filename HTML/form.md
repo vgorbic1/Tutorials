@@ -80,3 +80,25 @@ Drop-down menus can serve the same purpose as radio buttons (one selection only)
   </select>
 </div>
 ```
+
+#### Text Area
+Text areas are text fields that can span several lines.
+```html
+<textarea></textarea>
+```
+**Settings**
+
+|HTML|EXPLANATION|
+|---|---|
+|rows=|Rows in the field.|
+|cols=|Columns in the field.|
+|name=|Adds an internal name to the field so the program that handles the form can identify the fields.|
+|tabindex=|Defines in which order the different fields should be activated when the visitor clicks the tab key.|
+|wrap=off|The text will handled as one long sequence of text without linebreaks.|
+|wrap=virtual|The text will appear as if it recognized linebreaks - but when the form is submitted the linebreaks are turned off.|
+|wrap=physical|The text will be submitted exactly as it appears on the screen - linebreaks included.|
+```html
+<div align="center">
+  <textarea cols="40" rows="5" name="myname"></textarea>
+</div>
+```
