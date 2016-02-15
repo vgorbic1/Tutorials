@@ -141,3 +141,5 @@ function formvalidation(thisform) {
 } 
 ```
 The above function works in addition to the four functions listed at the top of this page. The function needs to be customized to fit your form. You will need to enter the appropriate form field names used on your own form. (Instead of "E-mail", "Value", "Digits" and "Whatever" in this example). Furthermore, you would need to call the appropriate functions depending on which check you would like to perform on each form field. In the example each field is checked by a different function. You could as well have each field checked by the same function. If for example the form had 4 fields that should all contain an e-mail address you would add an emailvalidation to each.
+
+[**SOURCE**](http://echoecho.com/jsforms01.htm)
