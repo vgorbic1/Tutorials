@@ -90,6 +90,7 @@ function digitvalidation(entered, min, max, message, datatype) {
 } 
 ```
 `emptyvalidation(this, text)`
+
 Optional parameters are:
 - text -text that will show in an alertbox if content is illegal.
 ```javascript
@@ -105,3 +106,38 @@ function emptyvalidation(entered, message) {
   }
 }
 ```
+There are two different ways to call these functions. One is used when you want to check the field immediately after an input is made to it. The other is when you want to check all fields at one time, when the user clicks the submit button.
+
+To force the browser to check each field immediately, we add an onChange to each of the <input> tags in the form:
+```html
+<input type="text" name="Email" size="20" onChange="emailvalidation(this,'The E-mail is not valid');"> 
+```
+
+You might prefer to check all fields at one time when the user hits the submit button. To do this you should add an onSubmit event handler to the <form> tag. 
+```html
+<form onsubmit="return formvalidation(this)"> 
+```
+The function that checks the entire form will either return a value of false or true. If it's true the form will be submitted - if it's false the submission will be cancelled. A script that checks all fields in a form could look like this:
+```javascript
+function formvalidation(thisform) {
+  with (thisform) {
+    if (emailvalidation(Email, "Illegal E-mail") == false) {
+      Email.focus(); 
+      return false;
+    };
+    if (valuevalidation(Value, 0, 5, "Value MUST be in the range 0-5") == false) {
+      Value.focus(); 
+      return false;
+    };
+    if (digitvalidation(Digits, 3, 4, "You MUST enter 3 or 4 integer digits", "I") == false) {
+      Digits.focus(); 
+      return false;
+    };
+    if (emptyvalidation(Whatever, "The textfield is empty") == false) {
+      Whatever.focus(); 
+      return false;
+    };
+  }
+} 
+```
+The above function works in addition to the four functions listed at the top of this page. The function needs to be customized to fit your form. You will need to enter the appropriate form field names used on your own form. (Instead of "E-mail", "Value", "Digits" and "Whatever" in this example). Furthermore, you would need to call the appropriate functions depending on which check you would like to perform on each form field. In the example each field is checked by a different function. You could as well have each field checked by the same function. If for example the form had 4 fields that should all contain an e-mail address you would add an emailvalidation to each.
