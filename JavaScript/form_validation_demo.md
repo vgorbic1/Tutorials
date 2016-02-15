@@ -32,10 +32,10 @@ function emailvalidation(entered, message) {
 `valuevalidation(this, min, max, text, type)`
 
 Optional parameters are:
-- min --minimum value allowed in the field.
-- max --maximum value allowed in the field.
-- text --text that will show in an alertbox if content is illegal.
-- type --enter "I" if only integers are allowed.
+- min - minimum value allowed in the field.
+- max - maximum value allowed in the field.
+- text - text that will show in an alertbox if content is illegal.
+- type - enter "i" if only integers are allowed.
 ```javascript
 function valuevalidation(entered, min, max, message, datatype) {
   with (entered) {
@@ -47,7 +47,7 @@ function valuevalidation(entered, min, max, message, datatype) {
       };
     }
     if ((parseFloat(min) == min && checkvalue < min) || (parseFloat(max) == max && checkvalue > max) || value != checkvalue) {
-      if (message != "") {
+      if (message != '') {
         alert(message);
       } 
       return false;
@@ -56,4 +56,52 @@ function valuevalidation(entered, min, max, message, datatype) {
     }
   }
 } 
+```
+
+`digitvalidation(this, min, max, text, type)`
+
+Optional parameters are:
+- min -minimum number of digits allowed in the field.
+- max -maximum number of digits allowed in the field.
+- text -text that will show in an alertbox if content is illegal.
+- type -enter "i" if only integers are allowed.
+```javascript
+function digitvalidation(entered, min, max, message, datatype) {
+  with (entered) {
+    var checkvalue = parseFloat(value);
+    if (datatype) {
+      var smalldatatype = datatype.toLowerCase();
+      if (smalldatatype.charAt(0) == "i") {
+        checkvalue = parseInt(value); 
+        if (value.indexOf(".") != -1) {
+          checkvalue = checkvalue+1
+        }
+      };
+    }
+    if ((parseFloat(min) == min && value.length < min) || (parseFloat(max) == max && value.length  >max) || value != checkvalue) {
+      if (message != '') {
+        alert(message);
+      } 
+      return false;
+    } else {
+      return true;
+    }
+  }
+} 
+```
+`emptyvalidation(this, text)`
+Optional parameters are:
+- text -text that will show in an alertbox if content is illegal.
+```javascript
+function emptyvalidation(entered, message) {
+  with (entered) {
+    if (value == null || value == '') {
+      if (message != '') {
+        alert(message);
+      }
+      return false;
+    } else {
+    return true;
+  }
+}
 ```
