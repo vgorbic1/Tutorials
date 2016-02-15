@@ -1,5 +1,62 @@
 ## Form
 
+#### Text Field
+Text fields are one line areas that allow the user to input text.
+```html
+<input type="text" />
+```
+
+**Settings**
+
+|HTML|EXPLANATION|
+|---|---|
+|size=|Defines the width of the field. That is how many visible characters it can contain.|
+|maxlength=|Defines the maximum length of the field. That is how many characters can be entered in the field. If you do not specify a maxlength, the visitor can easily enter more characters than are visible in the field at one time.|
+|name=|Adds an internal name to the field so the program that handles the form can identify the fields.|
+|value=|Defines what will appear in the box as the default value.
+|align=|Setting defines how the field is aligned. Valid entries are: TOP, MIDDLE, BOTTOM, RIGHT, LEFT, TEXTTOP, BASELINE, ABSMIDDLE, ABSBOTTOM.|
+|tabindex=|defines in which order the different fields should be activated when the visitor clicks the tab key.|
+```html
+<input type="text" size="25" value="Enter your name here!" />
+```
+
+#### Password Field
+Password fields are similar to text fields. The difference is that what is entered into a password field shows up as dots on the screen. This is, of course, to prevent others from reading the password on the screen.
+```html
+<input type="password" />
+```
+
+**Settings**
+
+|HTML|EXPLANATION|
+|---|---|
+|size=|Defines the width of the field. That is how many visible characters it can contain.|
+|maxlength=|Defines the maximum length of the field. That is how many characters can be entered in the field. If you do not specify a maxlength, the visitor can easily enter more characters than are visible in the field at one time.|
+|name=|Adds an internal name to the field so the program that handles the form can identify the fields.|
+|value=|Defines what will appear in the box as the default value.
+|align=|Setting defines how the field is aligned. Valid entries are: TOP, MIDDLE, BOTTOM, RIGHT, LEFT, TEXTTOP, BASELINE, ABSMIDDLE, ABSBOTTOM.|
+|tabindex=|defines in which order the different fields should be activated when the visitor clicks the tab key.|
+```html
+<input type="password" size="25" value="Enter password" />
+```
+
+#### Hidden Field
+The hidden field does not show on the page. Therefore the visitor can't type anything into a hidden field, which leads to the purpose of the field to submit information that is not entered by the visitor.
+```html
+<input type="hidden" />
+```
+
+**Settings**
+
+|HTML|EXPLANATION|
+|---|---|
+|name=|Adds an internal name to the field so the program that handles the form can identify the fields.|
+|value=|Defines what will appear in the box as the default value.|
+```html
+<input type="hidden" name="Language" value="English" />
+```
+
+
 #### Check Box
 Check boxes are used when you want to let the visitor select one or more options from a set of alternatives.
 ```html
