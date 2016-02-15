@@ -40,11 +40,19 @@ Drop-down menus can serve the same purpose as radio buttons (one selection only)
 
 |HTML|EXPLANATION|
 |---|---|
-|select|---|
+|**select**|
 |name=|Adds an internal name to the field so the program that handles the form can identify the fields.|
 |size=|Defines how many items should be visible at a time. Default is one item.|
 |multiple=|Allow for multiple selections if present.|
-|option|---|
+|**option**|
 |selected|Forces an item to be default selected.|
 |value=|Defines what will be submitted if the item is selected. This is not always the same as what it says in the menu.|
-
+```html
+<div>
+<select name="mydropdown">
+<option value="Milk">Fresh Milk</option>
+<option value="Cheese">Old Cheese</option>
+<option value="Bread">Hot Bread</option>
+</select>
+</div>
+```
