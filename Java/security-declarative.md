@@ -11,6 +11,33 @@ by the server.
 
 To prevent unauthorized access, you use the Web application deployment descriptor (web.xml) to declare that certain URLs need protection.
 You also designate the authentication method that the server should use to identify users. At request time, the server automatically
-prompts users for usernames and passwords when they try to access restricted resources, automatically checks the results against a predefined
-set of usernames and passwords, and automatically keeps track of which users have previously been authenticated. This process is completely 
-transparent to the servlets and JSP pages.
+prompts users for usernames and passwords when they try to access restricted resources, automatically checks the results against a predefined set of usernames and passwords, and automatically keeps track of which users have previously been authenticated. This process is completely transparent to the servlets and JSP pages.
+
+To safeguard network data, you use the deployment descriptor to stipulate that certain URLs should only be accessible with SSL. If users
+try to use a regular HTTP connection to access one of these URLs, the server automatically redirects them to the HTTPS (SSL) equivalent.
+
+#### Form-based Authentication
+The most common type of declarative security uses regular HTML forms. The developer uses the deployment descriptor to identify the protected resources and to designate a page that has a form to collect usernames and passwords. If the login is successful and the user belongs to a role that is permitted access to the page, the user is granted access to the page originally requested. If the login is unsuccessful, the user is sent to a designated error page.
+
+Depending on your server, form-based authentication might fail when you use URL rewriting as the basis of session tracking.
+
+#### Setting Up Usernames, Passwords, and Roles
+When a user attempts to access a protected resource in an application that is using form-based authentication, the system uses an HTML form to ask for a username and password, verifies that the password matches the user, determines what abstract roles (regular user, administrator, executive, etc.) that user belongs to, and sees whether any of those roles has permission to access the resource. If so, the server redirects the user to the originally requested page. If not, the server redirects the user to an error page.
+
+Although you would not have to change the web.xml file or any of the actual servlet and JSP code to move a secure Web application
+from system to system, you would still have to make custom changes on each system to set up the users and passwords.
+
+Tomcat stores usernames, passwords, and roles in `install_dir/conf/tomcat-users.xml`. Each user element should have three attributes: name (the username), password (the plain text password), and roles (a comma-separated list of logical role names). For example:
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tomcat-users>
+<user name="valjean" password="forgiven"
+roles="lowStatus,nobleSpirited" />
+<user name="bishop" password="mercy"
+roles="lowStatus,nobleSpirited" />
+<user name="javert" password="strict"
+roles="highStatus,meanSpirited" />
+<user name="thenardier" password="grab"
+roles="lowStatus,meanSpirited" />
+</tomcat-users>
+```
