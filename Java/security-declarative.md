@@ -21,7 +21,7 @@ The most common type of declarative security uses regular HTML forms. The develo
 
 Depending on your server, form-based authentication might fail when you use URL rewriting as the basis of session tracking.
 
-#### Setting Up Usernames, Passwords, and Roles
+#### Setting up Usernames, Passwords, and Roles (Tomcat)
 When a user attempts to access a protected resource in an application that is using form-based authentication, the system uses an HTML form to ask for a username and password, verifies that the password matches the user, determines what abstract roles (regular user, administrator, executive, etc.) that user belongs to, and sees whether any of those roles has permission to access the resource. If so, the server redirects the user to the originally requested page. If not, the server redirects the user to an error page.
 
 Although you would not have to change the web.xml file or any of the actual servlet and JSP code to move a secure Web application
@@ -41,3 +41,6 @@ roles="highStatus,meanSpirited" />
 roles="lowStatus,meanSpirited" />
 </tomcat-users>
 ```
+Tomcat's strategy of storing unencrypted passwords is a poor one. Passwords should be encrypted with an algorithm that cannot easily be reversed. For real applications you’ll want to replace the simple file-based password scheme with something more robust. 
+
+#### Designating Locations of Login and Login-Failure Pages
