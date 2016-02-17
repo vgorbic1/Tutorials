@@ -34,7 +34,7 @@ JavaScript file:
 var check = document.querySelector('#guacamole:checked').value;
 ```
 
-#### Get Values from Checkboxes
+#### Get Values from Grouped Checkboxes
 HTML file:
 ```html
 <label for="salsa">Choose Salsa(s):</label>
