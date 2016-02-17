@@ -23,6 +23,16 @@ function getRadioValue(form, name) {
     return value;
 }
 ```
+#### Get Value from one Checkbox
+HTML file:
+```html
+<label for="">Guacamole</label>
+  <input id="guacamole" type="checkbox" value="Guacamole" />
+```
+JavaScript file:
+```javascript
+var check = document.querySelector('#guacamole:checked').value;
+```
 
 #### Get Values from Checkboxes
 HTML file:
