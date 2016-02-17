@@ -19,12 +19,12 @@ This function replaces all newlines (\n) with HTML <br> element in the given str
 - Use SHA1 function: sha1("password");
 
 **What is the functionality of the function strstr and stristr?**
-- `strstr()` looks for the first occurrence of the given parameter inside given string and return the rest: ```strstr('I found a perfect job!', 'perfect' ); will return perfect job!```
-- `stristr()` is basically the same, but case-insensitive: ```stristr('I found a perfect job!', 'PERFECT' ); will return perfect job!```
+- `strstr()` looks for the first occurrence of the given parameter inside given string and return the rest: ```strstr('I found a perfect job!', 'perfect' );  // will return perfect job!```
+- `stristr()` is basically the same, but case-insensitive: ```stristr('I found a perfect job!', 'PERFECT' );   // will return perfect job!```
 
 **What is the functionality of the function htmlentities?**
 
-This function is used to convert some characters to HTML. Used to sanitize strings: ```htmlentities('<>'); // will return &lt;&rt```
+This function is used to convert some characters to HTML. Used to sanitize strings: ```htmlentities('<>');  // will return &lt;&rt```
 
 **What is the difference between the functions unlink and unset?**
 
