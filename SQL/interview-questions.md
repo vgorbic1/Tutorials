@@ -15,5 +15,14 @@ UNION
 SOURCE: [Kris Wenzel](http://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/)
 
 **How can we find the current date using mysql?**
+
 Use `CURDATE()` function
+
+**How can we know the number of days between two given dates using mysql?**
+
+Use standard SQL `DATEDIFF()` function with two dates as parameters.
+
+**What are the differences between drop a table and truncate a table?**
+
+Drop table deletes the table from the database. Truncate table removes all content of the table, leaving structure intact.
 
