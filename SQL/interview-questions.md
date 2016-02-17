@@ -27,4 +27,9 @@ Use standard SQL `DATEDIFF()` function with two dates as parameters.
 - TRUNCATE removes all rows from a table. It is a DDL command, so the operation cannot be rolled back. TRUCATE is faster and doesn't use as much undo space as a DELETE.
 - DROP command removes a table from the database. All the tables' rows, indexes and privileges will also be removed. It is the DDL command, so the operation cannot be rolled back.
 
+**What is the difference between a primary key, secondary key and a foreign key and why are they important?**
+- Primary key is an unique identifier for a table object. The important thing is that primary keys are unique - each row entry includes a distinctly different primary key entry that cannot (or should not) reoccur as a primary key for another entry. 
 
+- Secondary key is most often found when the use of a single field will not represent unique sequencing. For instance, if one field, say last name is not enough to create the unique nature needed for a primary key, a second field will be included to make the combination unique. This second field is the secondary key.
+
+- Foreign key is what allows multiple tables to efficiently interact. Once a primary key is created on one table, a second table can access the information in the first table by including a column to hold just the primary key value as a foreign key.
