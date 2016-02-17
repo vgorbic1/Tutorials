@@ -25,6 +25,6 @@ Use standard SQL `DATEDIFF()` function with two dates as parameters.
 **What are the differences between drop, delete, and truncate a table commands?**
 - DELETE command is used to remove rows from a table. It is a DML command and can be rolled back.
 - TRUNCATE removes all rows from a table. It is a DDL command, so the operation cannot be rolled back. TRUCATE is faster and doesn't use as much undo space as a DELETE.
-- DROP command removes a table from the database. All the tables' rows, indexes and privileges will also be removed. It is the DDL cinnand, so the operation cannot be rolled back.
+- DROP command removes a table from the database. All the tables' rows, indexes and privileges will also be removed. It is the DDL command, so the operation cannot be rolled back.
 
 
