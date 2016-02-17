@@ -11,3 +11,7 @@
 In a secured building it would be a person with a keycard that only has access to the doors that open with that card.
 
 **Principal** is a user, computer, or any entity that can ba authenticated by the system. Authenticated using an identifier id of some sort.
+
+**Group** is a collection of principals with the same level of required access.
+
+**Role** is the access that a principal or group is allowed to have, what they can do and how they can interact with a system.
