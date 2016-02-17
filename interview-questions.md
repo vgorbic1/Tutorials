@@ -10,7 +10,11 @@ A GET mostly used to retrieve data, usually through a URL where all parameters a
 
 **How can we submit a form without a submit button?**
 
-Using JavaScript: onClick event on the page triggers a function submit() in the script.
+- Using JavaScript: onClick event on the page triggers a function submit() in the script.
+- Using PHP: using a header() function with a parameter location:script.php
 
-Using PHP: using a header() function with a parameter location:script.php
+**How can we get second of the current time using date function?**
+- In PHP: `echo(date('s'));`
+- In JavaScript: `var date = new Date();  var secs = date.getSeconds();`
+
 
