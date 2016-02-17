@@ -44,3 +44,40 @@ roles="lowStatus,meanSpirited" />
 Tomcat's strategy of storing unencrypted passwords is a poor one. Passwords should be encrypted with an algorithm that cannot easily be reversed. For real applications you’ll want to replace the simple file-based password scheme with something more robust. 
 
 #### Designating Locations of Login and Login-Failure Pages
+You use the login-config element in the deployment descriptor (web.xml) to control the authentication method.
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+<!-- ... -->
+<security-constraint>...</security-constraint>
+<login-config>
+  <auth-method>FORM</auth-method>
+  <form-login-config>
+    <form-login-page>/login.jsp</form-login-page>
+    <form-error-page>/login-error.html</form-error-page>
+  </form-login-config>
+</login-config>
+<!-- ... -->
+```
+#### Creating the Login Page
+All the login page requires is a form with an ACTION of j_security_check, a textfield named `j_username`, and a password field named `j_password`. All forms that have password fields should use a METHOD of POST. Note that j_security_check is a “magic” name; you don’t preface it with a slash even if your login page is in a subdirectory of the main Web application directory.
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <form action="j_security_check" method="post">
+      <table>
+        <tr><td>user name: <input type="text" name="j_username">
+        <tr><td>password: <input type="password" name="j_password">
+        <tr><th><input type="submit" value="log in">
+      </table>
+    </form>
+  </body>
+</html>
+```
