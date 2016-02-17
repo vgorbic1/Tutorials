@@ -30,4 +30,32 @@ This function is used to convert some characters to HTML. Used to sanitize strin
 
 `unlink()` deletes the file, `unset()` clears the content of the file.
 
+**How can we register the variables into a session?**
+
+Several ways. The easiest can be like this: 
+```php
+session_start();
+$username=$_GET['username'];
+session_register('username');
+```
+
+**What is the maximum size of a file that can be uploaded using php and how can we change this?**
+
+Check upload_max_filesize in the php.ini.
+
+**How can we increase the execution time of a PHP script?**
+
+Use `set_time_limit(0);` where 0 means maximum time.
+
+**How can we know the count/number of elements of an array?**
+
+Use `count();` to get the number of elements of an array:
+```php
+$myArray = [0, 1, 2];
+echo( count($myArray));
+```
+
+**How can we find the number of rows in a resultset using PHP?**
+
+Use `mysqli_num_rows();`
 
