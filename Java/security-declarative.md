@@ -135,4 +135,4 @@ Whereas the `web-resource-collection` element designates the URLs that should be
 Use of SSL does not change the basic way that form-based authentication works. Regardless of whether you are using SSL, you use the login-config element to indicate that you are using form-based authentication and to identify the login and login-failure pages.
 In addition to simply requiring SSL, the servlet API provides a way to stipulate that users must authenticate themselves with client certificates.
 
-[EXAMPLE]()
+[EXAMPLE](https://github.com/vgorbic1/Tutorials/blob/master/Java/security-declarative-demo.md)
