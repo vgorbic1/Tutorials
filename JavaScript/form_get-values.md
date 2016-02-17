@@ -31,7 +31,7 @@ HTML file:
 ```
 JavaScript file:
 ```javascript
-var check = document.querySelector('#guacamole:checked').value;
+var guacamole = document.querySelector('#guacamole:checked').value;
 ```
 
 #### Get Values from Grouped Checkboxes
@@ -41,7 +41,7 @@ HTML file:
   <input name="salsa[]" type="checkbox" value="Pico De Gallo" /> Pico De Gallo 
   <input name="salsa[]" type="checkbox" value="Roasted Corn" /> Roasted Corn 
   <input name="salsa[]" type="checkbox" value="Tomatillo-Green" /> Tomatillo-Green 	
-	<input name="salsa[]" type="checkbox" value="Tomatillo-Red" /> Tomatillo-Red
+  <input name="salsa[]" type="checkbox" value="Tomatillo-Red" /> Tomatillo-Red
 ```
 JavaScript file:
 ```javascript
