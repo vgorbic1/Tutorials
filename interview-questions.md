@@ -1,5 +1,6 @@
 ## Job Interview Questions
 
+- [**JavaScript**](https://github.com/vgorbic1/Tutorials/blob/master/JavaScript/interview-questions.md)
 - [**PHP**](https://github.com/vgorbic1/Tutorials/blob/master/PHP/interview-questions.md)
 - [**SQL**](https://github.com/vgorbic1/Tutorials/blob/master/SQL/interview-questions.md)
 
