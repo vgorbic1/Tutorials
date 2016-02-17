@@ -81,3 +81,58 @@ All the login page requires is a form with an ACTION of j_security_check, a text
   </body>
 </html>
 ```
+#### Creating the Page to Report Failed Login Attempts
+What is required to be in the login-failure page? Nothing! This page is arbitrary; it can contain a link to an unrestricted section of the Web application, a link to the login page, or a simple “login failed” message.
+
+#### Specifying URLs That Should Be Password Protected
+The security-constraint element should come immediately before login-config in web.xml and contains four possible subelements: display-name (an optional element giving a name for IDEs to use), web-resource-collection (a required element that specifies the URLs that should be protected), authconstraint (an optional element that designates the abstract roles that should have access to the URLs), and user-data-constraint (an optional element that specifies whether SSL is required). Note that multiple web-resource-collection entries are permitted within security-constraint.
+```xml
+<web-app>
+  <!-- ... -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Sensitive</web-resource-name>
+      <url-pattern>/sensitive/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>administrator</role-name>
+     <role-name>executive</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <login-config>...</login-config>
+  <!-- ... -->
+</web-app>
+```
+Each security-constraint element must contain one or more `web-resource-collection` entries; all other securityconstraint
+subelements are optional. The` web-resource-collection` element consists of a `web-resource-name` element that gives an arbitrary
+identifying name, a `url-pattern` element that identifies the URLs that should be protected, an optional `http-method` element that designates the HTTP commands to which the protection applies (GET, POST, etc.; the default is all methods), and an optional description element providing documentation.
+```xml
+<security-constraint>
+  <web-resource-collection>
+    <web-resource-name>Proprietary</web-resource-name>
+    <url-pattern>/proprietary/*</url-pattern>
+  </web-resource-collection>
+  <web-resource-collection>
+    <web-resource-name>Account Deletion</web-resource-name>
+    <url-pattern>/admin/delete-account.jsp</url-pattern>
+  </web-resource-collection>
+<!-- ... -->
+</security-constraint>
+```
+It is important to note that the `url-pattern` applies only to clients that access the resources directly. In particular, it does not apply to pages that are accessed through the MVC architecture with a RequestDispatcher or by the similar means of `jsp:forward` or `jsp:include`.
+
+Whereas the `web-resource-collection` element designates the URLs that should be protected, the `auth-constraint` element designates the users that should have access to protected resources. It should contain one or more `role-name` elements identifying the class of users that have access and, optionally, a `description` element describing the role.
+```xml
+<security-constraint>
+  <web-resource-collection>...</web-resource-collection>
+  <auth-constraint>
+    <role-name>administrator</role-name>
+    <role-name>kahuna</role-name>
+  </auth-constraint>
+</security-constraint>
+```
+#### Specifying URLs That Should Be Available Only with SSL
+Use of SSL does not change the basic way that form-based authentication works. Regardless of whether you are using SSL, you use the login-config element to indicate that you are using form-based authentication and to identify the login and login-failure pages.
+In addition to simply requiring SSL, the servlet API provides a way to stipulate that users must authenticate themselves with client certificates.
+
+[EXAMPLE]()
