@@ -55,7 +55,24 @@ $myArray = [0, 1, 2];
 echo( count($myArray));
 ```
 
-**How can we find the number of rows in a resultset using PHP?**
+**How can we find the number of rows in a resultset?**
 
 Use `mysqli_num_rows();`
 
+**How can we know the number of days between two given dates?**
+```php
+$date = new DateTime("2016-02-03"); 
+$anotherDate = new DateTime("2016-03-03"); 
+$result = $anotherDate->diff($date)->format("%a");
+echo $result;
+```
+
+**What are the differences between mysql_fetch_array(), mysql_fetch_object(), mysql_fetch_row()?**
+- `mysql_fetch_array()` returns associative and numerical array of strings that corresponds to the fetched row.
+- `mysql_fetch_row()` returns an numerical array of strings that corresponds to the fetched row.
+- `mysql_fetch_object()` returns a result raw as an object.
+
+**How can I get only the name of the currently executing file?**
+```php
+echo __FILE__;
+```
