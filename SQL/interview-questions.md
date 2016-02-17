@@ -1,4 +1,4 @@
-## Most Common Interview Questions
+## Interview Questions
 
 **What is the difference between a JOIN and UNION?**
 
@@ -13,3 +13,7 @@ UNION
 ![union](https://cloud.githubusercontent.com/assets/13823751/12952644/c0e67644-cfdc-11e5-892c-d01e0199e103.png)
 
 SOURCE: [Kris Wenzel](http://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/)
+
+**How can we find the current date using mysql?**
+Use `CURDATE()` function
+
