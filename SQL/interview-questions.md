@@ -33,3 +33,7 @@ Use standard SQL `DATEDIFF()` function with two dates as parameters.
 - Secondary key is most often found when the use of a single field will not represent unique sequencing. For instance, if one field, say last name is not enough to create the unique nature needed for a primary key, a second field will be included to make the combination unique. This second field is the secondary key.
 
 - Foreign key is what allows multiple tables to efficiently interact. Once a primary key is created on one table, a second table can access the information in the first table by including a column to hold just the primary key value as a foreign key.
+
+**What are the indexes?**
+
+An index is used to speed up the performance of queries. It does this by reducing the number of database data pages that have to be visited/scanned.
