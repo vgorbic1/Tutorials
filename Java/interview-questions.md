@@ -18,4 +18,4 @@ Reference types are references to objects. For example String datatype.
 
 **How to compare two strings are equal in value, what is the best method?**
 
-`string1.equals(string2)` It returns true if string1 is equals to string2 in value. Else, it will return false.
+`string1.equals(string2)` It returns true if string1 is equal to string2 in value. Else, it will return false.
