@@ -1,8 +1,7 @@
 ## Job Interview Questions
 
-[**PHP**](https://github.com/vgorbic1/Tutorials/blob/master/PHP/interview-questions.md)
-
-[**SQL**](https://github.com/vgorbic1/Tutorials/blob/master/SQL/interview-questions.md)
+- [**PHP**](https://github.com/vgorbic1/Tutorials/blob/master/PHP/interview-questions.md)
+- [**SQL**](https://github.com/vgorbic1/Tutorials/blob/master/SQL/interview-questions.md)
 
 #### General Questions
 **What are the differences between GET and POST methods in form submitting?**
