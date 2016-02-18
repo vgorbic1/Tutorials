@@ -134,3 +134,82 @@ The password file used by Tomcat for this Web application `your_tomcat_dir/conf/
 </tomcat-users>
 ```
 #### The Login and Login-Failure Pages
+This Web application uses form-based authentication. Attempts by not-yet-authenticated users to access any password-protected resource will be sent to the login.jsp page in the admin directory.
+
+admin/login.jsp file:
+```html
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+ <title>log in</title>
+ <link rel=stylesheet href="../company-styles.css" type="text/css">
+</head>
+<body>
+  <h1 class="title">log in</h1>
+  <h3>sorry, you must log in before accessing this resource.</h3>
+  <form action="j_security_check" method="post">
+  <table>
+   <tr><td>user name: <input type="text" name="j_username"></td></tr>
+   <tr><td>password: <input type="password" name="j_password"></td></tr>
+   <tr><td><input type="submit" value="log in"></td></tr>
+  </table>
+ </form>
+</body>
+</html>
+```
+admin/login-error.jsp file:
+```html
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+ <title>begone!</title>
+ <link rel=stylesheet href="../company-styles.css" type="text/css">
+</head>
+<body>
+ <h1>begone!</h1>
+ <h3>begone, ye unauthorized peon.</h3>
+</body>
+</html>
+```
+#### The investing Directory
+The web.xml file for this demo app specifies that all URLs that begin with http://host/hotdotcom/investing/ should be password protected, accessible only to users in the registered-user role. The system uses some variation of session tracking to remember which users have previously been authenticated.
+
+investing/index.html file:
+```html
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+ <title>investing</title>
+ <link rel=stylesheet href="../company-styles.css" type="text/css">
+</head>
+<body>
+ <h1>Investing</h1>
+ <h3><i>hot-dot-com.com</i> welcomes the discriminating investor!</h3>
+  please choose one of the following:
+ <ul>
+  <li><a href="../ssl/buy-stock.jsp">buy stock</a>. Astronomic growth rates!</li>
+  <li><a href="account-status.jsp">check account status</a>. See how much you've already earned!</li>
+ </ul>
+</body>
+</html>
+```
+#### The admin Directory
+URLs in the admin directory are not uniformly protected as are URLs in the investing directory. A user in the administrator role can access the page without difficulty.
+
+admin/delete-account.jsp file:
+```html
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+ <head>
+ <title>delete account</title>
+ <link rel=stylesheet href="../company-styles.css" type="text/css">
+</head>
+<body>
+ <h1>delete account</h1>
+ <form action="confirm-deletion.jsp">
+  username: <input type="text" name="username"><br>
+  <center><input type="submit" value="confirm deletion"></center>
+ </form>
+</body>
+</html>
+```
