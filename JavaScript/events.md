@@ -34,7 +34,7 @@ function init() {
     }
 }
 ```
-#### Dot-notation Invent Handling (another way to do it)
+#### Dot-notation Invent Handling (the best?)
 Remove all JavaScript from your HTML and use *this* keyword as a point of reference. It also has the best browser compatibility. Do not use dot-notation if there is an inline event handler. It will be overwritten.
 
 `this` keyword refers to the control that triggered the event.
@@ -57,7 +57,7 @@ function addToShoppingCart() {
 }
 ```
 
-#### Using Event Listener (still another way)
+#### Using Event Listener (still another way, recommended by W3C)
 
 Add another (custom) event and attache it with *addEventListener()* function. Old IE browsers do not have this function, so you need to use a feature detection with *if* statement:
 ```javascript
