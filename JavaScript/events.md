@@ -35,8 +35,9 @@ function init() {
 }
 ```
 #### Dot-notation Invent Handling (another way to do it)
+Remove all JavaScript from your HTML and use *this* keyword as a point of reference. It also has the best browser compatibility. Do not use dot-notation if there is an inline event handler. It will be overwritten.
 
-Remove all JavaScript from your HTML and use *this* keyword as a point of reference.
+`this` keyword refers to the control that triggered the event.
 ```javascript
 // HTML
 <input type="button" id="iPhone" value="iPhone" />
@@ -92,7 +93,7 @@ function eventListenerEvent() {
     console.log('standards compliant event ' + this.value);
 }
 ```
-Use the event listener when you have several things going when one button is clicked:
+Use the event listener when you have several things going on and when one button is clicked, and the order of events does not matter:
 ```javascript
 // HTML
 <input type="button" id="btn" value="click me" />
@@ -101,10 +102,14 @@ Use the event listener when you have several things going when one button is cli
 // JavaScript file
 function init() {
     var btn = document.getElementById('btn');
-    if (window.addEventListenetr) {
+    if (window.addEventListenetr) { // for non-IE browsers. Order of events will be as placed.
         btn.addEventListener("click", sendEmail, false);
         btn.addEventListener("click", reorderInventory, false);
         btn.addEventListener("click", updateStock, false);
+    } else { // for IE. Order of events will be random.
+        btn.attachEvent("onclick", sendEmail);
+        btn.attachEvent("onclick", reorderInventory);
+        btn.attachEvent("onclick", updateStock);       
     }
 }
 
@@ -120,23 +125,44 @@ function updateStock() {
   // update stock
 }
 ```
-#### onclick
+Use the event listener when you have several things going on and when one button is clicked, and the order of events is important:
 ```javascript
-<h1 id="header">Header</h1>
-<input type="button" onclick="document.getElementById('header').style.color = 'red'" />
-```
-To call the function from a script:
-```javascript
-<h1 onclick="changeThisHeader(this)">Header</h1>
+// HTML
+<input type="button" id="btn" value="click me" />
+<script>init();</script>  // put after </html>
 
-function changeThisHeader(id) {
-  id.innerHTML = 'Another Header';
+// JavaScript file
+function init() {
+    var btn = document.getElementById('btn');
+    var processOrder = function() { // Create a function with the order you desire
+        sendEmail();
+        reorderInventory();
+        updateStock();
+    }
+    
+    if (window.addEventListenetr) { // for non-IE browsers
+        btn.addEventListener("click", processOrder, false);
+    } else { // for IE
+        btn.attachEvent("onclick", processOrder);
+    }
+}
+
+function sendEmail() {
+  // send email
+}
+
+function reorderInventory() {
+  // reorder inventory
+}
+
+function updateStock() {
+  // update stock
 }
 ```
-To assign an event using DOM:
-```javascript
-document.getElementById('button').onclick = function() { displayDate() };
-```
+
+#### Event Propagation
+- If you click on the parent element only parent element event will be triggered.
+- If you click on the child element both child and parent elements will be triggered.
 
 #### onload
 This event works when user eters the page. It is usually used to check user browser's type or version, as well as whether cookies are disabled.
@@ -151,4 +177,3 @@ This event is often used in combination with validation of input fields.
 ```javascript
 <input type="text" onchange="upperCase()" />
 ```
-
