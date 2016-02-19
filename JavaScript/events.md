@@ -6,7 +6,7 @@ Events are happen when:
 
 #### Inline Event Handling (one and old way)
 
-This is a traditional way to handle events. You are writing JavaScript in HTML page, which is not always good:
+This is a traditional way to handle events. You are writing JavaScript on HTML page, which is not always good. If it is already on the page, do not refactor.
 ```javascript
 // HTML
 iPhone <input type="button" value="add to cart" onclick="addToCart('iPhone');" />
@@ -16,6 +16,22 @@ iPad <input type="button" value="add to cart" onclick="addToCart('iPhone');" />
 function addToCart(product) {
     // We cannot use 'this' keyword. It is useless here.
     console.log(product + ' added to cart');
+}
+```
+If you already have inline event and want to add extra functionality, you may do the following:
+```javascript
+// HTML
+<input type="button" id="btn" value="click me" onclick="console.log('first event');" />
+<script>init();</script>  // put after </html>
+
+// JavaScript file
+function init() {
+    var btn = document.getElementById('btn');
+    var inlineEvent = btn.onclick;  // assign inline event from HTML file
+    btn.onclick = function() {
+        inlineEvent();  // trigger the inline event from HTML file
+        console.log('second event'); // trigger additional functionality with the same click
+    }
 }
 ```
 #### Dot-notation Invent Handling (another way to do it)
