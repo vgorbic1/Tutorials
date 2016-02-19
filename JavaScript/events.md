@@ -92,7 +92,34 @@ function eventListenerEvent() {
     console.log('standards compliant event ' + this.value);
 }
 ```
+Use the event listener when you have several things going when one button is clicked:
+```javascript
+// HTML
+<input type="button" id="btn" value="click me" />
+<script>init();</script>  // put after </html>
 
+// JavaScript file
+function init() {
+    var btn = document.getElementById('btn');
+    if (window.addEventListenetr) {
+        btn.addEventListener("click", sendEmail, false);
+        btn.addEventListener("click", reorderInventory, false);
+        btn.addEventListener("click", updateStock, false);
+    }
+}
+
+function sendEmail() {
+  // send email
+}
+
+function reorderInventory() {
+  // reorder inventory
+}
+
+function updateStock() {
+  // update stock
+}
+```
 #### onclick
 ```javascript
 <h1 id="header">Header</h1>
