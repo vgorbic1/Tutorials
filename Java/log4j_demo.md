@@ -10,6 +10,13 @@
 - Create a log4j.properties file in the resources directory. Sample:
 ```
 # Set root logger level to INFO, a console appender and a file appender.
+# The hierarchy:
+# TRACE - all possible messages will be displayed!
+# DEBUG - useful for debugging. All, except trace messages will be displayed.
+# INFO - standard level. All warnings, error, and fatal messages will be displayed.
+# WARN - warnings, error, and fatal messages will be displayed.
+# ERROR - error and fatal messages will be displayed.
+# FATAL - fatal messages will be displayed only.
 log4j.rootLogger=TRACE, CONSOLE, FILE
 
 # CONSOLE is set to be a ConsoleAppender.
