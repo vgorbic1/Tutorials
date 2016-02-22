@@ -231,3 +231,4 @@ Hibernate: insert into CategoryArticle (CATEGORY_ID, ARTICLE_ID) values (?, ?)
 Hibernate: insert into CategoryArticle (CATEGORY_ID, ARTICLE_ID) values (?, ?)
 Hibernate: insert into CategoryArticle (CATEGORY_ID, ARTICLE_ID) values (?, ?)
 ```
+[SOURCE](http://www.codejava.net/frameworks/hibernate/hibernate-one-to-many-using-join-table-xml-mapping-example)
