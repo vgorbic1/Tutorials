@@ -9,7 +9,6 @@ import javax.servlet.annotation.*;
 /**
  * This is a simple servlet to show data
  * taken from properties file
- *
  *@author Vlad Gorbich
  */
 @WebServlet (
@@ -29,7 +28,7 @@ public class PropertiesServlet extends HttpServlet {
      * @throws ServletException
      */
     public void init() throws ServletException {
-        loadProperties("/project2.properties");
+        loadProperties("/project.properties");
     }
 
     /**
@@ -118,7 +117,7 @@ public class PropertiesServlet extends HttpServlet {
 
 }
 ```
-This is the property file (just a plain text file):
+This is the property file (just a plain text file named `project.properties`)
 ```
 author=Vlad Gorbich
 author.email.address=example@site.com
