@@ -2,7 +2,7 @@
 This demonstrates Hibernate with MySQL database.
 
 #### Step 1
-Add hibernate external libraries or plugin. Make sure you have geronimo.jar library plugged in.
+Add hibernate external libraries or plugin. Make sure you have `geronimo-osgi-locator-1.0.jar` library plugged in.
 
 #### Step 2
 Create the Hibernate configuration XML file in resources directory and name it *hibernate.cfh.xml*
