@@ -215,3 +215,4 @@ Hibernate: insert into PRODUCT (NAME, DESCRIPTION, PRICE, CATEGORY_ID) values (?
 Hibernate: insert into PRODUCT (NAME, DESCRIPTION, PRICE, CATEGORY_ID) values (?, ?, ?, ?)
 Hibernate: insert into PRODUCT (NAME, DESCRIPTION, PRICE, CATEGORY_ID) values (?, ?, ?, ?)
 ```
+[SOURCE](http://www.codejava.net/frameworks/hibernate/hibernate-one-to-many-xml-mapping-example)
