@@ -140,24 +140,24 @@ function init() {
 	btn.onclick = addCourse;
 	// The following is a collection of objects that we already have:
 	courses = [
-					{
-						"title":"asp",
-						"printDetails":function() {
-											alert(this.title);
-										}
-					}, 
-					{
-						"title":"php",
-						"printDetails":function() {
-											alert(this.title);
-										}
-					}, 
-					{
-						"title":"java",
-						"printDetails":function() {
-											alert(this.title);
-										}
-					}
-					];
+			{
+			"title":"asp",
+			"printDetails":function() {
+					alert(this.title);
+				}
+			}, 
+			{
+			"title":"php",
+			"printDetails":function() {
+					alert(this.title);
+				}
+			}, 
+			{
+			"title":"java",
+			"printDetails":function() {
+					alert(this.title);
+				}
+			}
+	];
 }
 ```
