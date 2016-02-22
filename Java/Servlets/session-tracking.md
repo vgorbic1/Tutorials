@@ -25,7 +25,7 @@ To remove session data:
 session.removeAttribute("attribute_name");
 ```
 
-Examples:
+**Examples:**
 
 Getting an Attribute Servlet
 ```java
