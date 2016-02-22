@@ -1,3 +1,5 @@
-# Covers Tutorial books in each section
+# All images for the tutorials
+/images/
 
-Java/books
+# Covers Tutorial books in each section
+/Java/books
