@@ -38,7 +38,7 @@ Collection of objecs in JSON will look like:
 ```
 
 #### Syntax
-JSON workd with 'key:value' pairs, separated by comma.
+JSON works with 'key:value' pairs, separated by comma.
 If a collection of sutdent objects has an `id` as a property, it will look like this:
 ```javascript
 [
@@ -47,4 +47,19 @@ If a collection of sutdent objects has an `id` as a property, it will look like 
   ['id':3}
 ]
 ```
-Keys are typically strings, and have to be placed in quotes.
+Keys are typically strings, and have to be placed in quotes. If we have several properties, separate them with a comma too:
+```javascript
+[
+  {'id':1, 'name':'Peter'},
+  {'id':2, 'name':'John'},
+  ['id':3, 'name':'James'}
+]
+We can have an object(s) included into anothe object:
+```javascript
+[
+  {'id':1, 'name':'Peter', 'courses':[{}, {}, {}]},
+  {'id':2, 'name':'John'},
+  ['id':3, 'name':'James'}
+]
+
+#### Using JSON
