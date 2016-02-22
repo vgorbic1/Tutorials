@@ -54,6 +54,7 @@ Keys are typically strings, and have to be placed in quotes. If we have several 
   {'id':2, 'name':'John'},
   ['id':3, 'name':'James'}
 ]
+```
 We can have an object(s) included into anothe object:
 ```javascript
 [
@@ -61,5 +62,38 @@ We can have an object(s) included into anothe object:
   {'id':2, 'name':'John'},
   ['id':3, 'name':'James'}
 ]
-
+```
 #### Using JSON
+To loop through all objects in a collection and get vslues of their properties:
+```javascript
+var courses = [{'title':'asp'}, {'title':'php'}, {'title':'java'}];
+
+for (var i = 0; i < courses.length; i++) {
+    console.log(courses[i].title);
+}
+```
+To add functions:
+```javascript
+var courses = [
+               {'title':'asp',
+                'printDetails':function() {
+                                   alert(this.title);
+                               }
+               }, 
+               {'title':'php',
+                'printDetails':function() {
+                                   alert(this.title);
+                               }
+               },
+               {'title':'java',
+                'printDetails':function() {
+                                   alert(this.title);
+                               }
+               }
+              ];
+
+for (var i = 0; i < courses.length; i++) {
+    console.log(courses[i].title);
+    courses[i].printDetails();
+}
+```
