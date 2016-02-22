@@ -63,7 +63,7 @@ We can have an object(s) included into anothe object:
   ['id':3, 'name':'James'}
 ]
 ```
-#### Using JSON
+#### Simple use of JSON
 To loop through all objects in a collection and get vslues of their properties:
 ```javascript
 var courses = [{'title':'asp'}, {'title':'php'}, {'title':'java'}];
@@ -95,5 +95,69 @@ var courses = [
 for (var i = 0; i < courses.length; i++) {
     console.log(courses[i].title);
     courses[i].printDetails();
+}
+```
+#### Populating JSON
+Create an interface to populate JSON in HTML file:
+```html
+<div id="name">
+	<label for="course_title">Course Title</label>
+		<input type="text" name="course_title" value="" id="course_title">
+</div>
+	<input type="button" value="add course" id="btnAddCourse">
+</html>
+<script>init();</script>
+```
+Create the JavaScript file:
+```javascript
+var courses; //create a global variable to hold all course objects
+
+function addCourse() {
+	var userTitle = document.getElementById("course_title");
+	var title = userTitle.value;
+	userTitle.value = ""; // clear the field
+	var newCourse = { // create a placeholder for each new course
+						"title":title,
+						"printDetails": function() {
+							alert(this.title);
+						}
+					};
+	courses.push(newCourse); // add new course to the collection of courses
+	courses[0].inactive = true; // make the first course inactive (optional)
+	outputCourses(); // display all courses on the console
+}
+
+function outputCourses() {
+	for(var i=0; i < courses.length; i++) {
+		if(!courses[i].inactive) { // check whether the course is inactive
+			console.log(courses[i].title);
+		}
+	}
+}
+
+function init() { 
+	var btn = document.getElementById("btnAddCourse");
+	btn.onclick = addCourse;
+	// The following is a collection of objects that we already have:
+	courses = [
+					{
+						"title":"asp",
+						"printDetails":function() {
+											alert(this.title);
+										}
+					}, 
+					{
+						"title":"php",
+						"printDetails":function() {
+											alert(this.title);
+										}
+					}, 
+					{
+						"title":"java",
+						"printDetails":function() {
+											alert(this.title);
+										}
+					}
+					];
 }
 ```
