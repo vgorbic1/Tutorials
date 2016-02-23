@@ -60,9 +60,9 @@ This is how the configuration file was used before:
 **Process:**
 
 To add a new JSP page to your web app you need to do these steps:
--1 Create your .jsp file and place it in your public_html/ directory.
--2 Open the web.xml file from your config directory.
--3 In the Servlet and JSP Declarations section of the web.xml file, add an element:
+- Create your .jsp file and place it in your public_html/ directory.
+- Open the web.xml file from your config directory.
+- In the Servlet and JSP Declarations section of the web.xml file, add an element:
 ```xml
 <servlet>
  <servlet-name>Declarations</servlet-name>
@@ -70,12 +70,12 @@ To add a new JSP page to your web app you need to do these steps:
 </servlet>
 ```
 The `<servlet-name>` can be anything you want without spaces. It will have to be unique from all the other declarations. The `<jsf-file>` is the name of the jsp file. You will have to all the “/” to the front of the name. If you have your jsp files in another directory inside of public_html, then you need to add: /jsp/declarations.jsp.
--4 Add a mapping element to the Servlet and JSP Mappings section of the web.xml file. The `<servlet-name>` must match the declaration element that you are mapping to. The `<url-pattern>` element can be anything you want without spaces. You can even map to a different extension, like .html or .asp. I recommend not using an extension and making a nice simple, pretty URL. You should not use an extension of .jsp!
+- Add a mapping element to the Servlet and JSP Mappings section of the web.xml file. The `<servlet-name>` must match the declaration element that you are mapping to. The `<url-pattern>` element can be anything you want without spaces. You can even map to a different extension, like .html or .asp. I recommend not using an extension and making a nice simple, pretty URL. You should not use an extension of .jsp!
 
 #### To add a new servlet to your web app:
 
--1 Create your packaged servlet class and place it in the correct directory for that package.
--2 In the Servlet and JSP Declarations section of the web.xml file, add an element:
+- Create your packaged servlet class and place it in the correct directory for that package.
+- In the Servlet and JSP Declarations section of the web.xml file, add an element:
 ```xml
 <servlet>
  <servlet-name>TrivialServlet</servlet-name>
@@ -83,7 +83,7 @@ The `<servlet-name>` can be anything you want without spaces. It will have to be
 </servlet>
 ```
 The <servlet-name> can be anything you want without spaces. It will have to be unique from all the other declarations. The <servlet-class> element will be the full package name of your class.
--3 Add a mapping element to the Servlet and JSP Mappings section of the web.xml file:
+- Add a mapping element to the Servlet and JSP Mappings section of the web.xml file:
 ```xml
 <servlet-mapping>
  <servlet-name>TrivialServlet</servlet-name>
