@@ -67,3 +67,6 @@ WSDL is an XML-based language for describing web services and how to access them
 - WSDL is an integral part of UDDI, an XML-based worldwide business registry.
 - WSDL is the language that UDDI uses.
 - WSDL is pronounced as 'wiz-dull' and spelled out as 'W-S-D-L'.
+
+#### Security
+Neither XML-RPC nor SOAP specifications make any explicit security or authentication requirements. There is currently no easy answer to this problem, and it has been the subject of much debate. For now, if you are truly intent on filtering out SOAP or XML-RPC messages, one possibility is to filter out all HTTP POST requests that set their content type to text/xml. Another alternative is to filter the SOAPAction HTTP header attribute. Firewall vendors are also currently developing tools explicitly designed to filter web service traffic.
