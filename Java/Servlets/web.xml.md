@@ -1,6 +1,6 @@
-WEB.XML File
-
+## WEB.XML File
 The web.xml file is where your web app is configured. Here’s the basic structure of the web.xml file we started out with:
+```xml
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -18,11 +18,12 @@ The web.xml file is where your web app is configured. Here’s the basic structu
     <welcome-file>/WEB-INF/index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
-
-THE OLD WAY
+```
+#### Configuring Servlets (The old way)
 When you add a JSP page or a Servlet to your web app, you need to both declare them and map them.
 All the declarations have to be together and all the mappings have to be together. You can’t intermingle them!
 This is how the configuration file was used before:
+```xml
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
@@ -55,34 +56,43 @@ This is how the configuration file was used before:
     <url-pattern>/trivial</url-pattern>
   </servlet-mapping>
 </web-app>
+```
+**Process:**
 
-Process:
 To add a new JSP page to your web app you need to do these steps:
-1. Create your .jsp file and place it in your public_html/ directory.
-2. Open the web.xml file from your config directory.
-3. In the Servlet and JSP Declarations section of the web.xml file, add an element like this:
+-1 Create your .jsp file and place it in your public_html/ directory.
+-2 Open the web.xml file from your config directory.
+-3 In the Servlet and JSP Declarations section of the web.xml file, add an element:
+```xml
 <servlet>
  <servlet-name>Declarations</servlet-name>
  <jsp-file>/declarations.jsp</jsp-file>
 </servlet>
-The <servlet-name> can be anything you want without spaces. It will have to be unique from all the other declarations. The <jsf-file> is the name of the jsp file. You will have to all the “/” to the front of the name. If you have your jsp files in another directory inside of public_html, then you need to add: /jsp/declarations.jsp.
-4. Add a mapping element to the Servlet and JSP Mappings section of the web.xml file. The <servlet-name> must match the declaration element that you are mapping to. The <url-pattern> element can be anything you want without spaces. You can even map to a different extension, like .html or .asp. I recommend not using an extension and making a nice simple, pretty URL. You should not use an extension of .jsp!
-To add a new servlet to your web app you need to follow these steps:
-1. Create your packaged servlet class and place it in the correct directory for that package.
-2. In the Servlet and JSP Declarations section of the web.xml file, add an element like this.
+```
+The `<servlet-name>` can be anything you want without spaces. It will have to be unique from all the other declarations. The `<jsf-file>` is the name of the jsp file. You will have to all the “/” to the front of the name. If you have your jsp files in another directory inside of public_html, then you need to add: /jsp/declarations.jsp.
+-4 Add a mapping element to the Servlet and JSP Mappings section of the web.xml file. The `<servlet-name>` must match the declaration element that you are mapping to. The `<url-pattern>` element can be anything you want without spaces. You can even map to a different extension, like .html or .asp. I recommend not using an extension and making a nice simple, pretty URL. You should not use an extension of .jsp!
+
+#### To add a new servlet to your web app:
+
+-1 Create your packaged servlet class and place it in the correct directory for that package.
+-2 In the Servlet and JSP Declarations section of the web.xml file, add an element:
+```xml
 <servlet>
  <servlet-name>TrivialServlet</servlet-name>
  <servlet-class>java112.project2.TrivialServlet</servlet-class>
 </servlet>
+```
 The <servlet-name> can be anything you want without spaces. It will have to be unique from all the other declarations. The <servlet-class> element will be the full package name of your class.
-3. Add a mapping element to the Servlet and JSP Mappings section of the web.xml file:
+-3 Add a mapping element to the Servlet and JSP Mappings section of the web.xml file:
+```xml
 <servlet-mapping>
  <servlet-name>TrivialServlet</servlet-name>
  <url-pattern>/trivial</url-pattern>
 </servlet-mapping>
-The <servlet-name> element must match the declaration that you are mapping to. The <url-pattern> element can be anything you want without spaces. You can even map to a different extension, like .html or .asp. I recommend not using an extension and making a nice simple, pretty URL. You should also not use the word “servlet” in this URL.
+```
+The `<servlet-name>` element must match the declaration that you are mapping to. The `<url-pattern>` element can be anything you want without spaces. You can even map to a different extension, like .html or .asp. I recommend not using an extension and making a nice simple, pretty URL. You should also not use the word “servlet” in this URL.
 
-Accessing Mapped Pages and Servlets:
+#### Accessing Mapped Pages and Servlets:
 In your web app, you will always use the mapped URL when accessing your pages and servlets.
-<li><a href="/java112/declarations">JSP Declarations</a></li>
-You need to have the name of your web app in front of the mapped URL. In this case that’s “/java112/”.
+<li><a href="/app/declarations">JSP Declarations</a></li>
+You need to have the name of your web app in front of the mapped URL. In this case that’s “/app/”.
