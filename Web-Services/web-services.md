@@ -11,6 +11,14 @@ To summarize, a complete web service is, therefore, any service that:
 - Is self-describing via a common XML grammar
 - Is discoverable via a simple find mechanism
 
+#### Types of Web Services
+There are mainly two types of web services.
+- SOAP web services. (SOAP stands for Simple Object Access Protocol). SOAP is XML based protocol. It is platform independent and language independent. By using SOAP, you will be able to interact with other programming language applications. SOAP defines its own security known as WS Security. SOAP uses XML format that must be parsed to be read. It defines many standards that must be followed while developing the SOAP applications. So it is slow and consumes more bandwidth and resource. SOAP uses WSDL and doesn't have any other mechanism to discover the service.
+- RESTful web services. (SOAP uses WSDL and doesn't have any other mechanism to discover the service.) REST is an architectural style not a protocol. RESTful Web Services are fast because there is no strict specification like SOAP. It consumes less bandwidth and resource. RESTful web services can use SOAP web services as the implementation. RESTful web service permits different data format such as Plain Text, HTML, XML and JSON.
+
+#### Service Oriented Architecture (SOA)
+Service Oriented Architecture or SOA is a design pattern. It is designed to provide services to other applications through protocol. It is a concept only and not tied to any programming language or platform. **Service** is well-defined, self-contained function that represents unit of functionality. A service can exchange information from another service. It is not dependent on the state of another service. Service consumer sends service request to the service provider and service provider sends the service response to the service consumer. The service connection is understandable to both service consumer and service provider.
+
 #### Components of Web Services
 The basic web services platform is XML + HTTP. All the standard web services work using the following components:
 - SOAP (Simple Object Access Protocol)
