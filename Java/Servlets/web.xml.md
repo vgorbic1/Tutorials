@@ -69,7 +69,7 @@ To add a new JSP page to your web app you need to do these steps:
  <jsp-file>/declarations.jsp</jsp-file>
 </servlet>
 ```
-The `<servlet-name>` can be anything you want without spaces. It will have to be unique from all the other declarations. The `<jsf-file>` is the name of the jsp file. You will have to all the “/” to the front of the name. If you have your jsp files in another directory inside of public_html, then you need to add: /jsp/declarations.jsp.
+The `<servlet-name>` can be anything you want without spaces. It will have to be unique from all the other declarations. The `<jsp-file>` is the name of the jsp file. You will have to all the “/” to the front of the name. If you have your jsp files in another directory inside of public_html, then you need to add: /jsp/declarations.jsp.
 - Add a mapping element to the Servlet and JSP Mappings section of the web.xml file. The `<servlet-name>` must match the declaration element that you are mapping to. The `<url-pattern>` element can be anything you want without spaces. You can even map to a different extension, like .html or .asp. I recommend not using an extension and making a nice simple, pretty URL. You should not use an extension of .jsp!
 
 #### To add a new servlet to your web app:
@@ -94,5 +94,7 @@ The `<servlet-name>` element must match the declaration that you are mapping to.
 
 #### Accessing Mapped Pages and Servlets:
 In your web app, you will always use the mapped URL when accessing your pages and servlets.
+```
 <li><a href="/app/declarations">JSP Declarations</a></li>
+```
 You need to have the name of your web app in front of the mapped URL. In this case that’s “/app/”.
