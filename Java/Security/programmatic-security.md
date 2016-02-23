@@ -54,3 +54,67 @@ security-constraint element to designate the URLs to which the access
 restrictions apply. You still use the user-data-constraint element to specify
 that certain URLs require SSL.
 
+#### Security Role References
+The `security-role-ref` subelement of servlet lets you define servlet-specific
+synonyms for existing role names. This element should contain three possible subelements:
+`description` (optional descriptive text), `role-name` (the new synonym),
+and `role-link` (the existing security role) in web.xml file:
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+<!-- ... -->
+<servlet>
+  <servlet-name>BookInformation</servlet-name>
+  <servlet-class>catalog.BookInfo</servlet-class>
+  <security-role-ref>
+    <role-name>writer</role-name> <!-- New alias. -->
+    <role-link>author</role-link> <!-- Preexisting role. -->
+  </security-role-ref>
+</servlet>
+
+<servlet>
+  <servlet-name>EmployeeInformation</servlet-name>
+  <servlet-class>hr.EmployeeData</servlet-class>
+  <security-role-ref>
+    <role-name>goodguy</role-name> <!-- New. -->
+    <role-link>nobleSpirited</role-link> <!-- Preexisting. -->
+  </security-role-ref>
+  <security-role-ref>
+    <role-name>meanie</role-name> <!-- New. -->
+    <role-link>meanSpirited</role-link> <!-- Preexisting. -->
+  </security-role-ref>
+</servlet>
+<!-- ... -->
+<security-constraint>...</security-constraint>
+<login-config>...</login-config>
+<!-- ... -->
+</web-app>
+```
+
+#### Handling All Security Programmatically
+In some cases, however, you might want a servlet or
+JSP page to be entirely self-contained with no dependencies on server-specific settings
+or even web.xml entries. Although this approach requires a lot more work, it
+means that the servlet or JSP page can be ported from server to server with much
+less effort than with container-managed security. Furthermore, it lets the servlet or
+JSP page use username and password schemes other than an exact match to a preconfigured
+list.
+
+HTTP supports two varieties of authentication: BASIC and DIGEST. Few browsers
+support DIGEST, so let's concentrate on BASIC here.
+Here is a summary of the steps involved for BASIC authorization:
+1. Check whether there is an Authorization request header.
+If there is no such header, go to Step 5.
+1. Get the encoded username/password string. If there is an
+Authorization header, it should have the following form:
+Authorization: Basic encodedData
+Skip over the word Basic—the remaining part is the username and
+password represented in base64 encoding.
+1. Reverse the base64 encoding of the username/password string.
+Use the decodeBuffer method of the BASE64Decoder class. This
+method call results in a string of the form username:password.
+The BASE64Decoder class is bundled with the JDK; in JDK 1.3 it
+can be found in the sun.misc package in jdk_install_dir/jre/lib/rt.jar.
