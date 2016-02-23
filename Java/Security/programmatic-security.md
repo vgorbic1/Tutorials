@@ -107,15 +107,14 @@ HTTP supports two varieties of authentication: BASIC and DIGEST. Few browsers
 support DIGEST, so let's concentrate on BASIC here.
 Here is a summary of the steps involved for BASIC authorization:
 
-1. Check whether there is an Authorization request header.
-If there is no such header, go to Step 5.
-2. Get the encoded username/password string. If there is an
-Authorization header, it should have the following form:
-Authorization: Basic encodedData
-Skip over the word Basic—the remaining part is the username and
-password represented in base64 encoding.
-3. Reverse the base64 encoding of the username/password string.
-Use the decodeBuffer method of the BASE64Decoder class. This
-method call results in a string of the form username:password.
-The BASE64Decoder class is bundled with the JDK; in JDK 1.3 it
+1. Check whether there is an Authorization request header. If there is no such header, go to Step 5.
+2. Get the encoded username/password string. If there is an Authorization header, it should have the following form:
+`Authorization: Basic encodedData` Skip over the word `Basic` —the remaining part is the username and password represented in base64 encoding.
+3. Reverse the base64 encoding of the username/password string. Use the decodeBuffer method of the BASE64Decoder class. This
+method call results in a string of the form username:password. The BASE64Decoder class is bundled with the JDK; in JDK 1.3 it
 can be found in the sun.misc package in jdk_install_dir/jre/lib/rt.jar.
+4. Check the username and password. The most common approach is to use a database or a file to obtain the real usernames and passwords. For simple cases, it is also possible to place the password information directly in the servlet. In such a case, remember that access to the servlet source code or class file provides access to the passwords. If the incoming username and password match one of the reference username/password pairs, return the page. If not, go to Step 5. With this approach you can provide your own definition of “match.” With container-managed security, you cannot.
+5. When authentication fails, send the appropriate response to the client. Return a 401 (Unauthorized) response code and a
+header of the following form: `WWW-Authenticate: BASIC realm="some-name"` This response instructs the browser to pop up a dialog box telling the user to enter a name and password for some-name, then to reconnect with that username and password embedded in a single base64 string inside the Authorization header.
+
+*Check for an Example in the books directory under Programmatic-security.pdf*
