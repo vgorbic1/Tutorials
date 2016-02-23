@@ -214,3 +214,11 @@ if (isOperator) { ...
 #### The Model 1 Architecture
 The simplest way to separate presentation and logic is to move the bulk of the application logic from JSP to Java classes (i.e., Java beans), which can then be used within JSP:
 
+![model1](https://cloud.githubusercontent.com/assets/13823751/13238020/cceea14c-d995-11e5-9fd9-6d726b879866.jpg)
+
+#### The Model 2 Architecture
+A better solution, more suitable for larger applications, is to split the functionality further and use JSP exclusively to format the HTML pages. This solution comes in the form of the JSP Model 2 architecture, also known as the model-view-controller (MVC):
+
+![model2](https://cloud.githubusercontent.com/assets/13823751/13238056/fd19d18e-d995-11e5-90ec-f491018984bd.jpg)
+
+With this model, a servlet processes the request, handles the application logic, and instantiates Java beans. JSP obtains data from the beans and can format the response without having to know anything about what’s going on behind the scenes.
