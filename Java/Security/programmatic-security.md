@@ -106,14 +106,15 @@ list.
 HTTP supports two varieties of authentication: BASIC and DIGEST. Few browsers
 support DIGEST, so let's concentrate on BASIC here.
 Here is a summary of the steps involved for BASIC authorization:
+
 1. Check whether there is an Authorization request header.
 If there is no such header, go to Step 5.
-1. Get the encoded username/password string. If there is an
+2. Get the encoded username/password string. If there is an
 Authorization header, it should have the following form:
 Authorization: Basic encodedData
 Skip over the word Basic—the remaining part is the username and
 password represented in base64 encoding.
-1. Reverse the base64 encoding of the username/password string.
+3. Reverse the base64 encoding of the username/password string.
 Use the decodeBuffer method of the BASE64Decoder class. This
 method call results in a string of the form username:password.
 The BASE64Decoder class is bundled with the JDK; in JDK 1.3 it
