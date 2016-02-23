@@ -6,4 +6,6 @@
 * [HTML5](../master/HTML/)
 * [CSS](../master/HTML/)
 * [SQL](../master/SQL/)
+* [Git](../master/Git/)
+* [Web Services](../master/Web-Services/)
 * [Encoding](../master/Encoding/)
