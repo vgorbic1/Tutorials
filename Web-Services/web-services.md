@@ -32,3 +32,38 @@ Example of steps to perform for a simple account-management and order processing
 
 Web services use SOAP over HTTP protocol, so you can use your existing low-cost internet for implementing web services. This solution is much less costly compared to proprietary solutions like EDI/B2B. Besides SOAP over HTTP, web services can also be implemented on other reliable transport mechanisms like FTP.
 
+#### Architecture
+There are three major roles within the web service architecture:
+- **Service Provider** is the provider of the web service. The service provider implements the service and makes it available on the Internet.
+- **Service Requestor** is any consumer of the web service. The requestor utilizes an existing web service by opening a network connection and sending an XML request.
+- **Service Registry** is a logically centralized directory of services. The registry provides a central place where developers can publish new services or find existing ones. It therefore serves as a centralized clearing house for companies and their services.
+
+#### Web Service Protocol Stack
+- **Service Transport** This layer is responsible for transporting messages between applications. Currently, this layer includes Hyper Text Transport Protocol (HTTP), Simple Mail Transfer Protocol (SMTP), File Transfer Protocol (FTP), and newer protocols such as Blocks Extensible Exchange Protocol (BEEP), which is a promising alternative to HTTP. Most firewalls allow HTTP traffic. This allows XML-RPC or SOAP messages to masquerade as HTTP messages. This is good if you want to integrate remote applications, but it does raise a number of security concerns.
+- **XML Messaging** This layer is responsible for encoding messages in a common XML format so that messages can be understood at either end. Currently, this layer includes XML-RPC and SOAP. XML-RPC is the simplest XML-based protocol for exchanging information between computers. SOAP is not tied to any specific transport protocol. In fact, you can use SOAP via HTTP, SMTP, or FTP.
+- **Service Description** This layer is responsible for describing the public interface to a specific web service. Currently, service description is handled via the Web Service Description Language (WSDL). 
+- **Service Discovery** This layer is responsible for centralizing services into a common registry and providing easy publish/find functionality. Currently, service discovery is handled via Universal Description, Discovery, and Integration (UDDI). 
+
+#### SOAP
+SOAP is an XML-based protocol for exchanging information between computers.
+- SOAP is a communication protocol.
+- SOAP is for communication between applications.
+- SOAP is a format for sending messages.
+- SOAP is designed to communicate via Internet.
+- SOAP is platform independent.
+- SOAP is language independent.
+- SOAP is simple and extensible.
+- SOAP allows you to get around firewalls.
+- SOAP will be developed as a W3C standard.
+
+#### WSDL
+WSDL is an XML-based language for describing web services and how to access them.
+- WSDL stands for Web Services Description Language.
+- WSDL was developed jointly by Microsoft and IBM.
+- WSDL is an XML based protocol for information exchange in decentralized and distributed environments.
+- WSDL is the standard format for describing a web service.
+- WSDL definition describes how to access a web service and what operations it will perform.
+- WSDL is a language for describing how to interface with XML-based services.
+- WSDL is an integral part of UDDI, an XML-based worldwide business registry.
+- WSDL is the language that UDDI uses.
+- WSDL is pronounced as 'wiz-dull' and spelled out as 'W-S-D-L'.
