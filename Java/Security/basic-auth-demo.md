@@ -12,3 +12,35 @@ application and that it is very difficult to log in as a different user once you
 authenticated. In fact, once authenticated, you have to quit the browser and restart if
 you want to log in as a different user!
 
+#### Setting Up Usernames, Passwords, and Roles
+This step is exactly the same when BASIC authentication is used as when form-based
+authentication is used.
+
+#### Telling the Server You Are Using BASIC Authentication; Designating Realm
+You use the login-config element in the deployment descriptor to control the
+authentication method. To use BASIC authentication, supply a value of BASIC for
+the auth-method subelement and use the realm-name subelement to designate
+the realm that will be used by the browser in the popup dialog box and in the
+Authorization request header:
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+<!-- ... -->
+<security-constraint>...</security-constraint>
+<login-config>
+<auth-method>BASIC</auth-method>
+<realm-name>Some Name</realm-name>
+</login-config>
+<!-- ... -->
+</web-app>
+```
+#### Specifying URLs That Should Be Password Protected
+You designate password-protected resources in the same manner with BASIC authentication
+as you do with form-based authentication.
+
+#### Specifying URLs That Should Be Available Only with SSL
+You designate SSL-only resources in the same manner with BASIC authentication as
+you do with form-based authentication.
