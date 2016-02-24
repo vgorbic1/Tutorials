@@ -1,36 +1,51 @@
 ## Expression Language (EL)
-JSP 2.0 introduced a shorthand language for evaluating and outputting the values of Java objects that are stored in standard locations. The JSP expression language cannot be used in servers that support only
-JSP 1.2 or earlier.
+JSP 2.0 introduced a shorthand language for evaluating and outputting the values of Java objects that are stored in standard locations. The JSP expression language cannot be used in servers that support only JSP 1.2 or earlier.
 
-To permit the JSP page to access the data, the servlet needs to use setAttribute() to store the data in one of the standard locations: the HttpServletRequest, the HttpSession, or the ServletContext. Objects in these locations are known as “scoped variables,” and the expression language has a quick and easy way to access them. You can also have scoped variables stored in the PageContext object, but this is much less useful because the servlet and the JSP page do not share PageContext objects. Thus, page-scoped variables apply only to objects stored earlier in the same JSP page, not to objects stored by a servlet. To output a scoped variable, you simply use its name in an expression language element:
+To permit the JSP page to access the data, the servlet needs to use `setAttribute()` to store the data in one of the standard locations: the `HttpServletRequest`, the `HttpSession`, or the `ServletContext`. Objects in these locations are known as “scoped variables,” and the expression language has a quick and easy way to access them. You can also have scoped variables stored in the `PageContext` object, but this is much less useful because the servlet and the JSP page do not share `PageContext` objects. Thus, page-scoped variables apply only to objects stored earlier in the same JSP page, not to objects stored by a servlet. 
+
+To output a scoped variable, you simply use its name in an expression language element:
+```
 ${name}
-The expression searches the PageContext, HttpServletRequest, HttpSession, and ServletContext (in that order) for an attribute named "name". If the attribute is found, its toString() method is called and that result is returned. If nothing is found, an empty string (not null or an error message) is returned.
+```
+The expression searches `the PageContext`, `HttpServletRequest`, `HttpSession`, and `ServletContext` (in that order) for an attribute named "name". If the attribute is found, its `toString()` method is called and that result is returned. If nothing is found, an empty string (not null or an error message) is returned.
 
 The JSP expression language provides a simple but very powerful dot notation for accessing bean properties. To return the firstName property of a scoped variable named "customer", you merely use:
+```
 ${customer.firstName}
-
-The expression language lets you nest properties arbitrarily. For example, if the NameBean class had an address property (i.e., a getAddress() method) that returned an Address object with a zipCode property (i.e., a getZipCode() method), you could access this zipCode property with the following simple form.
+```
+The expression language lets you nest properties arbitrarily. For example, if the NameBean class had an address property (i.e., a getAddress() method) that returned an Address object with a zipCode property (i.e., a getZipCode() method), you could access this zipCode property with the following simple form:
+```
 ${customer.address.zipCode}
+```
+The expression language lets you replace dot notation with array notation (square brackets). So, for example, you can replace
+`${name.property}` with `${name["property"]}` The second form is rarely used with bean properties. However, it does have two advantages:
+- First, it lets you compute the name of the property at request time. With the array notation, the value inside the brackets can itself be a variable; with dot notation the property name must be a literal value.
+- Second, the array notation lets you use values that are illegal as property names. This is of no use when accessing bean properties, but it is very useful when accessing collections or request headers.
 
-The expression language lets you replace dot notation with array notation (square brackets). So, for example, you can replace ${name.property} with ${name["property"]}
-The second form is rarely used with bean properties. However, it does have two advantages:
-First, it lets you compute the name of the property at request time. With the array notation, the value inside the brackets can itself be a variable; with dot notation the property name must be a literal value.
-Second, the array notation lets you use values that are illegal as property names. This is of no use when accessing bean properties, but it is very useful when accessing collections or request headers.
-
-Access Collections
+#### Access Collections
 The JSP 2.0 expression language lets you access different types of collections in the same way: using array notation. For instance, if attributeName is a scoped variable referring to an array, List, or Map, you access an entry in the collection with the following:
+```
 ${attributeName[entryName]}
+```
 If the scoped variable is an array, the entry name is the index and the value is obtained with theArray[index]. For example, if customerNames refers to an array of strings, to get the first entry in the array you use:
+```
 ${customerNames[0]}
+```
 If the scoped variable is an object that implements the List interface, the entry name is the index and the value is obtained with theList.get(index). For example, if supplierNames refers to an ArrayList, to output the first entry in the ArrayList:
+```
 ${supplierNames[0]}
+```
 If the scoped variable is an object that implements the Map interface, the entry name is the key and the value is obtained with theMap.get(key). For example, if stateCapitals refers to a HashMap whose keys are U.S. state names and whose values are city names, to output "Annapolis"
+```
 ${stateCapitals["maryland"]}
+```
 If the Map key is of a form that would be legal as a Java variable name, you can replace the array notation with dot notation. So, the previous example could also be written as:
+```
 ${stateCapitals.maryland}
+```
 However, note that the array notation lets you choose the key at request time, whereas the dot notation requires you to know the key in advance.
 
-Access Implicit Objects
+### Access Implicit Objects
 The pageContext object refers to the PageContext of the current page. The PageContext class, in turn, has request, response, session, out, and servletContext properties (i.e., getRequest, getResponse, getSession,
 getOut, and getServletContext methods). So, for example, the following outputs the current session ID:
 ${pageContext.session.id}
