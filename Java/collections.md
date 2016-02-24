@@ -389,4 +389,15 @@ This would produce the following result: [A, B, C, D, E, F]
 
 ![list-set](https://cloud.githubusercontent.com/assets/13823751/13297812/d30341ae-daf9-11e5-86a7-de8e55160d10.jpg)
 
+#### Queue
+A Queue is an ordered list of actions that are to be processed and as such does not allow null elements. Typically, a Queue would be in FIFO (first-in, first-out) order although other orders such as LIFO (last-in, first-out), natural-ordering and custom comparator order are also possible.
+
+**PriorityQueue**
+
+A PriorityQueue is a sorted, ordered implementation of the Queue<E> interface that permits all elements except null. A PriorityQueue queue is ordered in PIPO (priority-in, priority-out) order. This is achieved by natural order or a custom comparator to do the sorting and elements sorted first get the highest priority, in other words the ordering of the elements represents their priority within the queue.
+Often when discusing Queues mention is made of the head and tail of the queue. The head of the Queue can be thought of as the least ordered element and the tail can be thought of as the most ordered element. So for instance via natural order of A, B, C and D: A is the head and D is the tail.
+
 #### Map
+![map](https://cloud.githubusercontent.com/assets/13823751/13298029/c8f5a39a-dafa-11e5-8fc0-6563cd56c08e.jpg)
+
+
