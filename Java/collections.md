@@ -18,3 +18,58 @@ Prior to Java 2, Java provided ad hoc classes such as Dictionary, Vector, Stack,
 
 Towards this end, the entire collections framework is designed around a set of standard interfaces. Several standard implementations such as LinkedList, HashSet, and TreeSet, of these interfaces are provided that you may use as-is and you may also implement your own collection, if you choose.
 
+#### Collection
+Collection interface enables you to work with groups of objects; it is at the top of the collections hierarchy.
+Regardless of what Collection subtype you are using there are a few standard methods to add and remove elements from a Collection:
+```java
+String anElement = "an element";
+Collection collection = new HashSet();
+boolean didCollectionChange = collection.add(anElement);
+boolean wasElementRemoved = collection.remove(anElement);   
+```
+Check if a collection contains a certain element:
+```java
+Collection collection = new HashSet();
+boolean containsElement = collection.contains("an element");
+Collection elements = new HashSet();
+boolean containsAll = collection.containsAll(elements);
+```
+To get a collection size:
+```java
+int numberOfElements = collection.size();
+```
+Iterating a Collection:
+```java
+Collection collection = new HashSet();
+//... add elements to the collection
+```
+Using iterator:
+```java
+Iterator iterator = collection.iterator();
+while (iterator.hasNext()){
+  Object object = iterator.next();
+    //do something to object;    
+}
+```
+Using for-loop:
+```java
+for (Object object : collection) {
+    //do something to object;
+}
+```
+The Collection interface can be generified:
+```java
+Collection<String> stringCollection = new HashSet<String>();
+```
+This stringCollection can now only contain String instances. If you try to add anything else, or cast the elements in the collection to any other type than String, the compiler will complain.
+
+#### Extensions of Collection interface
+- **LIST** stores an ordered collection of elements.
+- **SET** must contain unique elements.
+- **MAP** maps unique keys to values.
+- **ENUMERATION** is legacy interface and defines the methods by which you can enumerate (obtain one at a time) the elements in a collection of objects. This legacy interface has been superseded by Iterator.
+- 
+![collection-extensions](https://cloud.githubusercontent.com/assets/13823751/13295709/bbaf68a2-daef-11e5-99d8-b8ad0b832799.jpg)
+
+#### List
+
