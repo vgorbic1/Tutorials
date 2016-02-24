@@ -98,3 +98,52 @@ The example above requests a quotation of computer sets. Note that the m:GetQuot
 </SOAP-ENV:Envelope>
 ```
 Normally, the application also defines a schema to contain semantics associated with the request and response elements.
+
+#### Fault
+If an error occurs during processing, the response to a SOAP message is a SOAP fault element in the body of the message, and the fault is returned to the sender of the SOAP message. The SOAP fault mechanism returns specific information about the error, including a predefined code, a description, and the address of the SOAP processor that generated the fault.
+- A SOAP message can carry only one fault block.
+- Fault is an optional part of a SOAP message.
+- For HTTP binding, a successful response is linked to the 200 to 299 range of status codes.
+- SOAP Fault is linked to the 500 to 599 range of status codes.
+The following code is a sample Fault. The client has requested a method named ValidateCreditCard, but the service does not support such a method. This represents a client request error, and the server returns the following SOAP response:
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance" xmlns:xsd="http://www.w3.org/1999/XMLSchema">
+   <SOAP-ENV:Body>
+      <SOAP-ENV:Fault>
+         <faultcode xsi:type="xsd:string">SOAP-ENV:Client</faultcode>
+         <faultstring xsi:type="xsd:string">
+            Failed to locate method (ValidateCreditCard) in class (examplesCreditCard) at /usr/local/ActivePerl-5.6/lib/site_perl/5.6.0/SOAP/Lite.pm line 1555.
+         </faultstring>
+      </SOAP-ENV:Fault>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+#### Encoding
+SOAP includes a built-in set of rules for encoding data types. It enables the SOAP message to indicate specific data types, such as integers, floats, doubles, or arrays.SOAP data types are divided into two broad categories − scalar types and compound types. 
+- **Scalar types** contain exactly one value such as a last name, price, or product description. For scalar types, SOAP adopts all the built-in simple types specified by the XML Schema specification. This includes strings, floats, doubles, and integers. Compound types contain multiple values such as a purchase order or a list of stock quotes. SOAP response with a double data type:
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <SOAP-ENV:Body>
+      <ns1:getPriceResponse xmlns:ns1="urn:examples:priceservice"  SOAP-ENV:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+         <return xsi:type="xsd:double">54.99</return>
+      </ns1:getPriceResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+- Compound types are further subdivided into arrays and structs. SOAP response with an array of double values:
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <SOAP-ENV:Body>
+      <ns1:getPriceListResponse xmlns:ns1="urn:examples:pricelistservice"  SOAP-ENV:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+         <return xmlns:ns2="http://www.w3.org/2001/09/soap-encoding"  xsi:type="ns2:Array" ns2:arrayType="xsd:double[2]">
+            <item xsi:type="xsd:double">54.99</item>
+            <item xsi:type="xsd:double">19.99</item>
+         </return>
+      </ns1:getPriceListResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
