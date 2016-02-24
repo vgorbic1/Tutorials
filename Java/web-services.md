@@ -43,6 +43,7 @@ In WSDL file, it doesn't specify the types details: `<types/>`
 </operation>  
 </binding>  
 ```
+[EXAMPLE](http://www.javatpoint.com/jax-ws-example-rpc-style)
 
 **Document Style**
 
@@ -84,3 +85,63 @@ In WSDL file, it doesn't specify the types details: `<types/>`
 </operation>  
 </binding>  
 ```
+[EXAMPLE](http://www.javatpoint.com/jax-ws-example-document-style)
+
+#### JAX-RS
+There are two main implementation of JAX-RS API: Jersey and RESTEasy.
+
+Jersey: [EXAMPLE](http://www.javatpoint.com/jax-rs-example-jersey)
+
+Annotations: [EXAMPLE](http://www.javatpoint.com/jax-rs-annotations-example)
+
+JAX-RS File Download: [EXAMPLE](http://www.javatpoint.com/jax-rs-file-download-example)
+
+JAX-RS File Upload: [EXAMPLE](http://http://www.javatpoint.com/jax-rs-file-upload-example)
+
+#### Web Services Interview Questions
+*What is Web Service?*
+
+Web Service is a software system for communicating two devices over the network.
+
+*What are the advantages of web services?*
+By the help of web services, an application can communicate with other application developed in any language. We can expose the web service so that other applications can use it. We can create a service for a specific task such as tax calculation etc.
+
+*What are the different types of web services?*
+
+There are two types of web services: SOAP and RESTful.
+
+*What is SOAP?*
+
+SOAP stands for Simple Object Access Protocol. It is a XML-based protocol for accessing web services.
+
+*What are the advantages of SOAP web services?*
+
+SOAP has WS security, language independent, platform Independent
+
+*What are the disadvantages of SOAP web services?*
+
+SOAP is slower than RESTful and WSDL dependent.
+
+*What is WSDL?*
+
+WSDL stands for Web Services Description Language. It is a xml document containing information about web services such as method name, method parameter etc. 
+
+*What is RESTful web services?*
+
+REST stands for REpresentational State Transfer. It is a architectural style. It is not a protocol like SOAP.
+
+*What are the advantages of RESTful web services?*
+
+RESTful is fast, language independent, platform independent, can use SOAP, allows different data formats.
+
+*What is SOA?*
+
+SOA stands for Service Oriented Architecture. It is a design pattern to provide services to other application through protocol. 
+
+*What tools are used to test web services?*
+
+- SoapUI tool for testing SOAP and RESTful web services.
+- Poster for Firefox browser.
+- Postman extension for Chrome browser.
+
+[SOURCE](http://www.javatpoint.com/web-services-interview-questions)
