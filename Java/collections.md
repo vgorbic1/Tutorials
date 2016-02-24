@@ -195,6 +195,10 @@ List<String> list = new ArrayList<String>();
   // add elements to list
 for(String obj : list) {  }
 ```
+**Linked List** 
+
+In linkedList you can walk the list forwards or backwards, but finding a position in the list takes time proportional to the size of the list. Each element of a LinkedList has more memory overhead since pointers to the next and previous elements are also stored.
+
 LinkedList Example:
 ```java
 import java.util.*;
@@ -229,6 +233,10 @@ public class LinkedListDemo {
    }
 }
 ```
+**Array List** 
+
+ArrayList allow fast random read access, so you can grab any element in constant time. But adding or removing from anywhere but the end requires shifting all the latter elements over, either to make an opening or fill the gap. ArrayLists take up as much memory as is allocated for the capacity, regardless of whether elements have actually been added.
+
 ArrayList Example:
 ```java
 import java.util.*;
@@ -257,3 +265,128 @@ public class ArrayListDemo {
 }
 ```
 
+**Vector**
+
+A Vector is a resizable-array, ordered implementation of the List<E> interface that permits all elements including null. Vector allows random access to elements and is similar to ArrayList apart from being synchronized. In fact Vector is one of the two original collections shipped with Java, the other being Hashtable. Vector was retrofitted to implement List<E> interface, so that it became a part of The Collections Framework when the framework was introduced in version 1.2. There is no sound reason since the introduction of the ArrayList<E> class to use the Vector<E> class. If you need an ArrayList to be synchronized this can be achieved using methods of the Collections class without all the overheads of using Vector<E> synchronized methods.
+
+#### Set
+The java.util.Set interface is a subtype of the java.util.Collection interface. It represents set of objects, meaning each element can only exists once in a Set. You can choose between the following Set implementations in the Java Collections API: `java.util.EnumSet`, `java.util.HashSet`, `java.util.LinkedHashSet`, `java.util.TreeSet`.
+
+Create a set:
+```java
+Set setA = new EnumSet();
+Set setB = new HashSet();
+Set setC = new LinkedHashSet();
+Set setD = new TreeSet();
+```
+Adding an element to a set:
+```java
+Set setA = new HashSet();
+setA.add("element 1");
+setA.add("element 2");
+setA.add("element 3");
+```
+Iterate through a set:
+```java
+Set setA = new HashSet();
+setA.add("element 0");
+setA.add("element 1");
+setA.add("element 2");
+```
+Access via Iterator:
+```java
+Iterator iterator = setA.iterator();
+while(iterator.hasNext(){
+  String element = (String) iterator.next();
+}
+```
+Access via new for-loop:
+```java
+for(Object object : setA) {
+    String element = (String) object;
+}
+```
+Removing an element:
+```java
+You remove elements by calling the remove(Object o) method. There is no way to remove an object based on index in a Set, since the order of the elements depends on the Set implementation.
+```
+Sets can be generic:
+```java
+Set<MyObject> set = new HashSet<MyObject>();
+for(MyObject anObject : set){
+   //do someting to anObject...
+}
+```
+**HashSet**
+
+A hash table stores information by using a mechanism called hashing. In hashing, the informational content of a key is used to determine a unique value, called its hash code. The hash code is then used as the index at which the data associated with the key is stored. The transformation of the key into its hash code is performed automatically.
+```java
+import java.util.*;
+public class HashSetDemo {
+   public static void main(String args[]) {
+      // create a hash set
+      HashSet hs = new HashSet();
+      // add elements to the hash set
+      hs.add("B");
+      hs.add("A");
+      hs.add("D");
+      hs.add("E");
+      hs.add("C");
+      hs.add("F");
+      System.out.println(hs);
+   }
+}
+```
+This would produce the following result: [D, E, F, A, B, C]
+
+**LinkedHashSet**
+
+LinkedHashSet maintains a linked list of the entries in the set, in the order in which they were inserted. This allows insertion-order iteration over the set. That is, when cycling through a LinkedHashSet using an iterator, the elements will be returned in the order in which they were inserted. The hash code is then used as the index at which the data associated with the key is stored. The transformation of the key into its hash code is performed automatically.
+
+LinkedHashSet Example:
+```java
+import java.util.*;
+public class HashSetDemo {
+   public static void main(String args[]) {
+      // create a hash set
+      LinkedHashSet hs = new LinkedHashSet();
+      // add elements to the hash set
+      hs.add("B");
+      hs.add("A");
+      hs.add("D");
+      hs.add("E");
+      hs.add("C");
+      hs.add("F");
+      System.out.println(hs);
+   }
+}
+```
+This would produce the following result: [B, A, D, E, C, F]
+
+**TreeSet**
+
+Objects are stored in sorted, ascending order. Access and retrieval times are quite fast, which makes TreeSet an excellent choice when storing large amounts of sorted information that must be found quickly.
+
+Tree Set Example:
+```java
+import java.util.*;
+public class TreeSetDemo {
+   public static void main(String args[]) {
+      // Create a tree set
+      TreeSet ts = new TreeSet();
+      // Add elements to the tree set
+      ts.add("C");
+      ts.add("A");
+      ts.add("B");
+      ts.add("E");
+      ts.add("F");
+      ts.add("D");
+      System.out.println(ts);
+   }
+}
+```
+This would produce the following result: [A, B, C, D, E, F]
+
+| LIST || SET |
+| duplicates || no duplicates |
+|
