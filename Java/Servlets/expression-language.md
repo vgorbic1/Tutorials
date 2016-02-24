@@ -46,23 +46,36 @@ ${stateCapitals.maryland}
 However, note that the array notation lets you choose the key at request time, whereas the dot notation requires you to know the key in advance.
 
 ### Access Implicit Objects
-The pageContext object refers to the PageContext of the current page. The PageContext class, in turn, has request, response, session, out, and servletContext properties (i.e., getRequest, getResponse, getSession,
+The `pageContext` object refers to the PageContext of the current page. The PageContext class, in turn, has request, response, session, out, and servletContext properties (i.e., getRequest, getResponse, getSession,
 getOut, and getServletContext methods). So, for example, the following outputs the current session ID:
+```
 ${pageContext.session.id}
+```
 These objects let you access the primary request parameter value (param) or the array of request parameter values (paramValues):
+```
 ${param.custID}
+```
 These objects access the primary and complete HTTP request header values, respectively. Remember that dot notation cannot be used when the value after the dot would be an illegal property name:
-${header.Accept} or ${header["Accept"]}
-The cookie object lets you quickly reference incoming cookies. However, the return value is the Cookie object, not the cookie value. To access the value, use the standard value property (i.e., the getValue method) of the Cookie class:
+```
+${header.Accept} 
+// or 
+${header["Accept"]}
+```
+The `cookie` object lets you quickly reference incoming cookies. However, the return value is the Cookie object, not the cookie value. To access the value, use the standard value property (i.e., the getValue method) of the Cookie class:
+```
 ${cookie.userCookie.value}
 ${cookie["userCookie"].value}
-The initParam object lets you easily access context initialization parameters:
+```
+The `initParam` object lets you easily access context initialization parameters:
+```
 ${initParam.defaultColor}
-PageScope, requestScope, sessionScope, and applicationScope: these objects let you restrict where the system looks for scoped variables. For example, with
-${name} the system searches for name in the PageContext, the HttpServletRequest, the HttpSession, and the ServletContext, returning the first match it finds. On the other hand, with ${requestScope.name} the system only looks in the HttpServletRequest.
+```
+`PageScope`, `requestScope`, `sessionScope`, and `applicationScope`: these objects let you restrict where the system looks for scoped variables. For example, with
+`${name}` the system searches for name in the PageContext, the HttpServletRequest, the HttpSession, and the ServletContext, returning the first match it finds. On the other hand, with `${requestScope.name}` the system only looks in the HttpServletRequest.
 
-Expression Language Operators
+#### Expression Language Operators
 The JSP 2.0 expression language defines a number of arithmetic, relational, logical, and missing-value-testing operators. Avoid using the operators for business logic (creating and processing the data). Instead, put business logic in regular Java classes and invoke the code from the servlet that starts the MVC process.
+```
 <TD>\${3+2-1}<TD>${3+2-1} <%-- Addition/Subtraction --%>
 <TD>\${1&lt;2}<TD>${1<2} <%-- Numerical comparison --%>
 <TD>\${"1"+2}<TD>${"1"+2} <%-- String conversion --%>
@@ -71,27 +84,36 @@ The JSP 2.0 expression language defines a number of arithmetic, relational, logi
 <TD>\${2/3 &gt;= 3/2}<TD>${2/3 >= 3/2} <%-- >= --%>
 <TD>\${3%2}<TD>${3%2} <%-- Modulo --%>
 <TD>\${3/4 == 0.75}<TD>${3/4 == 0.75} <%-- Numeric = --%>
+
 <%-- div and mod are alternatives to / and % --%>
 <TD>\${(8 div 2) mod 3}<TD>${(8 div 2) mod 3}
+
 <%-- Compares with "equals" but returns false for null --%>
 <TD>\${null == "test"}<TD>${null == "test"}
+
 <TD>\${(1&lt;2) && (4&lt;3)}<TD>${(1<2) && (4<3)} <%--AND--%>
 <TD>\${empty ""}<TD>${empty ""} <%-- Empty string --%>
 <TD>\${(1&lt;2) || (4&lt;3)}<TD>${(1<2) || (4<3)} <%--OR--%>
 <TD>\${empty null}<TD>${empty null} <%-- null --%>
 <TD>\${!(1&lt;2)}<TD>${!(1<2)} <%-- NOT -%>
+
 <%-- Handles null or empty string in request param --%>
 <TD>\${empty param.blah}<TD>${empty param.blah}
 <TD BGCOLOR="${(apples.total < 0) ? "RED" : "WHITE" }">
-
+```
 The expression language removes the need for most typecasts and for much of the code that parses strings as numbers. In most cases, missing values or NullPointerExceptions result in empty strings, not thrown exceptions.
 
 These EL elements can appear in ordinary text or in JSP tag attributes, provided that those attributes permit regular JSP expressions. For example:
+```html
 <UL>
   <LI>Name: ${expression1}
   <LI>Address: ${expression2}
 </UL>
+```
+```
 <jsp:include page="${expression3}" />
-
+```
 When you use the expression language in tag attributes, you can use multiple expressions (possibly intermixed with static text) and the results are coerced to strings and concatenated. For example:
+```
 <jsp:include page="${expr1}blah${expr2}" />
+```
