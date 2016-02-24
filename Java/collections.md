@@ -68,7 +68,7 @@ This stringCollection can now only contain String instances. If you try to add a
 - **SET** must contain unique elements.
 - **MAP** maps unique keys to values.
 - **ENUMERATION** is legacy interface and defines the methods by which you can enumerate (obtain one at a time) the elements in a collection of objects. This legacy interface has been superseded by Iterator.
-- 
+
 ![collection-extensions](https://cloud.githubusercontent.com/assets/13823751/13295709/bbaf68a2-daef-11e5-99d8-b8ad0b832799.jpg)
 
 #### List
