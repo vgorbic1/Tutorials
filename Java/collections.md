@@ -387,6 +387,6 @@ public class TreeSetDemo {
 ```
 This would produce the following result: [A, B, C, D, E, F]
 
-| LIST || SET |
-| duplicates || no duplicates |
-|
+![list-set](https://cloud.githubusercontent.com/assets/13823751/13297812/d30341ae-daf9-11e5-86a7-de8e55160d10.jpg)
+
+#### Map
