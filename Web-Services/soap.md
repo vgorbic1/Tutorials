@@ -54,6 +54,7 @@ The optional Header element offers a flexible framework for specifying additiona
 - The SOAP header contains header entries defined in a namespace.
 - The header is encoded as the first immediate child element of the SOAP envelope.
 - When multiple headers are defined, all immediate child elements of the SOAP header are interpreted as SOAP header blocks.
+
 A SOAP Header can have the following two attributes:
 - **Actor** attribute
 The SOAP protocol defines a message path as a list of SOAP service nodes. Each of these intermediate nodes can perform some processing and then forward the message to the next node in the chain. By setting the Actor attribute, the client can specify the recipient of the SOAP header.
@@ -68,3 +69,32 @@ It indicates whether a Header element is optional or mandatory. If set to true, 
    ...
 </SOAP-ENV:Envelope>
 ```
+
+#### Body
+The SOAP body is a mandatory element that contains the application-defined XML data being exchanged in the SOAP message. The body must be contained within the envelope and must follow any headers that might be defined for the message.
+The body contains mandatory information intended for the ultimate receiver of the message. For example:
+```xml
+<?xml version="1.0"?>
+<SOAP-ENV:Envelope>
+ ...
+   <SOAP-ENV:Body>
+      <m:GetQuotation xmlns:m="http://www.tp.com/Quotation">
+         <m:Item>Computers</m:Item>
+      </m:GetQuotation>
+   </SOAP-ENV:Body>
+...
+</SOAP-ENV:Envelope>
+```
+The example above requests a quotation of computer sets. Note that the m:GetQuotation and the Item elements above are application-specific elements. They are not a part of the SOAP standard. Here is the response to the above query:
+```xml
+<?xml version="1.0"?>
+<SOAP-ENV:Envelope>
+ ...
+   <SOAP-ENV:Body>
+      <m:GetQuotationResponse xmlns:m="http://www.tp.com/Quotation">
+         <m:Quotation>This is Qutation</m:Quotation>
+      </m:GetQuotationResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+Normally, the application also defines a schema to contain semantics associated with the request and response elements.
