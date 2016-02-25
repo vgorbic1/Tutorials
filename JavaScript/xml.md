@@ -41,7 +41,7 @@ queryXML(xmlParser); // separate function that will deal with quering the XML do
 ```
 To query the XML document:
 ```javascript
-function queryXML(xmlParser) {  // Assume, that we already get the string loaded from the previous example
+function queryXML(xmlParser) {  // Assume, that we already get the file content loaded from the previous example
 	//Querying the XML
 	var nameNodes = xmlParser.getElementsByTagName("name"); //returns an array
 	//[0] = <name><first>bill</first><last>gates</last></name>
