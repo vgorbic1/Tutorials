@@ -55,3 +55,34 @@ function queryXML(xmlParser) {  // Assume, that we already get the string loaded
 	}
 }
 ```
+#### XML File on Filesystem
+Load the file contents (users.xml) into an xmlParser using AJAX
+```javascript
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "users.xml"); //server url (file on a filesystem)
+//callback
+xhr.onreadystatechange = function() {
+//readyState = 0 .. 4
+  if(xhr.readyState == 4) {
+    //process the results asyncronously
+    queryXML(xhr.responseXML);
+  }
+xhr.send(null); //go get the result from the url request
+queryXML(xmlParser); // separate function that will deal with quering the XML document
+```
+To query the XML document (will be the same way as in example with the string data):
+```javascript
+function queryXML(xmlParser) {  // Assume, that we already get the string loaded from the previous example
+	//Querying the XML
+	var nameNodes = xmlParser.getElementsByTagName("name"); //returns an array
+	//[0] = <name><first>bill</first><last>gates</last></name>
+	//[1] = <name><first>steve</first><last>jobs</last></name>
+	for(var i=0; i< nameNodes.length;i++) {
+		var id = nameNodes[i].parentNode.id; // get the attribute of the element "user"
+		var first = nameNodes[i].getElementsByTagName("first")[0].childNodes[0].nodeValue; // get the "first" element value 
+		var last = 	nameNodes[i].getElementsByTagName("last")[0].childNodes[0].nodeValue; // get the "second" element value
+		console.log("id: " + id);
+		console.log(first + " " + last);
+	}
+}
+```
