@@ -32,9 +32,26 @@ Convert the string to an XML parser (DOM Parser). The XML parser is not cross-br
 var xmlData = '<users><user id='1'><name><first>aaron</first><last>rodgers</last></name></user><user id='2'><name><first>randall</first> <last>cobb</last></name></user><user id='3'><name><first>clay</first><last>mathews</last></name></user></users>';
 var xmlParser;
 if (window.DOMParser) { // xmlParser will be an instance of DOMParser
-
+  xmlParser = new DOMParser().parseFromString(xmlData, "application/xml");
 } else { // xmlParser will be an instance of ActiveXObject
-
+  xmlParser = new ActiveXObject("Microsoft.XMLDOM");
+  xmlParser.loadXML(xmlData);
+}
+queryXML(xmlParser); // separate function that will deal with quering the XML document
+```
+To query the XML document:
+```javascript
+function queryXML(xmlParser) {  // Assume, that we already get the string loaded from the previous example
+	//Querying the XML
+	var nameNodes = xmlParser.getElementsByTagName("name"); //returns an array
+	//[0] = <name><first>bill</first><last>gates</last></name>
+	//[1] = <name><first>steve</first><last>jobs</last></name>
+	for(var i=0; i< nameNodes.length;i++) {
+		var id = nameNodes[i].parentNode.id; // get the attribute of the element "user"
+		var first = nameNodes[i].getElementsByTagName("first")[0].childNodes[0].nodeValue; // get the "first" element value 
+		var last = 	nameNodes[i].getElementsByTagName("last")[0].childNodes[0].nodeValue; // get the "second" element value
+		console.log("id: " + id);
+		console.log(first + " " + last);
+	}
 }
 ```
-
