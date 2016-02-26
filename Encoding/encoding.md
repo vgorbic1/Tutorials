@@ -166,7 +166,7 @@ The above will simply read the bits in bar.txt into the variable $foo. PHP doesn
 The file can even contain binary data such as an image, PHP doesn't care.
 
 #### Encoding with JavaScript
-Javascript for example supports Unicode. In fact, any string in Javascript is UTF-16 encoded. In fact, it's the only thing Javascript deals with. You 
+Javascript for example supports Unicode. In fact, any string in Javascript is UTF-16 encoded. It's the only thing Javascript deals with. You 
 cannot have a string in Javascript that is not UTF-16 encoded. Javascript worships Unicode to the extent that there's no facility to deal with any 
 other encoding in the core language. Since Javascript is most often run in a browser that's not a problem, since the browser can handle the mundane 
 logistics of encoding and decoding input and output.
