@@ -635,5 +635,5 @@ A Hashtable is an unordered and unsorted implementation of the Map<K, V> interfa
 
 There is no sound reason since the introduction of the HashMap<K, V> class to use the Hashtable<K, V> class. If you need an Hashtable to be synchronized this can be achieved using methods of the Collections class without all the overheads of using Hashtable<K ,V> synchronized methods.
 
-
+![map](https://cloud.githubusercontent.com/assets/13823751/13362878/3d6ad4b0-dc8c-11e5-9432-b625676d3027.jpg)
 
