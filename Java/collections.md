@@ -400,4 +400,240 @@ Often when discusing Queues mention is made of the head and tail of the queue. T
 #### Map
 ![map](https://cloud.githubusercontent.com/assets/13823751/13298029/c8f5a39a-dafa-11e5-8fc0-6563cd56c08e.jpg)
 
+The java.util.Map interface represents a mapping between a key and a value. The Map interface is not a subtype of the Collection interface. Therefore, it behaves a bit different from the rest of the collection types.
+You can choose between the following Map implementations in the Java Collections API:
+`java.util.HashMap`, `java.util.Hashtable`, `java.util.EnumMap`, `java.util.IdentityHashMap`, `java.util.LinkedHashMap`, `java.util.Properties`, `java.util.TreeMap`, `java.util.WeakHashMap`.
+
+The most commonly used Map implementations are HashMap and TreeMap. 
+- **HashMap** maps a key and a value. It does not guarantee any order of the elements stored internally in the map. 
+- **TreeMap** also maps a key and a value. Furthermore, it guarantees the order in which keys or values are iterated - which is the sort order of the keys or values. 
+
+Create a map:
+```java
+Map mapA = new HashMap();
+Map mapB = new TreeMap();
+```
+Adding and Accessing Elements:
+```java
+Map mapA = new HashMap();
+mapA.put("key1", "element 1");
+mapA.put("key2", "element 2");
+mapA.put("key3", "element 3");
+```
+The three put() calls maps a string value to a string key. 
+
+You can then obtain the value using the key: 
+```java
+String element1 = (String) mapA.get("key1");
+```
+You can iterate either the keys or the values of a Map:
+```java
+// key iterator
+Iterator iterator = mapA.keySet().iterator();
+// value iterator
+Iterator iterator = mapA.values();
+```
+Most often you iterate the keys of the Map and then get the corresponding values during the iteration:
+```java
+Iterator iterator = mapA.keySet().iterator();
+while(iterator.hasNext(){
+  Object key   = iterator.next();
+  Object value = mapA.get(key);
+}
+//access via new for-loop
+for(Object key : mapA.keySet()) {
+    Object value = mapA.get(key);
+}
+```
+Removing Elements:
+
+You remove elements by calling the `remove(Object key`) method. You thus remove the (key, value) pair matching the key.
+
+From Java 5, Java Generics makes it possible to limit the types of object you can use for both keys and values in a Map:
+```java
+Map<String, MyObject> map = new HashMap<String, MyObject>();
+for(MyObject anObject : map.values()){
+   //do someting to anObject...
+}
+for(String key : map.keySet()){
+   MyObject value = map.get(key);
+   //do something to value
+}
+```
+
+**HashMap**
+
+The HashMap class uses a hashtable to implement the Map interface. This allows the execution time of basic operations, such as get( ) and put( ), to remain constant even for large sets.
+```java
+import java.util.*;
+public class HashMapDemo {
+   public static void main(String args[]) {
+      // Create a hash map
+      HashMap hm = new HashMap();
+      // Put elements to the map
+      hm.put("Zara", new Double(3434.34));
+      hm.put("Mahnaz", new Double(123.22));
+      hm.put("Ayan", new Double(1378.00));
+      hm.put("Daisy", new Double(99.22));
+      hm.put("Qadir", new Double(-19.08)); 
+      // Get a set of the entries
+      Set set = hm.entrySet();
+      // Get an iterator
+      Iterator i = set.iterator();
+      // Display elements
+      while(i.hasNext()) {
+         Map.Entry me = (Map.Entry)i.next();
+         System.out.print(me.getKey() + ": ");
+         System.out.println(me.getValue());
+      }
+      // Deposit 1000 into Zara's account
+      double balance = ((Double)hm.get("Zara")).doubleValue();
+      hm.put("Zara", new Double(balance + 1000));
+      System.out.println("Zara's new balance: " +
+      hm.get("Zara"));
+   }
+}
+```
+This would produce the following result:
+```
+Zara: 3434.34
+ahnaz: 123.22
+Daisy: 99.22
+Ayan: 1378.0
+Qadir: -19.08
+Zara's new balance: 4434.34
+```
+
+**TreeMap**
+
+The TreeMap class implements the Map interface by using a tree. A TreeMap provides an efficient means of storing key/value pairs in sorted order, and allows rapid retrieval. You should note that, unlike a hash map, a tree map guarantees that its elements will be sorted in ascending key order.
+```java
+import java.util.*;
+public class TreeMapDemo {
+   public static void main(String args[]) {
+      // Create a hash map
+      TreeMap tm = new TreeMap();
+      // Put elements to the map
+      tm.put("Zara", new Double(3434.34));
+      tm.put("Mahnaz", new Double(123.22));
+      tm.put("Ayan", new Double(1378.00));
+      tm.put("Daisy", new Double(99.22));
+      tm.put("Qadir", new Double(-19.08));      
+	 // Get a set of the entries
+      Set set = tm.entrySet();
+      // Get an iterator
+      Iterator i = set.iterator();
+      // Display elements
+      while(i.hasNext()) {
+         Map.Entry me = (Map.Entry)i.next();
+         System.out.print(me.getKey() + ": ");
+         System.out.println(me.getValue());
+      }
+      // Deposit 1000 into Zara's account
+      double balance = ((Double)tm.get("Zara")).doubleValue();
+      tm.put("Zara", new Double(balance + 1000));
+      System.out.println("Zara's new balance: " +
+      tm.get("Zara"));
+   }
+}
+```
+This would produce the following result:
+```
+Ayan: 1378.0
+Daisy 99.22
+ahnaz: 123.22
+Qadir: -19.08
+Zara: 3434.34
+Zara's current balance: 4434.34
+```
+
+**WeakHashMap**
+
+WeakHashMap is an implementation of the Map interface that stores only weak references to its keys. Storing only weak references allows a key-value pair to be garbagecollected when its key is no longer referenced outside of the WeakHashMap. This class provides the easiest way to harness the power of weak references. It is useful for implementing "registry-like" data structures, where the utility of an entry vanishes when its key is no longer reachable by any thread. The WeakHashMap functions identically to the HashMap with one very important exception: if the Java memory manager no longer has a strong reference to the object specified as a key, then the entry in the map will be removed. Weak Reference: If the only references to an object are weak references, the garbage collector can reclaim the object's memory at any time. It doesn't have to wait until the system runs out of memory. Usually, it will be freed the next time the garbage collector runs.
+```java
+import java.util.*;
+public class WeakHashMap_Demo {
+   private static Map map;
+   public static void main (String args[]) {
+      map = new WeakHashMap();
+      map.put(new String("Maine"), "Augusta");   
+      Runnable runner = new Runnable() {
+         public void run() {
+            while (map.containsKey("Maine")) {
+               try {
+                  Thread.sleep(500);
+               } catch (InterruptedException ignored) {
+               }
+               System.out.println("Thread waiting");
+               System.gc();
+            }
+         }
+      };
+      Thread t = new Thread(runner);
+      t.start();
+      System.out.println("Main waiting");
+      try {
+         t.join();
+      } catch (InterruptedException ignored) {
+      }
+   }
+}
+```
+This would produce the following result:
+```
+ain waiting
+Thread waiting
+```
+If you do not include the call to System.gc(), the system may never run the garbage collector as not much memory is used by the program. For a more active program, the call would be unnecessary.
+
+**LinkedHashMap**
+
+This class extends HashMap and maintains a linked list of the entries in the map, in the order in which they were inserted. This allows insertion-order iteration over the map. That is, when iterating a LinkedHashMap, the elements will be returned in the order in which they were inserted. You can also create a LinkedHashMap that returns its elements in the order in which they were last accessed.
+```java
+import java.util.*;
+public class LinkedHashMapDemo {
+   public static void main(String args[]) {
+      // Create a hash map
+      LinkedHashMap lhm = new LinkedHashMap();
+      // Put elements to the map
+      lhm.put("Zara", new Double(3434.34));
+      lhm.put("Mahnaz", new Double(123.22));
+      lhm.put("Ayan", new Double(1378.00));
+      lhm.put("Daisy", new Double(99.22));
+      lhm.put("Qadir", new Double(-19.08));      
+      // Get a set of the entries
+      Set set = lhm.entrySet();
+      // Get an iterator
+      Iterator i = set.iterator();
+      // Display elements
+      while(i.hasNext()) {
+         Map.Entry me = (Map.Entry)i.next();
+         System.out.print(me.getKey() + ": ");
+         System.out.println(me.getValue());
+      }
+      // Deposit 1000 into Zara's account
+      double balance = ((Double)lhm.get("Zara")).doubleValue();
+      lhm.put("Zara", new Double(balance + 1000));
+      System.out.println("Zara's new balance: " +
+      lhm.get("Zara"));
+   }
+}
+```
+This would produce the following result:
+```
+Zara: 3434.34
+ahnaz: 123.22
+Ayan: 1378.0
+Daisy: 99.22
+Qadir: -19.08
+Zara's new balance: 4434.34
+```
+
+**Hashtable**
+
+A Hashtable is an unordered and unsorted implementation of the Map<K, V> interface that doesn't allow null values or a null key. This type of map makes no guarantees over iteration order and in particular no guarantees that the iteration order will remain constant over time. Hashtable allows random access to elements and is similar to HashMap apart from being synchronized. In fact Hashtable is one of the two original collections shipped with Java, the other being Vector.
+
+There is no sound reason since the introduction of the HashMap<K, V> class to use the Hashtable<K, V> class. If you need an Hashtable to be synchronized this can be achieved using methods of the Collections class without all the overheads of using Hashtable<K ,V> synchronized methods.
+
+
 
