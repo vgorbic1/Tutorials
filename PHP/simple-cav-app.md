@@ -1,5 +1,5 @@
 ## CAV Application
-CAV (Controller Action View) we will "blures" the line between the Model and Controller in standard MVC approach.
+CAV (Controller Action View) "blures" the line between the Model and Controller in standard MVC approach.
 The frameworks needs a single point of entry - `index.php`. This is where all access to the site must be controlled from. To ensure that a single point of entry is maintained, htaccess can be utilized. The `.htaccess` file itself looks like this:
 ```
 RewriteEngine on
@@ -123,4 +123,114 @@ Class Registry {
 With the registry in place, our system is working. It does not do anything or display anything, but we have a functional system. The `__set()` and `__get()` magic function now allow us to set variables within the registry and store them there.
 
 #### The Model
-The model is where business logic is stored. Business logic is loosely defined as database connections or connections to data sources, and provides the data to the controller. 
+The model is where business logic is stored. Business logic is loosely defined as database connections or connections to data sources, and provides the data to the controller. Our database connection is a simple singleton and resides in the classes directory and can be called statically from the controller and set in the registry. Add this code to the `init.php` file we created earlier:
+```php
+<?php
+ /*** create the database registry object ***/
+ $registry->db = db::getInstance();
+?>
+```
+Like all registry members, the database is now globally availabe to our scripts. As the class is a singleton we always get the same instance back.
+
+#### The Router
+The router class is responsible for loading up the correct controller. It does nothing else. The value of the controller comes from the URL. The url will look a like this:
+```
+http://www.example.com/index.php?rt=news
+```
+Or if you have htaccess amd mod_rewrite working like this:
+```
+http://www.example.com/news
+```
+To begin the router class a few things need to be set. Now add this code to the `router.class.php` file in the application directory:
+```php
+<?php # application/router.class.php
+
+class router {
+ /*
+ * @the registry
+ */
+ private $registry;
+
+ /*
+ * @the controller path
+ */
+ private $path;
+ private $args = array();
+ public $file;
+ public $controller;
+ public $action;
+
+ function __construct($registry) {
+        $this->registry = $registry;
+ }
+```
+We can load the router into the registry also. Add this code to the `index.php` file:
+```php
+/*** load the router ***/
+$registry->router = new router($registry);
+```
+Add a method to set the controller directory path. Add this block of code to the `router.class.php` file:
+```php
+<?php
+ /**
+ * @set controller directory path
+ * @param string $path
+ * @return void
+ */
+ function setPath($path) {
+
+   /*** check if path is a directory ***/
+   if (is_dir($path) == false)
+   {
+     throw new Exception ('Invalid controller path: `' . $path . '`');
+   }
+   /*** set the path ***/
+   $this->path = $path;
+}
+```
+And to set the controller path in the registry is a simple matter of adding this line to the `index.php` file:
+```php
+/*** set the path to the controllers directory ***/
+ $router->setPath (__SITE_PATH . 'controller');
+```
+With the controller path set we can load the controller. We will create a method called `loader()` to get the controller and load it. This method will call a `getController()` method that will decide which controller to load. If a controller is not found then it will default back to the index. The loader method looks like this:
+```php
+<?php
+
+ /**
+ * @load the controller
+ * @access public
+ * @return void
+ */
+ public function loader()
+ {
+        /*** check the route ***/
+        $this->getController();
+
+        /*** if the file is not there diaf ***/
+        if (is_readable($this->file) == false)
+        {
+                echo $this->file;
+                die ('404 Not Found');
+        }
+
+        /*** include the controller ***/
+        include $this->file;
+
+        /*** a new controller class instance ***/
+        $class = $this->controller . 'Controller_';
+        $controller = new $class($this->registry);
+
+        /*** check if the action is callable ***/
+        if (is_callable(array($controller, $this->action)) == false)
+        {
+                $action = 'index';
+        }
+        else
+        {
+                $action = $this->action;
+        }
+        /*** run the action ***/
+        $controller->$action();
+ }
+ ```
