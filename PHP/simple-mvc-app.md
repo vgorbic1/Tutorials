@@ -72,9 +72,40 @@ Finally we require the only part of our application that does not change: the la
   </body>
 </html>
 ```
-The only part we still need is the main area of our page. We can determine what view we need to put there depending on our previously set `$controller` and `$action` variables. The `routes.php` file is going to take care of that. This file is not in the views folder but at the root of our application.
+The only part we still need is the main area of our page. We can determine what view we need to put there depending on our previously set `$controller` and `$action` variables. The `routes.php` file is going to take care of that. This file is not in the views folder but at the root of our application. We want our `routes.php` to output the html that was requested one way or another. To fetch the right view (file containing the html we need) we have two things: a controller name and an action name. We can write a function call that will take those two arguments and call the action of the controller:
 ```php
+<?php
+  function call($controller, $action) {
+    // require the file that matches the controller name
+    require_once('controllers/' . $controller . '_controller.php');
 
+    // create a new instance of the needed controller
+    switch($controller) {
+      case 'pages':
+        $controller = new PagesController();
+      break;
+    }
+
+    // call the action
+    $controller->{ $action }();
+  }
+
+  // just a list of the controllers we have and their actions
+  // we consider those "allowed" values
+  $controllers = array('pages' => ['home', 'error']);
+
+  // check that the requested controller and action are both allowed
+  // if someone tries to access something else he will be redirected to the error action of the pages controller
+  if (array_key_exists($controller, $controllers)) {
+    if (in_array($action, $controllers[$controller])) {
+      call($controller, $action);
+    } else {
+      call('pages', 'error');
+    }
+  } else {
+    call('pages', 'error');
+  }
+?>
 ```
 
 
