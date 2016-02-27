@@ -234,3 +234,193 @@ With the controller path set we can load the controller. We will create a method
         $controller->$action();
  }
  ```
+The `getController` method that the `loader()` method calls does the work. By taking the route variables from the url via `$_GET['rt']` it is able to check if a contoller was loaded, and if not default to index. It also checks if an action was loaded. An action is a method within the specified controller. If no action has been declared, it defaults to index. Add the getController method to the `router.class.php` file.
+```php
+<?php
+ /**
+ * @get the controller
+ * @access private
+ * @return void
+ */
+private function getController() {
+
+        /*** get the route from the url ***/
+        $route = (empty($_GET['rt'])) ? '' : $_GET['rt'];
+
+        if (empty($route))
+        {
+                $route = 'index';
+        }
+        else
+        {
+                /*** get the parts of the route ***/
+                $parts = explode('/', $route);
+                $this->controller = $parts[0];
+                if(isset( $parts[1]))
+                {
+                        $this->action = $parts[1];
+                }
+        }
+
+        if (empty($this->controller))
+        {
+                $this->controller = 'index';
+        }
+
+        /*** Get action ***/
+        if (empty($this->action))
+        {
+                $this->action = 'index';
+        }
+
+        /*** set the file path ***/
+        $this->file = $this->path .'/'. $this->controller . '.php';
+}
+?>
+```
+
+#### The Controller
+The base controller is a simple abstract class that defines the structure of all controllers. By including the registry here, the registry is available to all class that extend from the base controller. An `index()` method has also been included in the base controller which means all controller classes that extend from it must have an `index()` method themselves. Add this code to the `controller.class.php` file in the application directory:
+```php
+<?php # application/controller.class.php
+
+Abstract Class baseController {
+
+/*
+ * @registry object
+ */
+protected $registry;
+
+function __construct($registry) {
+        $this->registry = $registry;
+}
+
+/**
+ * @all controllers must contain an index method
+ */
+abstract function index();
+}
+
+?>
+```
+create an index controller and a blog controller. The index controller is the sytem default and it is from here that the first page is loaded. The blog controller is for an imaginary blog module. When the blog module is specified in the URL
+`http://www.example.com/blog`
+then the index method in the blog controller is called. A view method will also be created in the blog controller and when specified in the URL `http://www.example.com/blog/view`
+then the view method in the blog controller will be loaded. First lets see the index controller. This will reside in the controller directory:
+```php
+<?php # controller/indexcontroller.php
+class indexController extends baseController {
+
+  public function index() {
+    /*** set a template variable ***/
+        $this->registry->template->welcome = 'Welcome to PHPRO MVC';
+
+    /*** load the index template ***/
+        $this->registry->template->show('index');
+  }
+
+}
+?>
+```
+The indexController class above shows that the indexController extends the baseController class, thereby making the registry available to it without the need for global variables. The indexController class also contains the mandatory `index()` method that ll controllers must have. Within its `index()` method a variable named "welcome" is set in the registry. This variable is available to the template when it is loaded via the `template->show()` method.
+
+The blogController class follows the same format but has has one small addition, a `view(`) method. The `view()` method is an example of how a method other than the `index()` method may be called. The view method is loaded via the URL 
+`http://www.example.com/blog/view`:
+```php
+<?php
+
+Class blogController Extends baseController {
+
+  public function index() {
+        $this->registry->template->blog_heading = 'This is the blog Index';
+        $this->registry->template->show('blog_index');
+  }
+
+  public function view(){
+        /*** should not have to call this here.... FIX ME ***/
+        $this->registry->template->blog_heading = 'This is the blog heading';
+        $this->registry->template->blog_content = 'This is the blog content';
+        $this->registry->template->show('blog_view');
+  }
+
+ }
+?>
+```
+#### The View
+The View contains code that relates to presentation and presentation logic such as templating and caching. In the controller above we saw the `show()` method. This is the method that calls the view. The major component in this app is the template class. The `template.class.php` file contains the class definition. Like the other classes, it has the registry available to it and also contains a `__set()` method in which template variables may be set and stored.
+
+The show method is the engine room of the view. This is the method that loads up the template itself, and makes the template variables available. Some larger MVC's will implement a template language that adds a further layer of abstraction from PHP. Added layers mean added overhead. Here we stick with the speed of PHP within the template, yet all the logic stays outside. This makes it easy for HTML monkies to create websites without any need to learn PHP or a template language. The `template.class.php` file looks like this:
+```php
+<?php
+
+Class Template {
+
+/*
+ * @the registry
+ * @access private
+ */
+private $registry;
+
+/*
+ * @Variables array
+ * @access private
+ */
+private $vars = array();
+
+/**
+ * @constructor
+ * @access public
+ * @return void
+ */
+function __construct($registry) {
+   $this->registry = $registry;
+}
+
+ /**
+ * @set undefined vars
+ * @param string $index
+ * @param mixed $value
+ * @return void
+ */
+ public function __set($index, $value)
+ {
+    $this->vars[$index] = $value;
+ }
+
+ function show($name) {
+        $path = __SITE_PATH . '/views' . '/' . $name . '.php';
+
+        if (file_exists($path) == false)
+        {
+                throw new Exception('Template not found in '. $path);
+                return false;
+        }
+
+        // Load variables
+        foreach ($this->vars as $key => $value)
+        {
+                $$key = $value;
+        }
+
+        include ($path);
+  }
+}
+?>
+```
+#### Templates
+The templates themselves are basically HTML files with a little PHP embedded. Do not let the separation Nazi's try to tell you that you need to have full seperation of HTML and PHP. Remember, PHP is an embeddable scripting language. This is the sort of task it is designed for and makes an efficient templating language. The template files belong in the `views` directory. Here is the `index.php` file:
+```php
+<h1><?php echo $welcome; ?></h1>
+```
+The blog_index.php file:
+```php
+<h1><?php echo $blog_heading; ?></h1>
+```
+And finally the blog_view.php file:
+```php
+<h1><?php echo $blog_heading; ?></h1>
+<p><?php echo $blog_content; ?></p>
+```
+In the above template files note that the variable names in the templates, match the template variables created in the controller.
+
+[SOURCE](http://www.phpro.org/tutorials/Model-View-Controller-MVC.html#) by Kevin Waterson.
