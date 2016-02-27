@@ -53,8 +53,29 @@ Enhance the `index.php` file. This file is going to receive all the requests. Th
   require_once('views/layout.php');
 ?>
 ```
+Finally we require the only part of our application that does not change: the layout. Let’s create this 'layout.php' file and put it to `views` directory. Note, `php_mvc_blog` is the root of the whole application. In the middle we require another file: `routes.php`.
+```php
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+      <a href='/php_mvc_blog'>Home</a>
+    </header>
 
+    <?php require_once('routes.php'); ?>
 
+    <footer>
+      Copyright
+    </footer>
+  </body>
+</html>
+```
+The only part we still need is the main area of our page. We can determine what view we need to put there depending on our previously set `$controller` and `$action` variables. The `routes.php` file is going to take care of that. This file is not in the views folder but at the root of our application.
+```php
+
+```
 
 
 
