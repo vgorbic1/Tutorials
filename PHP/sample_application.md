@@ -99,7 +99,8 @@ set_error_handler('my_error_handler');
 ```
 
 #### Index File
-The index page is the main script in the modularized application. It is also called a bootstrap file. The index file assembles all the proper pieces to make the complete web page. 
+The index page is the main script in the modularized application. It is also called a bootstrap file. 
+The index file assembles all the proper pieces to make the complete web page. 
 * Include a configuration file
 * Include a database connectivity file
 * Incorporate an HTML template
@@ -191,7 +192,8 @@ if (!defined('BASE_URL')) {
 } // End of defined() IF.
 ?>
 <h1>Welcome to the colour_blue template</h1>
-<p>This standards compliant, simple, fixed width website template is released as an 'open source' design (under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 Licence</a>), which means that you are free to download and use it for anything you want (including modifying and amending it). All I ask is that you leave the 'design from HTML5webtemplates.co.uk' link in the footer of the template, but other than that...</p>
+<p>This standards compliant, simple, fixed width website template is released as an 'open source' design (under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 Licence</a>), which means that you are free
+to download and use it for anything you want (including modifying and amending it). All I ask is that you leave the 'design from HTML5webtemplates.co.uk' link in the footer of the template, but other than that...</p>
 <p>This template is written entirely in <strong>HTML5</strong> and <strong>CSS</strong>, and can be validated using the links in the footer.</p>
 <p>You can view more free HTML5 web templates <a href="http://www.html5webtemplates.co.uk">here</a>.</p>
 <p>This template is a fully functional 5 page website, with an <a href="examples.html">examples</a> page that gives examples of all the styles available with this design.</p>
