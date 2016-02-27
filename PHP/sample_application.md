@@ -206,3 +206,65 @@ if (!defined('BASE_URL')) {
 </ul>
 ```
 
+#### Improve SEO
+Use Apache mod_rewrite to prettify the site's URL. There are two ways to do it:
+* Change Apache's httpd.conf file. (preferable, since Apache reads it one time when server starts)
+* Create .htaccess file and place it in web directory. (Apache reads it with every request)
+To restrict using .htaccess, change httpd.conf file to:
+```
+<Directory /> 
+  AllowOverride None
+</Directory>
+```
+Here,  in <Directory /> the "/" symbol means the root of computer. Write a path to directory that you want to restrict from overriding with .htaccess. Otherwise use flags to specify what to override:
+```
+<Directory /path/to/site>
+  AllowOverride AutoConfig FileInfo
+</Directory>
+```
+To alow overriding by .htaccess use:
+```
+<Directory "C:/xamp/htdocs/ch02">
+  AllowOverride All
+</Direcory>
+```
+Restart Apache!
+
+Do deny all access to a directory's contents, place the following to .htaccess:
+
+Disable directory browsing:
+```
+Options All -Indexes
+Prevent folder listing:
+IndexIgnore *
+```
+Prevent access to any file:
+```
+<FilesMatch "^.*$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+```
+Enabling URL Rewriting
+
+.htaccess file must first check for the module and turn on the rewrite engine:
+```
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /ch1/
+  ## Add rules here ##
+</IfModule>
+```
+RewriteBase tells where to start rewriting.
+
+Rules may be like this:
+```
+  RewriteRule somepage.php otherpage.php
+```
+Everytime a user goes to somepage.php the contetns displayed will be from otherpage.php, but the url will say somepage.php
+```
+  RewriteRule ^category/([0-9]+)/?$
+  category.php?id=$1
+```
+Here "^" means starting after rewrite base value, "+" means any number of previous character(s) or grouping, "?" means optional previous character(s) or grouping, and "$" means the end of the match. "$1" means a backreference to the first parenthetical grouping in the match, e.g. something between "(" and ")"
+
