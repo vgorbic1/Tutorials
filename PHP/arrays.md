@@ -240,3 +240,39 @@ This function returns a new array where key/value pairs are reversed. The key an
 $myArray = array('One' => 1, 'Two' => 2);
 $flippedArray = array_flip($myArray); // results in array (1 => 'One', 2 => 'Two');
 ```
+
+**array_key_exists()**
+
+This function checks an array for a specified key, and returns true if the key exists and false if the key does not exist.
+```PHP
+$a = array("Volvo"=>"XC90", "BMW"=>"X5");
+if ( key_exists("Toyota", $a) ) {
+  echo "Key exists!";
+} else {
+  echo "Key does not exist!";
+}
+```
+
+**in_array**
+
+This function searches an array for a specific value. If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive:
+```PHP
+$people = array("Peter", "Joe", "Glenn", "Cleveland", 23);
+if ( in_array("23", $people, TRUE) ) {
+  echo "Match found<br>";
+} else {
+  echo "Match not found<br>";
+} 
+
+if ( in_array("Glenn", $people, TRUE) ) {
+  echo "Match found<br>";
+} else {
+  echo "Match not found<br>";
+}
+
+if ( in_array(23, $people, TRUE) ) {
+  echo "Match found<br>";
+} else {
+  echo "Match not found<br>";
+}
+```
