@@ -63,91 +63,6 @@ To access them use:
 echo $products['baby']['rattle']['price']  // result is 2.99
 ```
 
-#### Array Functions
-**foreach()**
-
-This function allows iterating through an array one element at a time
-```PHP
-$cats = array('Long Hair', 'Short Hair', 'Dwarf');
-foreach($cats as $cat)  echo "$cat<br />";
-
-// or for associative array:
-$soccerTeam = array('Andy' => 1, 'Brian' => 2);
-foreach($socerTeam as $player => $number) echo "$player has number $number";
-```
-
-**array_merge()**
-
-This function returns a new array created by joining two other arrays together. The original arrays are not changed in any way, only result of joining them is returned.
-```PHP
-$cats = array('Long Hair', 'Short Hair', 'Dwarf');
-$dogs = array('Pit Bull', 'Spaniel', 'Terrier');
-$pets = array_merge($cats, $dogs);
-```
-
-**implode()** or **join()**
-
-This function turns all elements in an array into a string. 
-```PHP
-$cats = array('Long Hair', 'Short Hair', 'Dwarf');
-echo implode(' and ', $Cats); // this will give you a sting: Long Hair and Short Hair and Dwarf
-```
-
-**array_walk()**
-
-This function processes all the elements of given array passing to the function as an argument:
-```PHP
-$nums = array(99, 16, 11);
-array_walk($nums, 'CalcRoot'); 
-function calcRoot ($item){    
-    echo "Root $item is " . sqrt($item);
-}
-```
-
-**size_off()**
-
-This function tells you how many elements in the current array
-```PHP
-$cats = array('Long Hair', 'Short Hair', 'Dwarf');
-echo sizeof($Cats); // result is 3.
-
-//To add a new element to the end of the array:
-$cats[sizeof($cats)] = 'Siamese';
-```
-
-**array_push()**
-
-This function helps to add an element to the end of an array.
-```PHP
-$cats = array('Long Hair', 'Short Hair', 'Dwarf');
-array_push($cats, 'Siamese');
-```
-
-**array_pop()**
-
-This function removes the last element from an array.
-```PHP
-array_pop($myArray);
-
-// To remove the last element and store it in a variable:
-$myVariable = array_pop($myArray);
-```
-
-**array_reverse()**
-
-This function reverses the order of elements in an array.
-```PHP
-$myArray = array_reverse($myArray);
-```
-
-**array_flip()**
-
-This function returns a new array where key/value pairs are reversed. The key and values must be integers or strings.
-```PHP
-$myArray = array('One' => 1, 'Two' => 2);
-$flippedArray = array_flip($myArray); // results in array (1 => 'One', 2 => 'Two');
-```
-
 #### FILO and FIFO Arrays
 First In, Last Out Arrays. Also called a stack. (Sometimes called LIFO)
 
@@ -239,4 +154,89 @@ echo '<h2>Array Sorted By Name</h2><pre>' . print_r($students, 1) . '</pre>';
 // Sort by grade:
 uasort($students, 'grade_sort');
 echo '<h2>Array Sorted By Grade</h2><pre>' . print_r($students, 1) . '</pre>';
+```
+
+#### Array Functions
+**foreach()**
+
+This function allows iterating through an array one element at a time
+```PHP
+$cats = array('Long Hair', 'Short Hair', 'Dwarf');
+foreach($cats as $cat)  echo "$cat<br />";
+
+// or for associative array:
+$soccerTeam = array('Andy' => 1, 'Brian' => 2);
+foreach($socerTeam as $player => $number) echo "$player has number $number";
+```
+
+**array_merge()**
+
+This function returns a new array created by joining two other arrays together. The original arrays are not changed in any way, only result of joining them is returned.
+```PHP
+$cats = array('Long Hair', 'Short Hair', 'Dwarf');
+$dogs = array('Pit Bull', 'Spaniel', 'Terrier');
+$pets = array_merge($cats, $dogs);
+```
+
+**implode()** or **join()**
+
+This function turns all elements in an array into a string. 
+```PHP
+$cats = array('Long Hair', 'Short Hair', 'Dwarf');
+echo implode(' and ', $Cats); // this will give you a sting: Long Hair and Short Hair and Dwarf
+```
+
+**array_walk()**
+
+This function processes all the elements of given array passing to the function as an argument:
+```PHP
+$nums = array(99, 16, 11);
+array_walk($nums, 'CalcRoot'); 
+function calcRoot ($item){    
+    echo "Root $item is " . sqrt($item);
+}
+```
+
+**size_off()**
+
+This function tells you how many elements in the current array
+```PHP
+$cats = array('Long Hair', 'Short Hair', 'Dwarf');
+echo sizeof($Cats); // result is 3.
+
+//To add a new element to the end of the array:
+$cats[sizeof($cats)] = 'Siamese';
+```
+
+**array_push()**
+
+This function helps to add an element to the end of an array.
+```PHP
+$cats = array('Long Hair', 'Short Hair', 'Dwarf');
+array_push($cats, 'Siamese');
+```
+
+**array_pop()**
+
+This function removes the last element from an array.
+```PHP
+array_pop($myArray);
+
+// To remove the last element and store it in a variable:
+$myVariable = array_pop($myArray);
+```
+
+**array_reverse()**
+
+This function reverses the order of elements in an array.
+```PHP
+$myArray = array_reverse($myArray);
+```
+
+**array_flip()**
+
+This function returns a new array where key/value pairs are reversed. The key and values must be integers or strings.
+```PHP
+$myArray = array('One' => 1, 'Two' => 2);
+$flippedArray = array_flip($myArray); // results in array (1 => 'One', 2 => 'Two');
 ```
