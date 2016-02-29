@@ -253,7 +253,7 @@ if ( key_exists("Toyota", $a) ) {
 }
 ```
 
-**in_array**
+**in_array()**
 
 This function searches an array for a specific value. If the search parameter is a string and the type parameter is set to TRUE, the search is case-sensitive:
 ```PHP
