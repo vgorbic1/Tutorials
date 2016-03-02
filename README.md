@@ -8,4 +8,5 @@
 * [SQL](../master/SQL/)
 * [Git](../master/Git/)
 * [Web Services](../master/Web-Services/)
+* [WordPress](../master/WordPress/)
 * [Encoding](../master/Encoding/)
