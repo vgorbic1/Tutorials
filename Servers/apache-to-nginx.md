@@ -1,4 +1,4 @@
-## How To Migrate from an Apache Web Server to Nginx on an Ubuntu VPS
+## Migrate from an Apache Web Server to Nginx on an Ubuntu VPS
 For many websites, a migration to Nginx would improve performance.
 
 #### Install Nginx
