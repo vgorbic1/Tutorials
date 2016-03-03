@@ -1,4 +1,4 @@
-## Execute Serverside Java
+## Execute Server-side Java
 
 * Install Tomcat
 * Create a Java Servlet and name it something. Say `HelloWorld.java`.
