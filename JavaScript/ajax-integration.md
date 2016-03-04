@@ -25,7 +25,7 @@ as a JSON:
 ```
 
 #### Integration
-Create an HTML file with three buttons representing each datatype (Plain, XML, and JSON):
+Create an HTML file with three buttons representing each datatype (string, XML, and JSON):
 ```html
 <html>
 <head>
