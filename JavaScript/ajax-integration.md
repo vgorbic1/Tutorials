@@ -65,16 +65,13 @@ and a JavaScript (ajaxDataTypes.js) file:
 function makeAJAXRequest(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
-	
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			callback(xhr);				
 		}
 	}
-	
 	xhr.send(null);
 }
-
 
 function init() {
 	var plainTextButton = document.getElementById("btnPlaintext");
@@ -90,11 +87,10 @@ function init() {
 	xmlButton.onclick = function() {
 		makeAJAXRequest("xml.php", function(xhr) {
 			var names = xhr.responseXML.getElementsByTagName("name");
-			for(var i=0; i< names.length; i++) {
-						alert(names[i].childNodes[0].nodeValue);
-					}
-				});
-		
+			for (var i=0; i< names.length; i++) {
+				alert(names[i].childNodes[0].nodeValue);
+			}
+		});
 	}
 	
 	jsonButton.onclick = function() {
