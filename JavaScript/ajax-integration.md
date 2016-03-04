@@ -47,17 +47,6 @@ Create an HTML file with three buttons representing each datatype (string, XML, 
 ```
 and a JavaScript (ajaxDataTypes.js) file:
 ```javascript
-function makeAJAXRequest(url, callback) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", url);
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			callback(xhr);				
-		}
-	}
-	xhr.send(null);
-}
-
 function init() {
 	var plainTextButton = document.getElementById("btnPlaintext");
 	var xmlButton = document.getElementById("btnXML");
@@ -86,5 +75,16 @@ function init() {
 			}
 		})
 	}
+}
+
+function makeAJAXRequest(url, callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			callback(xhr);				
+		}
+	}
+	xhr.send(null);
 }
 ```
