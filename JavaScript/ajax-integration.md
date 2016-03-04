@@ -23,21 +23,6 @@ as a JSON:
   echo json_encode($users);
 ?>
 ```
-or in Java as a servlet
-```java
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-
-public class Hello extends HttpServlet {
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
-        out.println("hello");
-    }
-}
-```
 
 #### Integration
 Create an HTML file with three buttons representing each datatype (Plain, XML, and JSON):
