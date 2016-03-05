@@ -6,6 +6,7 @@
 * [HTML5](../master/HTML/)
 * [CSS](../master/HTML/)
 * [SQL](../master/SQL/)
+* [Linux](../master/Linux/)
 * [Git](../master/Git/)
 * [Web Services](../master/Web-Services/)
 * [WordPress](../master/WordPress/)
