@@ -21,3 +21,30 @@ The *bootstrap* is the CPU (central processing unit) of Drupal. In other interac
 - **Master Administrator**. This user has the ID one (1). User of ID one (1) is the primary admin user account created during Drupal installation. This user is very special because it has permission to do absolutely everything on the site.
 - **Logged In**. These users are assigned a user ID when they register for the website. A user name and email address is associated with any user that isn't anonymous (therefore must be logged in).
 - **Anonymous**. Anonymous users who visit the website but do not login all share a user ID of zero (0).
+
+#### Content Types
+In Drupal, each item of content is called a node, and each node belongs to a single content type, which defines various default settings for nodes of that type, such as whether the node is published automatically and whether comments are permitted.
+
+**Article**
+
+The Article content type (formerly, "story") is enabled in Drupal in the default installation profile. Articles are generally used for information that is updated more frequently and often cross-referenced and categorized (such as news items or resources). By default, Articles are sorted with the most recent post at the top, but this can be customized with contributed modules like Views.
+
+**Basic page**
+
+The Basic page content type is enabled in Drupal in the default installation profile. Typically Basic pages are used for static content that can (but are not required to) be linked into the main navigation bar. This is one of the most "basic" content types and can be very flexible.
+
+**Blog Entry**
+
+The Blog (short for weblog) content type was removed in Drupal 8. It is an online journal or diary, and Blog module allows registered users on your site to create their own blogs. Each entry in a user blog has content type Blog Entry.
+
+**Book Page**
+
+Book pages are designed to be part of a collaborative book, enabled by the core Book module. An example of a collaborative book is the Drupal developer documentation. In older versions of Drupal, only nodes of content type Book Page could be added to a book. However, since Drupal 7 nodes of any content type can be part of a book.
+
+**Forum topic**
+
+A Forum topic defines a topic for a forum discussion; people can reply to the topic by using comments. Forum nodes are organized into subject areas via a Taxonomy (list of categories).
+
+**Poll**
+
+A poll is a question with a set of possible responses. Once created, a poll automatically provides a simple running count of the number of votes received for each response.
