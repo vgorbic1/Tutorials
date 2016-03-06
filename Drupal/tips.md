@@ -7,3 +7,4 @@
 `include_once ./includes/mymodule_formatting.inc`
 In Drupal 7.x and later versions, use `DRUPAL_ROOT`:
 `require_once DRUPAL_ROOT . '/' . variable_get('cache_inc', 'includes/cache.inc');`
+- Use [Web Accessibility Evaluation Tool (WAVE)](http://wave.webaim.org/) to evaluate your module’s pages for accessibility.
