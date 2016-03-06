@@ -48,3 +48,7 @@ A Forum topic defines a topic for a forum discussion; people can reply to the to
 **Poll**
 
 A poll is a question with a set of possible responses. Once created, a poll automatically provides a simple running count of the number of votes received for each response.
+
+**Custom content type**
+
+You can create your own custom content types by going to Menu > Structure > Content types > Add content type (admin/structure/types/add). Creating your own content type means that you can decide what fields it has. When creating a new content type, you can customize what fields to add: an image, a poll, text, etc. These fields can appear as text boxes, select lists, check boxes, etc.
