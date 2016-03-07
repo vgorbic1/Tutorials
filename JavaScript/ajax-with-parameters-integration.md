@@ -27,7 +27,7 @@ Create a serverside PHP code:
 echo 'hello ' . $_REQUEST["name"];
 ?>
 ```
-Create a JavaScript file (parameters.js)
+Create the following JavaScript file (parameters.js) if you need to POST data, meaning the server state will change.
 ```javascript
 function init() {
 	var btn = document.getElementById("btnSend");
@@ -46,15 +46,17 @@ function init() {
 					alert(xhr.responseText);
 			}
 		}
+		
+		xhr.send(params);
 	}
 }
 ```
-If get request
+Create the following JavaScript file (parameters.js) if you need to GET data, meaning the server state will NOT change.
 ```javascript
-		
-		xhr.send(params);		
-		
-		/*
+function init() {
+	var btn = document.getElementById("btnSend");
+	
+	btn.onclick = function() {
 		var xhr = new XMLHttpRequest();
 		var url = "parameters.php";
 		var params = "?id=1&name=" + document.getElementById("txtName").value;
@@ -69,5 +71,6 @@ If get request
 		}
 		
 		xhr.send(null);
-		*/
-		```
+	}
+}
+```
