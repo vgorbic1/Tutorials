@@ -71,3 +71,67 @@ function init() {
 }
 ```
 #### Returning a JSON
+Create an HTML file:
+```html
+<html>
+	<head>
+		<script type="text/javascript" src="ajaxParameters.js"></script>
+	</head>
+	<body>
+		<form action="doSomething.php" method="get">
+			<label for="txtId">Enter the ID to search for</label><input type="text" id="txtId" />
+			<br />
+			<label for="txtName">Enter the NAME to search for</label><input type="text" id="txtName" />			
+			<button type="button" id="btnSearch">Search</button>
+		</form>
+	</body>
+	
+</html>
+
+<script type="text/javascript">
+init();
+</script>
+```
+Create a server-side PHP code:
+```PHP 
+<?php # parameters.php
+	$id = $_REQUEST["cust_id"];
+	// Create JSON:
+	$cust = array();
+	if($id=="10") {
+		$cust["name"] = "joe schmoe";
+		$cust["orders"] = array();
+		$cust["orders"][] = array("id"=>1, "description"=>"first order ever");
+	} else {
+		$cust["name"] = "bill gates";	
+	}
+	echo json_encode($cust);
+?>
+```
+Create a JavaScript (ajaxParameters.js) file that uses GET request:
+```javascript
+function init() {
+	var btn = document.getElementById("btnSearch");
+	btn.onclick = ajaxRequestWithParameters;
+}
+
+function ajaxRequestWithParameters() {
+	var url = "parameters.php";
+	var parameters = "?cust_id=" + document.getElementById("txtId").value;
+	parameters += "&name=" + document.getElementById("txtName").value;
+	var xhr = new XMLHttpRequest();
+	xhr.open("get", url + parameters);
+	xhr.send(null);
+	
+	//capture the server response
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			var cust = JSON.parse(xhr.responseText);
+			alert(cust.name);
+			if(cust.orders) {	
+				alert("this customer has orders");
+			}
+		}
+	}
+}
+```
