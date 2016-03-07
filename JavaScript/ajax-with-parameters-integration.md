@@ -1,5 +1,7 @@
 ## AJAX with Parameters
 Since we can send parameters with AJAX call, we do not need to use a form on our HTML file.
+
+This example returns a string from a PHP file.
 Create an HTML file:
 ```html
 <!DOCTYPE html>
