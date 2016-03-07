@@ -1,4 +1,4 @@
-## AJAX with Parameters
+## AJAX with Parameters. Server-side PHP
 Since we can send parameters with AJAX call, we do not need to use a form on our HTML file.
 
 #### Returning a String
