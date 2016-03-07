@@ -2,36 +2,31 @@
 Since we can send parameters with AJAX call, we do not need to use a form on our HTML file.
 Create an HTML file:
 ```html
-<html>
+<!DOCTYPE html>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title>Page Title</title>
-	<script src="parameters.js" type="text/javascript" charset="utf-8">
-		
-	</script>
+	<title>Ajax with Parameters</title>
+	<script src="parameters.js"></script>
 </head>
-<body id="" onload="">
+<body>
 	Name:<input type="text" id="txtName">
 	<input type="button" value="send ajax parameters" id="btnSend" />
 </body>
 </html>
 
-<script type="text/javascript" charset="utf-8">
-	init();
-</script>
+<script>init();</script>
 ```
 Create a serverside PHP code:
 ```PHP
 <?php # parameters.php
-// Use $_REQUEST superglobal if you do not now will it be POST or GET request
-echo 'hello ' . $_REQUEST["name"];
+  // Use $_REQUEST superglobal if you do not now will it be POST or GET request
+  echo 'hello ' . $_REQUEST["name"];
 ?>
 ```
 Create the following JavaScript file (parameters.js) if you need to POST data, meaning the server state will change.
 ```javascript
 function init() {
 	var btn = document.getElementById("btnSend");
-	
 	btn.onclick = function() {
 		var xhr = new XMLHttpRequest();
 		var url = "parameters.php";
@@ -55,7 +50,6 @@ Create the following JavaScript file (parameters.js) if you need to GET data, me
 ```javascript
 function init() {
 	var btn = document.getElementById("btnSend");
-	
 	btn.onclick = function() {
 		var xhr = new XMLHttpRequest();
 		var url = "parameters.php";
