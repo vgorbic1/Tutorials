@@ -45,8 +45,9 @@ Map it in `web.xml` the old fashioned way:
 ```
 Now open the `http://localhost:8080/context/test.jsp` in the browser and press the button. You'll see that the content of the `div` get updated with the servlet response.
 
-#### Returning List<String> as JSON
+#### Returning List of Strings as JSON
 With JSON instead of plaintext as response format you can even get some steps further. First, you'd like to have a tool to convert between Java objects and JSON strings. This example utilizes Google Gson. Download and put its JAR file in `/WEB-INF/lib` folder of your webapplication.
+
 Here's an example which displays List<String> as <ul><li>. Create a servlet:
 ```java
 @Override
@@ -73,7 +74,7 @@ $(document).on("click", "#somebutton", function() {
     });
 });
 ```
-#### Returning Map<String, String> as JSON
+#### Returning Map of Strings as JSON
 Here's another example which displays Map<String, String> as <option>:
 ```java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -103,7 +104,7 @@ also change
 ```html
 <select id="someselect"></select>
 ```
-#### Returning List<Entity> as JSON
+#### Returning List of Entities as JSON
 Here's an example which displays `List<Product>` in a `<table>` where the Product class has the properties `Long id, String name` and `BigDecimal price`. Create the servlet:
 ```java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -129,7 +130,7 @@ $(document).on("click", "#somebutton", function() {        // When HTML DOM "cli
     });
 });
 ```
-#### Returning List<Entity> as XML
+#### Returning List of Entities as XML
 Here's an example which does effectively the same as previous example, but then with XML instead of JSON. When using JSP as XML output generator you'll see that it's less tedious to code the table and all. The servlet:
 ```java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
