@@ -37,4 +37,5 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 }
 ```
 The jQuery Form plugin does less or more the same as above jQuery example, but it has additional transparent support for `multipart/form-data` forms as required by file uploads.
+
 [SOURCE](http://stackoverflow.com/questions/4112686/how-to-use-servlets-and-ajax)
