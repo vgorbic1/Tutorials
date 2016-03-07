@@ -63,7 +63,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     response.getWriter().write(json);
 }
 ```
-Modify the JavaScript (jQuery) `in /some.jsp`:
+Modify the JavaScript (jQuery) in `/some.jsp`:
 ```JavaScript
 $(document).on("click", "#somebutton", function() {  
     $.get("someservlet", function(responseJson) {  
@@ -88,7 +88,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     response.getWriter().write(json);
 }
 ```
-Modify the JavaScript (jQuery) `in /some.jsp`:
+Modify the JavaScript (jQuery) in `/some.jsp`:
 ```javascript
 $(document).on("click", "#somebutton", function() {                "somebutton", execute the following function...
     $.get("someservlet", function(responseJson) {                 
@@ -116,7 +116,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
     response.getWriter().write(json);
 }
 ```
-Modify the JavaScript (jQuery) `in /some.jsp`:
+Modify the JavaScript (jQuery) in `/some.jsp`:
 ```javascript
 $(document).on("click", "#somebutton", function() {        // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
     $.get("someservlet", function(responseJson) {          // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
@@ -158,7 +158,7 @@ jsp file:
     </table>
 </data>
 ```
-Modify the JavaScript (jQuery) `in /some.jsp`:
+Modify the JavaScript (jQuery) in `/some.jsp`:
 ```javascript
 $(document).on("click", "#somebutton", function() {             
     $.get("someservlet", function(responseXml) {                // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response XML...
