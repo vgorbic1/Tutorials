@@ -18,7 +18,7 @@ Create an HTML file:
 
 <script>init();</script>
 ```
-Create a serverside PHP code:
+Create a server-side PHP code:
 ```PHP
 <?php # parameters.php
   // Use $_REQUEST superglobal if you do not now will it be POST or GET request
