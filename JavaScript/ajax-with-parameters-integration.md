@@ -53,7 +53,7 @@ function init() {
 	btn.onclick = function() {
 		var xhr = new XMLHttpRequest();
 		var url = "parameters.php";
-		var params = "?id=1&name=" + document.getElementById("txtName").value;
+		var params = "?name=" + document.getElementById("txtName").value;
 		
 		xhr.open("GET", url + params);
 		
