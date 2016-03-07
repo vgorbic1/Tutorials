@@ -1,4 +1,4 @@
-## Ajax with Parameters (jQuery). Server-side Java
+## Ajax Requests (jQuery). Server-side Java
 Let JavaScript execute an asynchronous HTTP request and update the HTML DOM tree based on the response data.
 
 #### Returning as a String
