@@ -6,3 +6,14 @@ When you restart the Nginx service in command line on an Ubuntu server, the serv
 ```
 sudo nginx -t
 ```
+After the test ran successful, one can restart the service or only reload the nignx site configs without a restart.
+
+**Service restart**
+```
+/etc/init.d/nginx restart
+```
+
+**Reload configuration files without restart**
+```
+nginx -s reload
+```
