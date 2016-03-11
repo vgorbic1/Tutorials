@@ -4,18 +4,16 @@ Every JavaScript object has a prototype. The prototype is also an object. All Ja
 The Object.prototype is on the top of the prototype chain. All JavaScript objects (Date, Array, RegExp, Function, ....) inherit from the Object.prototype.
 
 #### Creating a Prototype
-The standard way to create an object prototype is to use an object constructor function:
+The standard way to create an object prototype is to use an object constructor function. The constructor function is the prototype for your person objects:
 ```javascript
-// The constructor function is the prototype for your person objects:
 function person(first, last, age, eyecolor) {
-    // public variables:
     this.firstName = first; 
     this.lastName = last;
     this.age = age;
     this.eyeColor = eyecolor;
 }
 ```
-`new` keyword creates new objects from the same prototype. 
+The `new` keyword creates new objects from the same prototype. 
 ```javascript
 var myFather = new person("John", "Doe", 50, "blue");
 var myMother = new person("Sally", "Rally", 48, "green");
