@@ -46,10 +46,10 @@ function queryXML(xmlParser) {  // Assume, that we already get the file content 
 	var nameNodes = xmlParser.getElementsByTagName("name"); //returns an array
 	//[0] = <name><first>bill</first><last>gates</last></name>
 	//[1] = <name><first>steve</first><last>jobs</last></name>
-	for(var i=0; i< nameNodes.length;i++) {
+	for (var i=0; i< nameNodes.length; i++) {
 		var id = nameNodes[i].parentNode.id; // get the attribute of the element "user"
 		var first = nameNodes[i].getElementsByTagName("first")[0].childNodes[0].nodeValue; // get the "first" element value 
-		var last = 	nameNodes[i].getElementsByTagName("last")[0].childNodes[0].nodeValue; // get the "second" element value
+		var last = nameNodes[i].getElementsByTagName("last")[0].childNodes[0].nodeValue; // get the "second" element value
 		console.log("id: " + id);
 		console.log(first + " " + last);
 	}
@@ -77,10 +77,10 @@ function queryXML(xmlParser) {  // Assume, that we already get the string loaded
 	var nameNodes = xmlParser.getElementsByTagName("name"); //returns an array
 	//[0] = <name><first>bill</first><last>gates</last></name>
 	//[1] = <name><first>steve</first><last>jobs</last></name>
-	for(var i=0; i< nameNodes.length;i++) {
+	for (var i=0; i< nameNodes.length; i++) {
 		var id = nameNodes[i].parentNode.id; // get the attribute of the element "user"
 		var first = nameNodes[i].getElementsByTagName("first")[0].childNodes[0].nodeValue; // get the "first" element value 
-		var last = 	nameNodes[i].getElementsByTagName("last")[0].childNodes[0].nodeValue; // get the "second" element value
+		var last = nameNodes[i].getElementsByTagName("last")[0].childNodes[0].nodeValue; // get the "second" element value
 		console.log("id: " + id);
 		console.log(first + " " + last);
 	}
