@@ -70,7 +70,7 @@ xhr.onreadystatechange = function() {
 xhr.send(null); //go get the result from the url request
 queryXML(xmlParser); // separate function that will deal with quering the XML document
 ```
-To query the XML document (will be the same way as in example with the string data):
+To query the XML document (will be the same as in the example with the string data):
 ```javascript
 function queryXML(xmlParser) {  // Assume, that we already get the string loaded from the previous example
 	//Querying the XML
