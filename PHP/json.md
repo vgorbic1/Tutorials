@@ -22,7 +22,6 @@ returns the JSON string:
 ```
 To convert an object to JSON string:
 ```PHP
-<?php
    class Employee {
       public $name = "";
       public $hobbies  = "";
@@ -36,7 +35,6 @@ To convert an object to JSON string:
    $e->birthdate = date('m/d/Y h:i:s a', strtotime("8/5/1974 12:20:03"));
 
    echo json_encode($e);
-?>
 ```
 returns the JSON string:
 ```javascript
@@ -45,15 +43,59 @@ returns the JSON string:
   "birthdate":"08\/05\/1974 12:20:03 pm" }
 ```
 
+**More Examples:**
+```PHP
+$arr = array(
+    array(
+        "region" => "valore",
+        "price" => "valore2"
+    ),
+    array(
+        "region" => "valore",
+        "price" => "valore2"
+    ),
+    array(
+        "region" => "valore",
+        "price" => "valore2"
+    )
+);
+
+echo json_encode($arr);
+```
+returns the JSON string:
+```javascript
+{"region":"valore","price":"valore2"},
+{"region":"valore","price":"valore2"},
+{"region":"valore","price":"valore2"}
+```
+Example with arrays:
+```PHP
+$obj = new stdClass();
+$obj->label="Devices per year";
+$obj->data = array(
+    array('1999','3.0'),
+    array('2000','3.9'),
+);
+
+echo json_encode($obj);
+```
+returns the JSON string:
+```javascript
+{ 
+    "label": "Devices per year",
+    "data": [
+        [1999, 3.0], [2000, 3.9]
+    ]
+}
+```
+
 #### Decoding JSON
 PHP `json_decode()` function is used for decoding JSON in PHP. This function returns the value decoded from json to appropriate PHP type. 
 ```PHP
-<?php
    $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
 
    var_dump(json_decode($json));
    var_dump(json_decode($json, true));
-?>
 ```
 this will echo out:
 ```
