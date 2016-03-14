@@ -36,3 +36,42 @@ We need to collect all elements of identical names in an array:
 }
 ```
 Now we have a structure that doesn't preserve element order! A structured XML element can be converted to a reversible JSON structure, if all subelement names occur exactly once, or subelements with identical names are in sequence.
+
+#### Examples
+```xml
+<states>
+  <state>
+    <abbreviation>WI</abbreviation>
+	<fulltext>Wisconsin</fulltext>
+  </state>
+  <state>
+    <abbreviation>IL</abbreviation>
+	<fulltext>Illinois</fulltext>
+  </state>
+  <state>
+    <abbreviation>MN</abbreviation>
+	<fulltext>Minnesota</fulltext>
+  </state>
+</states>
+```
+  to JSON
+```javascript
+{
+  "states": {
+    "state": [
+      {
+        "abbreviation": "WI",
+        "fulltext": "Wisconsin"
+      },
+      {
+        "abbreviation": "IL",
+        "fulltext": "Illinois"
+      },
+      {
+        "abbreviation": "MN",
+        "fulltext": "Minnesota"
+      }
+    ]
+  }
+}
+```
