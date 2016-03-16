@@ -8,3 +8,5 @@
 In Drupal 7.x and later versions, use `DRUPAL_ROOT`:
 `require_once DRUPAL_ROOT . '/' . variable_get('cache_inc', 'includes/cache.inc');`
 - Use [Web Accessibility Evaluation Tool (WAVE)](http://wave.webaim.org/) to evaluate your module’s pages for accessibility.
+- To turn off the admin overlay, go to Modules and uncheck Overlay module. To turn it off/on from URL use `#overlay=`
+- Create multiple shortcut bars with its own set of shortcuts by clicking Configuration > Shortcuts. 
