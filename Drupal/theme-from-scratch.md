@@ -181,3 +181,10 @@ Sample page.tpl.php file:
 </div>
 ```
 
+#### Build your CSS
+This step works pretty much the same way as it would on any other site. If you make some changes and don't see them reflected on your site, try clearing the theme registry (cache) by going to Site Configuration > Performance and clicking the button to clear cached data. Click the little "+" button next to the title on the Performance page to add this to your custom toolbar.
+
+#### Create your screenshot
+In the Drupal admin interface a screenshot will appear next to your theme name. To make this image, simply create a screenshot of your finished site, resize and crop to 150x90, and place it in your theme directory. It should be named screenshot.png. Drupal does have some guidelines on creating a screenshot file, but these only need to be followed if you intend to contribute your theme to the Drupal theme repository.
+
+[SOURCE](http://www.apaddedcell.com/how-create-drupal-7-theme-scratch)
