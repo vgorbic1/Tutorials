@@ -50,3 +50,51 @@ In Drupal 7 there is also an html.tpl.php template, which includes code for the 
 The most important template file, and the one you will most likely want to change, is the `page.tpl.php`. This template file contains the code for the body of the page. The default `page.tpl.php` file is contained in the system module. The default does contain a lot of extra options that you might not need, so let's write our own page.tpl.php from scratch.
 
 #### Create the page.tpl.php File
+Create an empty text file called `page.tpl.php`. In here will go all the code for the main <body> section of your theme. This file consists of three elements: the HTML mark-up for your theme (containing div's, and any other major structural elements), region definitions, variables for other content items (e.g. title, navigation tabs). Start by creating the basic HTML structure for your page:
+```html
+<div id="header"></div>
+
+<div id="wrapper">
+  <div id="content"></div>
+  <div id="sidebar"></div>
+</div>
+
+<div id="footer"></div>
+```
+Create regions. Any part of your page that you want to be editable in the Drupal interface (via Blocks) needs to become a region. In our sample site, this includes header, right sidebar,  content area, and footer. Don't forget that all of your regions need to be introduced in the `.info` file first. Drupal will provide a set of default regions if you don't specify any regions. Theoe include header, highlighted, help, content, sidebar_first and sidebar_second. 
+
+In Drupal 7 variables, including regions, are inserted using **Render Arrays**. With the exception of the content region, there is a chance that the region will be empty (e.g. if there are no blocks placed in a given region). You probably don't want anything to be printed if the regions are empty. These variables need to be surrounded by conditionals, checking to make sure they exist. The following code creates a conditional to check that the footer region has something in it, then prints out the contents:
+```PHP
+<?php if ($page['footer']): ?>    
+  <?php print render($page['footer']); ?>
+<?php endif; ?>
+```
+Repeat this code for each of your regions, replacing the $page['footer'] variable with the machine names of your regions (the ones in the square brackets in your `.info file`). The content section is an exception, in that it does not need to be surrounded by a conditional statement beacuse there will always be something in the content region.
+
+Sample page.tpl.php:
+```PHP
+<div id="header">
+  <?php if ($page['header']): ?>    
+    <?php print render($page['header']); ?>
+  <?php endif; ?>
+</div>
+
+<div id="wrapper">
+  <div id="content">
+    <?php print render($page['content']); ?>
+  </div>
+
+  <?php if ($page['sidebar_first']): ?>    
+    <div id="sidebar">
+      <?php print render($page['sidebar_first']); ?>
+    </div>
+  <?php endif; ?>  
+</div>
+
+<div id="footer">
+  <?php if ($page['footer']): ?>    
+    <?php print render($page['footer']); ?>
+  <?php endif; ?>  
+</div>
+```
+Add variables for basic page elements.
