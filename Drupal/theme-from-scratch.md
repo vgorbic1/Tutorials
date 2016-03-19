@@ -97,4 +97,87 @@ Sample page.tpl.php:
   <?php endif; ?>  
 </div>
 ```
-Add variables for basic page elements.
+There are other parts of the page that exist outside of regions. At this stage we will add variables for key page elements, including the page title and Drupal navigation tabs. There are many other variables available to `page.tpl.php`. What you include depends on what functionality you want your theme to have. Do you want breadcrumbs? If so, put in the `$breadcrumbs` variable.
+
+Some of the most common are:
+* `$site_name`
+* `$logo` (the logo uploaded through the theme settings; only useful when you're implementing the logo theme feature)
+* `$title` (the page title)
+* `$main_menu`
+* `$secondary_menu`
+* `$breadcrumbs`
+
+There are also some variables associated with Drupal administration:
+
+* `$tabs` (menu used for edit/view admin menus, among other things; often used by modules)
+* `$messages`
+* `$action_links`
+
+And some other useful  variables:
+
+* `$base_path` (the path to your site root)
+* `$front_page (the path to the site front page)
+* `$directory` (the path to your theme)
+Variables are inserted using the Render API, like this:
+```PHP
+<?php print render($tabs); ?>
+```
+In Drupal 7 there are now `$title_prefix` and `$title_suffix` variables. Modules may make use of these items, so it is important to include them in all themes.
+
+Some variables need to be displayed using the `render()` function, while others can simply be printed. How do you know the difference? If there variable is an array (as listed on the `page.tpl.php` reference page), you need to use `render()`. If not, you can just print the variable `<?php print $variable; ?>`. If you're having trouble you can also check the default `page.tpl.php` and see how they did it there.
+
+#### Menus and Theme Settings
+Blocks for the standard navigation menus (main menu and secondary menu) are provided by default but they are also available as variables. You could use either method for inserting the links into your page template. If you want to be able to move them around easily, they should be blocks. Otherwise they can be hard-coded into the template using variables if you prefer.
+
+Similar logic can be used for determining which way to display other common site elements such as the logo. Do you want to be able to easily change the logo through the admin interface or turn the main menu off? If so, use the theme settings and associated variable. If not the variable can be placed directly into the page template.
+
+The desirability of being able to manipulate these elements within the admin interface depends on the purpose of your theme. If this is a generic theme, to be used by many different sites, it is probably a good idea to make it easy to change the placement of navigation menus, or to upload a new logo. If you are designing a site for a client, on the other hand, you might not want them to change the logo or move around the navigation menus.
+
+Another important point is that menu links are returned as an array. When you include this in your page template, you need to expand it by sending it through theme() which will expand the array:
+```PHP
+<?php if ($main_menu): ?>
+  <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu'))); ?>
+<?php endif; ?>
+```
+Sample page.tpl.php file:
+```PHP
+<div id="wrapper">
+
+  <div id="header">
+    <a href="<?php print $front_page;?>">
+      <img src="/<?php print $directory;?>/images/logo.png" alt="<?php print $site_name;?>" height="80" width="150" />
+    </a>
+ 
+    <?php if ($main_menu): ?>
+      <?php print theme('links', $main_menu); ?>
+    <?php endif; ?>
+
+  </div>
+ 
+  <div id="content">
+    <?php print render($title_prefix); ?>
+      <?php if ($title): ?><h1><?php print $title; ?></h1><?php endif; ?>
+    <?php print render($title_suffix); ?>
+
+    <?php print render($messages); ?>
+    <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+    <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+
+    <?php print render($page['content']); ?>
+  </div>
+
+  <?php if ($page['sidebar_first']): ?>    
+    <div id="sidebar">
+      <?php print render($page['sidebar_first']); ?>
+    </div>
+  <?php endif; ?>  
+
+  <div id="footer">
+    <?php if ($page['footer']): ?>    
+      <?php print render($page['footer']); ?>
+    <?php endif; ?>  
+  </div>
+
+</div>
+```
+
