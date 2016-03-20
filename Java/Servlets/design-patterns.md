@@ -14,6 +14,8 @@ this pattern is also known as the Model-View-Controller pattern (MVC pattern). T
 
 In the MVC pattern, the model defines the business layer of the application. This layer is usually implemented by JavaBeans. This type of class defines the data for the business objects and provides the methods that do the business processing.
 
+![model2](https://cloud.githubusercontent.com/assets/13823751/13902232/d7a4331c-ee0e-11e5-85fb-57d1676aa6ca.jpg)
+
 The view defines the presentation layer of the application. Since it's cumbersome to use a servlet to send HTML to a browser, an MVC application uses HTML documents or JSPs to present the view to the browser. 
 
 The controller manages the flow of the application, and this work is done by one or more servlets. To start, a servlet usually reads any parameters that are available from the request. Then, if necessary, the servlet updates the model and saves it to the data store. Finally, the servlet forwards the updated model to one of several possible JSPs for presentation.
