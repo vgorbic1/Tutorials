@@ -22,3 +22,5 @@ The controller manages the flow of the application, and this work is done by one
 
 Most applications need to map the data in the model to a data store. But the JavaBeans usually don't provide the methods for storing their own data. Instead, data access classes like the UserDB class provide those methods. That separates the business logic from the data access operations.
 
+#### Post-Redirect-Get (PRG) Pattern
+Parameters of POST request usually contain input data, which can change state of server application. Same data submitted twice may produce unwanted results. Submission of the same data more than once in a POST request is undesirable and got its own name: Double Submit problem. The answer to double submit problem is redirection. PRG pattern splits one request into two. Instead of returning a result page immediately in response to POST request, server responds with redirect to result page. Browser loads the result page as if it were an separate resource. After all, there are two different tasks to be done. First is to POST input data to the server. Second is to GET output to the client.
