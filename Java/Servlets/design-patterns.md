@@ -8,4 +8,15 @@ processing for the application. To save the data of the business classes, the ap
 
 Although the Model 1 pattern is sometimes adequate for applications that have limited processing requirements, this pattern is not recommended for most applications.
 
+#### Model 2 (MVC) Pattern
+This pattern separates the code for the application into three layers: the model, the view, and the controller. As a result,
+this pattern is also known as the Model-View-Controller pattern (MVC pattern). This pattern works better than the Model 1 pattern whenever the processing requirements are substantial.
+
+In the MVC pattern, the model defines the business layer of the application. This layer is usually implemented by JavaBeans. This type of class defines the data for the business objects and provides the methods that do the business processing.
+
+The view defines the presentation layer of the application. Since it's cumbersome to use a servlet to send HTML to a browser, an MVC application uses HTML documents or JSPs to present the view to the browser. 
+
+The controller manages the flow of the application, and this work is done by one or more servlets. To start, a servlet usually reads any parameters that are available from the request. Then, if necessary, the servlet updates the model and saves it to the data store. Finally, the servlet forwards the updated model to one of several possible JSPs for presentation.
+
+Most applications need to map the data in the model to a data store. But the JavaBeans usually don't provide the methods for storing their own data. Instead, data access classes like the UserDB class provide those methods. That separates the business logic from the data access operations.
 
