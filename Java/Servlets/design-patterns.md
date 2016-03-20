@@ -24,3 +24,9 @@ Most applications need to map the data in the model to a data store. But the Jav
 
 #### Post-Redirect-Get (PRG) Pattern
 Parameters of POST request usually contain input data, which can change state of server application. Same data submitted twice may produce unwanted results. Submission of the same data more than once in a POST request is undesirable and got its own name: Double Submit problem. The answer to double submit problem is redirection. PRG pattern splits one request into two. Instead of returning a result page immediately in response to POST request, server responds with redirect to result page. Browser loads the result page as if it were an separate resource. After all, there are two different tasks to be done. First is to POST input data to the server. Second is to GET output to the client.
+
+![prg](https://cloud.githubusercontent.com/assets/13823751/13905479/b08ab30c-ee8e-11e5-8a37-7d7eacc28b77.jpg)
+
+This approach provides a clean Model-View-Controller solution. All input data is stored, permanently or temporarily, in the Model on the server during the first step. The second step loads a View reflecting current Model state. When a user tries to refresh the result page, browser resends an "empty" GET request to the server. This request does not contain any input data and does not change server status. It only loads the View again. If server state was not changed by other processes/users, server responds with the same page as before refresh.
+
+[SOURCE] (http://www.theserverside.com/news/1365146/Redirect-After-Post)
