@@ -178,12 +178,12 @@ You can include following properties for an attribute:
 
 Property |	Purpose
 --- | --- 
-name	The name element defines the name of an attribute. Each attribute name must be unique for a particular tag.
-required	This specifies if this attribute is required or optional. It would be false for optional.
-rtexprvalue	Declares if a runtime expression value for a tag attribute is valid
-type	Defines the Java class-type of this attribute. By default it is assumed as String
-description	Informational description can be provided.
-fragment	Declares if this attribute value should be treated as a JspFragment.
+name|	The name element defines the name of an attribute. Each attribute name must be unique for a particular tag.
+required|	This specifies if this attribute is required or optional. It would be false for optional.
+rtexprvalue|	Declares if a runtime expression value for a tag attribute is valid
+type|	Defines the Java class-type of this attribute. By default it is assumed as String
+description|	Informational description can be provided.
+fragment|	Declares if this attribute value should be treated as a JspFragment.
 
 Following is the example to specify properties related to an attribute:
 ```xml
