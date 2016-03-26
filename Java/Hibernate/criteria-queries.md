@@ -102,7 +102,7 @@ cr.setProjection(Projections.sum("salary"));
 #### Pagination
 There are two methods of the Criteria interface for pagination:
 
-S.N. |	Description |
+Method |	Description |
 --- | --- |
 public Criteria setFirstResult(int firstResult) | This method takes an integer that represents the first row in your result set, starting with row 0. |
 public Criteria setMaxResults(int maxResults) | This method tells Hibernate to retrieve a fixed number maxResults of objects. |
@@ -113,6 +113,46 @@ Criteria cr = session.createCriteria(Employee.class);
 cr.setFirstResult(1);
 cr.setMaxResults(10);
 List results = cr.list();
+```
+
+#### Sorting the Results
+The Criteria API provides the `org.hibernate.criterion.Order` class to sort your result set in either ascending or descending order, according to one of your object's properties. This example demonstrates how you would use the Order class to sort the result set:
+```java
+Criteria cr = session.createCriteria(Employee.class);
+// To get records having salary more than 2000
+cr.add(Restrictions.gt("salary", 2000));
+
+// To sort records in descening order
+crit.addOrder(Order.desc("salary"));
+
+// To sort records in ascending order
+crit.addOrder(Order.asc("salary"));
+
+List results = cr.list();
+```
+
+#### Projections & Aggregations:
+The Criteria API provides the `org.hibernate.criterion.Projections` class which can be used to get average, maximum or minimum of the property values. The Projections class is similar to the Restrictions class in that it provides several static factory methods for obtaining Projection instances.
+```java
+Criteria cr = session.createCriteria(Employee.class);
+
+// To get total row count.
+cr.setProjection(Projections.rowCount());
+
+// To get average of a property.
+cr.setProjection(Projections.avg("salary"));
+
+// To get distinct count of a property.
+cr.setProjection(Projections.countDistinct("firstName"));
+
+// To get maximum of a property.
+cr.setProjection(Projections.max("salary"));
+
+// To get minimum of a property.
+cr.setProjection(Projections.min("salary"));
+
+// To get sum of a property.
+cr.setProjection(Projections.sum("salary"));
 ```
 
 #### Fetch Random Rows
