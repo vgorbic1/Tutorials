@@ -102,7 +102,7 @@ cr.setProjection(Projections.sum("salary"));
 #### Pagination
 There are two methods of the Criteria interface for pagination:
 
-S.N. |	Method & Description |
+S.N. |	Description |
 --- | --- |
 public Criteria setFirstResult(int firstResult) | This method takes an integer that represents the first row in your result set, starting with row 0. |
 public Criteria setMaxResults(int maxResults) | This method tells Hibernate to retrieve a fixed number maxResults of objects. |
