@@ -6,6 +6,10 @@ The Hibernate `Session` interface provides `createCriteria()` method which can b
 Criteria criteria = session.createCriteria(Employee.class);
 List results = criteria.list();
 ```
+To get a single row use:
+```
+results (Employee) criteria.uniqueResult();
+```
 
 #### Restrictions with Criteria
 You can use `add()` method available for Criteria object to add restriction for a criteria query:
