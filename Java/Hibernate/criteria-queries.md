@@ -8,7 +8,7 @@ List results = criteria.list();
 ```
 To get a single row use:
 ```
-results (Employee) criteria.uniqueResult();
+result (Employee) criteria.uniqueResult();
 ```
 
 #### Restrictions with Criteria
