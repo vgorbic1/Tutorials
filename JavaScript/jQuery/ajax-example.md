@@ -14,6 +14,7 @@
 
 #### PHP file with JSON output:
 ```php
+// people.php
 $person1 = array("id"=>1, "name"=>"bill gates");
 $person2 = array("id"=>2, "name"=>"bernie sanders");	
 $person3 = array("id"=>3, "name"=>"hillary clinton");	
@@ -24,6 +25,7 @@ echo json_encode($people);
 
 #### PHP file with XML output:
 ```php
+// xml.php
 $output = "<users><user><id>1</id><name>joe</name></user><user><id>2</id><name>sue</name></user></users>";
 header("Content-type:application/xml");
 echo $output;
@@ -31,6 +33,7 @@ echo $output;
 
 #### jQuery file with AJAX:
 ```javascript
+// jqueryAJAX.js
 $(document).ready(function() {
   $.get("people.php", function(response) {
     outputPeople(response)
