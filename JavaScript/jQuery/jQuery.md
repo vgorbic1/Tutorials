@@ -54,3 +54,53 @@ $(":button")|	Selects all button elements and input elements of type="button"
 $("tr:even")|	Selects all even tr elements
 $("tr:odd")	|Selects all odd tr elements
 
+#### jQuery Event Methods
+All the different visitor's actions that a web page can respond to are called events:
+* moving a mouse over an element
+* selecting a radio button
+* clicking on an element
+
+To assign a click event to all paragraphs on a page:
+```javascript
+$("p").click(function(){
+  // action goes here!!
+});
+```
+Common DOM events:
+
+|Mouse Events |	Keyboard Events	| Form Events	| Document/Window Events|
+|---|---|---|---|
+click	|keypress	|submit	|load
+dblclick|	keydown|	change|	resize
+mouseenter|	keyup|	focus|	scroll
+mouseleave|	 	|blur|	unload
+
+The `hover()` method takes two functions and is a combination of the `mouseenter()` and `mouseleave()` methods:
+```javascript
+$("#p1").hover(function(){
+    alert("You entered p1!");
+},
+function(){
+    alert("Bye! You now leave p1!");
+});
+```
+The `on()` method attaches one or more event handlers for the selected elements:
+```javascript
+$("p").on("click", function(){
+    $(this).hide();
+});
+
+or
+
+$("p").on({
+    mouseenter: function(){
+        $(this).css("background-color", "lightgray");
+    }, 
+    mouseleave: function(){
+        $(this).css("background-color", "lightblue");
+    }, 
+    click: function(){
+        $(this).css("background-color", "yellow");
+    } 
+});
+```
