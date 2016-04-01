@@ -18,8 +18,7 @@ or
 
 #### jQuery Syntax
 Basic syntax is: `$(selector).action()`
-
-To prevent any jQuery code from running before the document is finished loading (is ready) use:
+jQuery uses the $ sign as a shortcut for jQuery. To prevent any jQuery code from running before the document is finished loading (is ready) use:
 ```javascript
 $(document).ready(function(){
    // jQuery methods go here...
