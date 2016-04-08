@@ -65,3 +65,4 @@ $.each( obj, function( key, value ) {
 flammable : inflammable 
 duh : no duh
 ```
+[more here](https://api.jquery.com/jquery.each/)
