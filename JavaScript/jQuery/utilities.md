@@ -43,3 +43,28 @@ console.log(defaults);
 // Result: {stories: 1, color: "gray", garage: "3 car garage"}
 ```
 [more here](https://api.jquery.com/jquery.extend/)
+
+#### Iteration
+The `$.each()` operator is generic iterator function, which can be used to seamlessly iterate over both objects and arrays. The `$.each()` function is not the same as `$(selector).each()`, which is used to iterate, exclusively, over a jQuery object. The `$.each()` function can be used to iterate over any collection, whether it is an object or an array.
+```javascript
+$.each([ 52, 97 ], function( index, value ) {
+  alert( index + ": " + value );
+});
+// Result:
+0: 52 
+1: 97
+```
+Note, that `$.each()` function internally retrieves and uses the length property of the passed collection. So, if the collection has a property called length — e.g. `{bar: 'foo', length: 10}` — the function might not work as expected.
+```javascript
+var obj = {
+  "flammable": "inflammable",
+  "duh": "no duh"
+};
+$.each( obj, function( key, value ) {
+  alert( key + ": " + value );
+});
+
+//Result:
+flammable: inflammable 
+duh: no duh
+```
