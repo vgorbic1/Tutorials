@@ -56,15 +56,12 @@ $.each([ 52, 97 ], function( index, value ) {
 ```
 Note, that `$.each()` function internally retrieves and uses the length property of the passed collection. So, if the collection has a property called length — e.g. `{bar: 'foo', length: 10}` — the function might not work as expected.
 ```javascript
-var obj = {
-  "flammable": "inflammable",
-  "duh": "no duh"
-};
+var obj = { "flammable" : "inflammable", "duh" : "no duh" };
 $.each( obj, function( key, value ) {
-  alert( key + ": " + value );
+  alert( key + " : " + value );
 });
 
 //Result:
-flammable: inflammable 
-duh: no duh
+flammable : inflammable 
+duh : no duh
 ```
