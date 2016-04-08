@@ -14,3 +14,5 @@ $.merge(nfl, AFCteams);
 // ["chiefs", "browns", "jets"]
 // ["packers", "bears", "cowboys", "chiefs", "browns", "jets"]
 ```
+*Merges two arrays, but uses a copy, so the original isn't altered.*
+
