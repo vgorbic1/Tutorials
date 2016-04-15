@@ -26,8 +26,28 @@ Example of writing a simple plugin utilizing jQuery library.
 $(document).ready(function() {
   $.fn.highlighter.defaults.color = "blue";
   $("li").highlighter({"color":"red"}).on("click", function() {
-    alert("cubs stink");
+    alert("color changed");
   });
 })
 ```
 
+#### Create plugin
+```javascript
+(function($) {
+
+	$.fn.highlighter = function(options) {
+		var localDefaults = $.extend({}, $.fn.highlighter.defaults); // clone defaults
+		$.extend(localDefaults, options); // if options exist, use them. Otherwise, use defaults
+	
+		return $(this).each(function(index, item) { // for each element ...
+			console.log("highlighter");  // write this line in console
+			$(item).css("backgroundColor", localDefaults.color); // and change the background
+		});
+	}
+	
+	$.fn.highlighter.defaults = {"color" : "yellow"}; // create defaults property for the plugin
+	
+})(jQuery)
+```
+
+Put the plugin inside closure (self-calling function), to know that `$` represents jQuery library. Wrapping a function between parenthesis ensures this function to be evaluated as a function expression.
