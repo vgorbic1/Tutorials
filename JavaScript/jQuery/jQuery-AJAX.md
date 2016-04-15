@@ -49,7 +49,6 @@ $.post(URL, data, callback);
 
 The following example uses the $.post() method to send some data along with the request:
 ```javascript
-Example
 $("button").click(function(){
     $.post("demo_test_post.asp",
     {
@@ -61,3 +60,31 @@ $("button").click(function(){
     });
 });
 ```
+
+#### jQuery ajax() Method
+The ajax() method perform an asynchronous HTTP (Ajax) request.
+
+Syntax:
+```
+$.ajax(URL, settings);
+```
+* Settings is a set of key/value pairs that configure the Ajax request. All settings are optional.
+
+```javascript
+$.ajax("lists.php", 
+	{
+		"success": function(response) {
+					    $("body").html(response)
+					},
+		"data": {"newTask":"watch football"},
+		"method": "GET",
+		"dataType": "html",
+		"error": function(xhr, status, errorMessage) {
+			        console.log(xhr);
+		        	alert(status);
+					alert(errorMessage);
+				 }
+	}
+);
+```
+[More](http://api.jquery.com/jquery.ajax/)
