@@ -62,6 +62,3 @@ img {
     z-index: -1;
 }
 ```
-
-* **What happens if an image is larger than its containing element?**
-* The `clip` property lets you specify a rectangle to clip an absolutely positioned element.
