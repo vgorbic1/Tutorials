@@ -7,5 +7,5 @@ The overflow property specifies what happens if content overflows an element's b
 * **initial**	Sets this property to its default value.
 * **inherit**	Inherits this property from its parent element.
 
-* **What happens if an image is larger than its containing element?**
-* The `clip` property lets you specify a rectangle to clip an absolutely positioned element.
+#### What happens if an image is larger than its containing element?
+The `clip` property lets you specify a rectangle to clip an absolutely positioned element.
