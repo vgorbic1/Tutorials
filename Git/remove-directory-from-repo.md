@@ -1,4 +1,4 @@
-## Remove directory from remote repository after adding them to .gitignore
+## Remove directory from remote repository after adding it to .gitignore
 If you committed and pushed some directory to github and after that, you altered the `.gitignore` file adding a directory that should
 be ignored, you can remove (now ignored) directory from GitHub.
 ```
