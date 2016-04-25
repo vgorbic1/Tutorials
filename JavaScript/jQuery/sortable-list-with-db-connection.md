@@ -17,7 +17,7 @@ The app will get a list of items from a database and allow sorting it. The sorte
 </html>
 ```
 
-## Create JavaScript (jQuery) file and call it `sortable.js`:
+#### Create JavaScript (jQuery) file and call it `sortable.js`:
 ```javascript
 $(document).ready(function() {
 	
