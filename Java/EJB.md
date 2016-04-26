@@ -35,3 +35,18 @@ Session bean encapsulates business logic only, it can be invoked by local, remot
 * Stateless Session Bean: It doesn't maintain state of a client between multiple method calls.
 * Stateful Session Bean: It maintains state of a client across multiple requests.
 * Singleton Session Bean: One instance per application, it is shared between clients and supports concurrent access.
+
+### Java Message Service
+JMS (Java Message Service) is an API that provides the facility to create, send and read messages. It provides loosely coupled, reliable and asynchronous communication. JMS is also known as a messaging service. Messaging is a technique to communicate applications or software components. JMS is mainly used to send and receive message from one application to another. If we want to send message from one application to another, we need to use JMS API. Consider a scenario, one application A is running in INDIA and another application B is running in USA. To send message from A application to B, we need to use JMS.
+
+#### Advantage of JMS
+* Asynchronous: To receive the message, client is not required to send request. Message will arrive automatically to the client.
+* Reliable: It provides assurance that message is delivered.
+
+There are two types of messaging domains in JMS:
+* Point-to-Point Messaging Domain. In PTP model, one message is delivered to one receiver only. Queue is used as a message oriented middleware (MOM). The Queue is responsible to hold the message until receiver is ready. In PTP model, there is no timing dependency between sender and receiver.
+* Publisher/Subscriber Messaging Domain. In Pub/Sub model, one message is delivered to all the subscribers. It is like broadcasting. Topic is used as a message oriented middleware that is responsible to hold and deliver messages. There is timing dependency between publisher and subscriber.
+
+
+
+
