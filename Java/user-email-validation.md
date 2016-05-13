@@ -1,7 +1,7 @@
-** Validate user name and email via web service
+**Validate user name and email via web service
 
 ```java
-package com.connorwaity.nickel.controller;
+package ...controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
