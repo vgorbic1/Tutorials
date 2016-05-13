@@ -1,4 +1,4 @@
-**Validate user name and email via web service
+##Validate user name and email via web service
 
 ```java
 package ...controller;
