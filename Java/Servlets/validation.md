@@ -57,7 +57,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
       url = "/index .jsp";
     } else {
       message = "";
-      url = "/thanks .jsp";
+      url = "/thanks.jsp";
       UserDB.insert(user);
     }
     request.setAttribute("user", user);
