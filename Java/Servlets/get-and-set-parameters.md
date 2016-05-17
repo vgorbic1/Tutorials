@@ -46,4 +46,4 @@ request.setAttribute("id", new Integer(id));
 int id = (Integer) request.getAttribute("id");
 ```
 These methods are most often used in conjunction with a RequestDispatcher object
-that's used to forward a request as described in the next figure.
+that's used [to forward a request](https://github.com/vgorbic1/Tutorials/blob/master/Java/Servlets/redirection-and-forwarding.md) as described in the next figure.
