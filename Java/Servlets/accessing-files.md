@@ -6,7 +6,8 @@ Code that gets the absolute path for a file:
 ServletContext sc = this.getServletContext();
 String path = sc.getRealPath("/WEB-INF/EmailList.txt");
 ```
-A more concise way to get the absolute path for a file:
+All servlets inherit the GenericServlet class. As a result, the getServletContext
+method is available to all servlets. A more concise way to get the absolute path for a file:
 ```java
 String path = this.getServletContext().getRealPath("/WEB-INF/EmailList.txt");
 // A possible value for the real path variable:
