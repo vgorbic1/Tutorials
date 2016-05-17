@@ -22,3 +22,26 @@ for (String country : selectedCountries) {
   // code to processes each country
 }
 ```
+
+### Set request Parameters
+When you work with request attributes, you should realize that the attributes are reset between requests. As a result, if you store a User object as a request attribute and forward that request to a JSP, that User object is only available to that JSP and isn't available later in the session.
+
+#### How to set a request attribute
+```java
+User user = new User(firstName, lastName, email);
+request.setAttribute ("user", user);
+```
+
+#### How to get a request attribute
+```java
+User user = (User) request.getAttribute ("user");
+```
+#### How to set a request attribute for a primitive type
+```java
+int id = 1;
+request.setAttribute("id", new Integer(id));
+```
+#### How to get a request attribute for a primitive type
+```java
+int id = (Integer) request.getAttribute("id");
+```
