@@ -1,4 +1,4 @@
-## Get and Set Parameters with Servlets.
+## Get and Set Parameters with Servlets
 
 #### Servlet code that gets text from a text box
 ```java
