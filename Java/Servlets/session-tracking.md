@@ -1,11 +1,14 @@
 ## Session Tracking
-
-Since HTTP is a stateless protocol, Session Tracking is needed to add state back to HTTP. Session Tracking lets us keep track of user data as they navigate our web applications.
+HTTP doesn't maintain state, it is known as a stateless protocol. In contrast, FTP maintains state between requests so it is known as a stateful protocol. Since HTTP is a stateless protocol, Session Tracking is needed to add state back to HTTP. Session Tracking lets us keep track of user data as they navigate our web applications.
 
 #### Other Ways of Session Tracking
 - Using hidden form fields is a very early attempt to do session tracking. All site navigation had to go through form submissions and a session was lost if users clicked on regular links.
 - URL Rewriting allowed to append a session ID to the end of all URLs of a site dynamically. It works well and the site does not lose track of user sessions, but this technology requires lots of server side coding.
 - Cookies allow to store a session ID in the browser. This is overall the best solution.
+
+By default, the servlet API uses a cookie to store the session ID within the client's browser. This is an extension of the HTTP protocol. Then, when the next request is made, this cookie is added to the request. However, if cookies have been disabled within a browser, this type of session tracking won't work.
+
+A *per-session cookie* is stored on the browser until the user closes the browser and a *persistent* cookie can be stored on the user's hard disk for up to 3 years. The session tracking code presented in this chapter relies on per-session cookies. As a result, per-session cookies must be enabled in the user's browser for this to work.
 
 #### Session Tracking in Servlets
 HttpSession is used for session tracking. To access the current session object:
