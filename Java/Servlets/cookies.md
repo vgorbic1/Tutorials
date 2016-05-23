@@ -54,3 +54,27 @@ for (Cookie cookie : cookies) {
 ```html
 <p>Email cookie value: ${cookie.emai1Cookie.value}</p>
 ```
+#### Using utility class
+A utility class that gets the value of a cookie:
+```java
+package murach.util;
+import javax.servlet.http.*;
+public class CookieUtil {
+  public static String getCookieValue(Cookie[] cookies, String cookieName) {
+    String cookieValue = "";
+    if (cookies != null) {
+      for (Cookie cookie: cookies) {
+        if (cookieName.equals(cookie.getName())) {
+          cookieValue = cookie.getValue();
+        }
+      }
+    }
+    return cookieValue;
+  }
+}
+```
+Code that uses the CookieUtil class to get the value of a cookie:
+```java
+Cookie[] cookies = request.getCookies();
+String emailAddress = CookieUtil.getCookieValue(cookies, "emailCookie");
+```
