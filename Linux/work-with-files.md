@@ -1,4 +1,4 @@
-#### Work With Files
+## Work With Files
 ###SEARCHING THROUGH THE FILES AND PACKAGES
 Ubuntu file database has all files in it. To search that database:
 ```
