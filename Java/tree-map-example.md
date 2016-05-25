@@ -1,9 +1,7 @@
 ## Display Tree Map
-
+```java
 import java.util.*;
-
 class TreeMapDemo {
-
     private void run() {
         /**
          *  Create an instance of the TreeMap class. This class holds 
@@ -81,7 +79,7 @@ class TreeMapDemo {
 ```
 
 This is the Student class:
-```
+```java
 public class Student {
 
     private String studentId;
