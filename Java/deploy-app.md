@@ -2,9 +2,12 @@
 
 Three ways of deployment:
 1. Executable Jar (100% local)
+
 2. Combination:
+
 - Web Start
 - RMI app
+
 3. Servlets (100% remote)
 
 #### JARS
