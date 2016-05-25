@@ -1,14 +1,9 @@
 ## Deploying and Application
 
 Three ways of deployment:
-1. Executable Jar (100% local)
-
-2. Combination:
-
-- Web Start
-- RMI app
-
-3. Servlets (100% remote)
+- Executable Jar (100% local)
+- Combination: Web Start and RMI app
+- Servlets (100% remote)
 
 #### JARS
 The compiler has to generate class files for all inner classes including GUI event listeners. Separate source code (.java) and class files (.class)
