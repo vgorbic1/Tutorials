@@ -51,12 +51,9 @@ hashed password, then returns a boolean.
      /* if the password match it will return true. */ 
 ?>
 ```
-Create class.user.php
-```php
-this file must be included at the end of 'dbconfig.php' file. and creating a new object of this class file in the 'dbconfig.php' 
-file we can make use of database,  this is the main class file which contains register(),login(),is_loggedin(),redirect() functions 
+Create class.user.php. This file must be included at the end of 'dbconfig.php' file. and creating a new object of this class file in the 'dbconfig.php' file we can make use of database,  this is the main class file which contains register(),login(),is_loggedin(),redirect() functions 
 to maintain users activity. register() function register a new user with strong password hashing function.
-```
+```php
 <?php
 class USER {
     private $db;
@@ -274,3 +271,37 @@ if(isset($_POST['btn-signup'])) {
 </body>
 </html>
 ```
+Create home.php. This page shows welcome message of logged in user with username and a hyper link to logout the user and redirects the ‘index.php/login’ page.
+```php
+<?php
+include_once 'dbconfig.php';
+if(!$user->is_loggedin()) {
+ $user->redirect('index.php');
+}
+$user_id = $_SESSION['user_session'];
+$stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
+$stmt->execute(array(":user_id"=>$user_id));
+$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+?>
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+<meta charset="utf-8" />
+<title>welcome - <?php print($userRow['user_email']); ?></title>
+</head>
+<body>
+<div class="header">
+ <div class="left">
+     <label><a href="http://www.codingcage.com/">Coding Cage - Programming Blog</a></label>
+    </div>
+    <div class="right">
+     <label><a href="logout.php?logout=true"><i class="glyphicon glyphicon-log-out"></i> logout</a></label>
+    </div>
+</div>
+<div class="content">
+welcome : <?php print($userRow['user_name']); ?>
+</div>
+</body>
+</html>
+```
+[SOURCE](http://www.codingcage.com/2015/04/php-login-and-registration-script-with.html)
