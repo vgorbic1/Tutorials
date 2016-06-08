@@ -75,3 +75,116 @@ rewrite ^/(.*)$  /index.php?q=$1 last;
 }
 ```
 
+#### Redirecting from a Former Name to the Current Name
+This sample NGINX rewrite rule permanently redirects requests from www.old‑name.com and old‑name.com to www.new‑name.com, using two NGINX variables to capture values from the original request URL – $scheme is the original protocol (http or https) and $request_uri is the full URI (following the domain name), including arguments:
+```
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name www.old-name.com old-name.com;
+    return 301 $scheme://www.new-name.com$request_uri;
+}
+```
+Because $request_uri captures the portion of the URL that follows the domain name, this rewrite is suitable if there’s a one‑to‑one correspondence of pages between the old and new sites (for example, www.new‑name.com/about has the same basic content as www.old‑name.com/about). If you’ve reorganized the site in addition to changing the domain name, it might be safer to redirect all requests to the home page instead, by omitting $request_uri:
+```
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name www.old-name.com old-name.com;
+    return 301 $scheme://www.new-name.com;
+}
+```
+Some other blogs about rewriting URLs in NGINX use the rewrite directive for these use cases, like this:
+```
+# NOT RECOMMENDED
+rewrite ^ $scheme://www.new-name.com$request_uri permanent;
+```
+This is less efficient than the equivalent return directive, because it requires NGINX to process a regular expression, albeit a simple one (the caret [ ^ ], which matches the complete original URL). The corresponding return directive is also easier for a human reader to interpret: return 301 more clearly indicates that NGINX returns code 301 than the rewrite ... permanent notation does.
+
+#### Adding and Removing the www Prefix
+These examples add and remove the www prefix:
+```
+# add 'www'
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name domain.com;
+    return 301 $scheme://www.domain.com$request_uri;
+}
+
+# remove 'www'
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name www.domain.com;
+    return 301 $scheme://domain.com$request_uri;
+}
+```
+Again, return is preferable to the equivalent rewrite, which follows. The rewrite requires interpreting a regular expression –  ^(.*)$  – and creating a custom variable ($1) that in fact is equivalent to the built‑in $request_uri variable.
+```
+# NOT RECOMMENDED
+rewrite ^(.*)$ $scheme://www.domain.com$1 permanent;
+```
+
+#### Redirecting All Traffic to the Correct Domain Name
+
+Here’s a special case that redirects incoming traffic to the website’s home page when the request URL doesn’t match any server and location blocks, perhaps because the domain name is misspelled. It works by combining the default_server parameter to the listen directive and the underscore as the parameter to the server_name directive.
+```
+server {
+    listen 80 default_server;
+    listen 443 ssl default_server;
+    server_name _;
+    return 301 $scheme://www.domain.com;
+}
+```
+We use the underscore as the parameter to server_name to avoid inadvertently matching a real domain name – it’s safe to assume that no site will ever have the underscore as its domain name. Requests that don’t match any other server blocks in the configuration end up here, though, and the default_server parameter to listen tells NGINX to use this block for them. By omitting the $request_uri variable from the rewritten URL, we redirect all requests to the home page, a good idea because requests with the wrong domain name are particularly likely to use URIs that don’t exist on the website.
+
+#### Forcing all Requests to Use SSL/TLS
+This server block forces all visitors to use a secured (SSL/TLS) connection to your site.
+```
+server {
+    listen 80;
+    server_name www.domain.com;
+    return 301 https://www.domain.com$request_uri;
+}
+```
+Some other blogs about NGINX rewrite rules use an if test and the rewrite directive for this use case, like this:
+```
+# NOT RECOMMENDED
+if ($scheme != "https") {
+    rewrite ^ https://www.mydomain.com$uri permanent;
+}
+```
+But this method takes extra processing because NGINX must both evaluate the if condition and process the regular expression in the rewrite directive.
+
+#### Enabling Pretty Permalinks for WordPress Websites
+NGINX and NGINX Plus are very popular application delivery platforms for websites that use WordPress. The following try_files directive tells NGINX to check for the existence of a file, $uri, and then directory, $uri/. If neither the file or directory exists, NGINX returns a redirect to /index.php and passes the query‑string arguments, which are captured by the $args parameter.
+```
+location / {
+    try_files $uri $uri/ /index.php?$args;
+}
+```
+
+#### Dropping Requests for Unsupported File Extensions
+For various reasons, your site might receive request URLS that end in a file extension corresponding to an application server you’re not running. In this example from the Engine Yard blog, the application server is Ruby on Rails, so requests with file types handled by other application servers (Active Server Pages, PHP, CGI, and so on) cannot be serviced and need to be rejected. In a server block that passes any requests for dynamically generated assets to the app, this location directive drops requests for non‑Rails file types before they hit the Rails queue.
+```
+location ~ \.(aspx|php|jsp|cgi)$ {
+    return 410;
+}
+```
+Strictly speaking, response code 410 (Gone) is intended for situations when the requested resource used to be available at this URL but is no longer, and the server does not know its current location, if any. Its advantage over response code 404 is that it explicitly indicates the resource is permanently unavailable, so clients won’t send the request again.
+
+You might want to provide clients with a more accurate indication of the reason for the failure, by returning response code 403 (Forbidden) and an explanation such as "Server handles only Ruby requests" as the text string. As an alternative, the deny all directive returns 403 without an explanation:
+```
+location ~ \.(aspx|php|jsp|cgi)$ {
+    deny all;
+}
+```
+Code 403 implicitly confirms that the requested resource exists, so code 404 might be the better choice if you want to achieve “security through obscurity” by providing the client with as little information as possible. The downside is that clients might repeatedly retry the request because 404 does not indicate whether the failure is temporary or permanent.
+
+#### Configuring Custom Rerouting
+In this example from MODXCloud, you have a resource that functions as a controller for a set of URLs. Your users can use a more readable name for a resource, and you rewrite (not redirect) it to be handled by the controller at listing.html.
+```
+rewrite ^/listings/(.*)$ /listing.html?listing=$1 last;
+```
+As an example, the user‑friendly URL `http://mysite.com/listings/123` is rewritten to a URL handled by the `listing.html` controller, `http://mysite.com/listing.html?listing=123`.
