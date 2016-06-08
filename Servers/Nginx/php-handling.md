@@ -47,24 +47,3 @@ location / {
    try_files $uri $uri/ /index.php$is_args$args;
 }
 ```
-
-#### URL Redirection (Rewrite Rules)
-Rewrite rules change part or all of the URL in a client request, usually for one of two purposes:
-- To inform clients that the resource they’re requesting now resides at a different location. Example use cases are when your website’s domain name has changed, when you want clients to use a canonical URL format (either with or without the www prefix), and when you want to catch and correct common misspellings of your domain name. The return and rewrite directives are suitable for these purposes.
-- To control the flow of processing within NGINX and NGINX Plus, for example to forward requests to an application server when content needs to be generated dynamically. The try_files directive is often used for this purpose.
- 
-
-
-
-```
-location / {
-	root  /home/username/www;
-        index index.html index.htm index.php;
-        try_files $uri $uri/ @drupal;
-
-}
-
-location @drupal {
-rewrite ^/(.*)$  /index.php?q=$1 last;
-}
-```
