@@ -188,3 +188,5 @@ In this example from MODXCloud, you have a resource that functions as a controll
 rewrite ^/listings/(.*)$ /listing.html?listing=$1 last;
 ```
 As an example, the user‑friendly URL `http://mysite.com/listings/123` is rewritten to a URL handled by the `listing.html` controller, `http://mysite.com/listing.html?listing=123`.
+
+[SOURCE](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
