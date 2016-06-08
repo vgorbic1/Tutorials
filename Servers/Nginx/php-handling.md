@@ -15,3 +15,4 @@ server {
     }
 }
 ```
+Nginx does not care about files but rather locations and this is why we have a `try_files` directive inside the php block. This location block matches a URI that ends in .php but it does not care if it’s a file or not. Therefore a request for `/forum/avatars/user2.jpg/index.php` will be matched and sent to PHP, and if PHP is not configured properly PHP will then execute /forum/avatars/user2.jpg when /forum/avatars/user2.jpg/index.php doesn’t exist. This provides a huge security risk. Do note that this is not a bug in nginx, it’s the intended behaviour and as such will not be “fixed”.
