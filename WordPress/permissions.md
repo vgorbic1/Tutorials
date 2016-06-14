@@ -1,4 +1,4 @@
-## Unable to upload images and updated plugins
+## Unable to upload images and update plugins
 
 The fix:
 - Create a phpinfo test page.
