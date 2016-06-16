@@ -1,12 +1,13 @@
 ## Best Practices
 Here we have an example of a well-organized Sass file structure. Notice how the file structure makes it easy to think of the functionality of each component, facilitating the action of finding and updating files.
 ![sass-structure](https://cloud.githubusercontent.com/assets/13823751/16132730/0b3c8cfe-33da-11e6-9212-91618cc37680.jpg)
+
 In addition to having a solid file structure, a big part of staying organized is splitting up the logic into smaller manageable components.
 
 Sass extends the existing CSS @import rule to allow including other SCSS and Sass files.
 - Typically, all imported SCSS files are imported into a main SCSS file which is then combined to make a single CSS output file.
 - The main/global SCSS file has access to any variables or mixins defined in its imported files. The `@import command takes a filename to import.
-- 
+ 
 By default, @import looks for a Sass file in the same or otherwise specified directory but there are a few circumstances where it will behave just like a CSS @import rule:
 - If the file’s extension is .css.
 - If the filename begins with http://.
