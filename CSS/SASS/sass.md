@@ -65,8 +65,21 @@ There are different data types you can assign to a variable in CSS. n addition t
 ```
 $icon-square-length: 300px; // put this line on the top of your scss file
 
-. icon {
+.icon {
     width: $icon-square-length;
     height: $icon-square-length;
+}
+```
+
+#### Lists and Maps
+In addition to color, numbers, strings, booleans, and null, Sass also has two other data types, lists and maps. Lists can be separated by either spaces or commas. For example, the following list denotes font properties, such as ```1.5em Helvetica bold;``` or ```Helvetica, Arial, sans-serif``` You can also surround a list with parentheses and create lists made up of lists.
+
+Maps are very similar to lists, but instead each object is a key-value pair. The typical map looks like: ```(key1: value1, key2: value2)``` In a map, the value of a key can be a list or another map.
+```
+$standard-border: 4px solid black; // put this line on the top of your scss file
+// Find all of the instances that use `4px solid black` in main.scss and replace them with 
+// the $standard-border variable reference. 
+.icon {
+    border: $standard-border;
 }
 ```
