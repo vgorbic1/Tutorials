@@ -77,8 +77,8 @@ In addition to color, numbers, strings, booleans, and null, Sass also has two ot
 Maps are very similar to lists, but instead each object is a key-value pair. The typical map looks like: ```(key1: value1, key2: value2)``` In a map, the value of a key can be a list or another map.
 ```
 $standard-border: 4px solid black; // put this line on the top of your scss file
-// Find all of the instances that use `4px solid black` in main.scss and replace them with 
-// the $standard-border variable reference. 
+  // Find all of the instances that use `4px solid black` in main.scss and replace them with 
+  // the $standard-border variable reference. 
 .icon {
     border: $standard-border;
 }
