@@ -9,6 +9,16 @@ To open command line (tty1 virtual console):
 ```
 Ctrl+Alt+F1
 ```
+The terminal line consists of:
+```
+user@bash: ls       -al                 /home
+prompt     command  argument or option  the rest of argument
+```
+Inside a terminal is a shell, usually "bash" (Bourne Again Shell).
+To check which shell you use:
+```
+echo $SHELL
+```
 To get a full path to where you are now:
 ```
 pwd
