@@ -35,7 +35,7 @@ Permissions for directories:
 ```
 r - you may read the content
 w - you may write to the directory, crate files and other directories inside.
-x - enter the directory (using cd command)
+x - you may enter the directory (using cd command)
 ```
 To change directory permission:
 ```
