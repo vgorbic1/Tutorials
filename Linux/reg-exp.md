@@ -5,7 +5,7 @@ Egrep prints every line which contains a given pattern. egrep is 100% equivalent
 
 To print all lines tha have word "melon" in it:
 ```
-grep 'melon' filename
+egrep 'melon' filename
 ```
 Regular expression symbols:
 ```
