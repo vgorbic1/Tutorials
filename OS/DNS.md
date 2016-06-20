@@ -35,8 +35,8 @@ vwp-rt.wptech.com.
 If you cannot resolve a URL without WWW, it is DNS misconfiguration. The DNS config needs one more record.
 
 ###DNS Records
-- A Record name to IP address
-- NS Record (Name Service)  identify the DNS servers responsible (authoritative) for a zone. These NS-records have the same name as the zone in which they are located.
+- The A-record is the most basic and the most important DNS record type. It is used to translate human friendly domain names such as "www.example.com" into IP-addresses such as 23.211.43.53 (machine friendly numbers).
+- NS Record (Name Service) identifies the DNS servers responsible (authoritative) for a zone. These NS-records have the same name as the zone in which they are located.
 - MX (Male Record) has IP address of your mail server.
 - CNAME (Canonical Name) are domain name aliases. The most common use of the CNAME-record type is to provide access to a web-server using both the standard "www.domain.com" and "domain.com" (with and without the www prefix).
 This is usually done by creating an A-record for the short name (without www), and a CNAME-record for the www name pointing to the short name.
