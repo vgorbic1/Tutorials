@@ -21,6 +21,14 @@ To change an owner of the file:
 ```
 chown oneowner:anotherowner filename.txt
 ```
+To move a level up:
+```
+cd ..
+```
+To go to home directroy:
+```
+cd 
+```
 To create a file:
 ```
 touch filename.txt		touch directory/filename.txt
@@ -52,6 +60,14 @@ cp directory/oldfile newfile
 To copy a file and name it differently:
 ```
 cp dircetory/oldfile archive/newfile
+```
+To copy all files in this directory to another:
+```
+cp * /another-directory
+```
+To copy all files with a specific extension:
+```
+cp *.jpg /another-folder
 ```
 
 #### DISPLAY CONTENT OF A FILE
