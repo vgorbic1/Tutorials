@@ -1,7 +1,7 @@
 ##Regular Expressions
 Regular expressions and wildcards are not the same.
 #### egrep
-Egrep prints every line whicn contains a given pattern.
+Egrep prints every line which contains a given pattern. egrep is 100% equivalent to grep -E. As for what they do, -E switches grep into a special mode so that the expression is evaluated as an ERE (Extended Regular Expression) as opposed to its normal pattern matching.
 
 To print all lines tha have word "melon" in it:
 ```
