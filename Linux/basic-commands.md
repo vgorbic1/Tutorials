@@ -83,3 +83,15 @@ To return to your home directory:
 ```
 cd 		cd ~		cd $HOME
 ```
+To determine what kind of file it is:
+```
+file filename
+```
+File that has "." dot in the beginning of its name is considered hidden.
+```
+.htaccess
+```
+To include a whitespace into the file name use quotes or escape the space character:
+```
+'Holiday Photos'   or   Holiday\ Photos
+```
