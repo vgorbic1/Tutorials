@@ -1,5 +1,4 @@
 ## Work With Files
-###SEARCHING THROUGH THE FILES AND PACKAGES
 Ubuntu file database has all files in it. To search that database:
 ```
 locate filetofind.txt
@@ -11,15 +10,6 @@ find /home/username/ -atime +60
 A general search tool for find packages. It returns a long list of packages:
 ```
 sudo apt-cache search kde
-```
-#### FILE PERMISSIONS
-To remove write permission from a file:
-```
-chmod a-w readme.txt		chmod 600 readme.txt
-```
-To change an owner of the file:
-```
-chown oneowner:anotherowner filename.txt
 ```
 To move a level up:
 ```
