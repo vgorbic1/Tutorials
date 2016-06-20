@@ -66,7 +66,10 @@ cat filename
 less filename
 nano filename
 ```
-
+To display a content of the file starting from the bottom line and in reverse order:
+```
+tac filename
+```
 #### REDIRECTION
 To redirect output use < and > or << and >>. If use < or > the file will be overridden. If use << and >> the output will append to any existing data.
 
