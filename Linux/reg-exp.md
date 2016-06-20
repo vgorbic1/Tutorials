@@ -10,7 +10,7 @@ To print all lines tha have word "melon" in it:
 ```
 egrep 'melon' filename
 ```
-Regular expression symbols:
+Regular expression meta characters:
 ```
 .     a single character
 ?     the preceding character matches 0 or 1 time
