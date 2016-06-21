@@ -101,19 +101,32 @@ newuser    ALL=(ALL:ALL) ALL
 ```
 We can now save the file and close it. By default, you can do that by typing Ctrl-X and then typing "Y" and pressing "Enter".
 
-**Change file owner**
+To see password status of any user account, enter:
 ```
-sudo chown <new-username> <file-to-change>
+passwd -S userNameHere
 ```
-**Change directory owner including all files in the directory**
+Sample outputs:
 ```
-sudo chown -R <new-username> <directory-to-change>
+vivek P 05/05/2012 0 99999 7 -1
 ```
-**Append a user to an existing group**
+The status information consists of 7 fields as follows:
+- vivek : Account login name (username)
+- P : This field indicates if the user account has a locked password (L), has no password (NP), or has a usable password (P)
+- 05/05/2012 : Date of the last password change.
+- 0 : Password expiry minimum age
+- 99999 : Password expiry maximum age.
+- 7 : Password expiry warning period.
+- -1 : Inactivity period for the password (see chage command for more information).
+
+To get more info about password aging for a specific user called vivek, enter:
+```
+# chage -l vivek
+```
+Append a user to an existing group
 ```
 sudo usermod -a -G <group-name> <username>
 ```
-**Check what groups the user belongs to**
+Check what groups the user belongs to
 ```
 groups <username>
  or
