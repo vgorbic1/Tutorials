@@ -1,6 +1,10 @@
 ## User Operations
 
-In order for a user to use SUDO the user account must belong to the admin group and also be listed in /etc/sudoers file, with permission 440. To get access to SUDO if you lost it completely:
+In order for a user to use SUDO the user account must belong to the admin group and also be listed in /etc/sudoers file, with permission 440. 
+
+The whole point of SUDO is to grant you someone else's privileges (usually root) without asking for this other account's password (unlike su).
+
+To get access to SUDO if you lost it completely:
 - Hold down Shift while the computer I booting.
 - When GRUB appears use down-arrow key to go to recovery mode and press Enter. 
 - Select the menu entry for Root: "Drop to root shell prompt"
