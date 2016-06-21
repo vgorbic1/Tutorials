@@ -78,7 +78,9 @@ To list who is currently logged in:
 ```
 who –u		users			who am i
 ```
-If the user you created will be your primary user on the system, you usually want to enable sudo privileges so that you can do routine configuration and maintenance. We give users access to the sudo command with the visudo command. If you have not assigned additional privileges to any user yet, you will need to be logged in as root to access this command:
+If the user you created will be your primary user on the system, you usually want to enable sudo privileges so that you can do routine configuration and maintenance. We give users access to the sudo command with the visudo command. Never edit this file with a normal text editor! Always use the visudo command instead, because improper syntax in the /etc/sudoers file can leave you with a system where it is impossible to obtain elevated privileges, it is important to use the visudo command to edit the file.
+
+If you have not assigned additional privileges to any user yet, you will need to be logged in as root to access this command:
 ```
 visudo
 ```
