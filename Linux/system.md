@@ -57,3 +57,16 @@ Contains site-specific data tgat seved by the system.
 
 #### /tmp 
 Contains most of the files that require only temporarily.
+
+To display amount of free and used memory in the system:
+```
+free
+```
+To check file system disc space usage:
+```
+df
+```
+To check how long the system was up:
+```
+uptime
+```
