@@ -7,7 +7,6 @@ AuthName "Restricted Access"
 AuthType Basic
 Require valid-user
 ```
-#### .htaccess
-```
+#### .htpasswd
 test:WIXKfQnanbUbL
 ```
