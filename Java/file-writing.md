@@ -1,4 +1,24 @@
 ## Write to File
+```java
+public void run(String fileName, String message) {
+        PrintWriter output = null;
+        try {
+            output =  new PrintWriter(new BufferedWriter(
+                new FileWriter(fileName)));
+            output.println(message);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (Exception excepton) {
+            excepton.printStackTrace();
+        } finally {
+             if (output != null) {
+                 output.close();
+             }
+        }
+    }
+```
+PrintWriter prints characters!
+
 Write an array list to file:
 ```java
 import java.io.*;
