@@ -54,3 +54,4 @@ class ACMEBicycle implements Bicycle {
 Implementing an interface allows a class to become more formal about the behavior it promises to provide. Interfaces form a contract between the class and the outside world, and this contract is enforced at build time by the compiler. If your class claims to implement an interface, all methods defined by that interface must appear in its source code before the class will successfully compile.
 
 Coding to an interface, rather than to an implementation, makes your software easier to extend. By coding to an interface, your code will work with all of the interface's subclasses – even ones that haven't been created yet.
+![interface](https://cloud.githubusercontent.com/assets/13823751/16713763/04833778-4677-11e6-9889-87297a9041c3.jpg)
