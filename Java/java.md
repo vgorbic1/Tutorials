@@ -1,8 +1,7 @@
 ## Java
-JAVA
 Object-oriented programming (OOP) is a programming paradigm that uses “objects” and their interactions to design applications and computer programs. Instead of thinking of our program as a bunch of functions, we need to think of our program as a bunch of objects that interact. A class definition includes everything that an object knows, and everything that it does all in the same file. Things an object knows about itself are called instance variables (state) Different objects of the same type (class) can have different states. Things an object can do are called methods.
 
-Datatypes
+#### Datatypes
 Primitive data types hold the actual data and have different sizes:
     boolean
     byte (8 bits)
