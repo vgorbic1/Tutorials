@@ -14,16 +14,17 @@ Primitive data types hold the actual data and have different sizes:
    
 Object references only hold something that points to an object. References are all the same size and allow us to access and control objects. 
 
-Access Levels and Access Modifiers
-Public – least restrictive. Anyone anywhere can access it. Use for classes, constants (static final variables), and methods that you are exposing to other code (for example getters and setters) and most constructors.
-Protected – allows subclasses outside the package to inherit the protected item.
-Default – only code within the same package as the class with default can access it.
-Private – only code within the same class can access it. It is private to a class, not private to an object! One Dog can see another Dog privates, but not Cat privates. Use privates for all instance variables and methods that you don’t want to call from outside. 
+#### Access Levels and Access Modifiers
+- Public – least restrictive. Anyone anywhere can access it. Use for classes, constants (static final variables), and methods that you are exposing to other code (for example getters and setters) and most constructors.
+- Protected – allows subclasses outside the package to inherit the protected item.
+- Default – only code within the same package as the class with default can access it.
+- Private – only code within the same class can access it. It is private to a class, not private to an object! One Dog can see another Dog privates, but not Cat privates. Use privates for all instance variables and methods that you don’t want to call from outside. 
 
-Array
+#### Array
 An array is just a special object that holds more than one of something.
+```java
 int[] nums = new int[7];
-Now set numbers into the items in an array:
+  // Now set numbers into the items in an array:
 nums[0] = 6;
 nums[1] = 19;
 nums[2] = 44;
@@ -31,184 +32,262 @@ nums[3] = 42;
 nums[4] = 10;
 nums[5] = 20;
 nums[6] = 1;
-
+```
 Arrays of objects are really arrays of object references.
+```java
 Dog[] pets = new Dog[7];
 pets[0] = new Dog();
 pets[1] = new Dog();
-
-Call methods on the first two elements like this:
+  // Call methods on the first two elements like this:
 pets[0].bark();
 pets[1].bark();
+```
 
 MULTIDIMENSIONAL ARRAY
-In Java it is just an array of arrays:
-int[][] a2d = new int [4][2];
-JVM creates an array with 4 elements. Each of these four elements is a reference variable to a newly created int array with two integer elements.
-To access the secod element in the third array: int x = a2b[2][1];
 
-Enumerations
+In Java it is just an array of arrays:
+```java
+int[][] a2d = new int [4][2];
+```
+JVM creates an array with 4 elements. Each of these four elements is a reference variable to a newly created int array with two integer elements.
+To access the secod element in the third array: ```int x = a2b[2][1];```
+
+#### Enumerations
 Ennum is a special kind of class that extends java.lang. 
+```java
 public enum Members {JERRY, BOBBY, PHIL};
 public Members selectedBandMember;
 If (selectedBandMember == Members.JERRY) {
    // do Jerry stuff
 }
+```
 
-Encapsulation
+#### Encapsulation
 Also called hiding data. Make your instance variables private.
+```java
 private int size;
+```
 Create public accessor (getter) methods for the instance variable:
+```java
 public int getSize() {
     return size;
 }
+```
  And public mutator (setter) method for the instance variable:
+ ```java
 public void setSize(int x) {
     size = x;
 }
-
-Cast
+```
+#### Cast
 The issue with math in Java is that computers have two ways of doing calculations. Integer math is much faster for most computers. Because of this most programming languages try to use integer math whenever possible. However, integer math can only use integers so when we want to have floating point answers sometimes we need to tell the compiler to use floating point math. When we have only one type of primitive, either all integers or all floating point, then the computer just uses the correct functions. It is when a calculation has mixed types of primitives or when the results needs to be floating point that we sometimes need to tell the compiler what to do. When we mix primitives we usually have to convert the integers to a floating points type. This is called a cast. We only had to cast one of the ints to a double to force the computer to use its floating point operation.
+```java
 int x = 5;
 int y = 7;
 double v = (double)x / y;
-
-Converting Strings to primitives
+```
+#### Converting Strings to primitives
 Everything that is entered from the keyboard is a String. To convert them to numbers use:
+```
 int num = Integer.parseInt("123");
 double num = Double.parseDouble("123.99");
 float num = Float.parseFloat("123.99");
+```
 
-ArrayList
+#### ArrayList
 Connect Java API:
+```java
 import java.util.*;
+```
 Create an ArrayList:
+```java
 ArrayList<Type> myList = new ArrayList<Type>();
+```
 Put something in it:
+```java
 Egg eggOne = new Egg();
 myList.add(eggOne);
+```
 Put another thing in it:
+```java
 Egg eggTwo = new Egg();
 myList.add(eggTwo);
+```
 Find out how many things are in it:
+```java
 int theSize= myList.size();
+```
 Find out if it contains something:
+```java
 boolean isIn = myList.contains(eggTwo);
+```
 Find out where something is (i.e. its index)
+```java
 int index = myList.indexOf(eggOne);
+```
 Find out if it’s empty
+```java
 boolean empty = myList.isEmpty();
+```
 Remove something from it
+```java
 myList.remove(eggTwo);
+```
 Get an item from it
+```java
 Egg anEgg = (Egg)myList.get(1);  // will get the second item in the ArrayList
+```
 
-Inheritance
+#### Inheritance
 Place the common code in a common class. This common class in known as a superclass. Next, we create a class that uses the common code in the superclass. A class that does this is called a subclass. Subclasses inherit instance variables and methods from their superclasses. A subclass can add its own variables and methods. When a subclass has a method with the same header as the superclass then it is called an override. The subclass overrides the method in the superclass.
 To invoke the superclass version of a method from a subclass that’s overridden the method, use the super keyword.
 
-Polymorphism
+#### Polymorphism
 Polymorphism – Determining object behavior based on the actual type instead of the calling type.
+```java
 Animal myDog = new Dog();
+```
 In Java we can force programmers to not instantiate certain classes by using the new keyword abstract. An abstract class has only one purpose, to be subclassed. This allows us to have some common code that only makes sense in a subclass. 
+```java
 public abstract class Animal { }
+```
 Abstract methods are declared without a body and without any curly braces. Abstract methods have only one purpose, to force subclasses to have this method.
+```java
 public abstract void eat();
+```
 
-Interfaces
+#### Interfaces
 An interface is like a contract, you are telling the compiler that you will have certain methods. The compiler will then enforce the contract! An interface is like a class. You create a file with a .java extension. You add code that looks a lot like a class. And you add methods that are just abstract methods like in an abstract class.
+```
 public interface Pet { 
     public abstract void beFriendly();    
     public abstract void play();
+```
 A class can implement an interface. In fact, it can implement as many interfaces as you want.
+```java
 public class Dog extends Canine implements Pet {
     public void beFriendly() {...} 
     public void play() {...}
 }  
+```
 Now we can do the following:
+```java
 Canine myDog = new Dog();
 Pet myDog = new Dog();
+```
 
-Code Release
+#### Code Release
 The entire library is in a directory structure for clarity and organization. This is called packaging in Java and each individual directory in the hierarchy is called a package. Add the package statement to the top of a .java file:
+```java
 package java111.project5;
+```
 The src directory will be where all the .java files are kept. The classes directory will get the .class files.
 To automate this we will use the -d flag on the compiler. This compiler flag tells the compiler where to put the .class files that it is about to create. It goes right after the javac statement. After those arguments we have to add the path to the files we want to compile and the files themselves:
+```
 	javac -classpath classes -d classes src/java111/project5/*.java
+```
 Here’s the full script to run a packaged class:
+```
 	java -classpath classes java111.project5.PackageExercise
+```
 
-Constructors
+#### Constructors
 Constructors are similar to methods but they aren’t methods. All classes have at least one constructor and if you don’t write one the compiler does. 
+```
 public class Duck {  
     public Duck() {
         System.out.println("Quack");
     }
 }
-Colling a constructor:
+```
+Calling a constructor:
+```java
 Duck duck = new Duck();
+```
 If we make a constructor with a parameter then the compiler does not make one for us without any parameters!
 Having more than one constructor in a class means you have overloaded constructor.
 
-Static Methods
+#### Static Methods
 Static methods can’t access anything that is not also static. They are like global methods that are used without objects. To make a static method you add the word static to the method declaration:
+```java
 public static void myStaticMethod() {...}
+```
 
-Static Variables
+#### Static Variables
 Static variables are like instance variables that all objects of that class share.
+```java
 int static duckCount;
+```
 
-Constants
+#### Constants
 Constants have keyword final that can be added to classes, methods, and instance variables.
+```java
 public static final int WEEKS_IN_SEASON = 20;
+```
 If you add final to a method it means that the method can’t be overridden.
+```java
 public final void doMyCoolThing() {...}
+```
 If you add final to a class then you can’t subclass the class. There are lots of classes in Java like this. Just try to subclass the String class!
 
-Generating Javadoc
+#### Generating Javadoc
 The Javadoc utility comes with Java. It is a command line tool that is run like java or javac. To generate your Javadoc use these steps: Use the cd command to navigate to your projects directory. Copy and paste this command to the command line and run it:
+```
 javadoc -d docs -private -sourcepath src java111.project5 java111.project5.labs
+```
 
-Timestamp and Calendar
-For a time-stamp of current time, use import java.util.Date:
+#### Timestamp and Calendar
+For a time-stamp of current time, use import ```java.util.Date```:
+```java
    Date today = new Date();
    String s = String.format("%tA, %<tB %<td", today);
-For everything else, use import java.util.Calendar:
+```
+For everything else, use import ```java.util.Calendar```:
+```java
    Calendar c = Calendar.getInstance();
    c.set(2004,0,7,15,40);
    System.out.println(c.getTime());
+```
 Here we are getting an instance of the abstract class Calendar that is represented by GeorgianCalendar concrete class. Then, we set time to January (0) 7th of 2004, 15:40, and displaying the result. There are many different methods to operate with Calendar objects. Check API.
 
-Wrapping a primitive
+#### Wrapping a primitive
 Wrap primitive to treat it as an object. A wrapper class is named after each primitive type it wraps, but with first letter capitalized: Boolean, Character (not Char as you would think!), Byte, Short, Integer (not Int!), Long, Float, Double. 
 wrapping value:
+```java
 int i = 288;
 Integer iWrap = new Integer(i);   <- send the primitive to the wrapper constructor
+```
 unwrapping a value:
+```java
 int unWrapped = iWrap.intValue();   <- boolean has booleanValue(), Character has a charValue(), etc.
+```
 After Java 5.0 autoboxing is converts primitive to objects automatically!
 Now you can do:
+```java
 ArrayList<Integer> listOfNumbers = new ArrayList<Integer>();
 listOfNumbers.add(3);  <- you can add ints or Intergers 
 int = listOfNumbers.get(0);  
-
-Exception Handling
+```
+####Exception Handling
 An exception is an object of type Exception.
 The simplest block:
+```
 try {
 …
 } catch(Exception ex){   <- ex is an argument of type “Exception”
 …
 }
- 
+ ```
 Exception throwing code:
+```java
 public void takeRisk() throws BadException {
   if (abandonAllHope) {
     throw new BadException();   <-creates a new BadException object and throws it.
   }
 }
-
+```
 Call that risky method:
+```java
 public void crossFingers() {
   try {
     anObject.takeRisk();
@@ -217,9 +296,11 @@ public void crossFingers() {
     ex.printStackTrace();    <- all exceptions inherit this method
   }
 }
+```
 The compile checks for everything except RuntimeException. They are called “Unchecked Expressions”. Most of them comes from your code logic, so the compiler does not check for them!
 
 The block with part that runs no-matter what:
+```java
 try {
   turnOvenOn();
   x.bake();
@@ -228,13 +309,17 @@ try {
 } finally {
   turnOvenOff();   <- do this even if we caught an exception.
 }
+```
 Throw multiple exceptions:
+```java
 public class Laundry {
   public void doLaundry() throws PantsExcseption, LingerieException {
     // code that could throw either exception
   }
 }
+```
 Catching multiple exceptions:
+```java
 public class Foo {
   puplic void go() {
     Laundry laundry = new Laundry();
@@ -247,16 +332,19 @@ public class Foo {
     }
   }
 }
+```
 Multiple catch blocks must be ordered from smallest to biggest.
 When you don’t want to handle an exception, just duck it by declaring it again:
+```java
 void foo() throws ClothingException {
   laundty.doLaundry();
 }   <-Now who ever calls foo() will have to handle the exception
+```
 
-
-GUI
-Use javax.swing package to apply GUI. 
+#### GUI
+Use ```javax.swing``` package to apply GUI. 
 This is a simplest code that engages GUI:
+```java
 import javax.swing.*; // Swing package for creating GUI
 import java.awt.event.*; // This package has ActionListener and ActionEvent
 // Make a class
@@ -295,20 +383,27 @@ public class SimpleGui1 implements ActionListener {
     button.setText("I've been clicked!");
   }
 }
-
+```
 Event listener implements the interface, registers with the button, and provide the event-handling.
 Event source accepts registrations from listeners, gets events from the user and calls the listener’s event-handling method when the user clicks the button.
+
 Event object holds data about the event.
 
 Three ways to put things on GUI:
-Put widgets on a frame. (Use javax.swing API)
+- Put widgets on a frame. (Use javax.swing API)
+```java
 Frame.getContentPane().add(myButton); 
-Draw 2D graphics on a widget using graphics objects to paint shapes. (Use Java2D API)
+```
+- Draw 2D graphics on a widget using graphics objects to paint shapes. (Use Java2D API)
+```java
 Graphics. fillOval(70,70,100,100);
-Put a JPEG on a widget:
+```
+- Put a JPEG on a widget:
+```java
 Graphics.drawImage(myPic,10,10,this);
-
+```
 Use of paintComponent() to display a shape:
+```java
 import java.awt.*;
 import javax.swing.*;
 // Creating graphics for GUI
@@ -322,21 +417,26 @@ class MyDrawPanel extends JPanel {
 	g.fillRect(20,50,100,100);
   }
 }
-
+```
 Use paintComponent() to display an image:
+```java
 public void paintComponent(Graphics g) {
   image image = new ImageIcon(“cat.jpg”).getImage();
   d.drawImage(image,3,4,this); // 3pix from the left and 4 pix from the top
 }
+```
 
-Inner Class
+#### Inner Class
 Inner class is nested within another class:
+```java
 class MyOuterClass {
   class MyInnerClass {
       Void go() { }
   }
 }
+```
 An instance of an Inner class can use all variables and methods of the outer class, even private ones, but an inner object must be tied to a specific outer object on the heap. They are linked.
+```java
 class MyOuter {
   private int x;
   MyInner = new MyInner();
@@ -349,10 +449,13 @@ class MyOuter {
     }
   }
 }
+```
 It is also possible to call an inner class from outside of outer class.
 
 STATIC INNER CLASS
+
 Static means tied to the class, not to a particular instance. 
+```java
 Public class FooOuter {
   Static class BarInner {
     Void sayIt() {
@@ -360,17 +463,22 @@ Public class FooOuter {
     }
   }
 }
+```
 You call it like this:
+```java
 Public Test {
   Public static void main (String[] args) {
     FooOuter.BarInner foo = new FooOuter.BarInner(); // Don’t use instance of the outer class
     Foo.sayIt();
   }
 }
+```
 Inner static class can get access to any static members of outer class.
 
 ANONYMOUS INNER CLASS
+
 Create an instance on the fly:
+```java
   Public static void main (String[] args) {
     JFrame frame = new JFrame();
     JButton = new JButton(“click”);
@@ -382,33 +490,41 @@ Create an instance on the fly:
       }
      });
    }
-  
-Saving Objects
-If your data will be used by only the Java program that generated it, use serialization.
-If your data will be used by other programs, write a plain text file. 
+```  
+#### Saving Objects
+- If your data will be used by only the Java program that generated it, use serialization.
+- If your data will be used by other programs, write a plain text file. 
+- 
 Writing a serialized object to a file (p.432/Head First Java):
+```
 FileOutputStream fileStream = new FileOutputStream(“MyGame.ser”); 
 ObjectOutputStream os = new ObjectOutputStream(fileStream);
 os.writeObject(characterOne);
 os.close();
+```
 
-SERIALIZATION
+#### SERIALIZATION
 Serialization saves the entire object graph. All objects referenced by instance variables, starting with the object serialized. If you want your class to be serializable, implement Serializable.
+```java
 import java.io.* // need to implement Serializable
 public class Box implements Serializable {…
+```
 Mark and instance as transient if it cannot be saved:
+```java
 Class Chat implements Serializable {
   transient String currentID; // this will be skipped during serialization
-
-DESERIALIZATION
+```
+#### DESERIALIZATION
 Deserialize an object (p.441/Head First Java):
+```java
 FileInputStream fileStream = new FileInputStream(“MyGame.ser”);
 ObjectInputStream os = new ObjectInputStream(fileStream);
 Object one = os.readObject();
 GameCharacter elf = (GameCharacter) one;
 os.close();
-
-LINKED INVOCATIONS
+```
+#### LINKED INVOCATIONS
+```java
 StringBuffer sb = new StringBuffer(“spring”);
 sb = sb.delete(3,6).insert(2,”umme”).deleteCharAt(1);
 System.out.println(“sb = “ +sb);
@@ -418,7 +534,9 @@ Same as:
 sb = sb.delete(3,6);
 sb = sb.insert(2,”umme”);
 sb = sb.deleteCharAt(1);
+```
 Another option:
+```java
 Class Foo {
   public static void main(String[] args) {
     new Foo().go(); // We do not care about instantiating Foo!
@@ -427,5 +545,4 @@ Class Foo {
     // do something
   }
 }
-
-
+```
