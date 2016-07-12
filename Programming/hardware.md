@@ -28,3 +28,7 @@ Data goes from a storage device to RAM. Access time is the time takes to locate 
 Optical storage (light "lands" and dark "pits" spots). Lifespan is more than 30 years.
 
 Solid stage storage or flash memory is non-volatile. Solid stage drive my be used as a hard drive.
+
+#### Displays
+- LCD (Liquid Crystal Display) filters light through backlighting, produced by cold cathode fluorecent lamps. Not environmently riendly.
+- LED (Light Emitting diode) backlighting is produced by diodes. Dot pitch (dp) is a measure of image clarity. .26 or .23 is good. Response rate is time it takes to change from black to  white and back to black. 5ms or less is good.
