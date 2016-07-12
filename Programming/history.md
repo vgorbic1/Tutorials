@@ -50,3 +50,9 @@
 1982 IBM PCXT (640kb RAM, 10Mb hard drive)
 
 1984 Apple Macintosh
+
+## Internet
+- Started as Advanced Research Project Agency (ARPA) in 1969 in UCLA, Stanford, U of Utah and UC Santa Barbara.
+- Connecting more networks in 1985
+- Grew from internet to the Internet
+- Creation of user-friendly software to access the Internet (1990)
