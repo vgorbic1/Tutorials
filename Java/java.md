@@ -494,9 +494,9 @@ Create an instance on the fly:
 #### Saving Objects
 - If your data will be used by only the Java program that generated it, use serialization.
 - If your data will be used by other programs, write a plain text file. 
-- 
+
 Writing a serialized object to a file (p.432/Head First Java):
-```
+```java
 FileOutputStream fileStream = new FileOutputStream(“MyGame.ser”); 
 ObjectOutputStream os = new ObjectOutputStream(fileStream);
 os.writeObject(characterOne);
