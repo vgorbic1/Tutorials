@@ -32,3 +32,11 @@ Solid stage storage or flash memory is non-volatile. Solid stage drive my be use
 #### Displays
 - LCD (Liquid Crystal Display) filters light through backlighting, produced by cold cathode fluorecent lamps. Not environmently riendly.
 - LED (Light Emitting diode) backlighting is produced by diodes. Dot pitch (dp) is a measure of image clarity. .26 or .23 is good. Response rate is time it takes to change from black to  white and back to black. 5ms or less is good.
+
+#### Network hardware
+- Hub, extends a wired network bay adding a port
+- Switch, intellegently facilitates communication aamong devices
+- Gateway, joins two different types of network
+- Bridge, connects two similar networks
+- Repeater, extends the range of the network
+- WAP, wireless access point connects wireles devices to network
