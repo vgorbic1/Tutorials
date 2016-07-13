@@ -56,3 +56,10 @@
 - Connecting more networks in 1985
 - Grew from internet to the Internet
 - Creation of user-friendly software to access the Internet (1990)
+
+## Languages
+- 1st generation. Machine languages. Consisted of 1s and 0s. Hard-wired into the cirquity of a microprocessor.
+- 2nd generation. Assembly languages. Use of abbreviated command words. Machine specific. Ised for compilers, operating systems and device drivers. 
+- 3rd generation. Conceived in 1950s. Use easily to remember command words. COBOL and FORTRAN for business and science. Pascal and BASIC for teaching languages. C and C++ for system and applications. Objective-C for iPhone and iPad.
+- 4th generation. Conceived in 1969. Closely resemble human language. SQL for databases.
+- 5th generation. Introduced in 1982. Prolog or graphical interface programming.
