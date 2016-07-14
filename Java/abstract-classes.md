@@ -2,6 +2,8 @@
 - Use an abstract class when you want to define a TEMPLATE for a group of subclasses. 
 - Use intrface when you want to define a ROLE that other classes can play, regardless of where those classes are in the inheritance tree.
 
+When you don't want a class to be instantiated (in other words, you don't want anyone to make a new object of that class type) mark the class with the ```abstract``` keyword.
+
 Abstract classes are placeholders for actual implementation classes. The abstract class defines behavior, and the subclasses implement that behavior.
 ```java
 public abstract class Instrument {
