@@ -79,7 +79,7 @@ In the output, notice:
 -	The commit author (you!)
 -	The date and time of the commit
 -	The commit message
--	
+
 To see commits of a particular author use the beginning of authors name:
 ```
 git log --author="vlad"
