@@ -46,15 +46,16 @@ int stringLength = myString.length();
 #### Extracting a part of the string (substring):
 ```java
 String string1 = "Hello World";
-String substring = string1.substring(0,5); // The parameters mean take only "from - including, to - excluding". The last character in the string has the index String.length() - 1.
-```
+String substring = string1.substring(0,5); // The parameters mean take only "from - including, to - excluding".
+``` 
+The last character in the string has the index String.length() - 1.
 
 #### Search for substrings:
 ```java
 String myString = "Hello World";
-int index = myString.indexOf("World"); // result is 6
-The indexOf() method returns the index of where the first character in the first matching substring is found. If the substring is not found within the string, the indexOf() method returns -1;
+int index = myString.indexOf("World"); // result is 6;
 ```
+The indexOf() method returns the index of where the first character in the first matching substring is found. If the substring is not found within the string, the indexOf() method returns -1
 
 #### Comparing strings
 ```java
