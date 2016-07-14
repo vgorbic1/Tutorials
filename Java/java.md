@@ -20,7 +20,7 @@ Object references only hold something that points to an object. References are a
 - Default – only code within the same package as the class with default can access it.
 - Private – only code within the same class can access it. It is private to a class, not private to an object! One Dog can see another Dog privates, but not Cat privates. Use privates for all instance variables and methods that you don’t want to call from outside. 
 
-#### Array
+#### Array (more...)[https://github.com/vgorbic1/Tutorials/edit/master/Java/arrays.md]
 An array is just a special object that holds more than one of something.
 ```java
 int[] nums = new int[7];
