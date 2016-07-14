@@ -42,7 +42,7 @@ pets[1] = new Dog();
 pets[0].bark();
 pets[1].bark();
 ```
-(more...)[https://github.com/vgorbic1/Tutorials/edit/master/Java/arrays.md]
+[more...](https://github.com/vgorbic1/Tutorials/edit/master/Java/arrays.md)
 
 MULTIDIMENSIONAL ARRAY
 
