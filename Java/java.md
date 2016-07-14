@@ -4,11 +4,11 @@ Object-oriented programming (OOP) is a programming paradigm that uses “objects
 #### Datatypes
 Primitive data types hold the actual data and have different sizes:
 - boolean
-- byte (8 bits)
+- byte (8 bits) Use single quotes to define value: ```char initial = 'g';```
 - char (16 bits)
 - short (16 bits) Max: 32767 Min: -32768
 - int (32 bits) Max: 2147483647 Min: -2147483648
-- float (32 bits) You can have 6 numbers after dot: 0.504672. Always use "f" after value: ```float myNumber =  0.12f``` 
+- float (32 bits) You can have 6 numbers after dot: 0.504672. Always use "f" after value: ```float myNumber =  0.12f;``` 
 - long (64 bits)
 - double (64 bits) Max/Min: 17 with 307 zeros
    
