@@ -1,4 +1,7 @@
 ## Interfaces
+- Use an abstract class when you want to define a TEMPLATE for a group of subclasses. 
+- Use intrface when you want to define a ROLE that other classes can play, regardless of where those classes are in the inheritance tree.
+
 An interface is a reference type in Java, it is similar to class, it is a collection of abstract methods. A class implements an interface, thereby inheriting the abstract methods of the interface. Along with abstract methods an interface may also contain constants, default methods, static methods, and nested types.
 
 In its most common form, an interface is a group of related methods with empty bodies. A bicycle's behavior, if specified as an interface, might appear as follows:
