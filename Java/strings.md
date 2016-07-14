@@ -152,3 +152,11 @@ Switch(yn){
     default: /* something fishy? */ break;
 }
 ```
+
+#### Formatted Strings
+```java
+System.out.printf("%-15s %15s %n", heading1, heading2);
+```
+- "%s" Format a string with as many characters as are needed.
+- "%15s" Format a string with the specified number of characters, and right-justify.
+- "%-15s" Format a string with the specifies number of charactrs, and left-justify.
