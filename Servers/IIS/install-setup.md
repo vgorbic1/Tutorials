@@ -24,3 +24,4 @@ Keep in mind that your version of Windows may not come with IIS. I’m using Win
 - With IIS Manager go to Handler Mappings and add new Moule Mapping. 
 - Set Request path to ```*.php```. Select FastCgiModule. In Executable set the path to your PHP'd installation ```php-cgi.exe``` Name the mapping "PHP FastCGI" or something like this.
 - Test that you can serve .php scripts now.
+- Recycle Application Pool if you made any changes in php.ini file. (restart the server)
