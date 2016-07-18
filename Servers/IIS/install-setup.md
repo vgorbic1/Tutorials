@@ -17,3 +17,10 @@ Keep in mind that your version of Windows may not come with IIS. I’m using Win
 - Right-click on the new icond under the Sites that represent your new site and choose "Edit Bindings...". Add ```www.test.com```
 - Point the A Record of both test.com and www.test.com. Once your domain name A records are pointed to the IP address of your server, your domain names should resolve to that server.
  
+### Setting FastCGI and PHP
+- Install CGI module through Control Panel > Programs > Turn Windows features on or off > Internet Information Services > World Wide Web Services > Application Development Features > CGI. The CGI module has old CGI and new CGI packets.
+- Install PHP if not yet installed.
+- With IIS Manager go to Modules and check that both CgiModule and FastCgiModule are present.
+- With IIS Manager go to Handler Mappings and add new Moule Mapping. 
+- Set Request path to ```*.php```. Select FastCgiModule. In Executable set the path to your PHP'd installation ```php-cgi.exe``` Name the mapping "PHP FastCGI" or something like this.
+- Test that you can serve .php scripts now.
