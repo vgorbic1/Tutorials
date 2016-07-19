@@ -14,7 +14,9 @@ Example:
 foreach ($_POST['todelete'] as $delete_id) {
     // Delete a row from the table
 };
+```
 The array ‘todelete’ may be formed by cycling through all checkboxes in the table:
+```php
 while ($row=mysqli_fetch_array($result)) {
   echo '<input type="checkbox" value="' .
        $row['id'] . '" name="todelete[]">';
