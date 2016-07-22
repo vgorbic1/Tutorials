@@ -1,4 +1,4 @@
-## Database Connection
+## Database Connection with mysqli
 
 #### Write to a database
 Make a connection with the database:
