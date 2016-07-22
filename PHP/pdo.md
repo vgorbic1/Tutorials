@@ -137,3 +137,20 @@ Then, use the named placeholders as keys in the array passed to the ```execute()
 ```php
 $stmt->execute(array(':email' => 'me@example.com', ':pass' => 'mypass'));
 ```
+
+#### Use array for binding:
+```php
+/* Query for inserting the user's account information */
+$sql = 'SELECT user_id, username, password, status
+        FROM hsr_user
+        WHERE username = :username
+        AND password = :password
+        LIMIT 1;';
+/* Instead of binding the params with ->bindParam(), we're going to bind params using an array */
+        $values = array(':username' => $username,
+                        ':password' => $password);
+/* Prepare the SQL query to be safe for executing in the database */
+        $statement = $dbconn->prepare($sql);
+/* Execute the query passing the query the array of values */
+        $statement->execute($values);
+```
