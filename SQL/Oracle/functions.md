@@ -8,60 +8,129 @@ They alter the case of a character string and do not affect the data.
 
 #### LOWER()
 Convert character string to the lower case.
-```WHERE LOWER(lastname)  = ‘nelson’``` (converts each field in lastname column to lower case, compares with the string within ‘ ‘ and displays the result found as the data originally stored in the column)
-```SELECT LOWER(lastname)``` shows all data in lastname column in lower case.
+```
+WHERE LOWER(lastname)  = ‘nelson’
+``` 
+(converts each field in lastname column to lower case, compares with the string within ‘ ‘ and displays the result found as the data originally stored in the column)
+```
+SELECT LOWER(lastname)
+``` 
+shows all data in lastname column in lower case.
 
-UPPER()
+#### UPPER()
 Convert character string to the upper case.
-WHERE UPPER(lastname)  = ‘UPPER’ (converts each field in lastname column to upper case, compares with the string within ‘ ‘ and displays the result found as the data originally stored in the column)
-SELECT UPPER (lastname) shows all data in lastname column in upper case.
+```
+WHERE UPPER(lastname)  = ‘UPPER’
+```
+(converts each field in lastname column to upper case, compares with the string within ‘ ‘ and displays the result found as the data originally stored in the column)
+```
+SELECT UPPER (lastname)
+```
+shows all data in lastname column in upper case.
 
-INITCAP()
+#### INITCAP()
 Converts character string to a mixed case, with each word beginning with a capital letter.
-SELECT INITCAP(firstname) displays the colun data with first characters as capital letters.
+```
+SELECT INITCAP(firstname)
+```
+displays the colun data with first characters as capital letters.
 
-CHARACTER MANIPULATION FUNCTIONS
+### CHARACTER MANIPULATION FUNCTIONS
 
-SUBSTR()
+#### SUBSTR()
 Returns a portion of the original string.
-SELECT DISTINCT SUBSTR(zip, 1, 3) where zip is the column, 1 is the place where the needed string begins and 3 is the number of characters to show.
-SELECT DISTINCT SUBSTR(zip, -3, 2) negative means start count from the end of string.
-WHERE SUBSTR(zip, -3, 2) < 30 (filters the result based on the value of the zip code’s third and fourth digits.
-Example: SUBSTR(‘HelloWorld’,1,5) results in: Hello
+```
+SELECT DISTINCT SUBSTR(zip, 1, 3)
+```
+where zip is the column, 1 is the place where the needed string begins and 3 is the number of characters to show.
+```
+SELECT DISTINCT SUBSTR(zip, -3, 2)
+```
+negative means start count from the end of string.
+```
+WHERE SUBSTR(zip, -3, 2) < 30
+```
+filters the result based on the value of the zip code’s third and fourth digits.
 
-INSTR()
+Example: 
+```
+SUBSTR(‘HelloWorld’,1,5) results in: Hello
+```
+
+#### INSTR()
 Searches a string for a specified set of characters or a substring, and returns a numeric value representing the first character position in which the substring is found. If not exists it returns 0.
 It accepts two arguments: string value to search and the characters or substring (in single quotes) to locate.
 By default search begins in the beginning of the string value and position of the first occurrence is located, but two optional arguments may specify these parameters.
-SELECT INSTR(name, ‘,’) means: column, character to search. Return a the position of the first comma.
-SELECT INSTR(name, ‘,’ , 1, 2)  means: column, character to search, start read position, occurrence.
-Example: INSTR(‘HelloWorld’, ‘W’) results in: 6
+```
+SELECT INSTR(name, ‘,’) 
+```
+means: column, character to search. Return a the position of the first comma.
+```
+SELECT INSTR(name, ‘,’ , 1, 2)
+```
+means: column, character to search, start read position, occurrence.
 
-LENGTH()
+Example: 
+```
+INSTR(‘HelloWorld’, ‘W’) results in: 6
+```
+
+#### LENGTH()
 Tells the number of the characters in a string.
-SELECT DISTINCT LENGTH(address) “Distinct” eliminates duplicate values in the result.
-ORDER BY LENGTH(address) the smallest length on top.
-Example: LENGTH(‘HelloWorld’) results in: 10
+```
+SELECT DISTINCT LENGTH(address)
+```
+“Distinct” eliminates duplicate values in the result.
+```
+ORDER BY LENGTH(address)
+```
+the smallest length on top.
 
-LPAD() and RPAD()
+Example:
+```
+LENGTH(‘HelloWorld’) results in: 10
+```
+
+#### LPAD() and RPAD()
 Fill in the area to the left (or right) of the string with a specific character or even a blank space.
-SELECT LPAD(firstname, 12, ‘ *’) total length from left to right, the character in single quotes.
-Example: LPAD(salary, 10, ‘*’) results in: *****24000
-Example: RPAD(salary, 10, ‘*’) results in: 24000*****
-Example: LPAD(‘ ‘,10,’*’) results in: *********_        (where _ is a space) 
+```
+SELECT LPAD(firstname, 12, ‘ *’)
+```
+total length from left to right, the character in single quotes.
 
-LTRIM() and RTRIM()
+Example: 
+```
+LPAD(salary, 10, ‘*’) // results in: *****24000
+RPAD(salary, 10, ‘*’) // results in: 24000*****
+LPAD(‘ ‘,10,’*’) // results in: *********_        (where _ is a space) 
+```
+
+#### LTRIM() and RTRIM()
 Removes a specific string of characters from the left (or right) side of data values.
-SELECT LTRIM(address, ‘P.O. BOX’) removes ‘P.O. BOX’ string from any value in address field.
+```
+SELECT LTRIM(address, ‘P.O. BOX’)
+```
+removes ‘P.O. BOX’ string from any value in address field.
 
-TRIM()
+#### TRIM()
 Trims leading or trailing characters (or both) from a character string.
-Example: TRIM(‘H’ FROM ‘HelloWorld’) results in: elloWorld
 
-REPLACE()
+Example: 
+```
+TRIM(‘H’ FROM ‘HelloWorld’) results in: elloWorld
+```
+
+#### REPLACE()
 Similar to search and replace function.
-SELECT REPLACE(address, ‘P.O.’, ‘POST OFFICE’) instead ‘P.O.’ in the address field will be ‘POST OFFICE’.
-Example: REPLACE(‘JACK and JUE’, ‘J’, ‘BL’) results in: BLACK and BLUE
+```
+SELECT REPLACE(address, ‘P.O.’, ‘POST OFFICE’)
+```
+instead ‘P.O.’ in the address field will be ‘POST OFFICE’.
+
+Example: 
+```
+REPLACE(‘JACK and JUE’, ‘J’, ‘BL’) results in: BLACK and BLUE
+```
 
 TRANSLATE()
 Replaces a character in a string with a new one. Only one character!
