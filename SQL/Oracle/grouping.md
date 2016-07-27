@@ -1,6 +1,6 @@
 ## Grouping
 
-### GROUP BY
+#### GROUP BY
 Allows to select non-aggregate columns and aggregate functions. If there is an aggregate function and non-aggregate columns in SELECT statement, add all non-aggregate columns in GROUP BY column.
 Columns used to group data in the GROUP BY clause don’t have to be listed in SELECT clause.
 
@@ -57,7 +57,7 @@ WHERE department_id < 60
 GROUP BY CUBE (department_id, job_id);
 ```
 
-#### GROOPING()
+#### GROUPING()
 The GROUPING function is used with either the CUBE or ROLLUP operator to find the groups forming the subtotal in a row. It is used to differentiate stored NULL values from NULL values created by ROLLUP or CUBE and returns 0 or 1.
 
 Example:
