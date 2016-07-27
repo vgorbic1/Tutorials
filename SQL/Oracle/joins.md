@@ -129,7 +129,7 @@ FROM customers c, customers r
 WHERE c.referred = r.customer#; (columns have similar data!)
 ```
 
-#### JOIN method:
+JOIN method:
 ```
 SELECT r.firstname, r.lastname, c.lastname "Referred"
 FROM customers c JOIN customers r ON c.referred = r.customer#; (USING cannot be used!)
