@@ -10,3 +10,16 @@ find ```file_uploads``` section.
 - **post_max_size** is the maximum permitted size of all _$POST data, including file uploads. (Default 8M)
 - **upload_tmp_dir** is where PHP stores uploaded files until your script moves them to a permanent location. If no value is defined in php.ini, PHP uses the system default temporary directory.
 - **upload_max_filesize** the maximum permitted size of a single upload file. (Default 2M)
+
+Add a file upload field to a form
+```html
+<form action="" method="post" encrtype="multipart/form-data" name="uploadImage" id="uploadImage">
+  <p>
+    <label for="image">Upload image:</laabel>
+    <input type="file" name="image" id="image" />
+  </p>
+  <p>
+    <input type="submit" name="upload" id="upload" value="Upload" />
+  </p>
+</form>
+```
