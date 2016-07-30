@@ -13,9 +13,9 @@ find ```file_uploads``` section.
 
 Add a file upload field to a form
 ```html
-<form action="" method="post" encrtype="multipart/form-data" name="uploadImage" id="uploadImage">
+<form action="" method="post" enctype="multipart/form-data" name="uploadImage" id="uploadImage">
   <p>
-    <label for="image">Upload image:</laabel>
+    <label for="image">Upload image:</label>
     <input type="file" name="image" id="image" />
   </p>
   <p>
@@ -23,3 +23,31 @@ Add a file upload field to a form
   </p>
 </form>
 ```
+Safari does not allow direct filename input!
+
+#### $_FILES array
+To test upload array use this script after the form:
+```php
+</form>
+<pre>
+ <?php
+    if (array_key_exists('upload', $_POST)) {
+		print_r($_FILES);
+	}
+  ?>
+</pre>
+```
+If you don't do anything with the uploaded file immediately after uploading, PHP discards it.
+
+It is important to checkthe MIME type before allowing the upload process to be completed.
+
+**Errors**
+
+- 0 Upload successful
+- 1 File exceeds maximum upload size specified in php.ini
+- 2 File exceeds size specified by MAX_FILE_SIZE embedded in the form
+- 3 File only partially uploaded
+- 4 Form submitted with no file specified
+- 5 (Currently not defined)
+- 6 No temporary folder
+- 7 Cannot write file to disk
