@@ -84,7 +84,10 @@ if (isset($_SESSION['name'])) {
 ```
 Create ```session-next.php``` file:
 ```php
-<?php session_start(); ?>
+<?php 
+session_start();
+ob_start(); // start output buffer. We need it for setcookie() functioning in the body of the document.
+?>
 <!DOCTYPE html>
 <html>
 <body>
@@ -95,6 +98,7 @@ if (isset($_SESSION['name'])) {
 	if (isset($_COOKIE[session_name()])) {
 		setcookie(session_name(), '', time()-86400, '/');
 	}
+	ob_end_flush(); // flush output buffer. We are done with setcookie().
 	session_destroy();
 	echo '<a href="session.php">Back</a>'; 
 } else {
