@@ -7,7 +7,31 @@ if (strlen($username) < 6 || strlen($pwd) < 6 {
   $result = 'Username and password must contain at least 6 characters';
 }
 ```
-
+#### Make sure required fields aren't blank
+```php
+if (isset($_POST['send'])) {
+  // email processing script
+  $to = 'david@example.com';
+  $subject = 'Feedback from Japan Journey';
+  // list expected fields
+  $expected = array('name', 'email', 'comments');
+  // set required fields
+  $required = array('name', 'email', 'comments');
+  // process the $_POST variables
+  foreach ($_POST as $key => $value) {
+	// assign to temporary variable and strip whitespaces if not an array
+	$temp =  is_array($value) ? $value :trim($value);
+	// if empty and required, add to $missing array
+	if (empty($temp)) && in_array($key, $required)) {
+		array_push($missing, $key);
+	}
+	// otherwise assign to a variable of the same name as $key
+	elseif (in_array($key, $expected)) {
+		${$key} = $temp;
+	}
+  }
+}
+```
 
 The two primary approaches to validating an input are whitelisting and blacklisting. Blacklisting involves checking if the input contains unacceptable data while whitelisting checks if the input contains acceptable data. Since whitelisting tends to be both safer and more robust, it should be preferred for any validation routine. 
 
