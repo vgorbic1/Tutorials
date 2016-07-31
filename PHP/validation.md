@@ -1,4 +1,14 @@
 ## Form Validation
+When checking the length of user input, begin by stripping any whitespace from both ends with trim() and saving the result to shorter variable. Then pass the new variable to strlen(), which returns the length of a string.
+```php
+$username = trim($_POST['username']);
+$pwd = trim($_POST['pwd']);
+if (strlen($username) < 6 || strlen($pwd) < 6 {
+  $result = 'Username and password must contain at least 6 characters';
+}
+```
+
+
 The two primary approaches to validating an input are whitelisting and blacklisting. Blacklisting involves checking if the input contains unacceptable data while whitelisting checks if the input contains acceptable data. Since whitelisting tends to be both safer and more robust, it should be preferred for any validation routine. 
 
 Input validation is frequently accompanied by a related process we call Filtering. Where validation just checks if data is valid (giving either a positive or negative result), Filtering changes the data being validated to meet the validation rules being applied. Where you must filter, always filter before validation and never after.
