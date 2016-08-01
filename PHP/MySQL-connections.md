@@ -1,6 +1,6 @@
 ## My SQL connection
 #### With original MySQL extension:
-| Action | Usage | | Comments |
+| Action | Usage | Comments |
 | --- | --- | --- |
 | Connect | $conn = mysql_connect($h, $u, $p); | Need hostname, username and password |
 | Coose DB | mysql_select_db('dbName'); | Server connection can be second, optional argument |
