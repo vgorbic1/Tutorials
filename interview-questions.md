@@ -18,4 +18,50 @@ A GET mostly used to retrieve data, usually through a URL where all parameters a
 - In PHP: `echo(date('s'));`
 - In JavaScript: `var date = new Date();  var secs = date.getSeconds();`
 
+**Can you write a palindrome pseudocode?**
+- Set "left" to index the first character (or leftmost)
+- Set "right" to index the last character (or rightmost)
+- Loop. While left is less than right, compare the "left" with "right". If not equal, return FALSE. Increment left, decrement righ.
+- Return TRUE
 
+**Can you write a palindrome testing function in Java?**
+```java
+public static void main(Sting[] args) {
+  String strToTest = "level";
+  System.out.println(strToTest + " " + isPalindrome(strToTest));
+}
+
+static boolean isPalindrome(String stringToTest) {
+  int left = 0;
+  int right = stringToTest.length() - 1;
+  while (left < right) {
+    if (stringToTest.charAt(left) != stringToTest.charAt(right)) {
+      return false;
+    }
+    left ++;
+    right --;
+  }
+  return true;
+}
+```
+**Can you write a palidrom testing function in PHP?
+```
+// PHP has a strrev() function that just reverses the string. It is just a matter of comparint that string with a reverse version.
+
+// Otherwise:
+$stringToTest = "level";
+$myArray = array(); // php array
+$myArray = str_split($stringToTest);
+$len = sizeof($myArray);
+$newString = "";
+
+for ($i = $len; $i >= 0; $i--) {
+    $newString . = $myArray[$i];
+}
+
+if ($stringToTest == $newString) {
+    echo "Output: " . $stringToTest . " is a palindrome";
+} else {
+    echo "Output: " . $stringToTest . " is not a palindrome";
+}
+```
