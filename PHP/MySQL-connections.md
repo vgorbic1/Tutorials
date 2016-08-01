@@ -35,3 +35,7 @@ When using PDO with MySQL, the data source name (DSN) is a string that takes the
 ```
 'mysql:host=yourhostname;dbname=yourdatabasename'
 ```
+or with a port number, if it is nonstandard:
+```
+'mysql:host=yourhostname;port=3307;dbname=yourdatabasename'
+```
