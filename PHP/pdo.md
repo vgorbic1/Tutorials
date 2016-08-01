@@ -154,3 +154,10 @@ $sql = 'SELECT user_id, username, password, status
 /* Execute the query passing the query the array of values */
         $statement->execute($values);
 ```
+#### Access error messages
+```php
+$error = $stmt->errorInfo();
+if (isset($error[2])) {
+  echo $error[2];
+}
+```
