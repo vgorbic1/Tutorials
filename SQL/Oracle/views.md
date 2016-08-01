@@ -13,7 +13,7 @@ CREATE [OR REPLACE] [FORCE | NOFORCE] VIEW viewname (columnname, …)
   AS subquery 
  [WITH CHECK OPTION [CONSTRAINT constraintname] (prevents from updates enforced in WHERE clause) 
  [WITH READ ONLY]; (prevents performing any DML commands and constraints above are not needed)
- 
+``` 
 NOFORCE is default and indicates that all tables must be valid, otherwise FORCE may create views based on tables that are not exist yet.
 
 Columname – use if you want to assign new names to the columns in the view, or use column aliases directly in the query. 
