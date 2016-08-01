@@ -19,10 +19,10 @@ A GET mostly used to retrieve data, usually through a URL where all parameters a
 - In JavaScript: `var date = new Date();  var secs = date.getSeconds();`
 
 **Can you write a palindrome pseudocode?**
-- Set "left" to index the first character (or leftmost)
-- Set "right" to index the last character (or rightmost)
-- Loop. While left is less than right, compare the "left" with "right". If not equal, return FALSE. Increment left, decrement righ.
-- Return TRUE
+- Set "left" to index the first character (or leftmost).
+- Set "right" to index the last character (or rightmost).
+- Loop. While left is less than right, compare the "left" with "right". If not equal, return FALSE. Increment left, decrement right.
+- Return TRUE.
 
 **Can you write a palindrome testing function in Java?**
 ```java
@@ -44,19 +44,19 @@ static boolean isPalindrome(String stringToTest) {
   return true;
 }
 ```
-**Can you write a palidrom testing function in PHP?
-```
+**Can you write a palidrom testing function in PHP?**
+```php
 // PHP has a strrev() function that just reverses the string. It is just a matter of comparint that string with a reverse version.
 
 // Otherwise:
 $stringToTest = "level";
-$myArray = array(); // php array
+$myArray = array();
 $myArray = str_split($stringToTest);
-$len = sizeof($myArray);
+$stringLength = sizeof($myArray);
 $newString = "";
 
-for ($i = $len; $i >= 0; $i--) {
-    $newString . = $myArray[$i];
+for ($stringLength; $stringLength >= 0; $stringLength--) {
+    $newString .= $myArray[$stringLength];
 }
 
 if ($stringToTest == $newString) {
