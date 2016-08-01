@@ -83,7 +83,7 @@ SELECT hire_date, hire_date + TO_YMINTERVAL('01-02') AS HIRE_DATE_YMININTERVAL
 FROM employees;
 ```
 
-#### TO_DSINTERVAL()
+TO_DSINTERVAL()
 Display a date that is 100 days and 10 hours after the hire date for all the employees:
 ```
 SELECT last_name,
