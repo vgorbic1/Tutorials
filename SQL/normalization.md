@@ -9,8 +9,8 @@ Normaliziation is removing anomalies:
 -	Each attribute contains only one single value of single type. No commas!
 -	Each row is unique
 WAS:
- | ID	| FIRST NAME |	LAST NAME |	PHONE |	CHILD 1	| CHILD 2 |	CHILD 3 |
- | --- | --- | --- | --- | --- | --- | --- |
+| ID	| FIRST NAME |	LAST NAME |	PHONE |	CHILD 1	| CHILD 2 |	CHILD 3 |
+| --- | --- | --- | --- | --- | --- | --- |
 | 1 |	John |	Smith |	608 678-9999 |	Bill |	James |	Mark |
 | 2	| Mike	|Kern	|608 958-9090| | | |			
 | 3	| Sam	|Stevens	|608 956-2345	|Eugene | | |		
