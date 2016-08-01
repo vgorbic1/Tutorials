@@ -64,3 +64,32 @@ PERSON ID	| PROJECT ID
 1	|1
 2	|1
 3	|2
+
+#### THIRD NORMAL FORM (3NF)
+-	Remove Transient Dependencies (attributes  that depends on another attribute, but not on the key)
+
+WAS
+
+Person ID	| CITY |	COUNTRY
+--- | --- | ---
+1|	Los Angeles	|USA
+2	|Los Angeles	|USA
+3	|Los Angeles	|USA
+4	|New York	|USA
+5	|New York	|USA
+
+COUNTRY depends on CITY only, but not on the primary key PERSON ID
+
+BECAME:
+
+Person ID	| CITY
+--- | ---
+1	|Los Angeles
+2	|Los Angeles
+3	|Los Angeles
+4	|New York
+5	|New York
+
+CITY |	COUNTRY
+--- | ---
+Los Angeles	| USA
