@@ -31,3 +31,36 @@ ID|	SEQENCE	|CHILD
 1	|2	|James
 1	|3	|Mark
 3	|1	|Eugene
+
+#### SECOND NORMAL FORM (2NF)
+-	Remove Functional Dependencies (groups of repeated attributes that form subthemes)
+-	All attributes should be dependent on the key, not on each other
+-	No partial dependencies on concatenated keys.
+
+WAS:
+
+PERSON ID	|PERSON NAME	|PROJECT ID	|PROJECT NAME	|PROJECT PHONE
+--- | --- | --- | --- | --- 
+1	|John	|PR1	|Web Project	|666-666-6666
+2	|Peter	|PR1	|Web Project	|666-666-6666
+1	|John	|PR2	|Multimedia	|777-777-7777
+3	|Sam	|PR2	|Multimedia	|777-777-7777
+
+BECAME:
+
+PERSON ID	| PERSON NAME
+--- | ---
+1	| John
+2	| Peter
+3	| Sam
+
+PROJECT ID	| PROJECT NAME	| PROJECT PHONE
+--- | --- | ---
+PR1	|Web Project	|666-666-6666
+PR2	|Web Project	|777-777-7777
+
+PERSON ID	| PROJECT ID
+--- | ---
+1	|1
+2	|1
+3	|2
