@@ -23,3 +23,41 @@ To get the type of any variable use:
 ```php
 gettype($your_variable);
 ```
+#### Variable variables
+Variable variables is a variable whose name is contained in another variable:
+```php
+$name = 'foo';
+$$name = 'bar';
+
+echo $foo; // displays 'bar'
+```
+In other words content of one variable references another variable. Now you can do this:
+```php
+$name = `123';
+$$name = '456';
+echo ${'123'}; didplays '456';
+```
+Variable variables are a very powerful tool and should be used with extreme care.
+
+#### Inspecting content of variables
+- ```echo```.
+- ```print_r()```. It provides a little more info than ```echo```
+- ```var_dump()```. It also displays the type and the length.
+
+#### Determine if a variable exists
+```php
+if (isset($x)) {
+  // Do something if $x is set
+} elseif (!isset($x) {
+  // Do something if $x is not set
+}
+```
+If variable exists and is anything but NULL, TRUE will be returned. 
+
+#### Determine if a variable is empty
+```php
+$x = "0";
+if (empty($x)) {
+  // true
+```
+Returns TRUE if value passed to it is NULL, or any value that can be coerced to false, oncludeing an empty string, an empty array, integer zero, and string 0.
