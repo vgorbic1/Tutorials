@@ -65,7 +65,7 @@ if (strcasecmp($str, "hello world") === 0) {
 #### Simple Searching Functionality
 The simplest way to search inside a string is to use the ```strpos()``` and ```strstr()``` families of functions.
 
-**strpos()***
+**strpos()**
 
 Used to find the position of a substring (called the needle) inside a string (the haystack) It returns either the numeric position of the needle's first occurrence within the haystack, or false if a match cound not be found:
 ```php
