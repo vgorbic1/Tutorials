@@ -38,7 +38,7 @@ TEXT;
 Use ```strlen()``` function to determine the length (in bytes) of a string. It is binary-safe, which means that all characters in the string are counted, reagrdless of their value.
 
 #### Transforming a String
-Use ```strtr() function to translate certain characters of a string into other charactrs. Used in transliteration to transform certain accented charactrs that cannot appear:
+Use ```strtr()``` function to translate certain characters of a string into other charactrs. Used in transliteration to transform certain accented charactrs that cannot appear:
 ```php
 // translate a single character
 echo strtr('abc', 'a', '1'); // outputs 1bc
@@ -48,7 +48,7 @@ $subst = array('1' => 'one', '2' => 'two');
 echo strtr('123', $subst); // outputs onetwo3
 ```
 
-#### Comparing, Searching and Replacing Strings
+#### Comparing Strings
 Use ```strcmp()``` or ```strcasecmp()```:
 ```php
 $str = "Hello World";
@@ -61,3 +61,37 @@ if (strcasecmp($str, "hello world") === 0) {
   // We will get here, because strcasecmp() is case-insensitive
 }
 ```
+
+#### Simple Searching Functionality
+The simplest way to search inside a string is to use the ```strpos()``` and ```strstr()``` families of functions.
+
+**strpos()***
+
+Used to find the position of a substring (called the needle) inside a string (the haystack) It returns either the numeric position of the needle's first occurrence within the haystack, or false if a match cound not be found:
+```php
+$haystach = "abcdefg";
+$needle = 'abc';
+
+if (strpos($haystack, $needle) !== calse) {
+  echo 'Found';
+}
+```
+You can specify the third parameter to strpos() to indicate that you want the search to start from a specific position within the haystack.
+```php
+$haystach = "123456123456";
+$needle = '123';
+
+echo strpos($heystack, $needle);  // outputs 0
+echo strpos($heystack, $needle, 1 ); // outputs 6
+```
+
+**strstr()**
+
+Used to search the haystack for a needle. It is slower than ```strpos()``` The function returns the portion of the haystack that starts with the needle istead of the position:
+
+```php
+$haystack = '123456';
+$needle = '34';
+echo strstr($haystack, $needle); // outputs 3456
+```
+You can specify the third parameter to strstr() to indicate that you want the search to start from a specific position within the haystack.
