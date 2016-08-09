@@ -95,3 +95,52 @@ $needle = '34';
 echo strstr($haystack, $needle); // outputs 3456
 ```
 You can specify the third parameter to strstr() to indicate that you want the search to start from a specific position within the haystack.
+
+#### Matching Against a Mask
+Use ```strspn()``` function to match a string against a "whitelist" mask of allowed characters. It returns the length of the initial segment of the string that contains any of the chartacters specified in the mask:
+```php
+$string ='133445abcdef';
+$mask = '12345';
+
+echo strspn($string, $mask); // outputs 6
+```
+Use ```strcspn()``` with a "blacklist" mask, to specify which caracters are disallowed. It returns the length of the initial segment of the string that does not contain any of the characters from the mask.
+Specify two optional characters that define the starting position and the length of the string to examine.
+
+#### Simple Search and Replace Operations
+Use ```str_replace()``` as a simple substitution of a string. Or as cse-insensitive ```str_ireplace```:
+```php
+// Outputs Hello Reader
+echo str_replace("World", "Reader", "Hello World");
+```
+Optionally, you can specify a third parameter, passed by reference, tha the function fills, upon return, with the number of substitutions made:
+```php
+$a = 0; 
+str_replace('a', 'b', 'a1a1a1', $a);
+echo $a; // outputs 3
+```
+If you need to search and replace more than one needle at a time, you can pass the first two arguments to ```str_replace()``` in the form of arrays:
+```php
+// outputs Bonjure Monde
+echo str_replace( 
+  array("Hello", "World"), 
+  array("Bonjour", "Monde"),
+  "Hello World" );
+  ```
+  The first element of the search array is replaced by the first element of the replacement array.
+  ```php
+  // outputs Bye Bye
+  echo str_replace(
+    array("Hello", "World"),
+    "Bye",
+    "Hello World");
+    ```
+    Sinc only the needle argument is an array, both search terms are replaced by the same string resultin in "Bye Bye".
+    
+    Combining ```substr_replace()``` with ```strpos()```:
+    ```php
+    $user = "david@example.com";
+    $name = substr_replace($user, "", strpos($user, '@'));
+    echo "Hello " . $name;
+    ```
+    
