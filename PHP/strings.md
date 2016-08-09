@@ -33,3 +33,31 @@ TEXT;
 
 // displays So I said, "Hello $who"
 ```
+
+#### Length of String
+Use ```strlen()``` function to determine the length (in bytes) of a string. It is binary-safe, which means that all characters in the string are counted, reagrdless of their value.
+
+#### Transforming a String
+Use ```strtr() function to translate certain characters of a string into other charactrs. Used in transliteration to transform certain accented charactrs that cannot appear:
+```php
+// translate a single character
+echo strtr('abc', 'a', '1'); // outputs 1bc
+
+// translate multiple-cjaracters
+$subst = array('1' => 'one', '2' => 'two');
+echo strtr('123', $subst); // outputs onetwo3
+```
+
+#### Comparing, Searching and Replacing Strings
+Use ```strcmp()``` or ```strcasecmp()```:
+```php
+$str = "Hello World";
+
+if (strcmp($str, "hello world") === 0) {
+  // We won't get here, because of case sensitivity
+}
+
+if (strcasecmp($str, "hello world") === 0) {
+  // We will get here, because strcasecmp() is case-insensitive
+}
+```
