@@ -1,4 +1,6 @@
 ## JSON
+While XML used to be the format of choice for many systems, it has been surpassed by JSON, which is supported by many languages.
+
 To work with JSON in PHP you need the following functions:
 * `json_encode()` (to return the JSON representation of a value)
 * `json_decode()` (to decode a JSON string)
@@ -41,6 +43,32 @@ returns the JSON string:
 { "name":"James",
   "hobbies":"sports",
   "birthdate":"08\/05\/1974 12:20:03 pm" }
+```
+or
+```php
+class User implements JsonSerializable {
+  public $first_name;
+  public $last_name;
+  public $email;
+  public $password;
+  
+  public function jsonSerialize() {
+    return [
+      "name => $this->first_name . ' ' . $this->last_name, 
+      "email_hash" => md5($this->email),
+    ];
+  }
+}
+
+$User =  new User();
+echo json_encode($User);
+```
+results in:
+```
+{
+  "name": "blah-blah",
+  "email_hash": "c1dqdkee94kt88wkd9w0ut"
+}
 ```
 
 **More Examples:**
@@ -88,6 +116,20 @@ returns the JSON string:
     ]
 }
 ```
+In PHP 5.3 several options for the ```jason_encode()``` were introduced. For example:
+```php
+$array = ["name => "John Doe", "age" => "30"];
+$options = JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK | JSON_FORCE_OBJECT;
+echo json_encode($array, $options);
+```
+will produce:
+```
+{
+  "name": "John Doe",
+  "age": 30
+}
+```
+In PHP 5.5 a third parameter ```depth``` was added to limit how many nested data structures will be encoded.
 
 #### Decoding JSON
 PHP `json_decode()` function is used for decoding JSON in PHP. This function returns the value decoded from json to appropriate PHP type. 
@@ -95,7 +137,7 @@ PHP `json_decode()` function is used for decoding JSON in PHP. This function ret
    $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
 
    var_dump(json_decode($json));
-   var_dump(json_decode($json, true));
+   var_dump(json_decode($json, true)); // add true to return an array
 ```
 this will echo out:
 ```
@@ -115,3 +157,4 @@ array(5) {
    ["e"] => int(5)
 }
 ```
+Yo can specify ```depth`` and ```options``` as the third and forth arguments. ```JSON_BIGINT_AS_STRING``` is the only option that is supported.
