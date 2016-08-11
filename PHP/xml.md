@@ -209,6 +209,63 @@ foreach ($xml->book as $book) {
 </html>
 ```
 
+**Iterating with SimpleXML**
+SimpleXML provides a means to access childern and attributes without needing to know their names. In fact, SimpleXML will even tell you their names.
+```xml
+<?xml version="1.0"?>
+<library>
+  <book isbn="03456789">
+    <title>Frankenstein</title>
+    <author>M. Shelley</author>
+    <publisher>Bedford</publisher>
+  </book>
+  <book>
+    <title>The Silmarillion</title>
+    <author>J.R.R. Tolkien</author>
+    <publisher>G. Allen &amp; Unwin</publisher>
+  </book>  
+</library>
+```
+```php
+// Load an XML string
+$xmlstr = file_get_contents('library.xml');
+$library = simplexml_load_string($xmlstr);
+
+// or load an XML file
+$library = new SimpleXMLElement('library.xml', NULL, true);
+
+foreach ($library->children() as $child) {
+  echo $child->getName() . ":\n";
+  
+  // Get attributes of this element
+  foreach ($child->attributes() as $attr) {
+    echo ' ' . $attr->getName() . ': ' . $attr . "\n";
+  }
+  
+  // Get children
+  foreach ($child->children() as $subchild) {
+    echo ' ' . $subchild->getName() . ': ' . $subchild . "\n";
+  }
+  echo "\n";
+}
+```
+The XML Path Language (XPath) is used to access and search XML docunments, like a query language for retrieving data from an XML document. If query is used on the root element, it will search the entire XML document. If used on achild, it will search the child and any childern it may have:
+```php
+// Search the root element
+$results = $library->xpath('/library/book/title');
+foreach ($results as $title) {
+  echo $title . "\n";
+}
+
+// Search the first child element
+$results = $library->book[0]->xpath('title');
+foreach ($results as $title) {
+  echo $title . "\n";
+}
+```
+To modify XML Document:
+
+
 #### CREATING RSS FEED
 Really Simple Syndication (RSS), used to mean Rich Site Summary, is the way for Web sites to provide listings of the site's content. RSS is a closed standard and frozen from further development. Users access the feeds (XML files with pre-established tags) by RSS client, usually a Web browser. See the formal specifications at www.rssboard.org/rss-specification Atom is an open standard offshoot of RSS. 
 
