@@ -22,4 +22,24 @@ DomDocumnet::save()   // to a file
 DomDocument::saveHTML()  // also to a string, but it saves an HTML document instead of an XML file
 DomDocument::saveHTMLFile()  // to a file in HTML format
 ```
+Example:
+```php
+$dom = new DomDocument();
+$dom->load('library.xml');
+  // do something with the XML here
 
+// save to file
+if ($use_xhtml) {
+  $dom->save('library.xml');
+} else {
+  $dom->saveHTMLFile('library.xml);
+}
+
+// output data
+if ($use_xhtml) {
+  echo $dom->saveXML();
+} else {
+  echo $dom->saveHTML();
+}
+```
+  
