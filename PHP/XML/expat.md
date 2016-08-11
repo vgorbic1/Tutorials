@@ -1,6 +1,4 @@
-## XML
-
-#### PARSING XML WITH EXPAT
+## PARSING XML WITH EXPAT
 Expat's parsing events resemble the events defined in the Simple-API-for-XML (SAX), but Expat is not a SAX-compliant parser. Projects incorporating the Expat library often build SAX and possibly DOM parsers on top of Expat. While Expat is mainly a stream-based (push) parser, it supports stopping and restarting parsing at arbitrary times, thus making the implementation of a pull parser relatively easy. Expat makes use of callback functions when events occur. The Expat library can read an XML document, but it cannot validate one.
 
 To use Expat with PHP first create a new parser:
