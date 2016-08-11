@@ -1,4 +1,4 @@
-#### CREATING RSS FEED
+##CREATING RSS FEED
 Really Simple Syndication (RSS), used to mean Rich Site Summary, is the way for Web sites to provide listings of the site's content. RSS is a closed standard and frozen from further development. Users access the feeds (XML files with pre-established tags) by RSS client, usually a Web browser. See the formal specifications at www.rssboard.org/rss-specification Atom is an open standard offshoot of RSS. 
 
 To create a server-side RSS feed with PHP:
