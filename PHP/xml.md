@@ -211,7 +211,7 @@ foreach ($xml->book as $book) {
 
 **Iterating with SimpleXML**
 SimpleXML provides a means to access childern and attributes without needing to know their names. In fact, SimpleXML will even tell you their names.
-```xml
+```
 <?xml version="1.0"?>
 <library>
   <book isbn="03456789">
@@ -263,8 +263,24 @@ foreach ($results as $title) {
   echo $title . "\n";
 }
 ```
-To modify XML Document:
+To modify XML Document, (add a new element and children):
+```
+$book = $library->addChild('book');
+$book->addAttribute('isbn', '081255');
+$book->addChild('title', "Ender's Game");
+$book->addChild('author', 'O. Card');
+$book->addChild('publisher', 'Tor Science Fiction');
 
+header('Content-type: text/xml');
+echo $library->asXML();
+```
+Called without a parameter, ```asXML()``` method returns an XML string. It also accepts a file path as a parameter, which will cause it to save the XML document to the given path and return a Boolean value to indicate success. If a file with the same path already exists, a call to ```asXML()``` will overwrite it without warning.
+
+To only remove a child element and it's attribute. It will not remove attributes from the "book" level though. For that, export the SimpleXMLElement to DOM.
+
+```php
+$library->book[0] = NULL;
+```
 
 #### CREATING RSS FEED
 Really Simple Syndication (RSS), used to mean Rich Site Summary, is the way for Web sites to provide listings of the site's content. RSS is a closed standard and frozen from further development. Users access the feeds (XML files with pre-established tags) by RSS client, usually a Web browser. See the formal specifications at www.rssboard.org/rss-specification Atom is an open standard offshoot of RSS. 
