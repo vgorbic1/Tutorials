@@ -104,7 +104,7 @@ foreach ($xml->book as $book) {
 </html>
 ```
 
-**Iterating with SimpleXML**
+#### Iterating with SimpleXML
 SimpleXML provides a means to access childern and attributes without needing to know their names. In fact, SimpleXML will even tell you their names.
 ```
 <?xml version="1.0"?>
@@ -204,4 +204,11 @@ Returning document namespaces (only those that were actually used)
   foreach ($namespaces as $key => $value) {
     echo "{$key} => {$value}\n";
   }
+```
+#### Interfacing with DOM
+```php
+$dom = new DOMDocument();
+$dom->load('library.xml');
+$sxe = simplexml_import_dom($dom);
+echo $sxe->book[0]->title;
 ```
