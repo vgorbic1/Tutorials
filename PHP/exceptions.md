@@ -9,7 +9,7 @@ There are several key differences between “regular” PHP errors and exception
 - Exceptions can be thrown from the __construct method on failure.
 - Exceptions change the flow of the application.
 
-##Basic Exception Class
+####Basic Exception Class
 Almost all of the properties of an ```\Exception``` are automatically filled in by the interpreter. You only need to provide a
 message and a code, and all the remaining information will be taken care of.
 ```php
