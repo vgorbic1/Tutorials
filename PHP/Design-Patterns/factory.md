@@ -1,6 +1,10 @@
 ##Factory
 The Factory pattern is used in scenarios where you have a generic class (the factory) that provides the facilities for creating instances of one or more separate “specialized” classes that handle the same task in different ways.
 
+Factories are useful when we need to perform database work, but could be dealing with any number of different database drivers. We use a Factory class to give us the correct driver class, ensuring that all of our drivers conform to a standard interface.
+
+![factory](https://cloud.githubusercontent.com/assets/13823751/17860127/ebbc923c-6851-11e6-8897-ced83f632bf6.jpg)
+
 A good situation for which the Factory pattern provides an excellent solution is the management of multiple storage mechanisms for a given task. For example, consider configuration storage, which could be provided by data stores like INI files, databases or XML files interchangeably. The API that each of these classes provides is the same (ideally, implemented using an interface), but the underlying implementation changes. The Factory pattern provides us with an easy way to return a different data store class depending on either the
 user’s preference, or a set of environmental factors:
 ```php
