@@ -2,11 +2,10 @@
 Hooks are the backbone of WordPress. They enable plugin developers to “hook” into the WordPress workflow to change how it works without directly modifying the core code. This enables users to easily upgrade to newer versions of WordPress without losing modifications. 
 WordPress has two primary types of hooks: action hooks and filter hooks. The former enables you to execute a function at a certain point, and the latter enables you to manipulate the output passed through the hook. Hooks aren’t just for plugins. WordPress uses hooks internally.
 
-####Actions
+###Actions
 Action hooks enable you to fire a function at specific points in the WordPress loading process or when an event occurs. For example, you might want a function to execute when WordPress first loads a page or when a blog post is saved.
 
-**do_action()**
-
+####do_action()
 When hooking into WordPress, your plugin won’t call this function directly; however, your plugin will almost always use it indirectly.
 ```php
   do_action( $tag, $arg = '' );
