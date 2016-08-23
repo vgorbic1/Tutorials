@@ -112,7 +112,8 @@ if ( did_action( 'plugins_loaded' ) ) {
 ####register_activation_hook() and register_deactivation_hook()
 WordPress has two functions for registering action hooks for the activation and deactivation of individual plugins. These are technically functions to create custom hooks.
 
-####plugins_loaded() hook
+###Commonly Used Action Hooks
+####plugins_loaded
 For plugin developers, the plugins_loaded action hook is probably the most important hook. It is fired after most of the WordPress files are loaded but before the pluggable functions and WordPress starts executing anything. In most plugins, no other code should be run until this hook is fired. ```plugins_loaded``` is executed when all the user's activated plugins have been loaded by WordPress. It
 is also the earliest hook plugin developers can use in the loading process.
 ```php
@@ -125,3 +126,61 @@ function boj_example_footer_message() {
   echo 'This site is built using <a href="http://wordpress.org" title="WordPress publishing platform">WordPress</a>.';
 }
 ```
+
+####init
+The ```init``` hook is fi red after most of WordPress is set up. WordPress also adds a lot of internal functionality to this hook such as the registration of post types and taxonomies and the initialization of the default widgets. Because nearly everything in WordPress is ready at this point, your plugin will probably use this hook for anything it needs to do when all the information from WordPress is available.
+
+To add the ability for users to write an excerpt for pages. You would do this on init because the "page" post type is created at this point using the ```add_post_type_support()``` function:
+```php
+add_action('init', 'boj_add_excerpts_to_pages');
+function boj_add_excerpts_to_pages() {
+  add_post_type_support('page', array('excerpt'));
+}
+```
+
+####admin_menu
+The ```admin_menu hook``` is called only when an administration page loads. Whenever your plugin works directly in the admin, you would use this hook to execute your code.
+
+To add a sub-menu item labeled BOJ Settings to the Settings menu in the WordPress admin:
+```php
+add_action('admin_menu', 'boj_admin_settings_page');
+function boj_admin_settings_page() {
+  add_options_page(
+    'BOJ Settings',
+    'BOJ Settings',
+    'manage_options',
+    'boj_admin_settings',
+    'boj_admin_settings_page'
+  );
+}
+```
+
+####template_redirect 
+The ```template_redirect``` action hook is important because it’s the point where WordPress knows which page a user is viewing. It is executed just before the theme template is chosen for the particular page view. It is fi red only on the front end of the site and not in the administration area. This is a good hook to use when you need to load code only for specific page views.
+```php
+add_action('template_redirect', 'boj_singular_post_css');
+function boj_singular_post_css() {
+  if ( is_singular('post') ) {
+    wp_enqueue_style('boj-singular-post', 'boj-example.css', false, 0.1, 'screen');
+  }
+}
+```
+
+####wp_head
+On the front end of the site, WordPress themes call the ```wp_head()``` function, which fires the ```wp_head``` hook. Plugins use this hook to add HTML between the opening <head> tag and its closing </head>.
+
+To add a meta description on the front page of the site using the site's description:
+```php
+add_action('wp_head', 'boj_front_page_meta_description' );
+function boj_front_page_meta_description() {
+  /* Get the site description. */
+  $description = esc_attr( get_bloginfo('description') );
+  /* If a description is set, display the meta element. */
+  if ( !empty( $description ) ) {
+    echo '<meta name="description" content="' . $description . '" /> ';
+  }
+}
+```
+Many plugins incorrectly use the wp_head action hook to add JavaScript to the header when they should be using the ```wp_enqueue_script()``` function. The only time JavaScript should be added to this hook is when it's not located in a separate JavaScript file.
+
+##Filters
