@@ -222,3 +222,154 @@ add_filter($tag, $function, $priority, $accepted_args);
 - $accepted_args — The number of parameters your filter function can accept. By default this is 1 . Your function must accept at least one parameter, which will be returned.
 
 ####apply_filters_ref_array()
+The ```apply_filters_ref_array()``` function works nearly the same as ```apply_filters()```. One major difference is what parameters are passed. Rather than accepting multiple values, it accepts an array of arguments. Both parameters are required. It is also important to note that the ```$args``` parameter should be passed by reference rather than value.
+
+####remove_filter()
+The ```remove_filter()``` function enables plugins to remove filters that have been previously registered for a fi lter hook. To successfully remove a filter, this function must be called after a filter has been registered using the ```add_filter()``` function.
+```php
+remove_filter( $tag, $function_to_remove, $priority, $accepted_args );
+```
+- $tag — The name of the filter hook to remove a filter from.
+- $function_to_remove — The function to remove from the filter hook.
+- $priority — The priority previously used in add_filter() to register the filter. This parameter defaults to 10.
+- $accepted_args — The number of accepted arguments previously declared in the add_filter() called to register the filter. This parameter defaults to 1 .
+
+The function returns true when the filter is successfully removed and returns false when the removal is unsuccessful. The $tag, $function_to_remove, and $priority parameters must also match the parameters set with add_filter() exactly. Otherwise, the filter will not be removed.
+```php
+remove_filter('the_content', 'wpautop');
+```
+
+####remove_all_filters()
+In some plugins, you may need to remove all filters from a specifi c filter hook or remove filters with a particular priority from a filter hook. The ```remove_all_filters()``` function enables you to do this with a single line of code.
+```php
+remove_all_filters('the_content', 11);
+```
+
+####has_filter()
+The ```has_filter()``` function enables plugins to check if any filters have been registered for a filter hook or if a specifi c filter has been registered for the hook.
+```php
+has_filter( $tag, $function_to_check );
+```
+The function returns false if no filter is found for the given hook. It returns true if a filter is found. However, if the ```$function_to_check``` parameter is set, it returns the priority of the filter.
+```php
+if ( has_filter( 'the_content', 'wpautop' ) ) echo 'Paragraphs are automatically formatted for the content.';
+```
+
+####current_filter()
+The ```current_filter()``` function returns the name of the fi lter hook currently executed. However, it doesn’t just work with filter hooks; it applies to action hooks as well, so it returns the name of the current action or fi lter hook. This function is especially useful if you use a single function for multiple hooks but need the function to execute differently depending on the hook currently firing.
+
+To set an array of unwanted words depending on the case and replace them with “Whoops!” in the text.
+```php
+add_filter('the_content', 'boj_replace_unwanted_words');
+add_filter('the_title', 'boj_replace_unwanted_words');
+function boj_replace_unwanted_words($text) {
+  /* If the_content is the filter hook, set its unwanted words. */
+  if ('the_content' == current_filter() ) {
+    $words = array('profanity', 'curse', 'devil');
+    /* If the_title is the filter hook, set its unwanted words. */
+  } elseif ('the_title' == current_filter() ) {
+    $words = array( ‘profanity’, ‘curse’ );
+    /* Replace unwanted words with “Whoops!” */
+    $text = str_replace($words, 'Whoops!', $text);
+  }
+  /* Return the formatted text. */
+  return $text;
+}
+```
+
+###WordPress functions for quickly returning values
+- __return_false — Returns the Boolean value of false.
+- __return_true — Returns the Boolean value of true.
+- __return_empty_array — Returns an empty PHP array.
+- __return_zero — Returns the integer 0.
+
+###Commonly Used Filter Hooks
+####the_content
+If there’s one filter hook that plugin authors use more than any other, it is the_content. Without content, a site would be essentially useless. It is the most important thing displayed on the site, and plugins use this hook to add many features to a site.
+
+To append a list of related posts by post category to the_content for a reader to see when viewing a single post.
+```php
+add_filter('the_content', 'boj_add_related_posts_to_content');
+function boj_add_related_posts_to_content($content) {
+  /* If not viewing a singular post, just return the content. */
+  if ( !is_singular('post') ) {
+    return $content;
+  }
+  /* Get the categories of current post. */
+  $terms = get_the_terms( get_the_ID(), ‘category’ );
+  /* Loop through the categories and put their IDs in an array. */
+  $categories = array();
+  foreach ( $terms as $term ) {
+    $categories[] = $term- > term_id;
+    /* Query posts with the same categories from the database. */
+    $loop = new WP_Query(array(
+      ‘cat__in’ = > $categories,
+      ‘posts_per_page’ = > 5,
+      ‘post__not_in’ = > array( get_the_ID() ),
+      ‘orderby’ = > ‘rand’
+    ));
+    
+    /* Check if any related posts exist. */
+    if ( $loop- > have_posts() ) {
+      /* Open the unordered list. */
+      $content .= ‘ < ul class=”related-posts” > ’;
+      while ( $loop- > have_posts() ) {
+        $loop- > the_post();
+        /* Add the post title with a link to the post. */
+        $content .= the_title(‘ < li > < a href=”’ . get_permalink() . ‘” > ’, ‘ < /a > < /li > ’, false);
+    }
+    /* Close the unordered list. */
+    $content .= ‘ < /ul > ’;
+    /* Reset the query. */
+    wp_reset_query();
+  }
+  /* Return the content. */
+  return $content;
+}
+```
+
+####the_title
+To strip all tags a user might use when writing a post title:
+```php
+add_filter('the_title', 'boj_strip_tags_from_titles');
+function boj_strip_tags_from_titles( $title ) {
+  $title = strip_tags( $title );
+  return $title;
+}
+```
+
+####comment_text
+The ```comment_text``` hook is often a useful fi lter hook because comments typically play a large role for blogs and other types of sites.
+```php
+add_filter('comment_text', 'boj_add_role_to_comment_text');
+function boj_add_role_to_comment_text( $text ) {
+  global $comment;
+  /* Check if comment was made by a registered user. */
+  if ( $comment-> user_id > 0 ) {
+  /* Create new user object. */
+  $user = new WP_User( $comment-> user_id );
+  /* If user has a role, add it to the comment text. */
+    if ( is_array( $user- > roles ) ) {
+      $text .= ‘ < p > User Role: ‘ . $user- > roles[0] . ‘ < /p > ’;
+    }
+  }
+return $text;
+}
+```
+####template_include
+```template_include``` is a sort of catchall filter hook for many other, more specific filter hooks. It is used after the theme template file for the current page has been chosen. WordPress chooses a template based on the page currently viewed by a reader. You can add a filter for each of the individual filter hooks or filter them all at the end with the ```template_include``` hook.
+- front_page_template
+- home_template
+- single_template
+- page_template
+- attachment_template
+- archive_template
+- category_template
+- tag_template
+- author_template
+- date_template
+- archive_template
+- search_template
+- 404_template
+- index_template
+-
