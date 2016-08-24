@@ -183,4 +183,42 @@ function boj_front_page_meta_description() {
 ```
 Many plugins incorrectly use the wp_head action hook to add JavaScript to the header when they should be using the ```wp_enqueue_script()``` function. The only time JavaScript should be added to this hook is when it's not located in a separate JavaScript file.
 
-##Filters
+###Filters
+Filter hooks enable you to manipulate the output of code. Whereas action hooks enable you to insert code, filter hooks enable you to overwrite code that WordPress passes through the hook. Your function would “filter” the output. 
+
+A filter is a function registered for a filter hook. The function itself would take in at least a single parameter and return that parameter after executing its code. Without a filter, filter hooks don’t do anything. They exist so that plugin developers can change different variables. This can be anything from a simple text string to a multidimensional array.
+
+You can add multiple filters to the same filter hook. Other plugins and WordPress can also add filters to the hook. Filter hooks aren’t limited to a single filter. It is important to note this because each filter must always return a value for use by the other filters. If your function doesn’t return a value, you risk breaking the functionality of both WordPress and other plugins.
+
+####apply_filters()
+```php
+apply_filters($tag, $value);
+```
+- $tag — The name of the filter hook.
+- $value — The parameter passed to any filters added to the hook. The function can also take in any number of extra $value parameters to pass to filters. It must be returned back to WordPress when writing a filter.
+```php
+apply_filters('template_include', $template);
+```
+In this example, ```template_include``` is name of the filter hook. ```$template``` is a file name that can be changed through filters registered for the filter hook.
+```php
+add_filter('wp_title', 'boj_add_site_name_to_title', 10, 2 );
+function boj_add_site_name_to_title($title, $sep) {
+  /* Get the site name. */
+  $name = get_bloginfo('name');
+  /* Append the name to the $title variable. */
+  $title .= $sep . ' ' . $name;
+  /* Return the title. */
+  return $title;
+}
+```
+####add_filter()
+To add a filter, use the ```add_filter()``` function.
+```php
+add_filter($tag, $function, $priority, $accepted_args);
+```
+- $tag — The name of the hook you want to register your filter for.
+- $function — The function name of the filter that you create to manipulate the output.
+- $priority — An integer that represents in what order your filter should be applied. If no value is added, it defaults to 10.
+- $accepted_args — The number of parameters your filter function can accept. By default this is 1 . Your function must accept at least one parameter, which will be returned.
+
+####apply_filters_ref_array()
