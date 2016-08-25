@@ -1,5 +1,12 @@
 ##Hooks
 Hooks are the backbone of WordPress. They enable plugin developers to “hook” into the WordPress workflow to change how it works without directly modifying the core code. This enables users to easily upgrade to newer versions of WordPress without losing modifications. 
+
+New hooks are always added with new versions of WordPress. Keeping track of changes in the core code from version to version can help you stay on top of new hooks that you can use within your plugins. There's no better process for understanding how PHP code works than actually looking at the code and following each statement made within the code. An easy way to search for hooks is to open a file from the wordpress folder in your preferred text editor and run a text search for one of four function names.
+- do_action
+- do_action_ref_array
+- apply_filters
+- apply_filters_ref_array
+
 WordPress has two primary types of hooks: action hooks and filter hooks. The former enables you to execute a function at a certain point, and the latter enables you to manipulate the output passed through the hook. Hooks aren’t just for plugins. WordPress uses hooks internally.
 
 ###Actions
@@ -372,4 +379,67 @@ return $text;
 - search_template
 - 404_template
 - index_template
--
+
+###Hooks and Classes
+Adding a method of a class as an action or filter, the format of the calls to ```add_action()``` and ```add_filter()``` is slightly different.
+When using a method such as ```$function_to_add``` from within a class, you must change ```$function_to_add``` to an array with & $this as the fi rst argument and the method name as the second argument.
+```php
+add_action( $tag, array( & $this, $method_to_add ) );
+```
+When using a class method as a filter, you must also change the ```$function_to_add``` parameter.
+```php
+add_filter( $tag, array( & $this, $method_to_add ) );
+```
+For example, the ```add_filters()``` method checks if the reader is currently viewing a singular post view. If true, the ```content()``` method appends the last modifi ed date of the post to the post content.
+```php
+class BOJ_My_Plugin_Loader {
+  /* Constructor method for the class. */
+  function BOJ_My_Plugin_Loader() {
+    /* Add the ‘singular_check’ method to the ‘template_redirect’ hook. */
+    add_action( ‘template_redirect’, array( & $this, ‘singular_check’ ) );
+  }
+  /* Method used as an action. */
+  function singular_check() {
+    /* If viewing a singular post, filter the content. */
+    if ( is_singular() ) add_filter( ‘the_content’, array( & $this, ‘content’ ) );
+  }
+  /* Method used as a filter. */
+  function content( $content ) {
+    /* Get the date the post was last modified. */
+    $date = get_the_modified_time( get_option( ‘date_format’ ) );
+    /* Append the post modified date to the content. */
+    $content .= ‘ < p > Post last modified: ‘ . $date . ‘ < /p > ’;
+    /* Return the content. */
+    return $content;
+  }
+}
+$boj_myplugin_loader = new BOJ_My_Plugin_Loader();
+```
+
+###Creating Custom Hooks
+Plugins but they can also create custom hooks for use by other plugins and themes. Your plugin would use one of four available functions for creating custom action hooks:
+- do_action()
+- do_action_ref_array()
+- apply_filters()
+- apply_filters_ref_array()
+
+Custom hooks make your plugin more flexible, allow it to be extended by others, and gives you the ability to hook into the execution of various processes throughout your plugin within the plugin itself. Using custom hooks also keep users from editing your work directly. The importance of this is that when you provide an update for the plugin, users won't lose any modifications they've made.
+
+For example, you create a plugin setup function. The function defines a constant that can be altered. Other plugins may also execute any code they want on the hook. You provide it so that they have an opportunity to run code at that point.
+```php
+add_action( ‘plugins_loaded’, ‘boj_myplugin_setup’ );
+function boj_myplugin_setup() {
+  /* Allow actions to fire before anything else. */
+  do_action( ‘boj_myplugin_setup_pre’ );
+  /* Check if the root slug is defined. */
+  if ( !defined( ‘BOJ_MYPLUGIN_ROOT_SLUG’ ) ) define( ‘BOJ_MYPLUGIN_ROOT_SLUG’, ‘articles’ );
+}
+```
+
+###Variable Hooks
+Variable hook names change based on a specific variable.
+```php
+do_action( "load-$pagenow" );
+```
+The $pagenow variable will become the page name being viewed. For example, the hook for the new post page in the admin would be load - post - new.php and the hook on the edit posts screen would be load - post.php . This enables plugins to run code only for specific page views in the admin.
+
