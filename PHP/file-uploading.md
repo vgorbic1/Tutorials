@@ -76,7 +76,6 @@ Do not use ```copy()``` instead of ```move_uploaded_file()``` because of securit
 
 #### Remove spaces from filenames
 ```php
-...
 define('UPLOAD_DIR', '/absolute/path/to/upload/directory/');
 $filename = str_replace(' ', '_', $_FILES['image']['name']);
  move_uploaded_file($_FILES['image']['tmp_name'], UPLOAD_DIR . $filename);
