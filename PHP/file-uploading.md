@@ -81,10 +81,10 @@ $filename = str_replace(' ', '_', $_FILES['image']['name']);
  move_uploaded_file($_FILES['image']['tmp_name'], UPLOAD_DIR . $filename);
  ```
  
- #### Rejecting large files
+#### Rejecting large files
  Add the following in the form before the file input field:
  ```php
- <input type="hidden" name="MAX_FILE_SIZE" value=<?php echo MAX_FILE_SIZE; ?>" />
+ <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_FILE_SIZE; ?>" />
 ```
 Define the size of the file in the top of your PHP download script:
 ```php
