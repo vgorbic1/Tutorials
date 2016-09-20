@@ -82,3 +82,14 @@ public int Hour { get { return hour; } set { hour = value; } }
 int theHour = time.Hour
 time.Hour = theHour;
 ```
+#### Implementing Inheritance
+Use colon after the name of the derived class, followed by the name of the base class:
+```c#
+public class ListBox : Window
+```
+Thederived class inherits all the members of the base class (both member variables and methods). These members can be treated just as if they were created in the derived class.
+
+The  *new* keyword indicates that the derived class has intentionally hidden and replaced the base class method.
+```c#
+public new void DrawWindow() {...}
+```
