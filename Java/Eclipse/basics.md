@@ -61,7 +61,7 @@ To fast create **for each** loop:
 type "fore" and press ctrl + spacebar
 ```
 
-To fast create **Syste.out.println()**:
+To fast create **System.out.println()**:
 ```
 type "sysout" and press ctrl + spacebar
 ```
