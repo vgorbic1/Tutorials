@@ -37,8 +37,15 @@ To change a signature of a method:
  do stuff
  ```
  
- To move a method to another class
+ To move a method to another class:
  ```
  select the method to move
  alt + shift + V
  ```
+
+To generate getters and setters, constructors, toString, etc:
+```
+select instance variable
+alt + shift + S
+Select "Generate Getters and Setters..."
+```
