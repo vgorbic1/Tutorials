@@ -160,3 +160,81 @@ System.out.printf("%-15s %15s %n", heading1, heading2);
 - "%s" Format a string with as many characters as are needed.
 - "%15s" Format a string with the specified number of characters, and right-justify.
 - "%-15s" Format a string with the specifies number of charactrs, and left-justify.
+
+#### toString()
+Implementing toString method in java is done by overriding the Object’s toString method. The java toString() method is used when we need a string representation of an object. It is defined in Object class. This method can be overridden to customize the String representation of the Object. Below is a program showing the use of the Object’s Default toString java method.
+```java
+class PointCoordinates {
+
+	private int x, y;
+	public PointCoordinates(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+}
+
+public class ToStringDemo {
+
+	public static void main(String args[]) {
+		PointCoordinates point = new PointCoordinates(10, 10);
+		// using the Default Object.toString() Method
+		System.out.println("Object toString() method : " + point);
+		// implicitly call toString() on object as part of string concatenation
+		String s = point + " testing";
+		System.out.println(s);
+	}
+}
+```
+Result:
+```
+Object toString() method : PointCoordinates@119c082
+PointCoordinates@119c082 testing
+```
+In the above example when we try printing PointCoordinates object, it internally calls the Object’s toString() method as we have not overridden the java toString() method. Since out example has no toString method, the default one in Object is used. The format of the default toString method of the Object is as shown below.
+
+Class Name, “@”, and the hex version of the object’s hashcode concatenated into a string.
+The default hashCode method in Object is typically implemented by converting the memory address of the object into an integer.
+
+Below is an example shown of the same program by Overriding the default Object toString() method. The toString() method must be descriptive and should generally cover all the contents of the object.
+```java
+class PointCoordinates {
+
+	private int x, y;
+	public PointCoordinates(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return y;
+	}
+	// Custom toString() Method.
+	public String toString() {
+		return "X=" + x + " " + "Y=" + y;
+	}
+}
+
+public class ToStringDemo2 {
+
+	public static void main(String args[]) {
+		PointCoordinates point = new PointCoordinates(10, 10);
+		System.out.println(point);
+		String s = point + " testing";
+		System.out.println(s);
+	}
+}
+```
+Result:
+```
+X=10 Y=10
+X=10 Y=10 testing
+```
+Taken from [here](http://www.wideskills.com/java-tutorial/java-tostring-method)
