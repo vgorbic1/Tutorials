@@ -2,7 +2,7 @@
 To format a piece of code:
 ```
 select the block of code
-ctrl + hift + F
+ctrl + shift + F
 ```
 
 Set formatting preferences:
