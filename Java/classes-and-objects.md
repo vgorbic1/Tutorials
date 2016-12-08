@@ -37,7 +37,7 @@ t = 25.0;
 temp = CtoF();
 System.out.println(t + "C=" + temp +"F");
 ```
-###Initializing Class Variables
+####Initializing Class Variables
 During program execution, when a class is first used, i.e. when it is loaded into the Java Virtual Machine (JVM), its class variables are assigned default values. For numeric variables, the default value is zero. If there is a need to initialize a class variable to a non-default value, it can be done in the declaration statement itself, or in a statement block declared as static.
 ```java
 // When the Temperature class is loaded into JVM
@@ -59,7 +59,7 @@ class Temperature {
 - Accessibility Rule: Class variables and methods can be referenced by their names directly if the name is unique, or via the class name in all cases.
 - Execution Rule: All static declarations and statement blocks {…} of a class will be processed (i.e. executed) one time only, when the class is first used in the program.
 
-##Instance Variables and Methods
+####Instance Variables and Methods
 The variables, methods, and statement blocks in a class declaration, that do not have the static modifier, are called instance variables, instance methods, and instance statement blocks. Their usage is subject to the following rules:
 - Declaration Rule: Instance variables, methods, and statement blocks must be declared without the static modifier.
 - Accessibility Rule: Instance variables and methods can be used only after an object (instance) of the class is created, and must be referenced via the object name
