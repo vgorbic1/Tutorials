@@ -77,3 +77,4 @@ This is what happens during execution of the above statement:
 - The reference between the variable object1 and the new object is established.
 
 ####Constructors
+A constructor is a method with the same name as the class name and without the return type specified. It is invoked by the JVM when an object of the class is being created. The purpose of a constructor is to initialize the instant variables of the class. If you do not declare any constructors, the JVM will create an empty one: className() { }, which will do nothing. However, once at least one constructor is declared by the programmer, the default constructor is gone and cannot be used.
