@@ -90,6 +90,7 @@ System.out.println( one.compareTo(three) ); // returns -1
 ```
 The ```compareTo()``` method may not work correctly for Strings in different languages than English. To sort Strings correctly in a specific language, use a Collator.
 
+#### Other string manipulations
 The ```trim()``` trims a string object. It removes white space characters at the beginning and end of the string. White space characters include space, tab and new lines:
 ```java
 String text = "  And he ran across the field   ";
