@@ -12,5 +12,17 @@ Access level modifiers control the visibility of variables and methods of a clas
 
 **public -> protected -> [no modifier] -> private**
 
+![modifiers](https://cloud.githubusercontent.com/assets/13823751/21074104/9220b0e0-beb5-11e6-81bf-0df0b3835693.jpg)
 
+### Static Modifier
+The static modifier indicates that the variable or method can be accessed before any object of the class is created. A good example is the main method that starts execution of an application. It must be declared static because it is called before any object exists.
 
+### Ffinal Modifier
+The final modifier can be applied to variables, methods, and classes to "finalize" their declaration.
+A **final variable** cannot be modified after it is assigned an initial value. That effectively makes a final variable a constant:
+```java
+final double pi = 3.1415926;
+```
+A **final method** cannot be overridden. If a class declares some method as final, the sub-classes of that class cannot create a method with the same signature as the final method.
+
+A **final class** cannot have sub-classes, i.e. it cannot be inherited.
