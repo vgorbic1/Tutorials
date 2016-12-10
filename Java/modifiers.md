@@ -17,7 +17,7 @@ Access level modifiers control the visibility of variables and methods of a clas
 ### Static Modifier
 The static modifier indicates that the variable or method can be accessed before any object of the class is created. A good example is the main method that starts execution of an application. It must be declared static because it is called before any object exists.
 
-### Ffinal Modifier
+### Final Modifier
 The final modifier can be applied to variables, methods, and classes to "finalize" their declaration.
 A **final variable** cannot be modified after it is assigned an initial value. That effectively makes a final variable a constant:
 ```java
