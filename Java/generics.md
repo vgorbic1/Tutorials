@@ -73,3 +73,28 @@ public static void main (String args[]) {
         // but g could point to the G object created with input parameter of type AB, A, or B
   }
 ```
+####Passing Generic Classes as Parameters
+Objects of generic classes can be passed as parameters to methods, in the same way as other Java objects:
+```java
+class GenericClass <T> {…}
+. . .
+public void myMethod(GenericClass g) {…}
+. . .
+GenericClass<A> a = new GenericClass<A>( ); // The a variable references an object of type GenericClass<A>
+GenericClass<B> b = new GenericClass<B>( ); // The b variable references an object of type GenericClass<B>
+myMethod(a);
+myMethod(b);
+```
+myMethod() can accept any object of type GenericClass regardless of the type-variable T used in creating those objects. We can add some type safety checking to the process by specifying restrictions for the input parameter of myMethod(). This is accomplished with the help of the wildcard parameter <?>:
+```java
+abstract class AB { ... }
+class A extends AB { ... }
+class B extends AB { ... }
+. . .
+class G <T extends AB> { // Objects of generic class G can be of types G, G<AB>, G<A>, or G<B>
+. . .
+  public void myMethod(G<?> g) {…} // Object g can be of any type allowed by the class G declaration
+  public void myMethod(G<? extends AB> g) {…} // Object g can be of type G<AB> or its sub-classes (i.e. G<AB>, G<A>, G<B>)
+  public void myMethod(G<? super B> g) {…} // Object g can be of type G<B> or its super-classes (i.e. G<B> or G<AB>)
+```
+In this example ```<? extends AB>``` sets the upper boundary for passing object references, and ```<? super B>``` sets the lower boundary.
