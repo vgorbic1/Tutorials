@@ -98,3 +98,35 @@ class G <T extends AB> { // Objects of generic class G can be of types G, G<AB>,
   public void myMethod(G<? super B> g) {…} // Object g can be of type G<B> or its super-classes (i.e. G<B> or G<AB>)
 ```
 In this example ```<? extends AB>``` sets the upper boundary for passing object references, and ```<? super B>``` sets the lower boundary.
+
+####Generic Interfaces
+Generic interfaces are declared in a way similar to the declaration of generic classes:
+```java
+interface GenericInterface <T> {
+  public void myID (T id);
+}
+```
+Generic interfaces can only be implemented by generic classes:
+```java
+class myClass <T> implements myInterface <T> {…}
+interface myInterface <T> { … }
+```
+It is possible to restrict the scope of type-variables in the class declaration, in the interface declaration, or in both:
+```java
+class myClass <T extends AB> implements myInterface <T> {…}
+interface myInterface <T extends ABC> { … }
+```
+Below are examples of valid as well as incorrect declarations.
+```java
+class AB {}
+class A extends AB {}
+class B extends AB {}
+interface myInterface <T extends AB> {…} // myInterface can be implemented only by the class AB or its sub-classes
+class myClass <T> implements myInterface <T> {…} // Valid declaration
+class myClass <T extends A> implements myInterface <T> {…} // Valid; class A is subclass of AB
+class myClass <T extends String> implements myInterface <T> {…} // Error! Class String is not a subclass of AB
+class myClass implements myInterface <T> {…} // Error! Class myClass must be generic
+class myClass <X> implements myInterface <T> {…} // Error! The generic type variables in myClass and myInterface must have same name
+```
+
+
