@@ -129,4 +129,4 @@ class myClass implements myInterface <T> {…} // Error! Class myClass must be g
 class myClass <X> implements myInterface <T> {…} // Error! The generic type variables in myClass and myInterface must have same name
 ```
 
-
+[Great explanations by Mr. Trevor Page](https://www.youtube.com/watch?v=9tHLV0u87G4)
