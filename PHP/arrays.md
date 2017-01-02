@@ -198,7 +198,7 @@ function calcRoot ($item){
 }
 ```
 
-**size_off()**
+**sizeof()**
 
 This function tells you how many elements in the current array
 ```PHP
