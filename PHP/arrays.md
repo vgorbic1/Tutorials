@@ -184,7 +184,7 @@ $pets = array_merge($cats, $dogs);
 This function turns all elements in an array into a string. 
 ```PHP
 $cats = array('Long Hair', 'Short Hair', 'Dwarf');
-echo implode(' and ', $Cats); // this will give you a sting: Long Hair and Short Hair and Dwarf
+echo implode(' and ', $cats); // this will give you a sting: Long Hair and Short Hair and Dwarf
 ```
 
 **array_walk()**
