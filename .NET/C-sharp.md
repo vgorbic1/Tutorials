@@ -6,6 +6,8 @@ C# was created specifically for .NET. The language is sutable to develop:
 
 The language is simple, but is highly expressive when it comes to implementing modern programming concepts. Developed by Anders Hejlsberg (also created Turbo Pascal) and Scott Wiltamuth.
 
+In C# everything happens in the within a class. No methods can run outside of a class, not even Main().
+
 #### Enumerations
 Enums are strongly typed constants. They are essentially unique types that allow you to assign symbolic names to integral values. In the C# tradition, they are strongly typed, meaning that an enum of one type may not be implicitly assigned to an enum of another type even though the underlying value of their members are the same. Along the same lines, integral types and enums are not implicitly interchangable. All assignments between different enum types and integral types require an explicit cast.
 
@@ -73,4 +75,21 @@ class EnumSwitch {
       Console.ReadLine();
    }
 }
+```
+####Properties, Getters, and Setters
+```c#
+public int Hour { get { return hour; } set { hour = value; } }
+int theHour = time.Hour
+time.Hour = theHour;
+```
+#### Implementing Inheritance
+Use colon after the name of the derived class, followed by the name of the base class:
+```c#
+public class ListBox : Window
+```
+Thederived class inherits all the members of the base class (both member variables and methods). These members can be treated just as if they were created in the derived class.
+
+The  *new* keyword indicates that the derived class has intentionally hidden and replaced the base class method.
+```c#
+public new void DrawWindow() {...}
 ```

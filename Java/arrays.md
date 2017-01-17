@@ -1,16 +1,22 @@
 ## Arrays
 
-Declare an array. It does not instantiate it.
+Declare an array. It does not instantiate it. No physical array is actually created at the time of declaration.
 ```java
 int[] myArray;
 String[] myArray;
  // or even:
 int myArray[];
 ```
-Instantiate an array of 10 elements:
+After the array is declared, it can be created in one of two ways. The first way is to use an array initializer when the array is declared:
+```java
+int myArray [] = { 1, 2, 3, 4, 5 }; // the array of five integers
+```
+Another way of creating arrays is by using the **new** statement. Instantiate an array of 10 elements:
 ```java
 int[] myArray = new int[10]; 
 ```
+The new statement creates an array and assigns the default values to all of its elements. The default value depends on the array elements’ type; for numbers - 0, for Boolean - false, and for classes - null.
+
 If you know values:
 ```java
 int[] myArray = new int[] {1,3,7,9} ; // Creates an array of four elements with corresponding integer values.
@@ -53,6 +59,11 @@ Multidimensional arrays:
 ```java
 int[][] myArray = new int[10][20]; // each of 10 array elements has 20 elements in it.
 myArray[2][13] = 125; // assign a value to one element of the array
+or
+int [][] N;
+N = new int [2] []; // two columns with undefined number of rows
+N [0] = new int [2]; // first row will contain 2 columns
+N [1] = new int [3]; // second row will contain 3 columns
 ```
 Iterating multiple arrays:
 ```java

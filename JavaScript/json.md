@@ -44,7 +44,7 @@ If a collection of sutdent objects has an `id` as a property, it will look like 
 [
   {'id':1},
   {'id':2},
-  ['id':3}
+  {'id':3}
 ]
 ```
 Keys are typically strings, and have to be placed in quotes. If we have several properties, separate them with a comma too:
@@ -52,7 +52,7 @@ Keys are typically strings, and have to be placed in quotes. If we have several 
 [
   {'id':1, 'name':'Peter'},
   {'id':2, 'name':'John'},
-  ['id':3, 'name':'James'}
+  {'id':3, 'name':'James'}
 ]
 ```
 We can have an object(s) included into anothe object:
@@ -60,7 +60,7 @@ We can have an object(s) included into anothe object:
 [
   {'id':1, 'name':'Peter', 'courses':[{}, {}, {}]},
   {'id':2, 'name':'John'},
-  ['id':3, 'name':'James'}
+  {'id':3, 'name':'James'}
 ]
 ```
 #### Simple use of JSON

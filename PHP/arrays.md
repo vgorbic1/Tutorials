@@ -79,6 +79,7 @@ array_unshift($myArray, 33);  // now array has 33, 99, 16, 11.
 **array_splice()**
 
 This function helps to insert, remove, or replace any element in a given array.
+
 To remove an element:
 ```PHP
 $cats = array('Long Hair', 'Short Hair', 'Dwarf', 'Siamese');
@@ -101,7 +102,7 @@ $cats = array('Long Hair', 'Short Hair', 'Dwarf', 'Siamese');
 array_splice($cats, 2, 1, 'Persian');  // now arrays has Long Hair, Short Hair, Persian, Siamese. Remove 1 element at position 2 (0 counts too) and insert string ‘Persian’ there.
 ```
 
-#### Soring arrays
+#### Sorting arrays
 
 **sort()**
 
@@ -183,7 +184,7 @@ $pets = array_merge($cats, $dogs);
 This function turns all elements in an array into a string. 
 ```PHP
 $cats = array('Long Hair', 'Short Hair', 'Dwarf');
-echo implode(' and ', $Cats); // this will give you a sting: Long Hair and Short Hair and Dwarf
+echo implode(' and ', $cats); // this will give you a sting: Long Hair and Short Hair and Dwarf
 ```
 
 **array_walk()**
@@ -197,7 +198,7 @@ function calcRoot ($item){
 }
 ```
 
-**size_off()**
+**sizeof()**
 
 This function tells you how many elements in the current array
 ```PHP
