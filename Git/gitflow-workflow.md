@@ -77,3 +77,4 @@ git tag "1.0.0.RELEASE" -m "Add 1.0.0 release"
 ```
 git push --tag
 ```
+![gitflow-workflow](https://cloud.githubusercontent.com/assets/13823751/22400340/a4c4c82e-e577-11e6-94f1-948791ca4df1.jpg)
