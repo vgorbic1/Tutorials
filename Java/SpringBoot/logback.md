@@ -81,4 +81,3 @@ Create a template in your IDE to automatically declare logger in a class. Name i
 // STS (Eclipse) template:
 private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(${enclosing_type}.class);
 ```
-```
