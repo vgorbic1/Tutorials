@@ -85,6 +85,8 @@ Use the logger (sample)
 ```java
 public String getMessage(String messageId) {
   LOG.info("Returning i18n text for messageId {}", messageId); // use logger here
+  // this "{}" will be substituted with value of the variable "messageId"
+  
   Locale locale = LocaleContextHolder.getLocale();
   return getMessage(messageId, locale);
 }
