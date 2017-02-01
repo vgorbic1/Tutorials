@@ -81,3 +81,11 @@ Create a template in your IDE to automatically declare logger in a class. Name i
 // STS (Eclipse) template:
 private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(${enclosing_type}.class);
 ```
+Use the logger (sample)
+```java
+public String getMessage(String messageId) {
+  LOG.info("Returning i18n text for messageId {}", messageId); // use logger here
+  Locale locale = LocaleContextHolder.getLocale();
+  return getMessage(messageId, locale);
+}
+```
