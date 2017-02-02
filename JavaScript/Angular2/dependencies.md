@@ -1,5 +1,5 @@
-## Defining Dependancies
-To define Angular 2 dependancies create a package.json file:
+## Defining Dependencies
+To define Angular 2 dependencies create a package.json file:
 ```json
 {
     "name": "angular2-skeleton",
