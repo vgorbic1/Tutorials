@@ -12,7 +12,7 @@ To define Angular 2 dependancies create a package.json file:
         "tsc:w": "tsc -w"
     },
     "license": "UNLICENSED",
-    "repository": {
+    "repository":dencies
         "type": "git",
         "url": ""
     },
@@ -42,7 +42,7 @@ To define Angular 2 dependancies create a package.json file:
     }
 }
 ```
-Dependancies are npm (Node Package Manager) packages that were created by other developers. 
+Dependencies are npm (Node Package Manager) packages that were created by other developers. 
 - name - name of the application
 - version - version of the application
 - description - simple description of your application
