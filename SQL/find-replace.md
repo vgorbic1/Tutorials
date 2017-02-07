@@ -2,5 +2,5 @@
 This is an example with a WordPress database to replace all data (in all rows) in column *guid* that has *madisontalkers* with *madisontalks*: 
 ```sql
 UPDATE wp_posts SET guid = REPLACE(guid, 'madisontalkers', 'madisontalks') 
-WHERE guid LIKE %madisontalkers%
+WHERE guid LIKE '%madisontalkers%';
 ```
