@@ -1,0 +1,15 @@
+##Plan for a project
+- Create a local SpringBoot Maven project that has Web and Thymeleaf components.
+- Initiate a local git reository.
+- Create a gitHub repository.
+- Create license and readme files.
+- Connect the local and gitHub repositories.
+- Create a develop branch in both repos.
+- Set Bootstrap and JQuery dependencies.
+- Create a project structure.
+- Create an index page placeholder.
+- Create Thymeleaf fragments.
+- Set up i18
+- Set up logging (backlog)
+- Create "About" page
+- Create "Contact" page
