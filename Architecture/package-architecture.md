@@ -5,3 +5,6 @@
 - Define Backend level that keeps all back-end packages.
 - Define Crosscutting level (Utils, Config etc).
 - Define Web level, where anything related to Web Layer goes.
+
+#### Resources
+![resources](https://cloud.githubusercontent.com/assets/13823751/23345102/1f1ab024-fc4e-11e6-88c1-b55f43a4b029.jpg)
