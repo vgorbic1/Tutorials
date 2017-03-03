@@ -1,4 +1,4 @@
-##Thymeleaf Fragmenting
+##Thymeleaf Fragmenting (Refactoring)
 - Have a complete HTML place holder file (index.html) that you need to fragment.
 - Make sure the file has Thymeleaf ns reference:
 ```xml
@@ -43,3 +43,37 @@ index.html that are located right before closing <body> element:
 <head th:replace="common/header :: common-header" />
 ```
 here *common/header* is the path to the *header* page, and *common-header* is the fragment name.
+- Place a div element into index.html placeholder and include a reference to the header.html *before-body-scripts* fragment:
+```xml
+<div th:replace="common/header :: before-body-scripts" />
+```
+- Copy navigation bar code from index.html including the top div element.
+- Create a new navbar.html file:
+```xml
+<!DOCTYPE html>
+<html lang="en" xmlns:th="html://www.thymeleaf.org">
+<head>
+</head>
+<body>
+</body>
+</html>
+```
+- Completely remove the <head> element from the havbar.html.
+- Within the <body> element paste the code from clipboard (navigation bar from index.html code). Keep indentation.
+- Add reference (th:fragment="common-navbar") to the top <div> element:
+```xml
+...
+<div th:fragment="common-navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">
+...
+```
+- In the index.php insert this code instead the navbar code:
+```xml
+...
+<body>
+  <div th:replace="common/navbar :: common-navbar" />
+...
+```
