@@ -14,4 +14,52 @@ spring.mail.properties.mail.smtp.socketFactory.fallback=false
 spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.properties.mail.smtp.ssl.enable=true
 ```
-- Create tow Java configuration classes for production and development profiles.
+- Create tow Java configuration classes for production and development profiles. In *src/java/com/appname/config* package create a configuration class and name it DevelopmentConfig:
+```java
+package com.appname.config;
+
+import com.appname.backend.service.EmailService;
+import com.appname.backend.service.MockEmailService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
+
+@Configuration
+@Profile("dev")
+@PropertySource("file:///${user.home}/.appname/application-dev.properties")
+public class DevelopmentConfig {
+
+    @Bean
+    public EmailService emailService() {
+        return new MockEmailService();
+    }
+}
+```
+In *src/java/com/appname/config* package create a configuration class and name it ProductinConfig:
+```
+package com.devopsbuddy.config;
+
+import com.appname.backend.service.EmailService;
+import com.appname.backend.service.SmtpEmailService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
+
+@Configuration
+@Profile("prod")
+@PropertySource("file:///${user.home}/.appname/application-prod.properties")
+public class ProductionConfig {
+
+    @Bean
+    public EmailService emailService() {
+        return new SmtpEmailService();
+    }
+}
+```
+In Spring *application.properties* add this line for executing *development* profile:
+```
+spring.profiles.active=dev
+```
+or change "dev" to "prod" for *production* profile.
