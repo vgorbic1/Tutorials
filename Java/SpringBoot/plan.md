@@ -5,7 +5,7 @@
 - Create license and readme files.
 - Connect the local and gitHub repositories.
 - Create a develop branch in both repos.
-- Test application with minimum code.
+- [Test application with minimum code](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/hello-world.md).
 - [Set Bootstrap and JQuery dependencies](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/setup-bootstrap-jQuery-webjars.md).
 - Create a project structure.
 - Create an index page placeholder.
