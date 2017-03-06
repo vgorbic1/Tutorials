@@ -2,7 +2,7 @@
 - Create a local SpringBoot Maven project that has Web and Thymeleaf components.
 - Initiate a local git reository.
 - Create a gitHub repository.
-- Create license and readme files.
+- Create license and readme files (gitignore file is created automatically with the SpringBoot project).
 - Connect the local and gitHub repositories.
 - Create a develop branch in both repos.
 - [Test application with minimum code](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/hello-world.md).
