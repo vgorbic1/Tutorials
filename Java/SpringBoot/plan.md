@@ -8,7 +8,7 @@
 - [Test application with minimum code](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/hello-world.md).
 - [Set Bootstrap and JQuery dependencies](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/setup-bootstrap-jQuery-webjars.md).
 - [Create a project structure](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/package-architecture.md).
-- Create an index page placeholder.
+- [Create an index page placeholder](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/index-page.md).
 - Create Thymeleaf fragments.
 - Set up i18
 - Set up logging (backlog)
