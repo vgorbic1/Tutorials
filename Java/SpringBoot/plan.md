@@ -5,7 +5,7 @@
 - Create license and readme files.
 - Connect the local and gitHub repositories.
 - Create a develop branch in both repos.
-- Set Bootstrap and JQuery dependencies.
+- [Set Bootstrap and JQuery dependencies](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/setup-bootstrap-jQuery-webjars.md).
 - Create a project structure.
 - Create an index page placeholder.
 - Create Thymeleaf fragments.
