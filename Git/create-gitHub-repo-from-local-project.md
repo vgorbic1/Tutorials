@@ -27,3 +27,7 @@ git remote -v
 ```
 git push origin master
 ```
+If you have a problem like *rejected master -> master (non-fast-forward)*, try this:
+```
+git push -f origin master
+```
