@@ -3,7 +3,7 @@
 - Initiate a local git reository.
 - Create a gitHub repository.
 - Create license and readme files (gitignore file is created automatically with the SpringBoot project).
-- Connect the local and gitHub repositories.
+- [Connect the local and gitHub repositories](https://github.com/vgorbic1/Tutorials/blob/master/Git/create-gitHub-repo-from-local-project.md).
 - Create a develop branch in both repos.
 - [Test application with minimum code](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/hello-world.md).
 - [Set Bootstrap and JQuery dependencies](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/setup-bootstrap-jQuery-webjars.md).
