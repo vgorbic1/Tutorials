@@ -11,6 +11,6 @@
 - [Create an index page placeholder](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/index-page.md).
 - [Create Thymeleaf fragments](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/thymeleaf-fragmenting.md).
 - [Set up i18n](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/i18n.md).
-- Set up logging (backlog)
+- [Set up logging (backlog)](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/logback.md).
 - Create "About" page
 - Create "Contact" page
