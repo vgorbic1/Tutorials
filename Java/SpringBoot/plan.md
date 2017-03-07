@@ -9,7 +9,7 @@
 - [Set Bootstrap and JQuery dependencies](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/setup-bootstrap-jQuery-webjars.md).
 - [Create a project structure](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/package-architecture.md).
 - [Create an index page placeholder](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/index-page.md).
-- Create Thymeleaf fragments.
+- [Create Thymeleaf fragments](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/thymeleaf-fragmenting.md).
 - Set up i18
 - Set up logging (backlog)
 - Create "About" page
