@@ -10,7 +10,7 @@
 - [Create a project structure](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/package-architecture.md).
 - [Create an index page placeholder](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/index-page.md).
 - [Create Thymeleaf fragments](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/thymeleaf-fragmenting.md).
-- Set up i18
+- [Set up i18n](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/i18n.md).
 - Set up logging (backlog)
 - Create "About" page
 - Create "Contact" page
