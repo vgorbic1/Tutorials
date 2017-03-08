@@ -93,7 +93,7 @@ public class MockEmailService extends AbstractEmailService {
 }
 ```
 - Put the *MockEmailService* bean to the *DevelopmentConfig* class:
-```
+```java
 ...
 public class DevelopmentConfig {
     @Bean
@@ -104,6 +104,60 @@ public class DevelopmentConfig {
 ```
 - Inject *MockEmailService* into *ContactController*:
 ```java
+...
     @Autowired
     private EmailService emailService;
+...
+    @RequestMapping(value = "/contact", method = RequestMethod.POST)
+    public String contactPost(@ModelAttribute(FEEDBACK_MODEL_KEY) FeedbackPojo feedback) {
+        LOG.debug("Feedback POJO content: {}", feedback);
+        emailService.sendFeedbackEmail(feedback);
+        return ContactController.CONTACT_US_VIEW_NAME;
+    }
+...
 ```
+- Now you should see sent messages on console when in development environment.
+- Create *SmtpEmailService* class that extends *AbstractEmailService* class and put it to the same `service` package:
+```java
+package com.appname.backend.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+
+/**
+ * Real implementation of an email service.
+ */
+public class SmtpEmailService extends AbstractEmailService {
+
+    /** The application logger */
+    private static final Logger LOG = LoggerFactory.getLogger(SmtpEmailService.class);
+
+    @Autowired
+    private MailSender mailSender;
+
+    @Override
+    public void sendGenericEmailMessage(SimpleMailMessage message) {
+        LOG.debug("Sending email for: {}", message);
+        mailSender.send(message);
+        LOG.info("Email sent.");
+    }
+}
+```
+- Put the *SmtpEmailService* bean to the *ProductionConfig* class:
+```java
+...
+@Configuration
+@Profile("prod")
+@PropertySource("file:///D:/STS/.devopsbuddy/application-prod.properties")
+public class ProductionConfig {
+
+    @Bean
+    public EmailService emailService() {
+        return new SmtpEmailService();
+    }
+}
+```
+- Now you should see send messages in your Inbox when in production environment. Do not forget to change profiles in *application.properties* file.
