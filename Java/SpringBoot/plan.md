@@ -14,3 +14,4 @@
 - [Set up logging (backlog)](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/logback.md).
 - Create "About" page (and other static pages).
 - Create "Contact" page.
+- Setup development and production profiles.
