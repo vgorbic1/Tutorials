@@ -102,3 +102,8 @@ public class DevelopmentConfig {
     }
 }
 ```
+- Inject *MockEmailService* into *ContactController*:
+```java
+    @Autowired
+    private EmailService emailService;
+```
