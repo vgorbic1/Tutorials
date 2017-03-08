@@ -120,4 +120,5 @@ public class ContactController {
   </div>							 						 						 						 
 </form>
 ```
+- Put necessary i18n properties for the contact form into the *messages.properties* file.
 - Test the form. The information should appear in the console.
