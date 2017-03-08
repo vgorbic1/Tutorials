@@ -28,17 +28,11 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @Profile("dev")
 @PropertySource("file:///${user.home}/.appname/application-dev.properties")
-public class DevelopmentConfig {
-
-    @Bean
-    public EmailService emailService() {
-        return new MockEmailService();
-    }
-}
+public class DevelopmentConfig { }
 ```
 In *src/main/java.com.appname.config* package create a configuration class and name it ProductinConfig:
 ```
-package com.devopsbuddy.config;
+package com.appname.config;
 
 import com.appname.backend.service.EmailService;
 import com.appname.backend.service.SmtpEmailService;
@@ -50,13 +44,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @Profile("prod")
 @PropertySource("file:///${user.home}/.appname/application-prod.properties")
-public class ProductionConfig {
-
-    @Bean
-    public EmailService emailService() {
-        return new SmtpEmailService();
-    }
-}
+public class ProductionConfig { }
 ```
 In Spring *application.properties* add this line for executing *development* profile:
 ```
