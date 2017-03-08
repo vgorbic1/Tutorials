@@ -1,4 +1,4 @@
-##External Properties and Profiling
+##External Properties and Profiling (for Email functionality)
 - Create an external properties file for production and development environment, as well as a common properties file for both scenarios.
 They are *application-dev.properties* and *application-prod.properties* files in a hidden folder in your local file system.
 - application-prod.properties:
@@ -63,3 +63,5 @@ In Spring *application.properties* add this line for executing *development* pro
 spring.profiles.active=dev
 ```
 or change "dev" to "prod" for *production* profile.
+
+- Add Email functionality.
