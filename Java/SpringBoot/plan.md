@@ -15,3 +15,4 @@
 - Create "About" page (and other static pages).
 - Create "Contact" page.
 - [Setup development and production profiles](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/external-properties.md).
+- [Create Email Service with Contact Form](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/email-service.md).
