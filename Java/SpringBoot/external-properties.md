@@ -64,4 +64,4 @@ spring.profiles.active=dev
 ```
 or change "dev" to "prod" for *production* profile.
 
-- Add Email functionality.
+- [Add Email Service functionality](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/email-service.md).
