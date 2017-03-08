@@ -14,7 +14,7 @@ spring.mail.properties.mail.smtp.socketFactory.fallback=false
 spring.mail.properties.mail.smtp.starttls.enable=true
 spring.mail.properties.mail.smtp.ssl.enable=true
 ```
-- Create tow Java configuration classes for production and development profiles. In *src/java/com/appname/config* package create a configuration class and name it DevelopmentConfig:
+- Create tow Java configuration classes for production and development profiles. In *src/main/java.com.appname.config* package create a configuration class and name it DevelopmentConfig:
 ```java
 package com.appname.config;
 
@@ -36,7 +36,7 @@ public class DevelopmentConfig {
     }
 }
 ```
-In *src/java/com/appname/config* package create a configuration class and name it ProductinConfig:
+In *src/main/java.com.appname.config* package create a configuration class and name it ProductinConfig:
 ```
 package com.devopsbuddy.config;
 
