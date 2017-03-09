@@ -6,6 +6,5 @@
 &equiv; `&equiv;`
 
 SOURCES: 
-
-[Upside Down Characters](http://www.upsidedowntext.com/unicode)
-[Math Unicode Entities](http://sites.psu.edu/symbolcodes/accents/math/mathchart/)
+- [Upside Down Characters](http://www.upsidedowntext.com/unicode)
+- [Math Unicode Entities](http://sites.psu.edu/symbolcodes/accents/math/mathchart/)
