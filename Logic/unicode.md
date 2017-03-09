@@ -3,4 +3,9 @@
 
 &#398; `&#398;`
 
-SOURCE: [Upside Down Characters](http://www.upsidedowntext.com/unicode)
+&equiv; `&equiv;`
+
+SOURCES: 
+
+[Upside Down Characters](http://www.upsidedowntext.com/unicode)
+[Math Unicode Entities](http://sites.psu.edu/symbolcodes/accents/math/mathchart/)
