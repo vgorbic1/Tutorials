@@ -1,6 +1,7 @@
 ## Collections
 
 * [List](#list)
+* [Set](#set)
 * [Map](#map)
 
 The Java Collections API's provide Java developers with a set of classes and interfaces that makes it easier to handle collections of objects. In a sense, Collection's works a bit as arrays, except their size can change dynamically, and they have more advanced behavior than arrays. Most of the Java collections are located in the java.util package.
@@ -311,9 +312,9 @@ for(Object object : setA) {
 }
 ```
 Removing an element:
-```java
-You remove elements by calling the remove(Object o) method. There is no way to remove an object based on index in a Set, since the order of the elements depends on the Set implementation.
-```
+
+You remove elements by calling the ```remove(Object o)``` method. There is no way to remove an object based on index in a Set, since the order of the elements depends on the Set implementation.
+
 Sets can be generic:
 ```java
 Set<MyObject> set = new HashSet<MyObject>();
