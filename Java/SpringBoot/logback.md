@@ -16,7 +16,7 @@ Loggin levels:
 **Slf4j** is a loggin API, which supports levels. It is already included in Spring Boot in ```spring-boot-starter-web``` and
 automatically detects chosen Logging Framework.
 
-####Steps to plug in Logback
+#### Steps to plug in Logback
 Include Logback dependency to pom.xml:
 ```xml
 		<!-- Logging Dependencies -->
@@ -25,7 +25,7 @@ Include Logback dependency to pom.xml:
 			<artifactId>logback-classic</artifactId>
 		</dependency>
 ```
-Add logback config file (logback.xml) to the Resources directory of Spring Boot project (src/main/resources). This is a sample configuration file: 
+Add logback config file (logback.xml) to the Resources directory of Spring Boot project ```src/main/resources```. This is a sample configuration file: 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
@@ -46,10 +46,10 @@ Add logback config file (logback.xml) to the Resources directory of Spring Boot 
 
     <!-- This appender prints to file -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${user.home}/logs/devopsbuddy/devopsbuddy.log</file>
+        <file>${user.home}/logs/appname/appname.log</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>${user.home}/logs/devopsbuddy/devopsbuddy.%i.log.zip</fileNamePattern>
+            <fileNamePattern>${user.home}/logs/appname/appname.%i.log.zip</fileNamePattern>
             <minIndex>1</minIndex>
             <maxIndex>3</maxIndex>
         </rollingPolicy>
@@ -62,7 +62,7 @@ Add logback config file (logback.xml) to the Resources directory of Spring Boot 
         </encoder>
     </appender>
 
-    <logger name="com.devopsbuddy" level="debug" />
+    <logger name="com.appname" level="debug" />
     <logger name="uk.co.jemos.podam" level="warn" />
     <logger name="org.springframework" level="info" />
     <logger name="org.hibernate" level="warn" />
