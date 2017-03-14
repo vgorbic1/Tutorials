@@ -1,0 +1,18 @@
+## Plan for a Website with Login Form and Basic In-memory Security
+- Create a local SpringBoot Maven project that has Web and Thymeleaf components.
+- Initiate a local git reository.
+- Create a gitHub repository.
+- Create license and readme files (gitignore file is created automatically with the SpringBoot project).
+- [Connect the local and gitHub repositories](https://github.com/vgorbic1/Tutorials/blob/master/Git/create-gitHub-repo-from-local-project.md).
+- Create a develop branch in both repos.
+- [Test application with minimum code](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/hello-world.md).
+- [Set Bootstrap and JQuery dependencies](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/setup-bootstrap-jQuery-webjars.md).
+- [Create a project structure](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/package-architecture.md).
+- [Create an index page placeholder](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/index-page.md).
+- [Create Thymeleaf fragments](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/thymeleaf-fragmenting.md).
+- [Set up i18n](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/i18n.md).
+- [Set up logging (backlog)](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/logback.md).
+- Create "About" page (and other static pages).
+- [Create "Contact" page with a Contact Form to send email messages](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/contact-form.md).
+- [Setup development and production profiles](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/external-properties.md).
+- [Create Email Service for the Contact Form](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/email-service.md).
