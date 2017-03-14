@@ -13,6 +13,3 @@
 - [Set up i18n](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/i18n.md).
 - [Set up logging (backlog)](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/logback.md).
 - Create "About" page (and other static pages).
-- [Create "Contact" page with a Contact Form to send email messages](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/contact-form.md).
-- [Setup development and production profiles](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/external-properties.md).
-- [Create Email Service for the Contact Form](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/email-service.md).
