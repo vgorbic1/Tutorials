@@ -1,4 +1,4 @@
-##Plan for a project
+## Plan for a Website with Email Form Functionality
 - Create a local SpringBoot Maven project that has Web and Thymeleaf components.
 - Initiate a local git reository.
 - Create a gitHub repository.
