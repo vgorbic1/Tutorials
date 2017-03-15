@@ -1,4 +1,4 @@
-##In-memeory Authentication
+## In-memeory Authentication
 Add a login functionality to protect certain pages of the website.
 - Create a LoginController class and put it to `contorllers` package:
 ```java
