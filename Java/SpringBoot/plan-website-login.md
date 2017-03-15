@@ -13,6 +13,4 @@
 - [Set up i18n](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/i18n.md).
 - [Set up logging (backlog)](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/logback.md).
 - Create "About" page (and other static pages). Include controllers!
-- [Create Login form](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/login-form.md).
-- Create a payload page (the one thea could be shown to logged in users only). Include controllers!
-- Add Basic Authentication.
+- [Create Basic Authentication](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/inmemory-authentication.md).
