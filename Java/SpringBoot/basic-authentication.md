@@ -3,13 +3,12 @@ Basic authentication is a protocol which encodes a username:password value with 
 ```Authorization: Basic QWE64of930dlg9jfioe9994ng/```
 - Add Spring Boot Security dependency to the *pom.xml* file:
 ```xml
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
 ```
-- Create a new configuration class and name it *SecurityConfig*. Put it to the ```Config``` package. This class extends ```WebSecurityConfigurerAdapter``` class.
-Add *@EnableWebsecurity anotation.
+- Create a new configuration class and name it *SecurityConfig*. Put it to the ```Config``` package. This class extends ```WebSecurityConfigurerAdapter``` class. Add *@EnableWebsecurity* anotation.
 ```java
 package com.appname.config;
 
