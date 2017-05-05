@@ -3,9 +3,9 @@ Arrays are the basic storage mechanisms available for a sequence of data. The be
 array are collocated sequentially and can be accessed completely and randomly with single instructions.
 
 #### Complexity
-access | insert | remove 
----|---|---|
-O(1) | O(n) | O(n)
+access | search | insert | remove 
+---|---|---|---
+O(1) | O(n) | O(n) | O(n)
 
 All the elements in an array are stored in contiguous memory. This makes it possible to access any
 element in a constant amount of time.
