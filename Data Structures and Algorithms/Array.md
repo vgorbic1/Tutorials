@@ -1,4 +1,4 @@
-## Array (One-dimensional)
+## Array (one-dimensional)
 Arrays are the basic storage mechanisms available for a sequence of data. The best thing about arrays is that the elements of an
 array are collocated sequentially and can be accessed completely and randomly with single instructions.
 
