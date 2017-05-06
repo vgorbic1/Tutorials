@@ -1,16 +1,30 @@
-## Array
+## Array (One-dimensional)
 Arrays are the basic storage mechanisms available for a sequence of data. The best thing about arrays is that the elements of an
 array are collocated sequentially and can be accessed completely and randomly with single instructions.
+
+Inefficiency of on array lies in its size that has to be determined at the time of declaration. If an array size of 100 slots and
+only two slots are filled with data, 98 slots are waisted and no other programs can use those memory slots. 
 
 #### Complexity
 access | search | insert | remove 
 ---|---|---|---
 O(1) | O(n) | O(n) | O(n)
 
+** C array declaration **
+```java
+int[] myArray = {1,3,5,65,23,55,123};
+```
 All the elements in an array are stored in contiguous memory. This makes it possible to access any
 element in a constant amount of time.
 
-Traversail / random access:
+**Access an element**
+```java
+public static void getElement(int[] anIntArray, int index) {
+  return anIntArray[index];
+}
+```
+
+**Traverse (print all one by one)**
 ```java
 public static void printAllElements(int[] anIntArray){
   for(int i = 0; i < anIntArray.length; i++){
@@ -18,7 +32,25 @@ public static void printAllElements(int[] anIntArray){
   }
 }
 ```
-Shift element to another position:
+
+**Insert an element**
+Based on the requirement, a new element can be added at the beginning, end, or any given index of array.
+
+Insert an element **at the end** of an array.
+*Algorithm:*
+
+
+```java
+
+
+```
+
+
+
+
+
+
+**Shift element to another position:**
 ```java
 public static void insertElementAtIndex(int[] array, int startIndex, int targetIndex){
   int value = array[startIndex];
@@ -37,7 +69,8 @@ public static void insertElementAtIndex(int[] array, int startIndex, int targetI
   }
 }
 ```
-Inserting an element:
+
+**Insert an element:**
 ```java
 public static int [] insertExtraElementAtIndex(int[] array, int index, int value) {
   int [] newArray = new int[array.length+1];
