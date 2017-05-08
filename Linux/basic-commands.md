@@ -59,17 +59,25 @@ Listing the content:
 ```
 ls
 ```
-Listing including hidden files:
+List including hidden files:
 ```
 ls –a
 ```
-Listing including hidden files and descriptive info:
+List including hidden files and descriptive info:
 ```
 ls –al
 ```
-Listing files with the newest on top:
+List files with the newest on top:
 ```
 ls –alt
+```
+List files and files in sub-directories:
+```
+ls -R
+```
+List files in a single column
+```
+ls -1
 ```
 To change directory:
 ```
@@ -82,6 +90,10 @@ cd ..
 To return to your home directory:
 ```
 cd 		cd ~		cd $HOME
+```
+To return to the previous directory:
+```
+cd -
 ```
 To determine what kind of file it is:
 ```
