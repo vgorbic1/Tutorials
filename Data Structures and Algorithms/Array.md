@@ -32,6 +32,7 @@ public static void printAllElements(int[] anIntArray){
   }
 }
 ```
+Static arrays have a size that is fixed when they are created and consequently do not allow elements to be inserted or removed. However, by allocating a new array and copying the contents of the old array to it, it is possible to effectively implement a dynamic version of an array; see dynamic array.
 
 **Insert an element:**
 ```java
