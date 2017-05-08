@@ -5,7 +5,7 @@ matrix. A matrix can be thought of as a grid of numbers, arranged in rows and co
 #### Complexity
 access | search | insert | remove 
 ---|---|---|---
-O(1) | O(n) | O(n) | O(n)
+O(1) | O(n<sup>2<sup>) | O(n<sup>2<sup>) | O(n<sup>2<sup>)
 
 **C array declaration**
 ```java
