@@ -27,6 +27,10 @@ To create a directory:
 ```
 mkdir directoryname		mkdir directory/directoryname
 ```
+To create a directory several outer (parent) directories:
+```
+mkdir -p dirname/dirname/dirname
+```
 To delete a directory:
 ```
 rmdir directoryname
@@ -39,13 +43,21 @@ To delete directory and all files in it:
 ```
 rm –r /full/path/to/dirrectory
 ```
-To move or rename a file:
+To move file to the current directory:
+```
+mv file .
+```
+To move file to another directory:
+```
+mv file directory/
+```
+To rename a file:
 ```
 mv oldfile.txt newfile.txt			mv directory/oldfile newfile
 ```
 To copy a file:
 ```
-cp directory/oldfile newfile
+cp oldfile newfile    cp directory/oldfile newfile
 ```
 To copy a file and name it differently:
 ```
@@ -58,6 +70,14 @@ cp * /another-directory
 To copy all files with a specific extension:
 ```
 cp *.jpg /another-folder
+```
+To copy a file from some directory to current one:
+```
+cp directory/filename .
+```
+To copy all files in chosen directory:
+```
+cp-r directory newdirectory
 ```
 
 #### DISPLAY CONTENT OF A FILE
