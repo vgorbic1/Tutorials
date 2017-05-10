@@ -23,6 +23,15 @@ Add a file upload field to a form
   </p>
 </form>
 ```
+
+A Bootstrap 4 inline form:
+```html
+<form action="" method="post" enctype="multipart/form-data" name="uploadImage" id="uploadImage" class="form-inline">
+  <label for="image" class="sr-only">Upload image</label>
+  <input type="file" name="image" id="image" class="form-control mb-2 mr-sm-2 sb-sm-0" />
+  <input type="submit" name="upload" id="upload" value="Upload" class="btn btn-primary" />
+</form>
+```
 Safari does not allow direct filename input!
 
 #### $_FILES array
