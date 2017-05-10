@@ -31,18 +31,34 @@ To create a directory several outer (parent) directories:
 ```
 mkdir -p dirname/dirname/dirname
 ```
-To delete a directory:
+To delete an empty directory:
 ```
 rmdir directoryname
 ```
+#### Removing (Deleting) files
+
 To delete a file in a directory:
 ```
-rm filename.txt
+rm filename
+```
+To remove and distroy the file immediately:
+```
+shred filename
+```
+To remove files with interaction (safe mode):
+```
+rm -i filename
+```
+To remove files without questons asked (fast but unsafe):
+```
+rm -rf directory/
 ```
 To delete directory and all files in it:
 ```
-rm –r /full/path/to/dirrectory
+rm –r /path/to/dirrectory/  or rm -R /path/to/dirrectory/
 ```
+#### Moving (Renaming) files
+
 To move file to the current directory:
 ```
 mv file .
