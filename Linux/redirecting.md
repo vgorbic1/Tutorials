@@ -23,6 +23,19 @@ To count lines from the file myoutput.txt:
 ```
 wc -l < myoutput.txt
 ```
+To combine input and output redirection:
+```
+tr 'A-Z' 'a-z' < commands.txt > commands_lower.txt
+```
+You have to output to a different file name, otherwise the file will be blank.
+
+To send output to a file and to terminal at the same time:
+```
+ls -1 file | tee another.file
+```
+To do the same but uppend to the end of another.file:
+```
+ls -1 file | tee -a another.file
 
 #### Redirecting STDERR
 ```2>``` redirects error message from a program to a file.
@@ -36,3 +49,4 @@ To save data into a file and error message (if any) to terminal:
 ls foo > myoutput.txt 2>&1
 ```
 &1 means STDOUT
+
