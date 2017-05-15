@@ -28,9 +28,22 @@ To add another user to sudo group, modify the /etc/group file and add:
 ```
 sudo:x: 27: vlad, newuser
 ```
-To use a root account:
+
+### SU
+The `su` command (which stands for switch user, not, as is popularly imagined, super user) can allow
+one user to temporarily act as another, but it is most often used when you want to quickly become
+root in your shell, run a command or two, and then go back to being your normal, non-root user.
+To switch to another user (account)
 ```
-su –
+su anotherusername
+```
+To switch to another user (account) and use all environment variables:
+```
+su -l anotherusername
+```
+To use a root account with all environment variables:
+```
+su -
 ```
 To change back to your account:
 ```
@@ -42,6 +55,21 @@ sudo passwd
 ```
 New users, by default, are unprivileged. This means that they will only be able to modify files in their own home directory, which is what we want.
 
+### Groups
+By default, on virtually every Linux system, when you create a new file (or directory), you are that file’s owner and group.
+
+To change one group to another:
+```
+chgrp newgroupname filename
+```
+When you run chgrp, you can use a group’s name or the group’s numeric ID. How do you find the number associated with a group?
+```
+cat /etc/group
+```
+To change the group for a directory and all files in it:
+```
+chgrp -R directoryname
+```
 If this is your first new user, and you are currently logged in as the root user, you can use the following syntax to create a new user:
 ```
 adduser newuser
@@ -76,7 +104,7 @@ sudo lastb
 ```
 To list who is currently logged in:
 ```
-who –u		users			who am i
+who –u		users			whoami
 ```
 If the user you created will be your primary user on the system, you usually want to enable sudo privileges so that you can do routine configuration and maintenance. We give users access to the sudo command with the visudo command. Never edit this file with a normal text editor! Always use the visudo command instead, because improper syntax in the /etc/sudoers file can leave you with a system where it is impossible to obtain elevated privileges, it is important to use the visudo command to edit the file.
 
