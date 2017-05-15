@@ -98,4 +98,7 @@ You cannot write the file name directly when using "tr"!
 WRONG!
 tr -s [:blank:] fiename
 ```
-
+To delete matching characters:
+```
+tr -d '-' < filename;
+```
