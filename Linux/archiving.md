@@ -55,6 +55,10 @@ tar --delete file.txt -f archivename.tar
 ```
 
 #### Gzip
+Gzip is focused on compression, and was designed as an open-source replacement for an older UNIX program, *compress*. It’s
+found on virtually every UNIX-based system in the world, including Linux and Mac OS X, but it’s not
+present on Windows.
+
 To compress files only use gzip command.
 
 To zip a file and rename it with .gz extension:
