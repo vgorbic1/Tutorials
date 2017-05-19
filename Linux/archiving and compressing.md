@@ -31,7 +31,7 @@ unzip archivename.zip
 ```
 Use `-v` (verbose) flag for more information.
 
-To test archive whether it is become corrupted:
+To test archive whether it is become corrupted (if OK nothing will happen):
 ```
 unzip -t archivename.zip
 ```
@@ -81,7 +81,7 @@ To uszip a gzip archive and leave the original archive file:
 ```
 gunzip -c archivename.gz > filename
 ```
-To test integrity of gzipped file:
+To test integrity of gzipped file (if OK nothing will happen):
 ```
 gzip -t archivename.gz
 ```
@@ -90,65 +90,82 @@ To get detailed info:
 gzip -lv archivename.gz
 ```
 
+### Bzip2
+Designed to supersede gzip, bzip2 creates
+smaller files, but at the cost of speed. That said, computers are so fast nowadays that most users
+won’t notice much difference between the time it takes gzip or bzip2 to compress a group of files.
 
-
-
-
-
-
-
-#### Fast commands:
-
-To archive a directory:
+To archive a file:
 ```
-tar cvf file.tar directoryname/
+bzip2 filetoacrchive
 ```
-To compress a tar file:
-```
-gzip file.tar
-```
-To unzip and untar a file:
-```
-tar zxvf file.tar.gz
-```
+Just like gzip, bzip2 leaves you with just the zipped file. The original file is gone.
 
-#### Tar
-"Tarchiver" creates compressed archives.
-
-To created a compressed acrcive of a directory
+To archive a file and leave the copy of the original:
 ```
-tar czf compressed.tgz directoryname
+bzip2 -k filetoarchive
+```
+To unzip the file:
+```
+bunzip2 archive.bz2
+```
+To unzp the file and leave the copy of the archive:
+```
+bunzip2 -k archive.bz2
+```
+To test the integrity of the archive (if OK nothing will happen):
+```
+bunzip2 -t archive.bz2
+```
+### Tar
+"Tape archive" doesn’t compress; it merely archives (the resulting archives are known as tarballs). Instead, tar uses other programs, such as gzip or bzip2, to compress the archives that tar creates.
+
+Flags | Means
+-- | --
+ c | create backup archive
+ x | exract file from archive
+ d | compare differences between archives
+ u | update files in archive
+ t | list the content of the archive
+ f | file name. Should be right before the file name, if you use it
+ p | preserve permissions
+ z | do gzip compression
+ j | do bzip2 compression
+ v | verbose description
+
+To tar all .txt files in the current directory:
+```
+tar -cf archivename.tar *.txt
+```
+To created an acrcive of a directory
+```
+tar -cf archivename.tgz directoryname
+```
+To create a tar file and compress it with gzip:
+```
+tar -pzcvf archivename.tar.gz directoryname/
+```
+To test the archive:
+```
+tar -zvtf archivename.tar.gz
+```
+To expand the content of compressed archive (test the file first!):
+```
+tar -pzvxf archivefile
 ```
 To scroll through the archive file to look for the content:
 ```
-tar tzf archivefile | less
+tar -tzf archivefile | less
 ```
-To expand the content of compressed archive:
-```
-tar zxf archivefile
-```
-
-Flags:
-- c create backup archive
-- x exract file from archive
-- d compare differences between archives
-- u update files in archive
-- t list the content of the archive
-- f file name. Should be right before the file name, if you use it
-- z do gzip compression
-- v verbose description
-
 To unzip and untar a file into current directory:
 ```
-tar xzvf myfile.tar.gz
+tar -xzvf myfile.tar.gz
 ```
 To add a file to archive:
 ```
-tar rvf archivename.tar myfilename
+tar -rvf archivename.tar myfilename
 ```
 To delete a file from archive:
 ```
 tar --delete file.txt -f archivename.tar
 ```
-
-
