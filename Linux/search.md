@@ -23,4 +23,4 @@ files. To do that, you use `grep`:
 ```
 grep thewordtofind filename
 ```
-Grep all by itself works with basic regular expressions.
+Grep all by itself works with basic [regular expressions](https://github.com/vgorbic1/Tutorials/blob/master/Linux/regexp.md).
