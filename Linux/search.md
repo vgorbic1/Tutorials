@@ -9,14 +9,7 @@ Same, but case insensitive:
 ```
 locate -i filetofind
 ```
-Find files not accessed in last sixty days:
-```
-find /home/username/ -atime +60
-```
-A general search tool for find packages. It returns a long list of packages:
-```
-sudo apt-cache search kde
-```
+
 ### Search Inside Text Files for Patterns
 The `locate` command searches the names of files and directories, but it can’t search inside those
 files. To do that, you use `grep`:
@@ -48,4 +41,22 @@ ls -al | grep wordtofind
 To search for words inside search results:
 ```
 ls -al | grep widerangeresult | grep wordtofind 
+```
+
+### Find Command
+While `locate` searches a database for files, which makes it fast but dependent upon a constantly updated database, `find`
+searches for files on the fly using criteria that you specify. Since `find` has to parse through your file
+structure, it’s much slower than `locate`, but you can do lots of things with `find` that aren’t possible with `locate`.
+
+
+
+
+
+Find files not accessed in last sixty days:
+```
+find /home/username/ -atime +60
+```
+A general search tool for find packages. It returns a long list of packages:
+```
+sudo apt-cache search kde
 ```
