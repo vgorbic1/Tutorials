@@ -48,15 +48,45 @@ While `locate` searches a database for files, which makes it fast but dependent 
 searches for files on the fly using criteria that you specify. Since `find` has to parse through your file
 structure, it’s much slower than `locate`, but you can do lots of things with `find` that aren’t possible with `locate`.
 
+`Find` command is used to look for files by name, or part of a name. The `-name` flag is case sensitive, the `-iname` is not.
 
+To find all files with a specific word in the current directory:
+```
+find . -name "*nametofind*"
+```
+To find files in the current directory by user:
+```
+find . -user scott
+```
+To find files by size that a larger than 10 MB:
+```
+find . -size +10M
+```
+To find files by name and type:
+```
+find . -name "*filename*" -type f
+```
+(f -regular file, d - directory, l - symbolic link, b - block special file, p - FIFO, s - socket)
 
-
-
-Find files not accessed in last sixty days:
+To find files not accessed in last sixty days:
 ```
 find /home/username/ -atime +60
 ```
-A general search tool for find packages. It returns a long list of packages:
+(`-amin` - accessed in minutes ago,  `-cmin` - status changed in minutes ago, `- mmin` - data modified in minutes ago, `-atime` - accessed in hours ago, `-ctime` - status changed in hours ago, `-ntime` - data modified in hours ago).
+
+To find files by name AND type (so name and type should be exactly as specified):
 ```
-sudo apt-cache search kde
+find . -name "*filename*" -a -type f
+```
+To find files by name OR size:
+```
+find . -name "*filename*" -o -size +10M
+```
+To find eveything else BUT NOT:
+```
+find . ! -name "*filename*"
+```
+To find a file and execute a command after it:
+```
+find . -name "*mp3* | xargs rm // removes all files that have mp3 at the end in the current directory
 ```
