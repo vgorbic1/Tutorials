@@ -1,0 +1,47 @@
+## Models to Views
+### To show model data in the view:
+Create a model file *recipe.model.ts*
+```
+export class Recipe {
+  public name: string;
+  public description: string;
+  public imagePath: string;
+
+  constructor(name: string, desc: string, imagePath: string) {
+      this.name = name;
+      this.description = desc;
+      this.imagePath = imagePath;
+  }    
+}
+```
+Implement the model in component file *recipe-list.component.ts*
+```
+import { Component, OnInit } from '@angular/core';
+import { Recipe } from '../recipe.model';
+
+@Component({
+  selector: 'app-recipe-list',
+  templateUrl: './recipe-list.component.html',
+  styleUrls: ['./recipe-list.component.css']
+})
+export class RecipeListComponent implements OnInit {
+  recipes: Recipe[] = [
+    new Recipe('A Test Recipe', 'This Is Test Recipie description', 'http://path/to/image1.jpg'),
+    new Recipe('Another Test Recipe', 'This Is Test Recipie description 2', 'http://path/to/image2.jpg')
+  ];
+  constructor() { }
+  ngOnInit() { }
+}
+```
+Send it to the view file *recipe-list.component.html*:
+```html
+<a href="#" class="list-group-item clearfix" *ngFor="let recipe of recipes">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+    <p class="list-group-item-text">{{ recipe.description }}</p>
+  </div>
+  <span class="pull-right">
+    <img [src]="recipe.imagePath" alt="{{ recipe.name }}" class="img-responsive" />
+  </span>
+</a>
+```
