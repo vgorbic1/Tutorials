@@ -14,6 +14,12 @@ export class Recipe {
   }    
 }
 ```
+a shorter version:
+```
+export class Recipe {
+  constructor(public name: string, public desc: string, public imagePath: string) { }
+}
+```
 Implement the model in component file *recipe-list.component.ts*
 ```
 import { Component, OnInit } from '@angular/core';
