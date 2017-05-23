@@ -1,5 +1,16 @@
 ## User Operations
-
+To see who is logged in:
+```
+w
+```
+To see info about a user named tom:
+```
+w tom
+```
+To see all users:
+```
+users
+```
 In order for a user to use SUDO the user account must belong to the admin group and also be listed in /etc/sudoers file, with permission 440. 
 
 The whole point of SUDO is to grant you someone else's privileges (usually root) without asking for this other account's password (unlike su).
