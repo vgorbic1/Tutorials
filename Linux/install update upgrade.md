@@ -44,24 +44,50 @@ To update installed packages:
 ```
 yum update
 ```
-
-Check repositories for any upgrades to the installed software:
+To install Debian-based packages:
+```
+dpkg -i packagename.deb
+```
+To remove a Debian-based package:
+```
+dpkg -r packagename
+```
+To list installed Debian-based packages:
+```
+dpkg -l
+```
+to install a new Debian-based package and its dependencies use apt (Advanced Package Tool):
+```
+sudo apt-get install package
+```
+To check repositories for any upgrades to the installed software:
 ```
 sudo apt-get update
 ```
 Insure that all dependencies get upgraded:
 ```
-sudo apt-get dist-upgrade
+sudo apt-get upgrade
 ```
 All packages live in /var/cache/apt/archives.
 
-Install new packages:
+To join both commands create an elias in a `.bash_aliases` file:
 ```
-sudo apt-get install
+alias upgrade='apt-get update && apt-get upgrade'
+```
+Reload the `.bash_aliases` file and type "upgrade" to execute the command.
+
+To automatically install new software and remove installed packages that are no longer needed:
+```
+sudo apt-get dist-upgrade
+```
+To see the list of all packages:
+```
+sudo apt --installed list
 ```
 To clean up unwanted old packages:
 ```
-sudo apt-get clean	sudo apt-get autoclean
+sudo apt-get clean	// removes all current .deb files
+sudo apt-get autoclean // removes only obsolete packages
 ```
 To permanently remove a package from the system (configuration files stay intact):
 ```
@@ -69,5 +95,5 @@ sudo apt-get remove
 ```
 To remove the program files and configuration files:
 ```
-sudo apt-get remove –purge
+sudo apt-get remove -–purge
 ```
