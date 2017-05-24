@@ -1,5 +1,9 @@
-## Update/ Upgrade
-To upgrade or update software on Linux system use advanced package tool (APT).
+## Install, Update, Upgrade
+In the Linux world, software
+packages come in a variety of formats, with two in particular dominating: RPM and DEB. 
+- RPM (Red Hat Package Manager) is used by distributions such as Red Hat, Fedora Core, SUSE, and other RPM-based distributions.
+- DEB is used by Debian-based distributions such as Debian itself, Ubuntu and its many children, Linux Mint, Knoppix, and many others. 
+
 Check repositories for any upgrades to the installed software:
 ```
 sudo apt-get update
