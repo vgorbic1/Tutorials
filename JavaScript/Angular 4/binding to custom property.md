@@ -57,3 +57,18 @@ server-element.html
         </div>
       </div>
 ```
+### Asigning a Property Alies
+It is possible to change the property name (use an alies) when binding to it:
+
+in sever-element.component.ts replace with an alies:
+```javascript
+...
+  @Input('srvElement') element: {type: string, name: string, content: string};
+...
+```
+in app.component.html replace the property with the alies:
+```html
+...
+  <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
+...
+```
