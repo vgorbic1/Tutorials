@@ -13,7 +13,7 @@ cockpit.component.html (the old variant is commented out)
       <br>
       <!--<button
         class="btn btn-primary"
-        (click)="onAddServer()">Add Server</button>--->
+        (click)="onAddServer()">Add Server</button> -->
       <button
         class="btn btn-primary"
         (click)="onAddServer(serverNameInput)">Add Server</button>
