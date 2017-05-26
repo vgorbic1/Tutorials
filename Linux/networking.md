@@ -89,7 +89,7 @@ address not matching 192.168.0.1 through 192.168.0.255 should be sent through 19
 192.168.0.1 is the Gateway, it’s a special case). 72.14.203.99, 82.211.81.166, and 216.23.180.5 all
 match with 0.0.0.0, so they must all go through the Gateway for the Net.
 
-###Troubleshooting Network Problems
+### Troubleshooting Network Problems
 Linux distributions nowadays usually “just work” when it comes to networking, but you might still
 experience an issue. Following are some basic tips for troubleshooting network problems, based on
 what I’ve covered in this chapter.
