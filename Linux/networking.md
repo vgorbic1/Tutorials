@@ -89,6 +89,100 @@ address not matching 192.168.0.1 through 192.168.0.255 should be sent through 19
 192.168.0.1 is the Gateway, it’s a special case). 72.14.203.99, 82.211.81.166, and 216.23.180.5 all
 match with 0.0.0.0, so they must all go through the Gateway for the Net.
 
+###Troubleshooting Network Problems
+Linux distributions nowadays usually “just work” when it comes to networking, but you might still
+experience an issue. Following are some basic tips for troubleshooting network problems, based on
+what I’ve covered in this chapter.
 
+If your network interface appears to be up and running, but you can’t get on the Internet, first try
+pinging your localhost device, at 127.0.0.1. If that doesn’t work, stop and go no further, because you
+have a seriously damaged system. If that works, ping your machine’s external IP address. If that
+doesn’t work, make sure networking is enabled on your machine. If it does work, now try pinging
+other machines on your network, assuming you have any. If you’re not successful, it’s your interface
+(assuming your router is okay). Make sure that your cables are plugged in (seriously). Use
+ifconfig or ip addr show if it’s wired, or iwconfig or nmcli -p device status if
+it’s wireless, to verify the status of your interface and use ifup or ip link set eth0 up to
+turn the interface on, if necessary. Then try ping again.
 
+If your attempt to ping another local computer was successful, next try pinging your router. If you
+can’t get to a router and you’re pinging it using its IP address, I would reboot your router and see if
+that fixes it. If you can get to other machines on your network, but you can’t get to your router, time to
+check your routing tables with route or ip route show (refer to “Display Your IP Routing
+Table”). If you’re missing items from your routing table, add them, as detailed in “Change Your IP
+Routing Table.”
 
+It’s much easier to diagnose and fix problems if you have a baseline from which to work. After
+you know a machine’s networking is correct, run route and save the results, so you have a
+stored blueprint if the routing table goes bonkers and you need to restore something later.
+
+If you can get to your router, try pinging a machine you know will be up and running out on the
+Internet, like www.google.com or www.ubuntu.com. If that doesn’t work, try pinging that same
+machine’s IP address. Yes, that means that you need to have some IP addresses on a sticky note or in
+a text file on your computer for just such an occasion as this. Here are a few that are good right now;
+of course, they could change, so you really should look these up yourself.
+
+How do you get those IP addresses? You can ping the machine using its domain name, and
+ping gives you the IP address, or you can get the same info with traceroute. A quicker
+method is with the host or dig commands, covered earlier in “Query DNS Records.”
+
+If you can get to the IP address but can’t get to the domain name, you have a DNS problem. If you’re
+using DHCP, it’s time to run dhclient (refer to “Grab a New Address Using DHCP”) to try to
+renew the DNS information provided by your DHCP server. If you’re not using DHCP, find the DNS
+information you need by looking on your router or asking your administrator or ISP, and then add it
+manually as root to `/etc/resolv.conf` so that it looks like this, for example:
+```
+nameserver 24.217.0.5
+nameserver 24.217.0.55
+```
+That’s nameserver (a required word), followed by an IP address you’re supposed to use for the
+DNS. If your router can handle it, and you know its IP address (192.168.0.1, let’s say), you can
+always try this first:
+```
+nameserver 192.168.0.1
+```
+Try ifdown and then ifup and see if you’re good to go. At this point, I need to point out a problem
+that reader Brian Greer brought to my attention: “When manually adding a nameserver to
+/etc/resolv.conf, it is only a temporary solution since dhclient overwrites this file on
+release or reboot.” Thank you, Brian—you are completely correct! If you want your DNS changes to
+persist across DHCP releases and reboots, you need to follow these steps.
+
+First, start by backing up your current resolv.conf in case anything goes bump.
+```
+$ sudo cp /etc/resolv.conf /etc/resolv.conf.auto
+```
+Now you need to edit your dhclient.conf file, but first you have to find it, as the location of the
+file depends upon your distro. (On Ubuntu 14.04 box, it’s at /etc/dhcp/dhclient.conf.)
+If you can’t easily find it, you can always use the find command from Chapter 11, “The find
+Command”:
+```
+$ sudo find /etc -name dhclient.conf
+```
+Once you’ve found `dhclient.conf`, edit it with your favorite editor, but be sure you open the
+editor using sudo, or with the ability to authenticate when you point it at dhclient.conf,
+because you need root privileges to edit that file. When it’s open, add the following line to the
+document before the return subnet-mask line—and note the semicolon at the end!
+```
+prepend domain-name-servers 208.67.222.222, 208.67.220.220;
+```
+Save and exit `dhclient.conf`. Bring down the connection and then bring it up again, and then
+check to make sure your DNS is in place with 
+```
+cat /etc/resolv.conf
+```
+Instructions for SUSE, Mint, and Cinnamon users can be found at
+https://support.opendns.com/forums/21618384-Computer-Configuration.
+
+If you’re still having problems, time to begin again, starting always with hardware. Is everything
+seated correctly? Is everything plugged in? After you’re sure of that, start checking your software. The
+worst-case scenario is that your hardware just doesn’t have drivers to work with Linux. It’s rare, and
+growing rarer all the time, but it still happens.
+
+Wireless cards, however, can be wildly incompatible with Linux thanks to close-mouthed
+manufacturers who don’t want to help Linux developers make their hardware work. To prevent
+headaches, it’s a good idea to check online to make sure a wireless card you’re thinking about
+purchasing will be copasetic with Linux. Good sites to review include Linux Wireless LAN Support
+(http://linux-wless.passys.nl) and the Ubuntu Wiki’s WirelessCardsSupported page
+(https://help.ubuntu.com/community/WifiDocs/WirelessCardsSupported).
+
+Oh, and to finish our troubleshooting: If you can successfully ping both the IP address and the domain
+name, stop reading this—you’re online! Go have fun!
