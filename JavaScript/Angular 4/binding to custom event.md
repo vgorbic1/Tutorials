@@ -96,3 +96,18 @@ export class CockpitComponent implements OnInit {
   }
 }
 ```
+### Asigning an Event Alies
+It is possible to change the event name (use an alies) when binding to it:
+
+in cockpit.component.ts replace with an alies:
+```javascript
+...
+  @Output('bpCreated') blueprintCreated = new EventEmitter . . .
+...
+```
+in app.component.html replace the event with the alies:
+```html
+...
+  (bpCreated)="onBlueprintAdded($event)"
+...
+```
