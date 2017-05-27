@@ -1,5 +1,5 @@
 ## Secure Shell
-All SSH traffic is encrypted. To login to another machine use it's IP (or domain name) and a username on that machine:
+Unlike `telnet` all `ssh` traffic is encrypted. To login to another machine use it's IP (or domain name) and a username on that machine:
 ```
 ssh username@122.122.122.122
 ```
@@ -40,4 +40,49 @@ ssh username@122.122.122.122
 Now no password is needed.
 
 ### Secure File Transfer
+Unlike `ftp` all `sftp` traffic is encripted. The `sftp` uses SSH to encrypt everything. If you can ssh to a machine
+you also can sftp to it.
+```
+sftp username@122.122.122.122
+```
+Use the following commands after that:
 
+Command | Meaning
+-- | --
+cd | change directory
+exit | close the connection
+get | copy the specified file to the local machine
+help | get help on commands
+lcd | change the directory on the local machine
+lls | list fiels on the local machine
+ls | list files on the remote machine
+put | copy the specified file to the remote machine
+rm | remove the specified file from the remote machine
+
+If the SSH server to which you're connecting via sftp has changed the default port (22), then
+you’re not going to be able to connect. To use the non-default SSH port (or to work with any
+other special changes to SSH the server admin has made), you pass that option along in your
+sftp command with `-o`, followed by the specific SSH option. So, for instance, if the SSH
+server uses port 2345 instead of 22, you would connect using:
+```
+sftp -oPort=2345 
+```
+(notice there is no space after `-o` and the SSH option). If you have to include additional SSH options,
+just repeat the `-o,` like this:
+```
+sftp -oPort=2345 -oPasswordAuthentication=no
+```
+### Secure File Copy
+To secure copy files from one machine to another:
+```
+scp ~/filename username@122.122.122.122:filename
+```
+To secure copy many files:
+```
+scp *.jpg username@122.122.122.122:/home/username/images
+```
+To secure copy files from the remote directory to local machine:
+```
+scp username@122.122.122.122:/home/dir* ~/images
+```
+### Secure File Transfer and Backup
