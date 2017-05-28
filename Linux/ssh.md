@@ -86,3 +86,31 @@ To secure copy files from the remote directory to local machine:
 scp username@122.122.122.122:/home/dir* ~/images
 ```
 ### Secure File Transfer and Backup
+To backup files from one machine to another:
+```
+rsync -avze ssh --progress --stats --delete
+/home/username/files/ username@remotemachine:/media/backup/files
+```
+- `/home/username/files/` directory you are copying from. The slash after
+documents in `/home/username/files/` tells rsync that you want to copy the contents of
+that directory into the documents directory found on wordsworth; if you instead used
+`/files`, you’d copy the directory and its contents, resulting in
+`/media/backup/files/fines` on the remote machine. The slash is only important on the source directory; it 
+doesn’t matter whether you use a slash on the target directory.
+- `username@remotemachine:/media/backup/files` directory you are coying to
+### Download Sequential Files and Internet Resources
+To download all content from a web resource with this fle structure:
+```
+http://www.site.org/archive/1.rm
+http://www.site.org/archive/2.rm
+...
+http://www.site.org/archive/10.rm
+```
+use the following command:
+```
+curl -O http://www.site.org/archive/[1-10].rm
+```
+The -O (or --remote-name) option is absolutely required. If you don’t use it, curl writes the
+output of the download to STDOUT, which means that your terminal will quickly fill with unusable
+goobledygook. The -O asks curl to write out what it downloads to a file, and to use the name of the
+file being downloaded as the local filename as well.
