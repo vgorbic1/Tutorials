@@ -1,19 +1,5 @@
 # Tutorials
-### Collection of tutorials, tips and code samples
-* [CSS](../master/CSS)
-* [Drupal](../master/Drupal)
-* [Encoding](../master/Encoding)
-* [Git](../master/Git)
-* [HTML](../master/HTML)
-* [Java](../master/Java)
-* [JavaScript](../master/JavaScript/)
-* [Linux](../master/Linux/)
-* [OS](../master/OS/)
-* [PHP](../master/PHP/)
-* [Programming](../master/Programming/)
-* [SQL](../master/SQL/)
-* [Security](../master/Security/)
-* [Servers](../master/Servers/)
-* [Web Services](../master/Web-Services/)
-* [WordPress](../master/WordPress/)
-* [XML](../master/XML/)
+Collection of tutorials, instructions, tips, and code samples.
+
+&copy; 2010-2017 Vladislav Gorbich
+
