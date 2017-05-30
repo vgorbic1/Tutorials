@@ -109,7 +109,6 @@ export class BetterHighlightDirective implements OnInit {
     //this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'blue');
     this.backgroundColor = 'blue';
   }
-
   @HostListener('mouseleave') mouseleave(eventData: Event) {
     //this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'transparent');
     this.backgroundColor = 'transparent';
@@ -123,3 +122,42 @@ app.component.html
 ```html
 <p appBetterHighlight>Style me with basic directive!</p>
 ```
+### Dinamicaly Send Bindings from Outside
+Do get data from outside and bind it to derectives:
+
+better-highlight.directive.ts
+```javascript
+import { Directive, Renderer2, OnInit, ElementRef, HostListener, HostBinding, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appBetterHighlight]'
+})
+export class BetterHighlightDirective implements OnInit {
+  @Input() defaultColor: string = 'transparent';
+  @Input() highlightColor: string = 'blue';
+
+  constructor(private elRef: ElementRef, private renderer: Renderer2) { }
+
+  ngOnInit() {
+    this.backgroundColor = this.defaultColor;
+    //this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'blue');
+  }
+
+  @HostListener('mouseenter') mouseover(eventData: Event) {
+    //this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'blue');
+    this.backgroundColor = this.highlightColor;
+  }
+
+  @HostListener('mouseleave') mouseleave(eventData: Event) {
+    //this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'transparent');
+    this.backgroundColor = this.defaultColor;
+  }
+
+  @HostBinding('style.backgroundColor') backgroundColor: string;
+
+}
+```
+app.component.html
+```html
+ <p appBetterHighlight [defaultColor]="'yellow'" [highlightColor] = "'red'">Style me with basic directive!</p>
+ ```
