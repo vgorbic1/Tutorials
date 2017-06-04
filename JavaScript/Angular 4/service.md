@@ -40,6 +40,36 @@ export class NewAccountComponent {
 Hierarchical Injector - when you create a service, Angular knows how to create an instance of this service for this component and all its child components. They all will recieve the same instance of this service. The highest possible level is AppModule. If you porvide a service instance to the AppModule, the same service instance will be available to the whole app. The next is AppCompoent. The instanceds do not propagate up, only down.
 
 To use the same instance of service do not include that service class in `providers`.
+
+app.module.ts
+```javascript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { AccountsService } from './accounts.service'; // Import the Service
+import { AppComponent } from './app.component';
+import { AccountComponent } from './account/account.component';
+import { NewAccountComponent } from './new-account/new-account.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AccountComponent,
+    NewAccountComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule
+  ],
+  providers: [AccountsService],  // Put the service here
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
 accounts.service.ts
 ```javascript
 export class AccountsService {
@@ -74,8 +104,8 @@ import { AccountsService } from './accounts.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [AccountsService]
+  styleUrls: ['./app.component.css'], 
+  // remove "providers" line
 })
 export class AppComponent {
 
@@ -131,7 +161,7 @@ import { AccountsService } from '../accounts.service';
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
   styleUrls: ['./new-account.component.css'],
-  providers: [LoggingService]
+  providers: [LoggingService] 
 })
 export class NewAccountComponent {
  
@@ -142,5 +172,20 @@ export class NewAccountComponent {
    this.accountsService.addAccount(accountName, accountStatus)
    this.loggingService.logStatusChange(accountStatus);
   }
+}
+```
+It is possible to inject a service instance into another service. Add `@Injectable` decorator above the service class, which uses another service. Get that outer service instance via constructor.
+```javascript
+import { Injectable } from '@angular/core';
+import { LoggingService } from './logging.service';
+
+@Injectable()
+export class AccountsService {
+ ...
+ constructor(private loggingService: LoggingService) // get the outer servce instance
+ 
+ addAccount(status: string) {
+   this.loggingService.logStatusChange(status); // use the outer service instance
+ }
 }
 ```
