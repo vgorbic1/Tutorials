@@ -75,3 +75,50 @@ Add `<router-outlet>` tags in `app.component.html` Also add `routerLink` directi
   </div>
 </div>
 ```
+### Parameters in Path
+To add parameters to the path use `:` with a custom parameter name:
+
+app.module.ts
+```javascript
+  { path: 'users/:id/:name', component: UserComponent },
+```
+To fetch the path parameter, in the component that needs to reach the parameter put the following:
+
+user.component.ts
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
+})
+export class UserComponent implements OnInit {
+  user: {id: number, name: string};
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.user = {
+      id: this.route.snapshot.params['id'],
+      name: this.route.snapshot.params['name']
+    };
+    // use the following optional code if this component may need to be
+    // updated from itself.
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.user.id = params['id'];
+          this.user.name = params['name'];
+        }
+      );
+  }
+
+}
+```
+user.component.html
+```html
+<p>User with ID {{ user.id }} loaded.</p>
+<p>User name is {{ user.name }}</p>
+```
