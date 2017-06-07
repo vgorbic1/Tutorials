@@ -3,6 +3,8 @@ Routing provides "multi-page" structure for the application. Put a routes array 
 `Routes`. Import the class `Routes` from `@angular/router`. Each route is just an object in this arrey. Add new element to
 the `imports` array of `@NgModules` called `RouterModule`. Import the "RouterModule` class. Make sure that the `RouterModule` has
 a method `forRoot()` that registeres the constant that was created in the beginning.
+
+app.module.ts
 ```javascript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -46,4 +48,23 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+```
+Add `<router-outlet>` tags in `app.component.html` Also add `routerLink` directive to the navigation bar.
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <li role="presentation"><a routerLink="/users">Users</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
 ```
