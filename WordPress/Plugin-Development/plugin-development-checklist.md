@@ -1,4 +1,4 @@
-##Plugin Development Checklist
+## Plugin Development Checklist
 Following this checklist you can be confident you have a proper plugin foundation for your new plugin:
 - Determine a unique and descriptive plugin name. Is the name descriptive of your plugin’s function? Have you verifi ed the plugin doesn’t exist in the Plugin Directory?
 - Set a unique plugin prefix. Is the prefix unique enough to avoid conflicts?
