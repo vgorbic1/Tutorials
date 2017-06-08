@@ -34,7 +34,7 @@ Author: Brad Williams
 Author URI: http://example.com
 License: GPLv2
 */
-? >
+?>
 ```
 The Plugin URI is a direct link to your plugin detail web page. The version number is the current version of the plugin. WordPress uses the version number set here to check for new plugin updates at WordPress.org. Below the plugin header comment block, it’s a good idea to include the license for your plugin. WordPress is licensed under the GNU General Public License (GPL) software license and as such
 any plugin distributed for WordPress should be compatible with the GPL.
@@ -125,7 +125,7 @@ function boj_install() {
 }
 ```
 
-### bPlugin Deactivation
+### Plugin Deactivation
 The ```register_deactivation_hook()``` function is triggered when your plugin is deactivated in the WordPress Plugins screen. This function accepts the same two parameters as the previous activation function:
 ```php
 register_deactivation_hook( __FILE__, 'boj_myplugin_uninstall' );
