@@ -1,5 +1,5 @@
-##Menus and Submenus
-###Top-Level Menu
+## Menus and Submenus
+### Top-Level Menu
 A top-level menu is common practice for any plugin that needs multiple option pages. To register a top-level menu, you use the ```add_menu_page()``` function.
 ```php
 add_menu_page( page_title, menu_title, capability, menu_slug, function, icon_url, position );
@@ -22,7 +22,7 @@ function boj_menuexample_create_menu() {
 ```
 Set the name of your menu to Menu Example Settings, which requires that the user has manage_options capabilities (that is, is an administrator).
 
-###Submenu
+### Submenu
 To register a submenu, use the ```add_submenu_page()``` function.
 ```php
 add_submenu_page( parent_slug, page_title, menu_title, capability, menu_slug, function );
