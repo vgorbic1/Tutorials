@@ -1,4 +1,4 @@
-##Hooks
+## Hooks
 Hooks are the backbone of WordPress. They enable plugin developers to “hook” into the WordPress workflow to change how it works without directly modifying the core code. This enables users to easily upgrade to newer versions of WordPress without losing modifications. 
 
 New hooks are always added with new versions of WordPress. Keeping track of changes in the core code from version to version can help you stay on top of new hooks that you can use within your plugins. There's no better process for understanding how PHP code works than actually looking at the code and following each statement made within the code. An easy way to search for hooks is to open a file from the wordpress folder in your preferred text editor and run a text search for one of four function names.
@@ -9,10 +9,10 @@ New hooks are always added with new versions of WordPress. Keeping track of chan
 
 WordPress has two primary types of hooks: action hooks and filter hooks. The former enables you to execute a function at a certain point, and the latter enables you to manipulate the output passed through the hook. Hooks aren’t just for plugins. WordPress uses hooks internally.
 
-###Actions
+### Actions
 Action hooks enable you to fire a function at specific points in the WordPress loading process or when an event occurs. For example, you might want a function to execute when WordPress first loads a page or when a blog post is saved. An action is technically a PHP function. For a function to be considered an action, it would need to be registered for an action hook. Hooks might be fired more than once in the WordPress flow for various reasons. Any actions added to these hooks will execute each time the hook is fired.
 
-####do_action()
+#### do_action()
 When hooking into WordPress, your plugin won’t call this function directly; however, your plugin will almost always use it indirectly.
 ```php
   do_action( $tag, $arg = '' );
@@ -26,7 +26,7 @@ do_action( 'wp_head' );
 ```
 When this code fires in WordPress, it looks for any actions registered for the ```wp_head``` action hook. It then executes them in the order specified. As you can see, it has a name of ```wp_head``` but passes no extra parameters. This is often the case with action hooks.
 
-####add_action()
+#### add_action()
 You develop custom functions (actions) that perform a specific task when the action hook is fi red. To do this, you would use the ```add_action()``` function.
 ```php
 add_action( $tag, $function, $priority, $accepted_args );
@@ -45,7 +45,7 @@ function boj_example_footer_message() {
 }
 ```
 
-####do_action_ref_array()
+#### do_action_ref_array()
 The ```do_action_ref_array()``` function works the same way as ```do_action()``` works, with a difference in how the arguments are passed. Rather than passing multiple, optional values as additional parameters, it passes an array of arguments. The array of arguments is also a required parameter. The purpose of the function is to pass an object by reference to actions added to a specific hook. This means the action can change the object itself without returning it.
 
 The following code shows the pre_get_posts action hook. WordPress executes this hook before loading posts from the database, enabling plugins to change how posts are queried.
@@ -63,8 +63,8 @@ function boj_randomly_order_blog_posts( $query ) {
 }
 ```
 
-####remove_action()
-```remove_action()``` enables you to remove an action that has previously been added to a hook. Typically, you would remove actions that WordPress adds by default. To remove an action, the action must have already been added using the ```add_action()``` function. If your code runs before the action is registered, the action will not be removed from the hook. The function returns true when the action was successfully removed and false when the action could not be removed.
+#### remove_action()
+`remove_action()` enables you to remove an action that has previously been added to a hook. Typically, you would remove actions that WordPress adds by default. To remove an action, the action must have already been added using the ```add_action()``` function. If your code runs before the action is registered, the action will not be removed from the hook. The function returns true when the action was successfully removed and false when the action could not be removed.
 ```php
 remove_action( $tag, $function_to_remove, $priority, $accepted_args );
 ```
@@ -75,7 +75,7 @@ remove_action( $tag, $function_to_remove, $priority, $accepted_args );
 
 Generally, you remove actions within WordPress. Many of its default actions are defined in the wp-includes/default-filters.php file.
 
-####remove_all_actions()
+#### remove_all_actions()
 In some plugins, you may find it necessary to remove all actions for a given tag or all actions for a given tag and priority. The ```remove_all_actions()``` function enables you to do this with a single line of code instead of multiple uses of the ```remove_action()``` function.
 
 To remove all actions, regardless of priority, from the ```wp_head``` action hook.
@@ -88,7 +88,7 @@ remove_all_actions( 'wp_head', 1 );
 ```
 You should be careful when using this function. Other plugins and themes may add actions that you are unaware of. Using this may break functionality that your plugin users are expecting to work. It’s usually better to be as specific as possible with your code. In most cases, you should use the ```remove_action()``` function instead.
 
-####has_action()
+#### has_action()
 Sometimes, you may find it necessary to check if a hook has any actions or if a specific action has been added to a hook before executing code. The ```has_action()``` function is a conditional function that gives you the ability to check both these cases.
 ```php
 has_action( $tag, $function_to_check );
@@ -107,7 +107,7 @@ if ( has_action( 'wp_footer' ) ) {
 }
 ```
 
-####did_action()
+#### did_action()
 The ```did_action()``` function enables your plugin to check if an action hook has already been executed or to count the number of times one has been executed. This also means that some action hooks are fired multiple times during a single page load. The function returns the number of times the hook has been fired or false if it hasn’t been fired. The most common use case of the function is to check if an action hook has already been fired and execute code based on the return value of ```did_action()```.
 
 To define a PHP constant if the ```plugins_loaded``` action hook has already fired:
@@ -116,11 +116,11 @@ if ( did_action( 'plugins_loaded' ) ) {
   define( 'BOJ_MYPLUGIN_READY', true );
 }
 ```
-####register_activation_hook() and register_deactivation_hook()
+#### register_activation_hook() and register_deactivation_hook()
 WordPress has two functions for registering action hooks for the activation and deactivation of individual plugins. These are technically functions to create custom hooks.
 
-###Commonly Used Action Hooks
-####plugins_loaded
+### Commonly Used Action Hooks
+#### plugins_loaded
 For plugin developers, the plugins_loaded action hook is probably the most important hook. It is fired after most of the WordPress files are loaded but before the pluggable functions and WordPress starts executing anything. In most plugins, no other code should be run until this hook is fired. ```plugins_loaded``` is executed when all the user's activated plugins have been loaded by WordPress. It
 is also the earliest hook plugin developers can use in the loading process.
 ```php
@@ -134,7 +134,7 @@ function boj_example_footer_message() {
 }
 ```
 
-####init
+#### init
 The ```init``` hook is fi red after most of WordPress is set up. WordPress also adds a lot of internal functionality to this hook such as the registration of post types and taxonomies and the initialization of the default widgets. Because nearly everything in WordPress is ready at this point, your plugin will probably use this hook for anything it needs to do when all the information from WordPress is available.
 
 To add the ability for users to write an excerpt for pages. You would do this on init because the "page" post type is created at this point using the ```add_post_type_support()``` function:
@@ -145,7 +145,7 @@ function boj_add_excerpts_to_pages() {
 }
 ```
 
-####admin_menu
+#### admin_menu
 The ```admin_menu hook``` is called only when an administration page loads. Whenever your plugin works directly in the admin, you would use this hook to execute your code.
 
 To add a sub-menu item labeled BOJ Settings to the Settings menu in the WordPress admin:
@@ -162,7 +162,7 @@ function boj_admin_settings_page() {
 }
 ```
 
-####template_redirect 
+#### template_redirect 
 The ```template_redirect``` action hook is important because it’s the point where WordPress knows which page a user is viewing. It is executed just before the theme template is chosen for the particular page view. It is fi red only on the front end of the site and not in the administration area. This is a good hook to use when you need to load code only for specific page views.
 ```php
 add_action('template_redirect', 'boj_singular_post_css');
@@ -173,7 +173,7 @@ function boj_singular_post_css() {
 }
 ```
 
-####wp_head
+#### wp_head
 On the front end of the site, WordPress themes call the ```wp_head()``` function, which fires the ```wp_head``` hook. Plugins use this hook to add HTML between the opening <head> tag and its closing </head>.
 
 To add a meta description on the front page of the site using the site's description:
@@ -190,14 +190,14 @@ function boj_front_page_meta_description() {
 ```
 Many plugins incorrectly use the wp_head action hook to add JavaScript to the header when they should be using the ```wp_enqueue_script()``` function. The only time JavaScript should be added to this hook is when it's not located in a separate JavaScript file.
 
-###Filters
+### Filters
 Filter hooks enable you to manipulate the output of code. Whereas action hooks enable you to insert code, filter hooks enable you to overwrite code that WordPress passes through the hook. Your function would “filter” the output. 
 
 A filter is a function registered for a filter hook. The function itself would take in at least a single parameter and return that parameter after executing its code. Without a filter, filter hooks don’t do anything. They exist so that plugin developers can change different variables. This can be anything from a simple text string to a multidimensional array.
 
 You can add multiple filters to the same filter hook. Other plugins and WordPress can also add filters to the hook. Filter hooks aren’t limited to a single filter. It is important to note this because each filter must always return a value for use by the other filters. If your function doesn’t return a value, you risk breaking the functionality of both WordPress and other plugins.
 
-####apply_filters()
+#### apply_filters()
 ```php
 apply_filters($tag, $value);
 ```
@@ -218,7 +218,7 @@ function boj_add_site_name_to_title($title, $sep) {
   return $title;
 }
 ```
-####add_filter()
+#### add_filter()
 To add a filter, use the ```add_filter()``` function.
 ```php
 add_filter($tag, $function, $priority, $accepted_args);
@@ -228,10 +228,10 @@ add_filter($tag, $function, $priority, $accepted_args);
 - $priority — An integer that represents in what order your filter should be applied. If no value is added, it defaults to 10.
 - $accepted_args — The number of parameters your filter function can accept. By default this is 1 . Your function must accept at least one parameter, which will be returned.
 
-####apply_filters_ref_array()
+#### apply_filters_ref_array()
 The ```apply_filters_ref_array()``` function works nearly the same as ```apply_filters()```. One major difference is what parameters are passed. Rather than accepting multiple values, it accepts an array of arguments. Both parameters are required. It is also important to note that the ```$args``` parameter should be passed by reference rather than value.
 
-####remove_filter()
+#### remove_filter()
 The ```remove_filter()``` function enables plugins to remove filters that have been previously registered for a fi lter hook. To successfully remove a filter, this function must be called after a filter has been registered using the ```add_filter()``` function.
 ```php
 remove_filter( $tag, $function_to_remove, $priority, $accepted_args );
@@ -246,13 +246,13 @@ The function returns true when the filter is successfully removed and returns fa
 remove_filter('the_content', 'wpautop');
 ```
 
-####remove_all_filters()
+#### remove_all_filters()
 In some plugins, you may need to remove all filters from a specifi c filter hook or remove filters with a particular priority from a filter hook. The ```remove_all_filters()``` function enables you to do this with a single line of code.
 ```php
 remove_all_filters('the_content', 11);
 ```
 
-####has_filter()
+#### has_filter()
 The ```has_filter()``` function enables plugins to check if any filters have been registered for a filter hook or if a specifi c filter has been registered for the hook.
 ```php
 has_filter( $tag, $function_to_check );
@@ -262,7 +262,7 @@ The function returns false if no filter is found for the given hook. It returns 
 if ( has_filter( 'the_content', 'wpautop' ) ) echo 'Paragraphs are automatically formatted for the content.';
 ```
 
-####current_filter()
+#### current_filter()
 The ```current_filter()``` function returns the name of the fi lter hook currently executed. However, it doesn’t just work with filter hooks; it applies to action hooks as well, so it returns the name of the current action or fi lter hook. This function is especially useful if you use a single function for multiple hooks but need the function to execute differently depending on the hook currently firing.
 
 To set an array of unwanted words depending on the case and replace them with “Whoops!” in the text.
@@ -284,14 +284,14 @@ function boj_replace_unwanted_words($text) {
 }
 ```
 
-###WordPress functions for quickly returning values
+### WordPress functions for quickly returning values
 - __return_false — Returns the Boolean value of false.
 - __return_true — Returns the Boolean value of true.
 - __return_empty_array — Returns an empty PHP array.
 - __return_zero — Returns the integer 0.
 
-###Commonly Used Filter Hooks
-####the_content
+### Commonly Used Filter Hooks
+#### the_content
 If there’s one filter hook that plugin authors use more than any other, it is the_content. Without content, a site would be essentially useless. It is the most important thing displayed on the site, and plugins use this hook to add many features to a site.
 
 To append a list of related posts by post category to the_content for a reader to see when viewing a single post.
@@ -335,7 +335,7 @@ function boj_add_related_posts_to_content($content) {
 }
 ```
 
-####the_title
+#### the_title
 To strip all tags a user might use when writing a post title:
 ```php
 add_filter('the_title', 'boj_strip_tags_from_titles');
@@ -345,7 +345,7 @@ function boj_strip_tags_from_titles( $title ) {
 }
 ```
 
-####comment_text
+#### comment_text
 The ```comment_text``` hook is often a useful fi lter hook because comments typically play a large role for blogs and other types of sites.
 ```php
 add_filter('comment_text', 'boj_add_role_to_comment_text');
@@ -363,7 +363,7 @@ function boj_add_role_to_comment_text( $text ) {
 return $text;
 }
 ```
-####template_include
+#### template_include
 ```template_include``` is a sort of catchall filter hook for many other, more specific filter hooks. It is used after the theme template file for the current page has been chosen. WordPress chooses a template based on the page currently viewed by a reader. You can add a filter for each of the individual filter hooks or filter them all at the end with the ```template_include``` hook.
 - front_page_template
 - home_template
@@ -380,7 +380,7 @@ return $text;
 - 404_template
 - index_template
 
-###Hooks and Classes
+### Hooks and Classes
 Adding a method of a class as an action or filter, the format of the calls to ```add_action()``` and ```add_filter()``` is slightly different.
 When using a method such as ```$function_to_add``` from within a class, you must change ```$function_to_add``` to an array with & $this as the fi rst argument and the method name as the second argument.
 ```php
@@ -416,7 +416,7 @@ class BOJ_My_Plugin_Loader {
 $boj_myplugin_loader = new BOJ_My_Plugin_Loader();
 ```
 
-###Creating Custom Hooks
+### Creating Custom Hooks
 Plugins but they can also create custom hooks for use by other plugins and themes. Your plugin would use one of four available functions for creating custom action hooks:
 - do_action()
 - do_action_ref_array()
@@ -436,7 +436,7 @@ function boj_myplugin_setup() {
 }
 ```
 
-###Variable Hooks
+### Variable Hooks
 Variable hook names change based on a specific variable.
 ```php
 do_action( "load-$pagenow" );
