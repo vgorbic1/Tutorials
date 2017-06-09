@@ -122,3 +122,29 @@ user.component.html
 <p>User with ID {{ user.id }} loaded.</p>
 <p>User name is {{ user.name }}</p>
 ```
+### Query Parameters
+To construct a link `/servers/5/edit?allowEdit=1#loading` with query parameters:
+```html
+<a [routerLink]="['/servers', 5, 'edit']"
+   [queryParams]="{allowEdit: '1'}"
+   fragment="loading">LINK</a>
+```
+To construct the same link programatically:
+```html
+<button class="btn btn-primary" (click)="onLoadServer(1)">
+    Load Server 1</button>
+```
+Put the following to the corresponding `.component.ts`:
+```javascript
+...
+import { Router } from '@angular/router';
+...
+  constructor(private router: Router) { }
+  
+  onLoadServer(id: number) {
+    this.router.navigate(['/servers', id, 'edit'], 
+      {queryParams: {allowEdit: 1},
+      fragment: 'loading'});
+  }
+...
+```
