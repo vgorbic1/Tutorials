@@ -175,3 +175,24 @@ const appRoutes: Routes = [
 ]; 
 ```
 And add the `<router-outlet></router-outlet>` to the component html template, where this data should be displayed.
+### Redirecting and Wildcard
+To redirect all links that are incorrect to a not-found page, put this in `app.module.ts`:
+```javascript
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+...
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found'} // should always be the last one!
+];
+```
+In our example, we didn't encounter any issues when we tried to redirect the user. But that's not always the case when adding redirections. By default, Angular matches paths by prefix. That means, that the following route will match both `/recipes`  and just `/` 
+```
+{ path: '', redirectTo: '/somewhere-else' } 
+```
+Actually, Angular will give you an error here, because that's a common gotcha: This route will now ALWAYS redirect you! Since the default matching strategy is "prefix", Angular checks if the path you entered in the URL does start with the path specified in the route. Of course every path starts with `''`  (Important: That's no whitespace, it's simply "nothing").
+
+To fix this behavior, you need to change the matching strategy to "full" :
+```
+{ path: '', redirectTo: '/somewhere-else', pathMatch: 'full' } 
+```
+Now, you only get redirected, if the full path is `''`  (so only if you got NO other content in your path in this example).
