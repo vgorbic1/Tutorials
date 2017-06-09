@@ -196,3 +196,44 @@ To fix this behavior, you need to change the matching strategy to "full" :
 { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' } 
 ```
 Now, you only get redirected, if the full path is `''`  (so only if you got NO other content in your path in this example).
+### Outsource Routing
+Instead of keeping all routs in the `app.module.ts` file, create another file in the `app` directory called `app-routing.module.ts` and 
+place the `routs` constant from the `app.module.ts` file to it. Add all imports and remove `RouterModule.forRoot(appRoutes)` from `app.module.ts`. Finally, import this new module in the `app.module.ts`.
+
+app-routing.module.ts:
+```javascript
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { HomeComponent } from './home/home.component';
+import { UsersComponent } from './users/users.component';
+import { ServersComponent } from './servers/servers.component';
+import { UserComponent } from './users/user/user.component';
+import { EditServerComponent } from './servers/edit-server/edit-server.component';
+import { ServerComponent } from './servers/server/server.component';
+import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'users', component: UsersComponent, children: [
+    { path: ':id/:name', component: UserComponent }
+  ] },
+  { path: 'servers', component: ServersComponent, children: [
+    { path: ':id', component: ServerComponent},
+    { path: ':id/edit', component: EditServerComponent }
+  ] },
+    { path: 'not-found', component: PageNotFoundComponent },
+    { path: '**', redirectTo: '/not-found'}
+];
+
+@NgModule({
+    imports: [
+        RouterModule.forRoot(appRoutes)
+    ],
+    exports: [RouterModule]
+})
+export class AppRoutingModule {
+
+}
+``
