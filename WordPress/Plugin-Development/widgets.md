@@ -76,3 +76,28 @@ class vge_widgetexample_widget_my_info extends WP_Widget {
 }
 ?>
 ```
+### Dashboard Widget
+To create your dashboard widget, you use the `wp_add_dashboard_widget()` function. Here’s
+how to use this function to create a dashboard widget:
+```php
+<?php wp_add_dashboard_widget( widget_id, widget_name, callback, control_callback ); ?>
+```
+The `wp_add_dashboard_widget()` function accepts the following parameters:
+- widget_id — The CSS ID added to the widget DIV element
+- widget_name — The name of your widget displayed in its heading
+- callback — Function to be called to display your widget
+- control_callback — Function to be called to handle for elements and submission
+To create a dashboard widget, use the `wp_dashboard_setup` action hook. This hook is executed
+directly after the default dashboard widgets have been initialized, but prior to them being displayed.
+```php
+<?php
+add_action( 'wp_dashboard_setup', 'boj_dashboard_example_widgets' );
+function boj_dashboard_example_widgets() {
+  //create a custom dashboard widget
+  wp_add_dashboard_widget( 'dashboard_custom_feed', 'My Plugin Information', 'boj_dashboard_example_display' );
+}
+function boj_dashboard_example_display() {
+  echo '<p> Please contact support@example.com to report bugs. </p>';
+}
+?>
+```
