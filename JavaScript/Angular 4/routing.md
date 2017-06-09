@@ -163,3 +163,15 @@ import { ActivatedRoute } from '@angular/router';
     this.route.fragment.subscribe();
   }
 ```
+### Nested Routing
+To provide nesting routes add children to the `app.module.ts':
+```javascript
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'servers', component: ServersComponent, children: [
+    { path: ':id', component: ServerComponent},
+    { path: ':id/edit', component: EditServerComponent }
+  ] }
+]; 
+```
+And add the `<router-outlet></router-outlet>` to the component html template, where this data should be displayed.
