@@ -148,3 +148,18 @@ import { Router } from '@angular/router';
   }
 ...
 ```
+To retrieve data from the link:
+```javascript
+...
+import { ActivatedRoute } from '@angular/router';
+...
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    console.log(this.route.snapshot.queryParams);
+    console.log(this.route.snapshot.fragment);
+    // or even better:
+    this.route.queryParams.subscribe();
+    this.route.fragment.subscribe();
+  }
+```
