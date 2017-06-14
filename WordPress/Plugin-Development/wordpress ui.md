@@ -16,3 +16,71 @@ function boj_styling_settings() { ?>
   <?php
 }
 ```
+### Messages
+When an action occurs in your plugin, such as saving settings, it’s important to display a message to
+the user verifying whether the update was successful:
+```php
+<div id="message" class="updated">Settings saved successfully</div>
+```
+### Buttons and Links
+```html
+<input type="submit" name="Save" value="Save Options" />
+<input type=”submit” name=”Save” value=”Save Options” class=”button-primary” />
+<input type=”submit” name=”Secondary” value=”Secondary Button” />
+<input type=”submit” name=”Secondary” value=”Secondary Button” class=”button-secondary” />
+<input type=”submit” name=”highlighted” value=”Button Highlighted” class=”button-highlighted” />
+```
+Links can also take the form of a button by using the appropriate class.
+```html
+<a href=”#”> Search </a>
+<a href=’#’ class=’button-secondary’> Search </a>
+<a href=’#’ class=’button-highlighted’> Search </a>
+<a href=’#’ class=’button-primary’> Search </a>
+```
+### Form
+WordPress has a special table class just for forms called `form-table`:
+```html
+<form method=”POST” action=””>
+<table class=”form-table”>
+< tr valign=”top” >
+< th scope=”row” > < label for=”fname” > First Name < /label > < /th >
+< td > < input maxlength=”45” size=”25” name=”fname” / > < /td >
+< /tr >
+< tr valign=”top” >
+< th scope=”row” > < label for=”lname” > Last Name < /label > < /th >
+< td > < input id=”lname” maxlength=”45” size=”25” name=”lname” / > < /td >
+< /tr >
+< tr valign=”top” >
+< th scope=”row” > < label for=”color” > Favorite Color < /label > < /th >
+< td >
+< select name=”color” >
+< option value=”orange” > Orange < /option >
+< option value=”black” > Black < /option >
+< / select >
+< /td >
+< /tr >
+< tr valign=”top” >
+< th scope=”row” > < label for=”featured” > Featured? < /label > < /th >
+< td > < input type=”checkbox” name=”favorite” / > < /td >
+< /tr >
+< tr valign=”top” >
+< th scope=”row” > < label for=”gender” > Gender < /label > < /th >
+< td >
+< input type=”radio” name=”gender” value=”male” / > Male
+< input type=”radio” name=”gender” value=”female” / > Female
+< /td >
+< /tr >
+< tr valign=”top” >
+< th scope=”row” > < label for=”bio” > Bio < /label > < /th >
+< td > < textarea name=”bio” > < /textarea > < /td >
+< /tr >
+< tr valign=”top” >
+< td >
+< input type=”submit” name=”save” value=”Save Options”
+class=”button-primary” / >
+< input type=”submit” name=”reset” value=”Reset”
+class=”button-secondary” / >
+< /td >
+< /tr >
+< /table >
+```
