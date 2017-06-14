@@ -41,9 +41,9 @@ Links can also take the form of a button by using the appropriate class.
 WordPress has a special table class just for forms called `form-table`:
 ```html
 <form method=”POST” action=””>
-<table class=”form-table”>
-< tr valign=”top” >
-< th scope=”row” > < label for=”fname” > First Name < /label > < /th >
+ <table class=”form-table”>
+  <tr valign=”top”>
+   <th scope=”row”><label for=”fname”> First Name </label></th>
 < td > < input maxlength=”45” size=”25” name=”fname” / > < /td >
 < /tr >
 < tr valign=”top” >
@@ -83,4 +83,51 @@ class=”button-secondary” / >
 < /td >
 < /tr >
 < /table >
+</form>
+```
+### Tables
+Tables can easily be styled in WordPress using the `widefat` class.
+```
+< table class=”widefat” >
+< thead >
+< tr >
+< th > Name < /th >
+< th > Favorite Holiday < /th >
+< /tr >
+< /thead >
+< tfoot >
+< tr >
+< th > Name < /th >
+< th > Favorite Holiday < /th >
+< /tr >
+< /tfoot >
+< tbody >
+< tr >
+< td > Brad Williams < /td >
+< td > Halloween < /td >
+< /tr >
+< tr >
+< td > Ozh Richard < /td >
+< td > Talk Like a Pirate < /td >
+< /tr >
+< tr >
+< td > Justin Tadlock < /td >
+< td > Christmas < /td >
+< /tr >
+< /tbody >
+< /table >
+```
+### Pagination
+WordPress has a few different classes to style your pagination:
+```
+< div class=”tablenav” >
+< div class=”tablenav-pages” >
+< span class=”displaying-num” > Displaying 1-20 of 69 < /span >
+< span class=”page-numbers current” > 1 < /span >
+< a href=”#” class=”page-numbers” > 2 < /a >
+< a href=”#” class=”page-numbers” > 3 < /a >
+< a href=”#” class=”page-numbers” > 4 < /a >
+< a href=”#” class=”next page-numbers” > & raquo; < /a >
+< /div >
+< /div >
 ```
