@@ -363,3 +363,5 @@ export class AuthGuard implements CanActivate, CanActivateChild {
      }
 }
 ```
+### Guards (canDeactivate)
+Do something before navigating away
