@@ -1,5 +1,6 @@
-## HTTP API
-### Make HTTP Requests in PHP
+## HTTP Requests with PHP
+Depending on the server setup and configuration, PHP version, or security
+settings, some methods won’t be allowed or even available.
 #### Using HTTP Extension
 ```php
 $r = new HttpRequest( 'http://wordpress.org/', HttpRequest::METH_GET );
@@ -38,4 +39,12 @@ if (!$fp) {
   }
   fclose($fp);
 }
+```
+#### Using the CURL expression
+```php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://wordpress.org/");
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_exec($ch);
+curl_close($ch);
 ```
