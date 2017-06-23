@@ -1,4 +1,5 @@
 ## Post Types
+### Creating Custom Post Types
 You use the `register_post_type()` function to create new post types for a site.
 ```php
 register_post_type( $post_type, $args );
@@ -118,5 +119,126 @@ function boj_music_collection_register_post_types() {
  );
  /* Register the music album post type. */
  register_post_type( 'music_album', $album_args );
+}
+```
+The function your plugin uses to create post types must be added to the `init`
+action hook. Otherwise, your post type won’t be properly registered.
+### Using Custom Post Types
+To find functions for getting post information, you can look in one of two files within the
+WordPress install:
+- `wp-includes/post.php` — Post functions and post utility functions
+- `wp-includes/post-template.php` — Template functions for displaying post content
+When you want to grab the content of a post or multiple posts, you can query these posts from the
+database by initializing a new WP_Query object and looping through each of the posts retrieved.
+Within this loop, you would use post template functions for outputting specific parts of the
+individual post objects.
+
+The following code is an example of how to display The Loop using a shortcode that users can
+place within a shortcode-aware area, such as the page editor:
+```php
+add_action( 'init', 'boj_music_album_register_shortcodes' );
+function boj_music_album_register_shortcodes() {
+ /* Register the [music_albums] shortcode. */
+ add_shortcode( 'music_albums', 'boj_music_albums_shortcode' );
+}
+function boj_music_albums_shortcode() {
+ /* Query albums from the database. */
+ $loop = new WP_Query(
+  array(
+  'post_type' = > 'music_album',
+  'orderby' = > 'title',
+  'order' = > 'ASC',
+  'posts_per_page' = > -1,
+  )
+ );
+ /* Check if any albums were returned. */
+ if ( $loop->have_posts() ) {
+  /* Open an unordered list. */
+  $output = ' <ul class="music-collection"> ';
+  /* Loop through the albums (The Loop). */
+  while ( $loop->have_posts() ) {
+   $loop->the_post();
+   /* Display the album title. */
+   $output .= the_title(
+    '<li><a href="' . get_permalink() . '">',
+    '</a></li>', false);
+   }
+   /* Close the unordered list. */
+   $output .= '</ul>';
+  }
+  /* If no albums were found. */
+  else {
+   $output = '<p>No albums have been published.';
+  }
+  /* Return the music albums list. */
+  return $output;
+}
+```
+The most important part of the previous code is the `post_type`
+argument in the array passed to WP_Query. It must be set to the name of
+your post type.
+### Retrieving Custom Post Type Content
+WordPress has several functions for retrieving content of posts:
+
+**the_title** 
+
+displays the title of the post:
+```
+the_title( $before, $after, $echo );
+```
+- `$before` — Content to display before the post title. This defaults to an empty string.
+- `$after` — Content to display after the post title. This defaults to an empty string.
+- `$echo` — Whether to print the title to the screen or return it for use in PHP code. By default,
+it is set to true.
+
+**the_content**
+
+This function enables you to display the content written in the post editor by the user. For it to
+display any content, post content must be written. Also, the editor value needs to be added to the
+supports array for `$args` in `register_post_type()` for users to add content. If this is not set, you
+probably won’t need this function.
+```php
+the_content( $more_link_text, $stripteaser );
+```
+- `$more_link_text` — Text to show a continue reading link if a user sets the < ! - - more - - >
+quick tag in the post editor.
+- `$stripteaser` — Whether to display the content written before the < ! - - more - - > quick tag
+is used. By default, this is set to false.
+
+**the_excerpt**
+
+This function shows an excerpt of the post content. If your post type sets excerpt in the supports
+argument for the `$args` parameter in `register_post_type()`, it can create an excerpt box that
+users can use to write custom excerpts. If this is not set or the user doesn’t write a custom excerpt,
+one will be auto-created from the post content.
+```php
+the_excerpt();
+```
+
+**the_permalink**
+
+This function displays the permanent link (the URL) to the given post. It links to the singular view
+of the post. You would use it as the href attribute within HTML hyperlinks.
+```php
+the_permalink();
+```
+
+**post_type_exists**
+This function checks whether the post type has been registered with
+WordPress. It accepts a single parameter of `$post_type`, which should be a string representing the
+post type name. It returns true if the post type exists or false if it doesn’t exist.
+```php
+post_type_exists( $post_type );
+```
+Suppose you wanted to display a message depending on whether the music_album post type has
+been registered:
+```php
+/* If music_album post type is registered. */
+if ( post_type_exists( ‘music_album’ ) ) {
+  echo 'The music_album post type has been registered.';
+}
+/* If the music_album post type is not registered. */
+else {
+  echo 'The music_album post type has not been registered.';
 }
 ```
