@@ -19,7 +19,7 @@ to most web applications. In the frontend, both registered and unregistered user
 will have different functionalities based on their user roles. The following diagram
 shows the structure of our application home page:
 
-![wpad]()
+![wpad](https://github.com/vgorbic1/Tutorials/blob/master/WordPress/App-Development/images/wpad1.jpg)
 
 The backend will be developed by customizing the built-in admin features of
 WordPress. Existing and new functionalities of the admin area will be customized
