@@ -65,10 +65,12 @@ Sometimes you also need `Rx` library:
 ```
 import 'rxjs/Rx';
 ```
-In this sample each second a new number will be printed to the console:
+In this sample each second a new number will be printed to the console. Make sure to unsubscribe the observable (clean up)
 ```javascript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/Rx';
 
 @Component({
@@ -77,16 +79,68 @@ import 'rxjs/Rx';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  numbersObsSubscription: Subscription;
+  
   constructor() { }
 
   ngOnInit() {
-    const myNumbers = Observable.interval(1000);
-    myNumbers.subscribe(
+    const myNumbe = Observable.interval(1000);
+    this.numbersObsSubscription = myNumbers.subscribe(
       (number: number) => {
         console.log(number);
       }
     );
   }
+  
+  ngOnDestroy () {
+    this.numbersObsSubscription.unsubscribe();
+  }
 }
 ```
+### Custom Observable
+Always unsubscribe the observable after use, since it is a potential to memory leak.
+```javascript
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/Rx';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+  customObsSubscription: Subscription;
+  
+  constructor() { }
+
+  ngOnInit() {
+    const myObservable = Observable.create((observer: Observer<string>) => {
+        setTimeout(() => {
+          observer.next('first package');
+        }, 2000);
+        setTimeout(() => {
+          observer.next('second package');
+        }, 4000);
+        setTimeout(() => {
+          observer.error('Not working');
+        }, 5000);        
+    });
+  
+    this.customObsSubscription = myObservable.subscribe(
+     (data: string) => { console.log(data); },
+     (error: string) => { console.log(error); },
+     () => { console.log('completed'); }    
+    );
+  }
+  
+  ngOnDestroy () {
+    this.customObsSubscription.unsubscribe();
+  }  
+  
+}
+```
+### Subject
+Subject is an observable and observer at the same time.
