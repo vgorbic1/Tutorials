@@ -46,3 +46,16 @@ export class AppComponent {
   }
 }
 ```
+To get access to the form's JavaScript object:
+```html
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+```
+and in `.component.ts`:
+```javascript
+import { NgForm } from '@angular/forms';
+...
+ onSubmit(form: NgForm) {
+   console.log(form);
+ }
+}
+```
