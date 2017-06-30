@@ -85,4 +85,4 @@ hence, it's wise to use it with the `register_activation_hook` function:
 ```
 register_activation_hook( __FILE__, array($this, 'remove_application_user_roles') );
 ```
-More in [User Capabilities](https://github.com/vgorbic1/Tutorials/new/master/WordPress/App-Development/user%20capabilities.md)
+More in [User Capabilities](https://github.com/vgorbic1/Tutorials/blob/master/WordPress/App-Development/user%20capabilities.md)
