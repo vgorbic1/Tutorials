@@ -59,3 +59,67 @@ import { NgForm } from '@angular/forms';
  }
 }
 ```
+You also may have access to the form object using `@ViewChild` decoration:
+```html
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+```
+and in `.component.ts`:
+```javascript
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+...
+@ViewChild('f') signupForm: NgForm;
+...
+ onSubmit() {
+   console.log(this.signupForm);
+ }
+}
+```
+### Validation
+Apply validation by adding necessary directive to the <input> tag:
+```html
+<input type="email" id="email" class="form-control" ngModel name="email" required email />
+```
+You can style a form control according to the status of its validation:
+```html
+ <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel"/>
+ <span class="help-block" *ngIf="!email.valid && email.touched">Please enter your email</span>
+```
+*component.css*
+```css
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+```
+### Default Values
+Use property binding with `ngModel` to set default values:
+*component.html*
+```html
+<label for="secret">Secret Questions</label>
+<select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret" email>
+   <option value="pet">Your first Pet?</option>
+   <option value="teacher">Your first teacher?</option>
+</select>
+```
+*component.ts*
+```javascript
+...
+export class AppComponent {
+  defaultQuestion: string = 'pet';
+...
+```
+Use two-way property binding with `ngModel`:
+*component.html*
+```html
+<div class="form-group">
+ <textarea name="qAnswer" rows="3" class="form-control" [(ngModel)]="answer"></textarea>
+</div>
+<p>Your reply: {{ answer }}</p>
+```
+*component.ts*
+```javascript
+...
+export class AppComponent {
+  answer: string = '';
+...
+```
