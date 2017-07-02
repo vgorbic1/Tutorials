@@ -132,3 +132,102 @@ Once installed, this plugin allows you to view all the existing routing rules as
 as offers a button to flush the rules.
 
 ### Controlling access to your functions
+We have a custom router, which handles the URLs of the user section of our
+application. Next, we need a controller to handle the requests and generate the
+template for the user.
+
+Even though we have changed the default routing, WordPress will look for an
+existing template to be sent back to the user. Therefore, we need to intercept this
+process and create our own templates. WordPress offers an action hook called
+`template_redirect` for intercepting requests.
+```php
+add_action( 'template_redirect', array( $this, 'front_controller') );
+public function front_controller() {
+ global $wp_query;
+ $control_action = isset ( $wp_query->query_vars['control_action'] ) ? $wp_query->query_vars['control_action'] : '';
+  switch ( $control_action ) {
+   case 'register':
+   do_action( 'wpwa_register_user' );
+   break;
+  }
+}
+```
+For Gmail validation, we can define another function using the following code:
+```php
+add_action( 'wpwa_register_user', array( $this, 'validate_gmail_registration') );
+public function validate_user(){
+  // Code to validate user
+  // remove registration function if validation fails
+  remove_action( 'wpwa_register_user', array( $this,
+  'register_user' ) );
+}
+```
+#### Designing the registration form
+We will implement the custom templates inside
+the plugin. First, create a folder inside the current plugin folder and name it as
+templates to get things started.
+We need to design a custom form for frontend registration containing the default
+header and footer. The whole content area will be used for the registration and the
+default sidebar will be omitted for this screen. Create a PHP file called registertemplate.
+php inside the templates folder with the following code:
+```php
+<?php get_header(); ?>
+<div id="wpwa_custom_panel">
+if( isset($errors) && count( $errors ) > 0) {
+ foreach( $errors as $error ){
+  echo '<p class="wpwa_frm_error">'. $error .'</p>';
+ }
+}
+?>
+// HTML Code for Form
+</div>
+<?php get_footer(); ?>
+```
+Then, we have the HTML form, as shown in the following code:
+```php
+<form id='registration-form' method='post' action='<?php echo
+get_site_url() . '/user/register'; ?>'>
+<ul>
+<li>
+<label class='wpwa_frm_label'><?php echo __('Username','wpwa'); ?></label>
+<input class='wpwa_frm_field' type='text' id='wpwa_user' name='wpwa_user' value='' />
+</li>
+<li>
+<label class='wpwa_frm_label'><?php echo __('Email',' wpwa'); ?></label>
+<input class='wpwa_frm_field' type='text' id='wpwa_email' name='wpwa_email' value='' />
+</li>
+<li>
+<label class='wpwa_frm_label'><?php echo __('User Type','wpwa'); ?></label>
+<select class='wpwa_frm_field' name='wpwa_user_type'>
+<option <?php echo __('Follower','wpwa'); ?></option>
+<option <?php echo __('Developer','wpwa'); ?></option>
+<option <?php echo __('Member','wpwa'); ?></option>
+</select>
+</li>
+<li>
+<label class='wpwa_frm_label' for=''>&nbsp;</label>
+<input type='submit' value='<?php echo __('Register','wpwa'); ?>' />
+</li>
+</ul>
+</form>
+```
+Once the form is submitted, we have to create the user based on the
+application requirements.
+Let's begin the task of registering users by displaying the registration form
+as given in the following code:
+```
+public function register_user() {
+ if ( !is_user_logged_in() ) {
+  include dirname(__FILE__) . '/templates/registertemplate.php';
+  exit;
+ }
+}
+```
+Once user requests /user/register, our controller will call the `register_user`
+function using the do_action call. In the initial request, we need to check whether
+a user is already logged in using the `is_user_logged_in` function. If not, we can
+directly include the registration template located inside the templates folder to
+display the registration form. In this technique, we are including the template directly inside
+the function. Therefore, we have access to the data inside this function.
+
+
