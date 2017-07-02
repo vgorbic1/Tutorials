@@ -1,9 +1,8 @@
-## Forms
+## Template-Driven Forms
 There are two approaches to handle the form:
 - Template-Driven (Angular infers the Form Object from the DOM)
 - Reactive (Form is created programmatically and synchronized with the DOM)
 
-### Template-Driven
 Make sure you have `FormsModule` in your `app.module.ts` importerd and includet to the `imports` array. When
 Angular sees `<form>` tag in .html template, it creates a JS object that represents that form. However, you
 still should register the form controls manually. To do that simply add `ngModule` to the `input` tag of the
@@ -144,8 +143,95 @@ To group controls in one object use `ngModelGroup` directive:
 </div>
 ```
 *component.ts*
-```javascript```
+```javascript
 ...
  genders = ['male', 'female'];
 ...
+```
+### Setting a Patching Form Value
+If you need to set a particular value (suggested value) into the form field before submission, use `patchValue` method:
+```html
+<div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" class="form-control" ngModel name="username" required />
+  </div>
+  <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
+...
+```
+*component.ts*
+```javascript
+import { Component, ViewChild } from '@angular/core';
+...
+export class AppComponent {
+  @ViewChild('f') signupForm: NgForm; 
+...
+  suggestUserName() {
+    const suggestedName = 'Superuser';
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    })
+  }
+...
+```
+### Access Submitted Values
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" ngModel name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel"/>
+              <span class="help-block" *ngIf="!email.valid && email.touched">
+                Please enter your email
+              </span>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <h3>Your Data</h3>
+      <p>Username: {{ user.username }}</p>
+      <p>Email: {{ user.email }}</p>
+    </div>
+  </div>
+</div>
+```
+*component.ts*
+```javascript
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  @ViewChild('f') signupForm: NgForm; 
+  user = {
+    username: '',
+    email: ''
+  }
+  submitted = false;
+
+  onSubmit(form: NgForm) {
+    this.submitted = true;
+    this.user.username = this.signupForm.value.userData.username;
+    this.user.email = this.signupForm.value.userData.email;
+    this.signupForm.reset();
+  }
+}
 ```
