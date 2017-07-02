@@ -123,3 +123,29 @@ export class AppComponent {
   answer: string = '';
 ...
 ```
+### Grouping Controls or Fields
+To group controls in one object use `ngModelGroup` directive:
+```html
+<form>
+ <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+  <div class="form-group">
+...
+ <p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>
+...
+```
+### Radio Buttons
+*component.html*
+```html
+<div class="radio" *ngFor="let gender of genders">
+ <label>
+   <input type="radio" name="gender" ngModel [value]="gender">
+   {{ gender }}
+ </label>
+</div>
+```
+*component.ts*
+```javascript```
+...
+ genders = ['male', 'female'];
+...
+```
