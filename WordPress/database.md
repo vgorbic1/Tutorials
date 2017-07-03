@@ -101,3 +101,70 @@ scenario to get the most out of WordPress. Built-in database access functions ar
 optimized to work directly with existing tables, allowing us to minimize the time for
 implementation. On the other hand, we need to write custom queries from scratch
 to work with newly created tables.
+
+### Querying the database
+As with most frameworks, WordPress provides a built-in interface for interacting
+with the database. Most of the database operations will be handled by the wpdb
+class located inside the wp-includes directory. The wpdb class will be available
+inside your plugins and themes as a global variable and provides access to all the
+tables inside the WordPress database, including custom tables.
+
+#### Inserting records
+All the existing tables contain a prebuilt insert method for creating new records.
+- `wp_insert_post`: This creates a new post or page in the `wp_posts` table.
+If this is used on an existing post, it will update the existing record
+- `add_option`: This creates a new option on the `wp_options` table, if it
+doesn't already exist
+- `wp_insert_comment`: This creates a new comment on the `wp_comments` table
+
+#### Updating records
+All the existing tables contain a prebuilt update method for updating existing
+records.
+- `update_post_meta`: This creates or updates additional details about posts
+in the `wp_postmeta` table
+- `wp_update_term`: This updates existing terms in the `wp_terms` table
+- `update_user_meta`: This updates user meta details in the `wp_usermeta`
+table based on the user ID
+
+## Deleting records
+We have similar methods for deleting records in each of the existing tables as
+we have for updating records. 
+- `delete_post_meta`: This deletes custom fields using the specified key in
+the `wp_postmeta` table
+- `wp_delete_post`: This removes existing posts, pages, or attachments from
+the wp_posts table
+- `delete_user_meta`: This removes the metadata matching criteria from a
+user from the `wp_usermeta` table
+
+#### Selecting records
+As usual, there is a set of built-in functions for selecting records from the existing
+tables.
+- `get_posts`: This retrieves the posts as an array from the `wp_posts` table
+based on the passed arguments. Also, we can use the `WP_Query` class
+with necessary arguments to get the post list from the OOP method.
+- `get_option`: This retrieves the option value of the given key from the
+`wp_options` table.
+- `get_users`: This retrieves a list of users as an array from the `wp_user` table.
+
+#### Querying the custom tables
+There are no built-in methods for accessing custom tables using direct
+functions, so it's a must to use the `wpdb` class for handling custom tables.
+- `$wpdb->get_results( "select query" )`: This can be used to select a
+set of records from any database table.
+- `$wpdb->query('query')`: This can be used to execute any custom query.
+This is typically used to update and delete statements instead of select
+statements, as it only provides the affected rows count as the result.
+- `$wpdb->get_row('query')`: This can be used to retrieve a single row
+from the database as an object, an associative array, or as a numerically
+indexed array.
+
+When executing these functions, we
+have to make sure that we include the necessary filtering and validations, as these
+are not built to directly work with existing tables:
+```php
+$wpdb->query(
+  $wpdb->prepare("SELECT FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s", 1, 'book_title')
+);
+```
+WordPress version 3.5 and higher enforces a minimum of two
+arguments to prevent developers from misusing the `prepare` function.
