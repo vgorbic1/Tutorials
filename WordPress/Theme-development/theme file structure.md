@@ -23,7 +23,7 @@ existing data in the system.
 with applications. Generally, we can use pages for form submissions,
 dynamic data display, and custom layouts.
 
-![wpap]()
+![wpap](https://github.com/vgorbic1/Tutorials/blob/master/WordPress/Theme-development/images/wpap.jpg)
 
 WordPress looks for a page with the slug
 or ID before executing the default page.php file.
