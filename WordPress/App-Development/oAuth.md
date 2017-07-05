@@ -153,8 +153,8 @@ array, along with the callback URL.
 Now, we can start the process of authenticating user account with our application.
 First, we start a new session using session_start to hold the data retrieved
 from LinkedIn. Then, we initialize the third-party LinkedIn class by passing the
-$app_config array. We have to check for the proper action using $wpwa_social_
-action as we have multiple actions in this process. If the action is login, we call
+$app_config array. We have to check for the proper action using `$wpwa_social_
+action` as we have multiple actions in this process. If the action is login, we call
 the retrieveTokenRequest function of LinkedIn API class with a scope called
 r_emailaddress. You can learn more about scope in LinkedIn API at https://
 developer.linkedin.com/documents/authentication.
@@ -169,7 +169,7 @@ is completed, the request will be redirected to our application using the callba
 So, we need to start the implementation to verify account details and log in the user,
 as we discussed in point 2 on the functionality of the WPWA_LinkedIn_Connect class.
 
-## Verifying LinkedIn account and generating response
+### Verifying LinkedIn account and generating response
 We created an if statement in the previous code to check for the availability of the
 login action. Now, we need to extend it with the else if statement to check for the
 response from LinkedIn. The following code contains the implementation of account
@@ -269,8 +269,9 @@ $login_response = $wpwa_social_login_obj->login();
 }
 }
 }
+```
 First, we retrieve the wpwa_social_login and wpwa_social_action variables from
-the $_GET array. We will check the existence of the wpwa_social_login variable
+the `$_GET array`. We will check the existence of the wpwa_social_login variable
 before proceeding further. Then, we switch the wpwa_social_login variable to
 identify the social network. Here, we have only included LinkedIn as we are only
 implementing the LinkedIn version in this chapter. You can add the remaining
