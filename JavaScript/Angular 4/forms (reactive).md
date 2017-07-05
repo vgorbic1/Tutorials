@@ -274,7 +274,7 @@ export class AppComponent implements OnInit {
   </div>
 </div>
 ```
-### Asinchronous Validators
+### Asynchronous Validators
 The `forbiddenEmails` mehtod will simulate the reachout to the server for data validation:
 ```javascript
 import { Component, OnInit } from '@angular/core';
