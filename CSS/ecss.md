@@ -1,5 +1,5 @@
-## CSS
-Good CSS code address the following needs:
+## ECSS
+ECSS approach address the following needs:
 - To allow the easy maintenance of a large CSS codebase over time
 - To allow portions of CSS code to be removed from the codebase without effecting
 the remaining styles
@@ -25,3 +25,8 @@ aside#sidebar ul > li a {
   /* Styles */
 }
 ```
+We've just unnecessarily tied our rule to specific markup structure.
+We want CSS that is as loosely coupled to structure as possible. That way, should we need
+to introduce an override (a more specific selector for a particular instance) we can keep
+things as vague as possible to get the job done.
+
