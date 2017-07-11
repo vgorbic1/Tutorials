@@ -1,4 +1,4 @@
-## Http Request (Firebase Sample) 
+## Http Request / Sending to Server (Firebase Sample) 
 Use Google [Firebase](http://firebase.google.com) service to provide backand functionality.
 
 Create a service called `server.service.ts`. (Using CLI: `ng g s server -spec false`)
@@ -87,3 +87,23 @@ Create a method to `app.component.ts` to respond to the button click:
 ...
 ```
 Run the application and check that your database receives data.
+
+### Headers
+To explicitly send headers along with the request use the following in your service file:
+```javascript
+import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+@Injectable()
+export class ServerService {
+
+  constructor(private http: Http) { }
+  
+  storeServers(servers: any[]) {
+    const headers = new Headers({'Content-Type':'applicaion/json'});
+    return this.http.post('https://udemy-ng-http-1a6e3.firebaseio.com/data.json',
+    servers,
+    {headers: headers});
+  }
+}
+```
