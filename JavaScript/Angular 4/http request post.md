@@ -1,4 +1,4 @@
-## Http Request / Sending to Server (Firebase Sample) 
+## Http Request / POST (Firebase Sample) 
 Use Google [Firebase](http://firebase.google.com) service to provide backand functionality.
 
 Create a service called `server.service.ts`. (Using CLI: `ng g s server -spec false`)
