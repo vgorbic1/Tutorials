@@ -1,5 +1,5 @@
 ## Create a SpringBoot REST Service project with Gradle
-### Generate a starter project on Spring website
+### Generate a starter project with Spring Initializr website
 1. Go to `start.spring.io` and select `Gradle Project` with latest stable release.
 2. Enter a Group (for example `com.yourname.projectname`)
 3. Enter an Artifact (for example `full-stack-app-angular-spring-boot`)
