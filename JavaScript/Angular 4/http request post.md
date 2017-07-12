@@ -1,4 +1,4 @@
-## Http Request / POST (Firebase Sample) 
+## Http Request / POST and PUT (Firebase Sample) 
 Use Google [Firebase](http://firebase.google.com) service to provide backand functionality.
 
 Create a service called `server.service.ts`. (Using CLI: `ng g s server -spec false`)
@@ -106,4 +106,16 @@ export class ServerService {
     {headers: headers});
   }
 }
+```
+### PUT Request
+To make a PUT request to override the data at the backend, just replace `post` with `put` in the `return` of `storeServers()`:
+```javascript
+...
+ storeServers(servers: any[]) {
+    const headers = new Headers({'Content-Type':'applicaion/json'});
+    return this.http.put('https://udemy-ng-http-1a6e3.firebaseio.com/data.json',
+    servers,
+    {headers: headers});
+  }
+...
 ```
