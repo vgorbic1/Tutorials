@@ -123,3 +123,33 @@ import 'rxjs/RX';
   }
 ...
 ```
+### Transform Data
+1. In the `server.service.ts` update the `onGet()` method to prefix the name of the server with `FETCHED_` string:
+```javascript
+...
+  getServers() {
+    return this.http.get('https://udemy-ng-http-1a6e3.firebaseio.com/data.json')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          for (const server of data) {
+            server.name = 'FETCHED_' + server.name;
+          }
+          return data;
+        }
+      )
+  }
+...
+```
+2. Get list of services in the `app.component.ts` modifying `onGet()` method:
+```javascript
+...
+  onGet() {
+    this.serverService.getServers()
+      .subscribe(
+        (servers: any[]) => this.servers = servers,
+        (error) => console.log(error)
+      );
+  }
+...
+```
