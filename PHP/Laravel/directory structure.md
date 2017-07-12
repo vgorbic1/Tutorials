@@ -19,17 +19,17 @@ be excluded from your version control system), as Composer is expected to run
 as a part of your deploy process on any remote servers.
 - **env** and **.env.example** are the files that dictate the environment variables (variables
 that are expected to be different in each environment and are therefore not
-committed to version control). .env.example is a template that each environment
+committed to version control). **.env.example** is a template that each environment
 should duplicate to create its own .env file, which is Git-ignored.
-- **artisan** is the file that allows you to run Artisan commands (see Chapter 7) from
+- **artisan** is the file that allows you to run Artisan commands from
 the command line.
 - **gitignore** and **.gitattributes** are Git configuration files.
-- **composer.json** and composer.lock are the configuration files for Composer; composer.
-json is user-editable and composer.lock is not. These files share some basic
+- **composer.json** and **composer.lock** are the configuration files for Composer; **composer.
+json** is user-editable and **composer.lock** is not. These files share some basic
 information about this project and also define its PHP dependencies.
 - **gulpfile.js** is the (optional) configuration file for Elixir and Gulp. This is for
 compiling and processing your frontend assets.
-- **package.json** is like composer.json but for frontend assets.
+- **package.json** is like **composer.json** but for frontend assets.
 - **phpunit.xml** is a configuration file for PHPUnit, the tool Laravel uses for testing
 out of the box.
 - **readme.md** is a Markdown file giving a basic introduction to Laravel.
