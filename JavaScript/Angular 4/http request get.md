@@ -94,3 +94,32 @@ import { Response } from '@angular/http';
   }
 ...
 ```
+### Extract Data In Sevice File
+1. Make sure you import `rxjs/Rx` library and modify the `getServers()` method:
+```javascript
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/RX';
+...
+  getServers() {
+    return this.http.get('https://udemy-ng-http-1a6e3.firebaseio.com/data.json')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      )
+  }
+...
+```
+2. Modify the `app.component.ts` file's `onGet()` method:
+```javascript
+...
+  onGet() {
+    this.serverService.getServers()
+      .subscribe(
+        (servers: Response) => console.log(servers),
+        (error) => console.log(error)
+      );
+  }
+...
+```
