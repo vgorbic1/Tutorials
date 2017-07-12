@@ -33,3 +33,5 @@ compiling and processing your frontend assets.
 - **phpunit.xml** is a configuration file for PHPUnit, the tool Laravel uses for testing
 out of the box.
 - **readme.md** is a Markdown file giving a basic introduction to Laravel.
+- ** server.php** is a backup server that tries to allow less-capable servers to still preview
+the Laravel application.
