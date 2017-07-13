@@ -4,6 +4,8 @@
 
 **Maintenance Mode** - Very simple Maintenance Mode & Coming soon page. Using default Wordpress markup, No ads, no paid upgrades.
 
+**Coming Soon Page & Maintenance Mode by SeedProd** - The #1 Coming Soon Page, Under Construction & Maintenance Mode plugin for WordPress.
+
 
 ### WooCommerce
 
