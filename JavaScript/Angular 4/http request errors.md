@@ -38,7 +38,7 @@ export class ServerService {
   }
 }
 ```
-*app.component.ts**
+*app.component.ts*
 ```javascript
 import { Component } from '@angular/core';
 import { ServerService } from './server.service';
