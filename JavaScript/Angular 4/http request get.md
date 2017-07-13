@@ -153,3 +153,52 @@ import 'rxjs/RX';
   }
 ...
 ```
+### Using Async Pipe to Get Data:
+Use an `async` pipe to get asynchronous data from server:
+*server.service.ts*
+```javascript
+import { Injectable } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/RX';
+import { Observable } from 'rxjs/Observable';
+@Injectable()
+export class ServerService {
+
+  constructor(private http: Http) { }
+
+  getTitle() {
+    return this.http.get('https://udemy-ng-http-1a6e3.firebaseio.com/title.json')
+      .map(
+       (response: Response) => {
+         return response.json();
+       }
+      )
+  }
+}
+```
+*app.component.ts*
+```javascript
+import { Component } from '@angular/core';
+import { ServerService } from './server.service';
+import { Response } from '@angular/http';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = this.serverService.getTitle();
+  constructor(private serverService: ServerService) {} 
+}
+```
+*app.component.html*
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h1>{{ title | async }}</h1>
+    </div>
+  </div>
+</div>
+```
