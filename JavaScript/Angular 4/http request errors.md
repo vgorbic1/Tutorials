@@ -1,5 +1,5 @@
 ## Catch Errors
-Create a centrolized error meanagement in a service file. Use a `.catch()` method for it:
+Create a centrslized error meanagement in a service file. Use a `.catch()` method for it:
 
 *server.service.ts*
 ```javascript
