@@ -4,3 +4,4 @@
 3. Import, build and test run the starter project in STS (Eclipse). 
 4. Create local and remote GitHub repository.
 5. [Configure application](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/rest%20api/configure%20app.md).
+6. [Model resources](https://github.com/vgorbic1/Tutorials/blob/master/Java/SpringBoot/rest%20api/resource%20modeling.md).
