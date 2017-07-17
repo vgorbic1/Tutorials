@@ -11,12 +11,12 @@ array is not fully safe, because it contains some data provided by the client.
 The one exception to this rule is the ```$_SESSION``` array, which is persisted on
 the server and never transmitted over the Internet.
 
-####Whitelist vs. Blacklist Filtering
+#### Whitelist vs. Blacklist Filtering
 Blacklist filtering is the less restrictive approach; it assumes the programmer knows everything that should not be allowed to pass through. Blacklists must be continually modified and expanded as new attack vectors become apparent.
 
 Whitelist filtering is much more restrictive, but it affords the programmer the ability to accept only expected inputs. Instead of identifying data that is unacceptable, a whitelist identifies the data that is acceptable. Any inputs not on the whitelist will be rejected. Whitelists afford stronger protection against attacks than blacklists do.
 
-####Validation
+#### Validation
 Since all input is tainted and cannot be trusted, you must validate your input to ensure that it is what you expect. To do this, we use validation, or a whitelist approach:
 ```html
 <form method="POST">
@@ -50,7 +50,7 @@ if (in_array($_POST['colour'], $colours)) {
 }
 ```
 
-####Escape Output
+#### Escape Output
 As you should filter all incoming data, you should escape all outbound data. Whereas filtering input protects your application from bad or harmful data, escaping output protects the client and user from potentially damaging commands. Escaping output should not be regarded as part of the filtering process, however. These two steps, while equally important, serve distinct purposes.
 
 To escape output intended for a web browser, PHP provides ```htmlspecialchars()``` and ```htmlentities()```, the latter being the most
@@ -80,7 +80,7 @@ if (ctype_alpha($_POST['username'])) {
 }
 ```
 
-####Filtering
+#### Filtering
 Filtering is both validation and sanitization of input. Validation confirms that the input is what we expect, while sanitization will
 clean a string by either escaping or removing offending parts. Often we want to do both. PHP 5.2 added a new filter extension that allows much more control over validation, as well as the ability to do some common escaping.
 
