@@ -22,14 +22,14 @@ class TasksController extends Controller { }
 To return a *Hello, World!* string modify the code:
 ```php
 <?php
-use App\Http\Controllers\Controller;
+use App\Http\Controllers;
 class TasksController extends Controller {
   public function home() {
     return 'Hello, World!';
   }
 }
 ```
-Create a rout for this controller in `routes/web.php`:
+Create a route for this controller in `routes/web.php`:
 ```php
 <?php
   Route::get('/', 'TasksController@home');
