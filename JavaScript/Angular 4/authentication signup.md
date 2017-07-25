@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit {
 ```
 Add the page to the routing.
 *app-routing.module.ts*
-```javascript```
+```javascript
 ...
 { path: 'signup', component: SignupComponent }
 ...
