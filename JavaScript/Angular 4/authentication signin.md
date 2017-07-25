@@ -52,4 +52,48 @@ export class SigninComponent implements OnInit {
 
 }
 ```
-Add a `signinUser()` method to *auth.service.ts* (look in [authentication signup]() page)
+Add a `signinUser()` method to *auth.service.ts* (look in [authentication signup](https://github.com/vgorbic1/Tutorials/blob/master/JavaScript/Angular%204/authentication%20signup.md) page)
+```javascript
+signinUser(email: string, password: string) {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(
+      response => console.log(response)
+    )
+    .catch(
+      error => console.log(error)
+    );
+  }
+}
+```
+Inject the `AuthService` to *signin.conponent.ts*:
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+
+@Component({
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css']
+})
+export class SigninComponent implements OnInit {
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {
+  }
+
+  onSignin(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    this.authService.signinUser(email, password);
+  }
+
+}
+```
+Add routing in *app-routing.module.ts*:
+```javascript
+...
+{ path: 'signin', component: SigninComponent },
+...
+```
