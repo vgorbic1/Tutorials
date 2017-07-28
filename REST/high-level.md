@@ -32,5 +32,15 @@ the client applications can be extended at runtime by allowing a code download f
 and executing the code. Some examples are the applets and the JavaScript code that get
 transferred and executed on the client side at runtime.
 
-![cc]()
+![cc](https://github.com/vgorbic1/Tutorials/blob/master/REST/images/cc.jpg)
 
+The preceding constraints do not dictate what kind of technology to use; they only define how data is
+transferred between components and the benefits of following guidelines. Therefore, a RESTful
+system can be implemented in any available networking architecture.
+
+The dynamic web is not normally built in the REST-like architectural
+style, because most dynamic applications are not
+stateless: servers track users through the container sessions or client-side cookie schemes.
+
+The REST architectural style is not specific to any protocol. However, as HTTP is the primary
+transfer protocol for the web today, REST over HTTP is the most common implementation.
