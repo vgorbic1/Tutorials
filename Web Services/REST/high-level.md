@@ -32,7 +32,7 @@ the client applications can be extended at runtime by allowing a code download f
 and executing the code. Some examples are the applets and the JavaScript code that get
 transferred and executed on the client side at runtime.
 
-![cc](https://github.com/vgorbic1/Tutorials/blob/master/REST/images/cc.jpg)
+![cc](https://github.com/vgorbic1/Tutorials/blob/master/Web%20Services/images/cc.jpg)
 
 The preceding constraints do not dictate what kind of technology to use; they only define how data is
 transferred between components and the benefits of following guidelines. Therefore, a RESTful
