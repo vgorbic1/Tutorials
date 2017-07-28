@@ -6,4 +6,4 @@ Shared Module shares functionality among several parts of the application.
 Use a  `shared` folder to keep all your shared code in it.
 
 Do not provide Services in Shared Modules!!!
-Especially not, if you plan to use them in Lazy Loaded Modules!!!
+Especially if you plan to use them in Lazy Loaded Modules!!!
