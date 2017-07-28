@@ -13,6 +13,7 @@ revision of HTTP/1.0. This version is in common use today.
 - **HTTP/2** (originally named HTTP 2.0) is the next planned version. It is mainly focused on how the
 data is framed and transported between the client and the server.
 
+### How It Works
 HTTP works in a request-response manner:
 - The user enters the following URL in the browser `http://www.example.com/index.html` and
 then submits the request.
