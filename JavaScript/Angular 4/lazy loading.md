@@ -18,3 +18,15 @@ You can enforce this behavior by adding the canLoad  guard to the route which po
 { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthGuard] } 
 ...
 ```
+
+### Preloading
+In `app-routin.module.ts` add `preloadingStrategy: PreloadAllModules` property and value. Do not forget
+to import `PreloadAllModules` from `@angular/router`:
+```javascript
+...
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
+  exports: [RouterModule]
+})
+...
+```
