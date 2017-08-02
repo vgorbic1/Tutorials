@@ -1,6 +1,6 @@
 ## Creating a New Project
 
-To create a new project with Angular CLI use the following command:
+To create a new project with Angular CLI use:
 ```
 ng new projectname
 ```
@@ -9,7 +9,12 @@ The CLI will create all components for the project in the ```projectname``` dire
 - Clean up the ```AppComponenet``` class properties (app.component.ts) 
 - Clean up the app.component.html file.
 
-#### Adding Bootstrap CSS framework
+### Add Node Modules
+To upload and instal all necessary modules use:
+```
+npm install
+```
+### Add Bootstrap CSS framework
 Move to the project directory. Using CLI install bootstrap module:
 ```
 npm install --save bootstrap
