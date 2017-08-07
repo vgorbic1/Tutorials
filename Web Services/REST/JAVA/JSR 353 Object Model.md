@@ -92,3 +92,72 @@ if (jsonReader != null) {
 Once you have finished using the `InputStream`, `OutputStream`, `JsonReader`, or `JSonWriter`
 objects, make sure that you close them to release the associated resources.
 
+### Generating the JSON representation from the object model
+Convert a Java object model into the JSON format, which is the opposite of the previous operation.
+
+The very first step is to build an object model. You can use either of the following classes to generate
+the object model. The choice of the builder class depends on whether you want to generate a JSON
+object or a JSON array:
+- **javax.json.JsonObjectBuilder**: This builder class is used for generating the JSON object
+model from scratch. This class provides methods to add the name-value pairs to the object
+model and to return the final object.
+- **javax.json.JsonArrayBuilder**: This builder class is used for generating an array of the JSON
+objects from scratch. This class provides methods to add objects or values to the array model
+and to return the final array.
+
+The builder classes can be created either from the `javax.json.Json` factory class or from the
+`javax.json.JsonBuilderFactory` class. You may go for `JsonBuilderFactory` if you want to
+override the default configurations for the generated objects (configurations are specific to vendors)
+or if you need to create multiple instances of the builder classes.
+
+The following code snippet illustrates the use of the `JsonArrayBuilder` APIs for converting an array
+of the employee objects into the JSON array. The client builds the JSON objects by using
+`JsonObjectBuilder` and adds them to `JsonArrayBuilder`. Finally, when the client calls the
+`build()` method, `JsonArrayBuilder` returns the associated JSON array:
+```java
+// import statements for the core classes used in this example
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
+// Creates a JsonArrayBuilder instance that is Build JsonArray
+JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
+
+// Get a list of Employee instances.
+List<Employee> employees = getEmployeeList();
+
+// Iterate over the employee list and create JsonObject for each item
+for (Employee employee : employees) {
+  // Add desired name-value pairs to the JSON object and push each object in to the array.
+  jsonArrayBuilder.add(Json.createObjectBuilder()
+    .add("employeeId", employee.getEmployeeId())
+    .add("firstName", employee.getFirstName())
+    .add("lastName", employee.getLastName())
+    .add("email", employee.getEmail())
+    .add("hireDate", employee.getHireDate())
+  );
+}
+
+// Return the json array holding employee details
+JsonArray employeesArray = jsonArrayBuilder.build();
+
+// Write the array to file
+OutputStream outputStream = new FileOutputStream("emp-array.json");
+JsonWriter jsonWriter = Json.createWriter(outputStream);
+jsonWriter.writeArray(employeesArray);
+
+// Close the stream to clean up the associated resources
+outputStream.close();
+```
+The resulting file output content may look like the following:
+```json
+[ {"employeeId":100,"firstName":"John","lastName":"Chen",
+"email":"john.chen@xxxx.com","hireDate":"2008-10-16"},
+{"employeeId":101,"firstName":"Ameya","lastName":"Job",
+"email":"ameya.job@xxx.com","hireDate":"2013-03-06"}]
+```
