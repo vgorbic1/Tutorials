@@ -6,7 +6,7 @@ for XML.
 Refer to the complete list of the object model APIs available in JSR 353 at
 [http://docs.oracle.com/javaee/7/api/javax/json/package-summary.html](http://docs.oracle.com/javaee/7/api/javax/json/package-summary.html).
 
-#### Generating the object model from the JSON representation (Example)
+### Generating the object model from the JSON representation (Example)
 This example uses the JSON array of the employee objects stored in the `emp-array.json` file as an
 input source. The contents of this file are listed under the A sample JSON file representing employee
 objects section:
