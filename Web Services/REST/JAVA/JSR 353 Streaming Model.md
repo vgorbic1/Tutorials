@@ -72,3 +72,67 @@ the client application code controls the progress of parsing. The client calls `
 to advance the parser to the next state after processing each element.
 
 ### Using Streaming APIs to Generate JSON
+You can use `javax.json.stream.JsonGenerator` to write JSON data to an output source as a
+stream of tokens. This approach does not keep the content in-memory throughout the process. Once a
+name-value pair is written to the stream, the content used for writing the name-value pair will be
+discarded from the memory.
+
+You can use the `writeStartObject()` method to generate the JSON object and then add the name-value pairs with
+the `write()` method. To finish the object representation, call `writeEnd()`.
+
+To generate the JSON arrays, call the `writeStartArray()` method and then add values with the
+`write()` method. To finish the array representation, call `writeEnd()`, which writes the end of the
+current context.
+```
+// Employee Model Class
+// All import statements are removed for brevity
+
+public class Employee {
+ private String firstName;
+ private String lastName;
+ private String email;
+ private Integer employeeId;
+ private java.util.Date hireDate;
+ 
+// Getters and Setter for the above properties are not
+// shown in this code snippet to save space
+}
+```
+The following example illustrates the use of streaming APIs for converting an array of `employee`
+objects into a JSON string:
+```java
+// Imports are removed for brevity
+import javax.json.stream.JsonGenerator;
+
+// Get the employee list that needs to be converted to JSON
+List<Employee> employees = getEmployeeList();
+
+// Create file output stream for writing data to a File
+OutputStream outputStream = new FileOutputStream("emp-array.json");
+
+// Generate JsonGenerator which converts data to JSON
+JsonGenerator jsonGenerator = Json.createGenerator(outputStream);
+
+// Write the JSON 'start array' character : [
+jsonGenerator.writeStartArray();
+
+for (Employee employee : employees) {
+  // Writes the JSON object for each Employee object
+  jsonGenerator.writeStartObject()
+    .write("employeeId", employee.getEmployeeId())
+    .write("firstName", employee.getFirstName())
+    .write("lastName", employee.getLastName())
+    .write("email", employee.getEmail())
+    .write("hireDate", employee.getHireDate().toString())
+    .writeEnd();
+}
+ 
+// Write the end of the current context(array).
+jsonGenerator.writeEnd();
+
+// Close the output stream and release any resources associated with it.
+outputStream.close();
+
+// Close the generator and free any resources associated with it.
+jsonGenerator.close();
+```
