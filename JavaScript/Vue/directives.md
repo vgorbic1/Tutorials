@@ -105,3 +105,18 @@ Another option is to add a key modifier. For example you can fire up the `alertM
 ```html
 <input type="text v-on:keyup.enter.space="alertMe">
 ```
+
+### v-mpdel
+`v-model` directive allows for two-way binding:
+```html
+<input type="text" v-model="name">
+<p>{{ name }}</p>
+```
+```javascript
+new Vue ({
+  ...
+  data: {
+    name: ''
+  }
+  ...
+```
