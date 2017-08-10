@@ -66,3 +66,32 @@ new Vue({
     }
   ...
 ```
+Another example with `mousemove` event:
+```html
+<p v-on:mousemove="getCoordinates">{{ x }} / {{ y }}</p>
+```
+```javascript
+new Vue({
+  ...
+  data: { x: 0, y: 0 }
+  methods: function(event) { // the 'event' object is created by DOM
+    this.x = event.clientX;
+    this.y = event.clientY;
+  }
+  ...
+```
+You also can pass an argument(s) to the listener:
+```html
+<button v-on:click="increase(2)">Increase by 2</button>
+// in order to pass the event and a custom argument use $event 
+// v-on:click="increase(2, $event)"> ...
+```
+```javascript
+...
+  data { counter: 0 },
+  methods: {
+    increase: function(step) {
+      this.counter += step;
+    }
+...
+```
