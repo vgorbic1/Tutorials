@@ -16,6 +16,10 @@ new Vue({
   }
   ...
 ```
+Use the following shortcut for this directive:
+```html
+<a :href="link">Google</a>
+```
 
 ### v-once
 `v-once` allows the tag NOT to be updated (changed) if it is got changed later, say somewhere in methods:
@@ -104,6 +108,10 @@ Another option is to add a key modifier. For example you can fire up the `alertM
 `space` keys are pressed (released):
 ```html
 <input type="text v-on:keyup.enter.space="alertMe">
+```
+Use a shortcut for this directive:
+```html
+<button @click="changeLink">Link</button>
 ```
 
 ### v-mpdel
