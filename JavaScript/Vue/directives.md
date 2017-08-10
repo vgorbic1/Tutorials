@@ -95,3 +95,13 @@ You also can pass an argument(s) to the listener:
     }
 ...
 ```
+To modify event that is listened, use event modifier. For example for stopping propagation to the parent nodes
+with a `.stop` modifier:
+```html
+... v-on:click.stop="" ...
+```
+Another option is to add a key modifier. For example you can fire up the `alertMe` method only when `enter` or 
+`space` keys are pressed (released):
+```html
+<input type="text v-on:keyup.enter.space="alertMe">
+```
