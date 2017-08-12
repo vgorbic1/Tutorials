@@ -6,3 +6,7 @@ use and later open sourced under the terms of Apache License 2.0.
 To find out the dependencies of Gson APIs, refer to [https://sites.google.com/site/gson/gson-userguide/
 using-gson-with-maven2](https://sites.google.com/site/gson/gson-userguide/
 using-gson-with-maven2).
+
+There are two Gson models:
+- Object Model
+- Streaming Model
