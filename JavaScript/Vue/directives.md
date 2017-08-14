@@ -114,7 +114,7 @@ Use a shortcut for this directive:
 <button @click="changeLink">Link</button>
 ```
 
-### v-mpdel
+### v-model
 `v-model` directive allows for two-way binding:
 ```html
 <input type="text" v-model="name">
