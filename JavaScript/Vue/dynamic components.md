@@ -54,3 +54,18 @@ Dynamic components allow for dynamic replacement of part of the template with th
 <style>
 </style>
 ```
+### Keep Alive
+In the previous example the dynamic component is destroyed every time any new component is called. To keep alive the "old" components use
+`<keep-alive>` tag:
+```
+...
+            <keep-alive>
+               <component :is="selectedComponent">
+                   <p>Default Content</p>
+               </component>
+            </keep-alive>
+...
+```
+To react on leving the 'old' component, use the lifecycle hooks:
+- **deactivated()** - when you are on the dynamic component and activating another one
+- **activated()** - when you load the new dynamic component.
