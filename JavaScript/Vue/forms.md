@@ -312,3 +312,27 @@ This is what `v-model` directive does behind the scenes:
 <style>
 </style>
 ```
+### Submit
+Use `prevent` modifier to prevent the button from submitting the form to the server:
+```
+<button @click.prevent="submitted">Submit</button>
+```
+This is the entire code:
+```
+<template>
+...
+<button @click.prevent="submitted">Submit</button>
+...
+</template>
+<script>
+  data() {
+    ...
+    isSubmitted: false
+  },
+  methods: {
+    submitted() {
+      this.isSubmitted = true;
+      // more code if the form is submitted
+    }
+  ...
+```
