@@ -203,3 +203,112 @@ To get a `selected` property set use the following:
 ...
 </template>
 ```
+### Custom Input
+This is what `v-model` directive does behind the scenes:
+```
+ v-model="email"
+   is the same as
+ v-bind:value="email"
+ @input="email = $event.target.value"
+ ```
+ The best way to create a custom input is by creating a new component and putting
+ the code there:
+ ```
+ // Switch.vue
+ <template>
+    <div>
+        <div
+                id="on"
+                @click="switched(true)"
+                :class="{active: value}">On</div>
+        <div
+                id="off"
+                @click="switched(false)"
+                :class="{active: !value}">Off</div>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: ['value'],
+        methods: {
+            switched(isOn) {
+                this.$emit('input', isOn);
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    #on, #off {
+        width: 40px;
+        height: 20px;
+        background-color: lightgray;
+        padding: 2px;
+        display: inline-block;
+        margin: 10px -2px;
+        box-sizing: content-box;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    #on:hover, #on.active {
+        background-color: lightgreen;
+    }
+
+    #off:hover, #off.active {
+        background-color: lightcoral;
+    }
+</style>
+```
+```
+// App.vue
+<template>
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <app-switch v-model="dataSwitch"></app-switch>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div class="row" v-if="isSubmitted">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Your Data</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Switched: {{ dataSwitch }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    import Switch from './Switch.vue';
+
+    export default {
+        data () {
+            return {
+                dataSwitch: true,
+                isSubmitted: false
+            }
+        },
+        methods: {
+          submitted() {
+              this.isSubmitted = true;
+          }
+        },
+        components: {
+            appSwitch: Switch
+        }
+    }
+</script>
+
+<style>
+</style>
+```
