@@ -165,3 +165,41 @@ data() {
 ...
 </script>
 ```
+### Select
+```html
+<template>
+...
+<select id="priority"
+  class="form-control"
+  v-model="selectedPriority">
+  <option v-for="priority in priorities">
+    {{ priority }}
+  </option>
+</select>
+...
+<p>Priority: {{ selectedPriority }}</p>
+...
+</template>
+```
+```javascript
+<script>
+...
+data() {
+  return {
+    selectedPriority: 'High',
+    priorities: ['High', 'Medium', 'Low']
+  }
+}
+...
+</script>
+```
+To get a `selected` property set use the following:
+```html
+<template>
+...
+  <option v-for="priority in priorities" :selected="priority == 'Medium'">
+    {{ priority }}
+  </option>
+...
+</template>
+```
