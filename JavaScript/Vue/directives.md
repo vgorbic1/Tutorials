@@ -198,7 +198,7 @@ Vue.directive('highlight', {
 ```html
 <p v-highlight:background.delayed="red">Color this</p>
 ```
-#### Local Custom Directives
+### Local Custom Directives
 A local directive is applied only for the component where it is declared.
 ```
 <template>
