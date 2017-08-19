@@ -134,3 +134,63 @@ new Vue ({
 ```html
 <p v-text="'a string of text'"></p>
 ```
+
+### Custom Directive
+One way is to register the directive globally (in main.js file). To make a custom directive use the following hooks:
+
+![directive-hooks](https://github.com/vgorbic1/Tutorials/blob/master/JavaScript/Vue/images/dh.jpg)
+
+```javascript
+Vue.directive('highlight', {
+  bind(el, binding, vnode) {
+    el.style.backgroundColor = 'green';
+  }
+});
+```
+```html
+<p v-highlight>Color this</p>
+```
+Use **values** with the new custom directive:
+```javascript
+Vue.directive('highlight', {
+  bind(el, binding, vnode) {
+    el.style.backgroundColor = binding.value;
+  }
+});
+```
+```html
+<p v-highlight="red">Color this</p>
+```
+Use **arguments** with the new custom directive:
+```javascript
+Vue.directive('highlight', {
+  bind(el, binding, vnode) {
+    if (binding.arg == 'background') {
+      el.style.backgroundColor = binding.value;
+    } else {
+      el.style.color = binding.value;
+  }
+});
+```
+```html
+<p v-highlight:background="red">Color this</p>
+```
+Use **modifiers** with the new custom directive:
+```javascript
+Vue.directive('highlight', {
+  bind(el, binding, vnode) {
+    var delay=0;
+    if (binding.modifiers['delayed']) {
+      delay = 3000;
+    }
+    setTimeout(, delay)
+    if (binding.arg == 'background') {
+      el.style.backgroundColor = binding.value;
+    } else {
+      el.style.color = binding.value;
+  }
+});
+```
+```html
+<p v-highlight:background.delayed="red">Color this</p>
+```
