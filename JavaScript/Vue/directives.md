@@ -128,3 +128,9 @@ new Vue ({
   }
   ...
 ```
+
+### v-text
+`v-text` directive is used to display a string:
+```html
+<p v-text="'a string of text'"></p>
+```
