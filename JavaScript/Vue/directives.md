@@ -136,6 +136,7 @@ new Vue ({
 ```
 
 ### Custom Directive
+#### Global Custom Directives
 One way is to register the directive globally (in main.js file). To make a custom directive use the following hooks:
 
 ![directive-hooks](https://github.com/vgorbic1/Tutorials/blob/master/JavaScript/Vue/images/dh.jpg)
@@ -150,7 +151,7 @@ Vue.directive('highlight', {
 ```html
 <p v-highlight>Color this</p>
 ```
-Use **values** with the new custom directive:
+Use **values** with the new custom directive. The value can be a string, number, or any other objects. 
 ```javascript
 Vue.directive('highlight', {
   bind(el, binding, vnode) {
@@ -169,6 +170,7 @@ Vue.directive('highlight', {
       el.style.backgroundColor = binding.value;
     } else {
       el.style.color = binding.value;
+    }
   }
 });
 ```
@@ -179,18 +181,51 @@ Use **modifiers** with the new custom directive:
 ```javascript
 Vue.directive('highlight', {
   bind(el, binding, vnode) {
-    var delay=0;
+    var delay = 0;
     if (binding.modifiers['delayed']) {
       delay = 3000;
     }
-    setTimeout(, delay)
-    if (binding.arg == 'background') {
-      el.style.backgroundColor = binding.value;
-    } else {
-      el.style.color = binding.value;
+    setTimeout(() => {
+      if (binding.arg == 'background') {
+        el.style.backgroundColor = binding.value;
+      } else {
+        el.style.color = binding.value;
+      }
+    }, delay);    
   }
 });
 ```
 ```html
 <p v-highlight:background.delayed="red">Color this</p>
 ```
+#### Local Custom Directives
+A local directive is applied only for the component where it is declared.
+```
+<template>
+...
+<p v-local-highlight:background.delayed="'red'">Color this</p>
+...
+</template>
+```
+```javascript
+<script>
+  export default {
+    directives: {
+      'local-highlight': {
+        bind(el, binding, vnode) {
+          var delay = 0;
+          if (binding.modifiers['delayed']) {
+            delay = 3000;
+          }
+          setTimeout(() => {
+          if (binding.arg == 'background') {
+            el.style.backgroundColor = binding.value;
+          } else {
+            el.style.color = binding.value;
+          }
+        }, delay);
+      }
+    }
+  }
+ </script>
+ ```
