@@ -35,7 +35,7 @@ Global filter works for entire application. Declare a new Vue instance in `main.
 ```
 ```javascript
 ...
-Vue.filter(toLowercase', function(value) {
+Vue.filter(toLowercase, function(value) {
   return value.toLowerCase();
 });
 ...
