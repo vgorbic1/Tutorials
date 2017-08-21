@@ -1,5 +1,5 @@
 ## Mixins
-Mixins allows to reuse code in different components.
+Mixins allows to reuse code in different components. Each component has a fresh copy of the mixin.
 
 ### Local Mixin
 Put a mixin with the needed code in a separate file:
