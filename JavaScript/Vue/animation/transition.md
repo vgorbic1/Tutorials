@@ -1,5 +1,6 @@
 ## Transition
-You can animate any (but only one) element of the DOM that is inside `transition` tags:
+You can animate any (but only one) element of the DOM that is inside `transition` tags.
+You van use both `v-if` or `v-show` directives.
 
 ### Fade Effect
 Use transition property with `.fade-` CSS class:
@@ -38,6 +39,12 @@ Use transition property with `.fade-` CSS class:
   }
 </style>
 ```
+You can bind the `name=""` dynamically:
+```
+<transition :name="alertAnimation">
+...
+```
+### Slide Effect
 Use animation property with `.slide-` CSS class
 ```
 <template>
@@ -88,6 +95,7 @@ Use animation property with `.slide-` CSS class
   }
 </style>
 ```
+### Mixing Effects
 Combine transition and animation properties. If you mix both make sure to mention which type dictates the time length with
 having either `type="animation"` or `type="transition"`.
 ```
@@ -141,4 +149,19 @@ having either `type="animation"` or `type="transition"`.
     }
   }
 </style>
+```
+### Animate upon Page Loaded
+To start animaion when the page is loaded use `appear` property:
+```
+...
+<transition name="fade" appear>
+...
+```
+### Custom Animation Classes
+If you need further finetune your animations use third-party animation libraries, for examle [Animate.css](https://github.com/daneden/animate.css/). With it in the themplate you may specify what custom CSS classes you want to use.
+```
+<transition
+  eneter-active-class="animated bounce"
+  leave-active-class="animated shake"
+> ...
 ```
