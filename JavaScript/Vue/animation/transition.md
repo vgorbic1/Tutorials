@@ -165,3 +165,89 @@ If you need further finetune your animations use third-party animation libraries
   leave-active-class="animated shake"
 > ...
 ```
+### Switch Between Two Elements
+- `out-in` animate the first element and then the second.
+- `in-out` animate the second element and then the first.
+
+Make sure that the `key=""` properties are added to each element: 
+```
+<template>
+...
+<transition name="alertAnimation" mode="out-in">
+  <p v-if="show" key="info">Some Alert Here</p>
+  <p v-else key="warning">Some Warning Here</p>
+</transition>
+...
+</template>
+```
+### Transition Hooks
+![th]()
+Use methods attached to the transition hooks to execure JavaScript animations. If you
+do not use any CSS transitions (animations), make sure
+you have `:css="false"` to make Vue.js skip the phase of looking at the `<style>`.
+```
+<button @click="load = !load">Load</button>
+<transition
+  @before-enter="beforeEnter"
+  @enter="enter"
+  @after-enter="afterEnter"
+  @enter-cancelled="enterCancelled"
+  @before-leave="beforeLeave"
+  @leave="leave"
+  @after-leave="afterLeave"
+  @leave-cancelled="leaveCancelled"
+  :css="false"
+>
+  <div style="width; 100px; height: 300px; background-color: green; v-if="load">TEXT</div>
+</transition>
+<script>
+...
+  data() {
+    return {
+      load: true,
+      elementWidth: 100
+    },
+    methods: {
+      beforeEnter(el) {
+        this.elementWidth = 100;
+        el.style.width = this.elementWidth + 'px';
+      },
+      enter(el, done) {
+        // grow the width
+        let round = 1;
+        const interval = setInterval(() => {
+          el.style.width = (this.elementWidth + round * 10) + 'px';
+          round++;
+          if (round > 20) {
+            clearInterval(interval);
+            done();
+          }
+        }, 20);
+      },
+      afterEnter(el) {
+      },
+      enterCancelled(el) {
+      },
+      beforeLeave() {
+        this.elementWidth = 300;
+        el.style.width = this.elementWidth + '300px';
+      },
+      leave(el, done) {
+        // decrease the width
+        let round = 1;
+        const interval = setInterval(() => {
+          el.style.width = (this.elementWidth - round * 10) + 'px';
+          round++;
+          if (round > 20) {
+            clearInterval(interval);
+            done();
+          }
+        }, 20);
+      },
+      afterLeave(el) {
+      },
+      leaveCancelled(el) {
+      }
+    }
+  ...
+  ```
