@@ -181,7 +181,7 @@ Make sure that the `key=""` properties are added to each element:
 </template>
 ```
 ### Transition Hooks
-![th]()
+![th](https://github.com/vgorbic1/Tutorials/blob/master/JavaScript/Vue/images/th.jpg)
 Use methods attached to the transition hooks to execure JavaScript animations. If you
 do not use any CSS transitions (animations), make sure
 you have `:css="false"` to make Vue.js skip the phase of looking at the `<style>`.
