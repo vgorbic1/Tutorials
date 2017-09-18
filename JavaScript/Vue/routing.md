@@ -45,7 +45,7 @@ new Vue({
   render: h => h(App)
 })
 ```
-In 'App.vue` mark the place where components showld be loaded by the router using `<router-view>`:
+In `App.vue` mark the place where components showld be loaded by the router using `<router-view>`:
 ```
 <template>
     <div class="container">
