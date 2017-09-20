@@ -70,12 +70,57 @@ const router = new VueRouter({
 });
 ...
 ```
-Use `router-link` to set up links in your component:
+Use `router-link` to set up links in your component. Make sure you have an `active-class` attribute for each item:
 ```
 <template>
   <ul class="nav nav-pills">
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/user">User</router-link></li>
+      <router-link to="/" tag="li" active-class="active" exact><a>Home</a></router-link>
+      <router-link to="/user" tag="li" active-class="active"><a>User</a></router-link>
   </ul>
 </template>
+```
+To navigate directly from your code:
+```
+<template>
+    <div>
+        <h1>The User Page</h1>
+        <button @click="navigateToHome" class="btn btn-primary">Go Home</button>
+    </div>
+</template>
+
+<script>
+export default {
+  methods: {
+      navigateToHome() {
+          this.$router.push('/');
+      }
+  }
+}
+</script>
+```
+Passing dynamic piecse with url use this syntax in `routes.js` in your 'path':
+```
+export const routes = [
+    { path: '', component: Home },
+    { path: '/user/:id', component: User }
+];
+```
+To retrieve a dynamic component (`id` in this case):
+```
+<template>
+    <div>
+        <h1>The User Page</h1>
+        {{ id }}
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            id: this.$route.params.id
+        }
+    }
+}
+</script>
 ```
