@@ -124,3 +124,70 @@ export default {
 }
 </script>
 ```
+### Nested Routes
+Create child routs (subrouts) in your `routes.js` file:
+```
+export const routes = [
+    { path: '', component: Home },
+    { path: '/user', component: User, children: [
+        { path: '', component: UserStart },
+        { path: ':id', component: UserDetail },
+        { path: ':id/edit', component: UserEdit }
+    ] }
+];
+```
+Add the `<router-view`> to the component (`User.vue`):
+```
+<template>
+    <div>
+        <h1>The User Page</h1>
+        <router-view></router-view>
+    </div>
+</template>
+```
+To load the nested routs (childern) link them using `<router-link>`:
+```
+<template>
+    <div>
+        <p>Please select a User</p>
+        <hr>
+        <ul class="list-group">
+            <router-link 
+                tag="li" 
+                to="/user/1"
+                class="list-group-item" >User 1</router-link>
+            <router-link 
+                tag="li" 
+                to="/user/2"
+                class="list-group-item" >User 2</router-link>
+            <router-link 
+                tag="li" 
+                to="/user/3"
+                class="list-group-item" >User 3</router-link>
+        </ul>
+    </div>
+</template>
+```
+To "extract" data from the route:
+```
+<template>
+    <div>
+        <h3>Some User Details</h3>
+        <p>User Loaded has ID: {{ $route.params.id }}</p>
+    </div>
+</template>
+```
+To add a dynamic link (in our case in `UserDetail.vue` subcomponent):
+```
+<template>
+    <div>
+        <h3>Some User Details</h3>
+        <p>User Loaded has ID: {{ $route.params.id }}</p>
+        <router-link 
+            class="btn btn-primary"
+            tag="button"
+            :to="'/user/' + $route.params.id + '/edit'">
+            Edit User</router-link>
+    </div>
+</template>
+```
