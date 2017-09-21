@@ -216,3 +216,18 @@ use this name in the component:
     </div>
 </template>
 ```
+### Query Parameters
+Add query parameters (for example example.com?locale=en&q=200):
+```
+<template>
+    <div>
+        <h3>Some User Details</h3>
+        <p>User Loaded has ID: {{ $route.params.id }}</p>
+        <router-link 
+            class="btn btn-primary"
+            tag="button"
+            :to="{ name: 'userEdit', params: { id: $route.params.id }, query: { locale: 'en', q: '200' } }">
+            Edit User</router-link>
+    </div>
+</template>
+```
