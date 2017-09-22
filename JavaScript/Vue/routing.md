@@ -231,3 +231,22 @@ Add query parameters (for example example.com?locale=en&q=200):
     </div>
 </template>
 ```
+### Redirecting
+In the bottom of your `routes.js` specify paths for redirecting:
+```
+{ path: '/redirect-me', redirect: '/user' }
+```
+Now url `example.com/redirect-me` will go to `example.com/user`.
+### Catch All
+Provide wildcard to redirect:
+```
+{ path: '*', redirect: '/'}
+```
+### Routing Animation
+Wrap up the `router-view` into `transition`:
+```
+<transition>
+  <router-view></router-view>
+</transition>
+```
+Create any [animation]() you want with this element.
