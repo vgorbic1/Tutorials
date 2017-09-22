@@ -249,4 +249,4 @@ Wrap up the `router-view` into `transition`:
   <router-view></router-view>
 </transition>
 ```
-Create any [animation]() you want with this element.
+Create any [animation](https://github.com/vgorbic1/Tutorials/tree/master/JavaScript/Vue/animation) you want with this element.
