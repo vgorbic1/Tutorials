@@ -1,7 +1,7 @@
 ## Vuex
 Vuex provides separation of concerns among components in the app. There is one file that stores application state.
 
-![vuex1]()
+![vuex1](https://github.com/vgorbic1/Tutorials/blob/master/JavaScript/Vue/images/vuex1.jpg)
 
 Put all Vuex related files in the `store` folder within `src` directory. Create a `store.js` file and put it to
 the `store` folder. Install Vuex:
