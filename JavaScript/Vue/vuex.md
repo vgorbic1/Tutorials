@@ -70,3 +70,7 @@ new Vuex.Store({
     }
 </script>
 ```
+### Actions
+![actions](https://github.com/vgorbic1/Tutorials/blob/master/JavaScript/Vue/images/vuex2.jpg)
+
+Actions allows to add asynchronous tasks to mutations.
