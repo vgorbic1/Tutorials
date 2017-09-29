@@ -20,3 +20,12 @@ The sizeof operator may be used to determine the size of a data type on any syst
 ```c
 cout << "The size of an integer is " << sizeof(int);
 ```
+
+### Casting
+Type casting allows you to perform manual data type conversion.
+```c
+int books; // Number of books to read
+int months; // Number of months spent reading
+double perMonth; // Average number of books per month
+perMonth = static_cast<double>(books) / months;
+```
