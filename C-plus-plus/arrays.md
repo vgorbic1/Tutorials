@@ -71,7 +71,6 @@ void showValue(int num)
 }
 ```
 For entire array:
-For an element of an array:
 ```
 // Function prototype
 void showValues(int [], int);
