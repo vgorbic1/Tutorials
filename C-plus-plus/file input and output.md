@@ -26,6 +26,16 @@ The following code shows an example of opening a file for output (writing).
 ofstream outputFile;
 outputFile.open("Employees.txt");
 ```
+Open file for reading and writing:
+```
+fstream dataFile;
+dataFile.open ("Customers.txt", fstream::in | fstream::out);
+```
+To append to the data, that is already in the file:
+```
+fstream dataFile;
+dataFile.open ("Customers.txt", fstream::in | fstream::app);
+```
 Often, when opening a file, you will need to specify its path as well as its name. For example,
 on a Windows system the following statement opens the file `C:\data\inventory.txt`:
 ```
