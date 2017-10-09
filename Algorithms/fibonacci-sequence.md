@@ -47,3 +47,23 @@ void fib(int n)
         cout << f[j] << " ";
 }
 ```
+Write a class that prints the Fibonacci sequence till the given element. 
+```java
+// Java
+public class Fibonacci {
+
+	public static void main(String[] args) {
+		//int n = Integer.parseInt(args[0]);
+        // or set the element to stop the sequence
+		int n = 13; 
+		for (int i = 1; i <= n; i++)
+			System.out.print(fibonacci(i) + " ");
+	}
+	
+	public static long fibonacci(int n) {
+		if (n <= 1) return n;
+		else return fibonacci(n-1) + fibonacci(n-2);
+	}
+	
+}
+```
