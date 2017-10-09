@@ -8,6 +8,7 @@ F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub> | F<sub>0</sub> = 0 and F<sub>
 Write a function that returns F<sub>n</sub> (takes a position of the element in the Fibonacci Sequesnce
 and returns the number of the sequence that corresponds to this position).
 ```c++
+// C++
 int getFibonacciElement(int n)
 {
     // Declare and array to store Fibonacci Sequence
