@@ -27,6 +27,7 @@ int getFibonacciElement(int n)
 ```
 Write a function that represents the Fibonacci Sequence of the given number of elements.
 ```c++
+// C++
 void fib(int n)
 {
     // Declare an array of n elements
