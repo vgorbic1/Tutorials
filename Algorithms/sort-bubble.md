@@ -3,7 +3,7 @@
 of the most efficient. It puts a list into increasing order by successively comparing adjacent
 elements, interchanging them if they are in the wrong order.*
 
-![bs]()
+![bs](https://github.com/vgorbic1/Tutorials/blob/master/Algorithms/images/bs.jpg)
 
 ### Pseudocode
 ```
