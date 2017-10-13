@@ -25,6 +25,7 @@ What is the binary representation of decimal 37?
 ```
 
 ## Hexadecimal Integers
+“Sexa” = Latin = Six; “Decimal” = Latin = Ten. In 1963 IBM thought “Sexadecimal” was not politically correct and took “Hexa” = Greek = Six. Since the western alphabet contains only ten digits, hexadecimal uses the letters A-F to represent the digits ten through fifteen.
 Hexadecimal numbers have base 16 instead of base 10 as decimal numbers or base 2 as binary numbers.
 
 ![binary3](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary3.png)
