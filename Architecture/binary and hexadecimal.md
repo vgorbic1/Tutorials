@@ -26,6 +26,12 @@ What is the binary representation of decimal 37?
 
 ## Hexadecimal Integers
 
-![binary2](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary3.png)
+![binary3](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary3.png)
 
+## Hexadecimal to Binary
+Each hexadecimal digit corresponds to 4 binary bits.
+
+What is the binary representation of hexadecimal 16A794?
+
+![binary4](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary4.png)
 
