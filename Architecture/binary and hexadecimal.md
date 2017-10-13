@@ -42,7 +42,7 @@ What is the binary representation of hexadecimal 16A794?
 ### Hexadecimal to Decimal
 First convert the hexadecimal number to binary and then calculate the decimal.
 
-## Decimal to Hexadecimal
+### Decimal to Hexadecimal
 ![binary5](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary5.png)
 
 **Translation Algorithm**
