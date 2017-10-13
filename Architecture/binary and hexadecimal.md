@@ -25,13 +25,35 @@ What is the binary representation of decimal 37?
 ```
 
 ## Hexadecimal Integers
+Hexadecimal numbers have base 16 instead of base 10 as decimal numbers or base 2 as binary numbers.
 
 ![binary3](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary3.png)
 
-## Hexadecimal to Binary
+### Hexadecimal to Binary
 Each hexadecimal digit corresponds to 4 binary bits.
 
 What is the binary representation of hexadecimal 16A794?
 
 ![binary4](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary4.png)
 
+```
+16A794 = 000101101010011110010100
+```
+### Hexadecimal to Decimal
+First convert the hexadecimal number to binary and then calculate the decimal.
+
+## Decimal to Hexadecimal
+![binary5](https://github.com/vgorbic1/Tutorials/blob/master/Architecture/images/binary5.png)
+
+**Translation Algorithm**
+- Repeatedly divide the decimal integer by 16.
+- If there is a remainder put it in the **END** of a line. Note, that the reminder may be more than 9. Use the corresponding
+alpha in this case. If there is no remainder put *0* in the beginning of a line.
+- If the result can be further divieded by 16 (till the division by 0, which is impossible) go to the top of the algorithm.
+
+What is the binary representation of decimal 422?
+```
+422 / 16 = 26 (6), 26 / 16 = 1 (10 or A), 1 / 16 = 0 (1)
+
+422 = 1A6
+```
