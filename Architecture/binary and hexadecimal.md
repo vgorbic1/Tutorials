@@ -51,7 +51,7 @@ First convert the hexadecimal number to binary and then calculate the decimal.
 alpha in this case. If there is no remainder put *0* in the beginning of a line.
 - If the result can be further divieded by 16 (till the division by 0, which is impossible) go to the top of the algorithm.
 
-What is the binary representation of decimal 422?
+What is the hexadecimal representation of decimal 422?
 ```
 422 / 16 = 26 (6), 26 / 16 = 1 (10 or A), 1 / 16 = 0 (1)
 
