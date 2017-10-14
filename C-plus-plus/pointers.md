@@ -69,6 +69,10 @@ cout << "Once again, here is the value in x:\n";
 cout << x << endl; // Displays the contents of x
 cout << *ptr << endl; // Displays the contents of x
 ```
+Pointers may be defined in the same statement as other variables of the same type:
+```
+int myValue, *pint = &myValue;
+```
 ### Pointers and Arrays
 Array names can be used as constant pointers, and pointers can be used
 as array names.
@@ -120,12 +124,14 @@ int main()
    return 0;
  }
  ```
-#### array[index] is equivalent to *( array + index )**
+```
+array[index] is equivalent to *( array + index )
+```
 C++ performs no bounds checking with arrays! When
 stepping through an array with a pointer, it’s possible to give the pointer an address
 outside of the array. 
 
-Array names are pointer constants . You can’t make them point to anything but the array
+Array names are pointer constants . You can't make them point to anything but the array
 they represent:
 ```
 double readings[20], totals[20];
@@ -139,6 +145,87 @@ dptr = totals; // Make dptr point to totals.
 readings = totals; // ILLEGAL! Cannot change readings.
 totals = dptr; // ILLEGAL! Cannot change totals.
 ```
+Pointers may be defined in the same statement as an array of the same type:
+```
+double readings[50], *marker = readings;
+```
+
 ### Pointer Arithmetic
-Some mathematical operations may be performed on pointers.
- 
+Not all arithmetic operations may be performed on pointers. For example, you cannot
+multiply or divide a pointer. The following operations are allowable:
+- The ++ and −− operators may be used to increment or decrement a pointer variable.
+- An integer may be added to or subtracted from a pointer variable. This may be performed
+with the + and − operators, or the += and −= operators.
+- A pointer may be subtracted from another pointer.
+### Comparing Pointers
+If one address comes before another address in memory, the first address
+is considered `less than` the second. C++’s relational operators may be
+used to compare pointer values. The capability of comparing addresses gives you another way 
+to be sure a pointer does not go beyond the boundaries of an array.
+
+Comparing two pointers is not the same as comparing the values the two
+pointers point to:
+```c++
+// The following if statement compares the addresses
+// stored in the pointer variables ptr1 and ptr2:
+if (ptr1 < ptr2)
+
+// The following statement, however, compares the values 
+// that ptr1 and ptr2 point to:
+if (*ptr1 < *ptr2)
+```
+This program uses a pointer to display the contents of an integer array:
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int set[8] = {5, 10, 15, 20, 25, 30, 35, 40};
+  int *nums = set; // Make nums point to set
+  
+  // Display the numbers in the array.
+  cout << "The numbers in set are:\n";
+  cout << *nums << " "; // Display first element
+  while (nums < &set[7])
+  {
+    // Advance nums to point to the next element.
+    nums++;
+    // Display the value pointed to by nums.
+    cout << *nums << " ";
+  }
+
+  // Display the numbers in reverse order.
+  cout << "\nThe numbers in set backward are:\n";
+  cout << *nums << " "; // Display first element
+  while (nums > set)
+  {
+    // Move backward to the previous element.
+    nums−−;
+    // Display the value pointed to by nums.
+    cout << *nums << " ";
+  }
+  return 0;
+}
+```
+### Pointers as Function Parameters
+A pointer can be used as a function parameter. It gives the function
+access to the original argument, much like a reference parameter does.
+Here is the definition of a function that uses a pointer parameter:
+```c++
+void doubleValue(int *val)
+{
+  *val *= 2;
+}
+```
+Here is an example of a call to the `doubleValue` function:
+```c++
+doubleValue(&number);
+```
+Function prototype:
+```c++
+void getNumber(int *);
+```
+This statement uses the address operator `&`to pass the address of number into the `val`
+parameter. After the function executes, the contents of number will have been multiplied by
+two.
