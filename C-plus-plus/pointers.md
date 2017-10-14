@@ -69,3 +69,76 @@ cout << "Once again, here is the value in x:\n";
 cout << x << endl; // Displays the contents of x
 cout << *ptr << endl; // Displays the contents of x
 ```
+### Pointers and Arrays
+Array names can be used as constant pointers, and pointers can be used
+as array names.
+```c++
+// This program shows an array name being dereferenced with the * operator.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  short numbers[] = {10, 20, 30, 40, 50};
+
+  cout << "The first element of the array is ";
+  cout << *numbers << endl;
+  return 0;
+}
+```
+If the expression
+`*numbers`, which is the same as `*(numbers + 0)`, retrieves the first element in the array,
+then `*(numbers + 1)` retrieves the second element.
+
+The parentheses are critical when adding values to pointers. The `*` operator
+has precedence over the `+` operator, so the expression `*number + 1` is not equivalent to
+`*(number + 1)`. `*number + 1` adds one to the contents of the first element of the array,
+while `*(number + 1)` adds one to the address in number, then dereferences it.
+```c++
+// This program processes an array using pointer notation.
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  const int SIZE = 5; // Size of the array
+  int numbers[SIZE]; // Array of integers
+  int count; // Counter variable
+  
+   // Get values to store in the array.
+   // Use pointer notation instead of subscripts.
+   cout << "Enter " << SIZE << " numbers: ";
+   for (count = 0; count < SIZE; count++)
+     cin >> *(numbers + count);
+  
+   // Display the values in the array.
+   // Use pointer notation instead of subscripts.
+   cout << "Here are the numbers you entered:\n";
+   for (count = 0; count < SIZE; count++)
+     cout << *(numbers + count)<< " ";
+   cout << endl;
+   return 0;
+ }
+ ```
+#### array[index] is equivalent to *( array + index )**
+C++ performs no bounds checking with arrays! When
+stepping through an array with a pointer, it’s possible to give the pointer an address
+outside of the array. 
+
+Array names are pointer constants . You can’t make them point to anything but the array
+they represent:
+```
+double readings[20], totals[20];
+double *dptr = nullptr;
+
+// These statements are legal:
+dptr = readings; // Make dptr point to readings.
+dptr = totals; // Make dptr point to totals.
+
+// But these are illegal:
+readings = totals; // ILLEGAL! Cannot change readings.
+totals = dptr; // ILLEGAL! Cannot change totals.
+```
+### Pointer Arithmetic
+Some mathematical operations may be performed on pointers.
+ 
