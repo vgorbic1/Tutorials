@@ -124,7 +124,8 @@ for (count = 0; count < ARRAY_SIZE; count++)
   cout << numbers[count] << " ";
 cout << endl;
 ```
-Another way, if you know the maximum possible number of the elements in the array:
+Another way, if you know the maximum possible number of the elements in the array,
+passing the ifstream value by reference:
 ```c++
 // Prototype
 int countRecords(ifstream &, int[], int);
