@@ -60,7 +60,7 @@ inputFile >> name;
 ```
 
 ### Using Loops to Process Files
-```
+```c++
 // Open a file named Sales.txt.
 outputFile.open("Sales.txt");
 // Get the sales for each day and write it to the file.
@@ -76,7 +76,7 @@ outputFile.close();
 ```
 
 ### Detecting the End of the File
-```
+```c++
 // Open the file.
  inputFile.open("ListOfNumbers.txt");
 // Read the numbers from the file and display them.
@@ -88,7 +88,7 @@ inputFile.close();
 ```
 
 ### Testing for File Open Errors
-```
+```c++
 // Open the file.
 inputFile.open("BadListOfNumbers.txt");
 // If the file successfully opened, process it.
@@ -105,7 +105,7 @@ if (inputFile){
 }
 ```
 ### Reading Data from a File into an Array
-```
+```c++
 const int ARRAY_SIZE = 10; // Array size
 int numbers[ARRAY_SIZE]; // Array with 10 elements
 int count = 0; // Loop counter variable
@@ -124,8 +124,37 @@ for (count = 0; count < ARRAY_SIZE; count++)
   cout << numbers[count] << " ";
 cout << endl;
 ```
-### Writing the Contents of an Array to a File
+Another way, if you know the maximum possible number of the elements in the array:
+```c++
+// Prototype
+int countRecords(ifstream &, int[], int);
+
+int main()
+{
+ // Create array of maximum size of records:
+    const int SIZE = 100;
+    int scores[SIZE];
+
+    ifstream infile("data.txt");
+    // Populate the array with records
+    createArray(infile, scores, SIZE);
+    infile.close();
+    ...
+}
+void createArray(ifstream & file, int scores[], int size)
+{
+    int score;
+    int num = 0;
+
+    while (file >> score && num < size)
+    {
+        scores[num] = score;
+        num++;
+    }
+}
 ```
+### Writing the Contents of an Array to a File
+```c++
 const int ARRAY_SIZE = 10; // Array size
 int numbers[ARRAY_SIZE]; // Array with 10 elements
 int count; // Loop counter variable
