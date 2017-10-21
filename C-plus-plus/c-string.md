@@ -93,6 +93,22 @@ if (sizeof(string1) >= (strlen(string1) + strlen(string2) + 1))
 else
   cout << "String1 is not large enough for both strings.\n";
 ```
+- **strncat** works like strcat , except it takes a third argument specifying the
+maximum number of characters from the second string to append to the first:
+```c++
+int maxChars;
+const int SIZE_1 = 17;
+const int SIZE_2 = 18;
+
+char string1[SIZE_1] = "Welcome ";
+char string2[SIZE_2] = "to North Carolina";
+
+maxChars = sizeof(string1) - (strlen(string1) + 1);
+strncat(string1, string2, maxChars);
+cout << string1 << endl;
+// output:
+// Welcome to North
+```
 - **strcpy** copyes one string to another:
 ```
 const int SIZE = 13;
@@ -101,3 +117,80 @@ strcpy(name, "Albert Einstein");
 ```
 The array specified by the first argument will be overflowed if it isn’t large enough to hold
 the string specified by the second argument.
+- **strncpy** allows you to copy a specified number of characters from a string to
+a destination:
+```c++
+int maxChars;
+const int SIZE = 11;
+char string1[SIZE];
+char string2[] = "I love C++ programming!";
+
+maxChars = sizeof(string1) − 1;
+strncpy(string1, string2, maxChars);
+// Put the null terminator at the end.
+string1[maxChars] = '\0';
+cout << string1 << endl;
+```
+- **strstr** function searches for a string inside of a string.
+```c++
+char arr[] = "Four score and seven years ago";
+char *strPtr = nullptr;
+cout << arr << endl;
+strPtr = strstr(arr, "seven"); // search for "seven"
+cout << strPtr << endl;
+// output:
+// Four score and seven years ago
+// seven years ago
+```
+- **strcmp** takes two C-strings as arguments and returns an integer that indicates how
+the two strings compare to each other:
+```c++
+if (strcmp(string1, string2) == 0)
+  cout << "The strings are equal.\n";
+else
+  cout << "The strings are not equal.\n";
+```
+- The result is *zero* if the two strings are equal on a character-by-character basis
+- The result is *negative* if string1 comes before string2 in alphabetical order
+- The result is *positive* if string1 comes after string2 in alphabetical order
+
+The strcmp function is case sensitive when it compares strings.
+
+Some programmers prefer to use the logical NOT operator with strcmp when testing strings
+for equality. Because 0 is considered logically false, the ! operator converts that value to true:
+```
+if (strcmp(firstString, secondString) == 0) 
+// same as
+if (!strcmp(firstString, secondString))
+```
+### Conversion Functions
+The C++ library provides functions for converting a C-string
+representation of a number to a numeric data type and vice versa.
+- **atoi** converts a string to an integer. It accepts a C-string argument and returns
+the converted integer value:
+```c++
+int num;
+num = atoi("1000");
+```
+- **atol** works just like *atoi* , except the return value is a long integer.
+```c++
+long bigNum;
+bigNum = atol("500000");
+```
+- **atof** accepts a C-string argument and converts it to a double. The numeric
+double value is returned:
+```c++
+double num;
+num = atof("12.67");
+```
+Although the atof function returns a double, you can still use it to convert a C-string to
+a float:
+```c++
+float x;
+x = atof("3.4");
+```
+- **to_string** converts a numeric value (int, double e.t.c) to a string object.
+```c++
+int number = 99;
+string output = to_string(number);
+```
