@@ -21,7 +21,8 @@ mechanism, hosting, and analytics.
 ```
 $ npm install -g vue-cli
 ```
-- Go to the directory where you want to put your project and initialize a project with webpack:
+- Go to the directory where you want to put your project and initialize a project with webpack.
+You may use other templates. [more info](https://github.com/vuejs/vue-cli)
 ```
 vue inint webpack yourprojectname
 ```
