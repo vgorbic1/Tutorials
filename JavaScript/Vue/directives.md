@@ -126,7 +126,8 @@ Use a shortcut for this directive:
 ```
 
 ### v-model
-`v-model` directive allows for two-way binding:
+`v-model` directive allows for two-way binding. The v-model directive can only be used with the input, select, and textarea 
+elements.
 ```html
 <input type="text" v-model="name">
 <p>{{ name }}</p>
@@ -139,7 +140,16 @@ new Vue ({
   }
   ...
 ```
+There are three modifiers that can be used with this directive:
 
+- .lazy: This will only update the data on a change event (try it with our input and you'll see that changes in the input will only affect other parts where the name is used when the Enter button is pressed and not on each key press)
+- .number: This will cast your input to number
+- .trim: This will trim the user's input
+
+It is also possible to chain the modifiers:
+```html
+<input id="name" type="text" v-model.lazy.trim="name">
+```
 ### Custom Directive
 #### Global Custom Directives
 One way is to register the directive globally (in main.js file). To make a custom directive use the following hooks:
