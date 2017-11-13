@@ -40,6 +40,17 @@ new Vue({
   }
 });
 ```
+### v-text
+`v-text` directive is used to display a string:
+```html
+<p v-text="'a string of text'"></p>
+```
+Actually, it is pretty much the same as string interpolation:
+```html
+<p>{{ 'a string of text' }}</p>
+```
+You can use any java code inside!
+
 ### v-html
 `v-html` allows to pass HTML code into the HTML attribute without escaping HTML chalarcters:
 ```html
@@ -127,12 +138,6 @@ new Vue ({
     name: ''
   }
   ...
-```
-
-### v-text
-`v-text` directive is used to display a string:
-```html
-<p v-text="'a string of text'"></p>
 ```
 
 ### Custom Directive
