@@ -91,7 +91,7 @@ data() {
 ...
 </script>
 ```
-## Checkbox
+### Checkbox
 ```html
 <template>
 ...
@@ -129,7 +129,7 @@ data() {
 ...
 </script>
 ```
-## Radio
+### Radio
 ```html
 <template>
 ...
