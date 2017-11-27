@@ -150,3 +150,12 @@ simply inserts the necessary #include directive into his or her program, compile
 links it with your class’s object file. This prevents the other programmer, who might not
 know all the details of your code, from making changes that will introduce bugs.
 
+![spec](https://github.com/vgorbic1/Tutorials/blob/master/C-plus-plus/images/spec.jpg)
+
+Separating a class into specification and implementation files also makes things easier when
+the class’s member functions must be modified. It is only necessary to modify the implementation
+file and recompile it to a new object file. Programs that use the class don’t have
+to be completely recompiled, just linked with the new object file.
+
+*Taken from "C++ From Control Structures through Objects" by Tony Gaddis.*
+
