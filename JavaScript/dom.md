@@ -9,9 +9,11 @@ document.getElementById('email').innerHTML;
 
 To find an element on the page use the following methods:
 ```javascript
-document.getElementById();
-document.getElementsByTagName(); // returns an array of tags found. The
-document.getElementsByClassName(); // returns an array of elements of this class
+document.getElementById(); // For a single element. Returns element by its id
+document.querySelector(); // For a single element. Returns the element selected as a parameter.
+document.getElementsByTagName(); // returns an HTML collection of tags found. 
+document.getElementsByClassName(); // returns an array of elements of this class.
+document.querySelectorAll(); // returns an HTML collection of elements selected as a parameter.
 document.forms[]; // name of the form goes inside of []
 document.anchors[]; // name of the anchor goes inside of []
 document.images[]; // name of the image goes inside of []
