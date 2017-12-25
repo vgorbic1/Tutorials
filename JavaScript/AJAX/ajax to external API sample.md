@@ -1,5 +1,5 @@
 ## AJAX Request to External API (working sample)
-This is a sample program that fetches random jokes from external API.
+This is a sample application that fetches random jokes from external API.
 ```html
 <!DOCTYPE html>
 <html lang="en">
