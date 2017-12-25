@@ -1,6 +1,6 @@
 ## Prototypal Inheritance
 Create a parent class:
-```javascrit
+```javascript
 // Person constructor
 function Person(firstName, lastName) {
   this.firstName = firstName;
