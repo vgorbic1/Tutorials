@@ -1,4 +1,4 @@
-## AJAX Request to External API (Working Sample)
+## AJAX Request to External API (working sample)
 This is a sample program that fetches random jokes from external API.
 ```html
 <!DOCTYPE html>
