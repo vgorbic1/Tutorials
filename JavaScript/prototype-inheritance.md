@@ -27,7 +27,7 @@ function Customer(firstName, lastName, phone, membership) {
   this.membership = membership;
 }
 ```
-To inherit the Person (parent) prototype methods:
+Inherit Person (parent) prototype methods:
 ```javascript
 Customer.prototype = Object.create(Person.prototype);
 
