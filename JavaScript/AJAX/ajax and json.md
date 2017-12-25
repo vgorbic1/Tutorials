@@ -1,4 +1,5 @@
-## A Sample Code to Fetch Data from JSON File
+## AJAX and JSON
+A Sample Code to Fetch Data from JSON File.
 ```html
 <!DOCTYPE html>
 <html lang="en">
