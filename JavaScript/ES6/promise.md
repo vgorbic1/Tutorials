@@ -43,7 +43,7 @@ function createPost(post) {
     setTimeout(function() {
       posts.push(post);
 
-      const error = false;
+      const error = false; // or true if there was an error on server
 
       if(!error) {
         resolve();
