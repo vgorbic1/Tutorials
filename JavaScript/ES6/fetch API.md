@@ -91,7 +91,7 @@ test.txt:
 ```
 This is a sample text file
 ```
-posts.json
+posts.json:
 ```json
 [
   {
