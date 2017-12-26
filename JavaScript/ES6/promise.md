@@ -1,6 +1,10 @@
 ## Promoise
 The *Promise* object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
 
+### Example
+1. You need to create a post, updating a database on server (here is emulated with a *setTimeout()* function).
+2. When (and only when) the post is saved on server, get the list of all posts.
+
 No promise (asynchronows call with a callback function):
 ```javascript
 const posts = [
