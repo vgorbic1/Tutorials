@@ -34,3 +34,27 @@ UIController.ChangeText(); // cannot do this. Function is private
 
 ### Revealing Module Pattern
 ```javascript
+const ItemController = (function(){
+  
+  let data = [];
+  
+  function add(item) {
+    data.push(item);
+    console.log('Item Added...');
+  }
+  
+  function get(id) {
+    return data.find(item => {
+      return item.id === id;
+    });
+  }
+  
+  return {
+    add: add,
+    get: get
+  }
+})();
+
+ItemController.add({id: 1, name: 'pen'});
+console.log(ItemController.get(2));
+```
