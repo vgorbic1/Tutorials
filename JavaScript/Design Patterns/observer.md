@@ -92,7 +92,7 @@ const getCurSeconds = function() {
 
 ### Observer pattern using ES6 (Classes)
 ```javascript
-\\ app.js
+// app.js
 class EventObserver {
   constructor() {
     this.observers = [];
