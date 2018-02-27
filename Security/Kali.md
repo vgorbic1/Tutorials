@@ -11,7 +11,9 @@
 > dmitry -s site.com
 ```
 #### Use Netdiscover to find IPs and open ports on LAN
-
+```
+> netdiscover
+```
 #### Use Nmap
 ```
 > nmap -v -A site.com
