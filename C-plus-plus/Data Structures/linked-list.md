@@ -14,6 +14,8 @@ in the list. The link component of the **last** node is assigned to be NULL (poi
 
 ![linked list](https://github.com/vgorbic1/Tutorials/blob/master/C-plus-plus/images/ll1.jpg)
 
+![linked list](https://github.com/vgorbic1/Tutorials/blob/master/C-plus-plus/images/ll2.jpg)
+
 Because each node of a linked list has two components, we need to declare each node as a *class*
 or *struct*.  The link component of each node is a pointer, which points to the node type itself:
 ```c
