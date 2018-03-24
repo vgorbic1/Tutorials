@@ -1,6 +1,9 @@
 ## Doubly Linked List
 A doubly linked list is a linked list in which every node has a next pointer and a back pointer.  The next 
 pointer contains the address of the next node, and the back pointer contains the address of the previous node.
+
+![doubly linked list](https://github.com/vgorbic1/Tutorials/blob/master/C-plus-plus/images/ll5.jpg)
+
 ### Definition of the node
 ```c
 template<class Type>
