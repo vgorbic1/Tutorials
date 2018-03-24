@@ -73,6 +73,9 @@ q = p->link;
 p->link = q->link;
 delete q;
 ```
+
+![linked list](https://github.com/vgorbic1/Tutorials/blob/master/C-plus-plus/images/ll4.jpg)
+
 ### Building a Linked List
 In the case that the list is not sorted, there are two ways to build the linked list: the forward manner 
 (a new node is always inserted at the end of the linked list) and the backward manner (a new node is 
