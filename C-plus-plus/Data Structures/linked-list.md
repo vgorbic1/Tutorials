@@ -63,6 +63,8 @@ to insert a new node between *p* and *q*:
 newNode->link = q;
 p->link = newNode;
 ```
+![linked list](https://github.com/vgorbic1/Tutorials/blob/master/C-plus-plus/images/ll3.jpg)
+
 ### Delete Item
 Suppose that the node with *info 34* is to be deleted from the list.  The following statements delete the 
 node from the list and deallocate the memory occupied by this node:
