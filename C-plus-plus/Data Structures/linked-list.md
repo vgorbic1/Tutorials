@@ -11,7 +11,7 @@ called the **link**, of the next node in the list.
 
 There must be a pointer, called the **head** or **first**, to store the address of the first node 
 in the list. The link component of the **last** node is assigned to be NULL (points to nothing).
-
+![linked list](https://github.com/vgorbic1/Tutorials/blob/master/C-plus-plus/images/ll1.jpg)
 Because each node of a linked list has two components, we need to declare each node as a *class*
 or *struct*.  The link component of each node is a pointer, which points to the node type itself:
 ```c
