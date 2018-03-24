@@ -118,3 +118,4 @@ nodeType * buildListBackward()
 	return first;
 }
 ```
+[LOOK AT LINKED LIST AS AN ADT](https://github.com/vgorbic1/Tutorials/edit/master/C-plus-plus/linked-list-adt.md) 
