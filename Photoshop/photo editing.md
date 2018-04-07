@@ -131,3 +131,116 @@ Add a Levels Adjustment Layer and change its blend mode to Multiply. Lower the o
 1. Switch to Channels panel and load Luminosity mask by clicking on RGB layer holding ctrl key.
 2. Copy the selection to a new layer (Layer > New > Layer via Copy).  Change its blend mode to Overlay or Soft Light. Duplicate the layer if needed and group top layers together.
 3. Add a layer mask to the group. Paint with black on the layer mask to reveal the original image.
+
+### Local Problems
+
+#### Enhancing
+
+*Non-destructive Dodge and Burn*
+1. Add a new layer, name it Dodge and Burn, choose Overlay Blend Mode and select Fill with Overlay-neutral color (50% gray).
+2. Paint over the areas that need to be lightened with white brush and opacity set to 10-20%.
+3. Paint over the areas that need to be darker with black brush with a low opacity.
+4. If made mistake, paint over the areas with a brush which RGB colors set to 128. 
+
+*Smooth and Soften Facial Skin*
+
+1. Duplicate the background layer and change the blend mode to Overlay to increase the contrast. 
+2. Apply the High Pass Filter to the layer and adjust the Radius from 6 to 10.
+3. Invert the layer (Image > Adjustments > Invert) and lower the opacity to 60%.
+4. Add a layer mask. Brush with black over the areas that are not a facial skin (lips, eyes, nostrils, and the background).
+
+*Eyes Expression*
+
+1. Create a new layer “shadows”. (ctrl+shift+n)
+2. Select both eyes wity the Lasso tool.
+3. Paint with soft black brush along the top edge of both eyes to add a shadow. Change the blend mode to Multiply and lower opacity to 40% Deselect the eyes selection.
+4. Select the Iris in both eyes on a background layer. Feather the selection to about 5px. (Select > Feather) Copy the iris to a new layer (ctrl+alt+J) and rename it to “dodge”. 
+5. Apply the Unsharp Mask Filter to the “dodge” layer with the Amount 500%, radius 2pix and Threshold 4 levels. Lower the opacity of the “dodge” layer to 50%.
+6.Add a highlight to the lower Right of each Iris with the Dodge tool. Range should be set to Highlights and Exposure to 50%. Use a small soft brush.
+7. Add a new blank layer above the “dodge” layer and name it “left highlight”. Paint with white soft brush over the left side of each iris. Change the blend mode to Overlay.
+8. Add a new blank layer above the “left highlight” and name it “makeup”. Using eyedropper tool sample the area in the shadows around the eyes that is darker than the person’s natural skin tone. Not black! With the brush of that color, paint around and above the eyes. Apply the Gaussian Blur Filter to the “makeup” layer with the radius around 10px. Change the blend mode of the “makeup” layer to Soft Light.
+9. Clean up any rough spots of the makeup with the Eraser tool set to soft brush.
+ 
+*Eyes Lightening and Brightening*
+
+1. Add a Levels Adjustment Layer and change the blend mode to Screen.
+2. Fill the layer mask with black and paint with white inside the eyes. Lower the opacity of the layer to 60-70%
+
+*Colors of the Sky*
+1. Add a new blank layer and reset the foreground and background colors. (D) 
+2. Select a Foreground (black) to Transparent Gradient tool and draw a short line in the middle of the picture holding shift key.
+3. Change the Blend Mode of the layer to Overlay to increase the contrast of the black area.
+4. Add a layer mask to the layer and paint over the areas that are not the sky with black.
+
+*Whiten and Brighten Teeth*
+
+1. Select the area around the teeth with the lasso tool. Don’t need to be precise. 
+2. Add a Hue/Saturation Adjustment Layer and select Yellows from the Edit list. Drag the Saturation slider all the way to the left to remove yellow from the teeth. Go back to the Edit list, select Master and increase Lightness a bit.
+3. Fill the Hue/Saturation Adjustment Layer mask with black. Paint over the teeth with the soft white brush. Decrease opacity of the brush if needed. 
+4. Lower the opacity of the Hue/Saturation Adjustment Layer if needed. 
+
+#### Removing
+
+*Wrinkles*
+
+1. Add a new blank layer.
+2. Select the Spot Healing Brush and change the Sample Mode to All Layers and uncheck Aligned.
+3. Click on an area of good texture to sample it and paint over the wrinkle to heal it. Lower the opacity of the new layer.
+
+*Beard Stubble*
+
+1. Duplicate the Background layer.
+2. Apply Dust & Scratches Filter to blur away the stubble (Filter > Noise > Dust & Scratches) increasing the Radius value.
+3. Create a pattern from the image. (Edit > Define Pattern)
+4. Undo the Dust & Scratches filter. (Ctrl+Z)
+5. Select the Healing Brush and set it to Use the Pattern. Select Aligned and Sample All Layers.
+6. Add a new blank layer (Ctrl+Shift+N) and low the opacity to 50%. 
+7. Paint over the stubbles with the healing brush.
+8. Use the Blend If sliders (Layer Styles > Blending Options > so the healing layer only affects the dark stubble. Move the white slider of Underlying Layer to the center. Hold down alt and drag the white slider of Underlying Layer towards the right splitting it in half for a smooth transition.
+
+#### Reshaping
+
+*Nose*
+
+1. Draw a rough selection around and outside the nose with lasso tool.
+2. Feather the selection (from Select menu) to around 20px. 
+3. Copy the selection to a new layer (Ctrl+J)
+4. Resize the nose with Free Transform and Perspective tools.
+5. Add a new layer and clean up the area around the nose with Healing Brush. Select the Sample all Layers option.
+
+#### Changing
+
+*Hair Color*
+
+1. Add Hue/Saturation Adjustment Layer and select colorize option. Using Hue scale, select a new color for the hair.
+2. Fill the Adjustment Layer mask with black.
+3. Using Brush tool, paint with white over the hair. Reduce the Brush opacity for precision. 
+4. Change the Blending mode to Color or Soft Light and lower the opacity of the layer.
+5. Use Hue/Saturation Adjustment Layer’s Hue scale to adjust the color.
+
+*Matching Colors of Objects between photos*
+
+1. Duplicate background layer.
+2. Select the object that needs the color change with lasso tool.
+3. Select the large area inside the object that you take color from.
+4. Use Match Color command on the original image. (Image > Adjustments > Match Color)
+5. Select your second image in Source list and apply the command.
+6. Add Levels Adjustment Layer and drag black and right markers appropriately. Change the Levels Layer Blend Mode to Luminosity and deselect all selections.  
+
+*Colors Replacement*
+
+1. Select the Color Replacement tool from the tool menu and choose the new color or use the Eyedropper tool to choose one that is already on the image. Paint over the object to replace the color. 
+2. Adjust Tolerance to 50% to allow the Color Replacement tool to affect a wider range of colors.
+3. Use different blend mode to adjust the color.
+4. Use Contiguous Limit to change the color of pixels in the area the target cursor is touching.
+5. To smooth out the edges around the areas select Anti-alias.
+
+*Replacing Sky*
+
+1. Select and copy an original photo. Paste the original photo into the document creating a layer above the Background layer with the sky. Duplicate that new layer.
+2. Turn the top layer off. On the middle layer select all the area below the sky with a polygonal lasso tool and add a layer mask.
+3. Select and turn on the top layer. Open the blending options (double-click on the layer’s preview thumbnail) and select Blue for the Blend If option.
+4. Drag the top right slider towards the left until most of the original sky is gone. Adjust the transition between the photos to remove fringing by splitting the white slider and moving apart until the fringing around the objects is gone.
+5. Select the eyes (only iris, deselect the pupils) with the lasso tool.
+6. Add a Hue/Saturation Adjustment Layer and select Colorize option. Adjust Hue, Saturation or Lightness.
+7. Select the Hue/Saturation Adjustment Layer Mask and with black brush clean up the selection. Decrease the opacity of the brush  if needed.
