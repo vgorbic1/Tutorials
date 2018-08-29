@@ -31,5 +31,7 @@ To modify your theme’s CSS, you can add any changes to your child theme’s CS
 #### Editing The Functions File
 Functions.php is where a theme’s main functions are typically stored. A parent theme’s functions are always loaded with the child theme, but if you need to add more custom functions to your theme then you can do so by creating a new functions.php file within your child theme folder. The new functions will be loaded right before the parent theme’s functions. 
 
+[How to override functions](https://code.tutsplus.com/tutorials/a-guide-to-overriding-parent-theme-functions-in-your-child-theme--cms-22623)
+
 #### Editing Other Template Files
 Unlike editing the functions.php, where the original theme’s functions are imported automatically, PHP files are edited by replacing the file entirely with a new one. The theme’s original file is ignored and the new one is used instead. The first thing we need to do is replicate the old file before we start to modify it.
