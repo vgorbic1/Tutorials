@@ -60,3 +60,4 @@ if (password_verify('123MyPass', $pass)) {
 ```
 
 [PHP User Authentication System](https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php)
+[UDEMY: Complete Login and Registration System with PHP & MYSQL](https://www.udemy.com/user-authentication-code-a-simple-login-system-with-php/)
