@@ -58,3 +58,5 @@ if (password_verify('123MyPass', $pass)) {
     echo 'Invalid password.';
 }
 ```
+
+[PHP User Authentication System](https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php)
