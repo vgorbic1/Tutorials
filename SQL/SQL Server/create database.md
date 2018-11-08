@@ -19,4 +19,4 @@ FROM sys.databases
 WHERE name = N'MyOptionsTest';  
 GO 
 ```
-**GO signals the end of a batch of Transact-SQL statements to the SQL Server utilities.**
+*GO signals the end of a batch of Transact-SQL statements to the SQL Server utilities.*
