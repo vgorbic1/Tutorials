@@ -46,3 +46,15 @@ This can allow you to upgrade your users in place without inconveniencing
 them with a mass password reset. After a set period of time, say
 30 days, you can reset the passwords of users who are still failing
 ```password_needs_rehash()``` to migrate inactive users and ensure security.
+
+
+#### Example
+```php
+$pass = password_hash('123MyPass', PASSWORD_DEFAULT);
+
+if (password_verify('123MyPass', $pass)) {
+    echo 'Password is valid!';
+} else {
+    echo 'Invalid password.';
+}
+```
