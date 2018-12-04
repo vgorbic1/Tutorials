@@ -10,9 +10,9 @@ Make sure that [PECL](https://pecl.php.net/) is installed on your machine.
 
 Download the following files from [Oracle website](https://www.oracle.com/technetwork/topics/intel-macsoft-096467.html) (you need to create an account and accept terms):
 ```
-instantclient-basic-macos.x64-11.2.0.3.0.zip
-instantclient-sqlplus-macos.x64-11.2.0.3.0.zip
-instantclient-sdk-macos.x64-11.2.0.3.0.zip
+instantclient-basic-macos.x64-11.2.0.4.0.zip
+instantclient-sqlplus-macos.x64-11.2.0.4.0.zip
+instantclient-sdk-macos.x64-11.2.0.4.0.zip
 ```
 
 Unzip all theses files into a the directory 
