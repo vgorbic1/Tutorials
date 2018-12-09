@@ -42,7 +42,9 @@ Variable variables are a very powerful tool and should be used with extreme care
 #### Inspecting content of variables
 - ```echo```.
 - ```print_r()```. It provides a little more info than ```echo```
+- ```var_export```. It displays in readable format
 - ```var_dump()```. It also displays the type and the length.
+- ```echo '<pre>' . var_dump() . '</pre'>```. Makes the code more human readable
 
 #### Determine if a variable exists
 ```php
