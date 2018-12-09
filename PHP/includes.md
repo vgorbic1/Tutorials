@@ -15,3 +15,5 @@ Another way is to find the path to the main index.php file:
 ?>
 ```
 Now ```$root``` value is the absolute path to the index.php and the root of the application. 
+
+[More on paths here](https://phpdelusions.net/articles/paths).
