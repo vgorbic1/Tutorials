@@ -30,7 +30,7 @@ if (password_verify($_POST['password'], $hashed)) {
 }
 ```
 
-####Forward Compatibility
+#### Forward Compatibility
 Automatically update your users’ passwords when new algorithms become available.
 ```php
 // Assume $hashed contains the originally stored password
