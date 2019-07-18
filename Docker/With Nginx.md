@@ -16,3 +16,9 @@ Create a simple index.html file with some test text. Run the container.
 Go to localhost with your browser to see the content of your index.html file.
 
 You also can change the port to go from host machine port 1234 to 80 of the container using `-p 1234:80`
+
+### Execute commands within container
+Make sure your container is running (`docker ps`)
+```
+docker exec -it my_nginx /bin/bash
+```
