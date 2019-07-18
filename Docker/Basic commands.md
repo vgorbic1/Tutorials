@@ -20,7 +20,10 @@ docker container ls
 ```
 docker container ls -a
 ```
-
+or just
+```
+docker ps
+```
 ### Run Docker Image
 ```
 docker run <image>
