@@ -4,4 +4,4 @@ https://www.codeofaninja.com/2018/09/rest-api-authentication-example-php-jwt-tut
 ### Database Setup
 On the api_db database, create a new table called users.
 Put the following fields on the users table:
-![Database Fields](/db.jpg)
+![Database Fields](db.jpg)
