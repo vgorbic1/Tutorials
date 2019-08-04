@@ -1,5 +1,5 @@
 ## Spread Operator
-Spreads an array or object into parameters to be used in functions
+Spreads an array or object into variables
 ### Object Spread Operator
 ```js
 const animals = {
