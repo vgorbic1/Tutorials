@@ -10,7 +10,7 @@ Scope Hierarchy:
 - ----Block Scope (const and let)
 
 ### The Module Pattern
-This is how modules were written before ES Modules. This option uses IIFEs to create an internal scope:
+This is how modules were written before ES Modules. This option uses IIFEs to create an internal scope. Thus, *Function scope* mimics *Block Scope*.
 ```js
 (function() {
   // variables are not in Global Scope anymore:
@@ -83,3 +83,6 @@ console.log(ron);
 // Global is used in modal:
 console.log(fightModule.ron);
 ```
+But there are still two cons to this approach:
+- Global Scope is still poluted and namespace clashes may occure.
+- The order of scripts (if in several JS files) should allow for correct executing of entire code.
