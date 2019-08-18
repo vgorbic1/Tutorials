@@ -32,7 +32,7 @@ Now, just name the IFFE and have access to the inner *fight()* function:
 var ron = 'Ron';
 var hagrid = 'Hagrid';
 
-var figthModule = (function() {
+var fightModule = (function() {
   // variables are not in Global Scope:
   var harry = 'Potter'
   var voldemort = 'he who must not be named'
@@ -57,7 +57,7 @@ var ron = 'Ron';
 var hagrid = 'Hagrid';
 
 // Use global as a parameter
-var figthModule = (function(ron) {
+var fightModule = (function(ron) {
   // variables are not in Global Scope:
   var harry = 'Potter'
   var voldemort = 'he who must not be named'
