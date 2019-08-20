@@ -86,3 +86,46 @@ console.log(fightModule.ron);
 But there are still two cons to this approach:
 - Global Scope is still poluted and namespace clashes may occure.
 - The order of scripts (if in several JS files) should allow for correct executing of entire code.
+### CommonJS and AMD
+CommonJS and AMD (Asyncronous Module Definition) provides no interference with *Gobal Scope*. CommonJS was created for use on servers (NodeJS). To bundle all modules (or separate files) in one, Browserify should be used. It is a command line tool that producess a bundle file from all dependent files or scripts, combining all modules.
+```js
+// --script.js--
+var module1 = require(module1)
+var module2 = require(module2)
+
+function fight() {
+ ...
+}
+
+module.exports = {
+  fight: fight
+}
+```
+```
+> browserify script.js > bundel.js
+```
+AMD was designed specifically for browsers. It loads scripts or modules asyncronously.
+```js
+define(['module1', 'module2'],
+  function(module1Import, module2Import) {
+    var module1 = module1Import
+    var module2 = module2Import
+    
+    function dance() {
+      ...
+    }
+    
+    return {
+      dance: dance
+    }
+  }
+);
+```
+### ES6 Modules
+ES 6 Modules is a native JavaScript Solution to module implementation.
+```js
+import module1 from 'module1'
+import module2 from 'module2'
+
+export function jump() {
+  
