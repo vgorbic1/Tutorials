@@ -128,4 +128,56 @@ import module1 from 'module1'
 import module2 from 'module2'
 
 export function jump() {
-  
+  ...
+}
+```
+The IIFE version above will look like this:
+#### With Named Import 
+(you need to write the function names within curly brackets)
+```js
+// --script.js--
+// not exposed to other scripts:
+const harry = 'Potter'
+const  voldemort = 'he who must not be named'
+
+// private function:
+function jump() {
+ ...
+}
+
+// public function:
+export function dance() {
+ ...
+}
+
+// public function:
+export function fight(opponent1, opponenet2) {
+  const attack1 = Math.floor(Math.random() * opponent1.length);
+  const attack2 = Math.floor(Math.random() * opponent2.length);
+  return attack1 > attack2 ? `${opponent1} wins` : `${opponent2} wins`;
+}
+```
+another script (file):
+```html
+<script>
+  import { dance, fight } from 'script'
+  console.log(fight('ron', 'hedwig'))
+</script>
+```
+#### With Default Import**
+```js
+...
+// public function:
+export default function fight(opponent1, opponenet2) {
+  const attack1 = Math.floor(Math.random() * opponent1.length);
+  const attack2 = Math.floor(Math.random() * opponent2.length);
+  return attack1 > attack2 ? `${opponent1} wins` : `${opponent2} wins`;
+}
+```
+another script (file):
+```html
+<script>
+  import fight from 'script'
+  console.log(fight('ron', 'hedwig'))
+</script>
+```
