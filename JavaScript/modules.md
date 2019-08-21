@@ -159,9 +159,9 @@ export function fight(opponent1, opponenet2) {
 ```
 another script (file):
 ```html
-<script type="module" src="script.js"></script>
+<script type="module" src="./script.js"></script>
 <script type="module">
-  import { dance, fight } from 'script'
+  import { dance, fight } from './script.js'
   console.log(fight('ron', 'hedwig'))
 </script>
 ```
@@ -177,9 +177,9 @@ export default function fight(opponent1, opponenet2) {
 ```
 another script (file):
 ```html
-<script type="module" src="script.js"></script>
+<script type="module" src="./script.js"></script>
 <script type="module">
-  import fight from 'script'
+  import fight from './script.js'
   console.log(fight('ron', 'hedwig'))
 </script>
 ```
@@ -205,10 +205,10 @@ export default function fight(opponent1, opponenet2) {
 ```
 another script (file):
 ```html
-<script type="module" src="script.js"></script>
+<script type="module" src="./script.js"></script>
 <script type="module">
-  import fight, { jump, dance} from 'script'
+  import fight, { jump, dance} from './script.js'
   console.log(fight('ron', 'hedwig'))
 </script>
 ```
-The files should be served from server!
+The files should be served from server. (for testing use npm live-server for example)
