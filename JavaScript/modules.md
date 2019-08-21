@@ -165,7 +165,7 @@ another script (file):
   console.log(fight('ron', 'hedwig'))
 </script>
 ```
-#### With Default Import**
+#### With Default Import
 ```js
 ...
 // public function:
@@ -183,7 +183,7 @@ another script (file):
   console.log(fight('ron', 'hedwig'))
 </script>
 ```
-#### With Mixed Import**
+#### With Mixed Import
 ```js
 ...
 // public function:
