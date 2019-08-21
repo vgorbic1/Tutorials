@@ -159,7 +159,8 @@ export function fight(opponent1, opponenet2) {
 ```
 another script (file):
 ```html
-<script>
+<script type="module" src="script.js"></script>
+<script type="module">
   import { dance, fight } from 'script'
   console.log(fight('ron', 'hedwig'))
 </script>
@@ -176,8 +177,38 @@ export default function fight(opponent1, opponenet2) {
 ```
 another script (file):
 ```html
-<script>
+<script type="module" src="script.js"></script>
+<script type="module">
   import fight from 'script'
   console.log(fight('ron', 'hedwig'))
 </script>
 ```
+#### With Mixed Import**
+```js
+...
+// public function:
+export function jump() {
+ ...
+}
+
+// public function:
+export function dance() {
+ ...
+}
+
+// public function:
+export default function fight(opponent1, opponenet2) {
+  const attack1 = Math.floor(Math.random() * opponent1.length);
+  const attack2 = Math.floor(Math.random() * opponent2.length);
+  return attack1 > attack2 ? `${opponent1} wins` : `${opponent2} wins`;
+}
+```
+another script (file):
+```html
+<script type="module" src="script.js"></script>
+<script type="module">
+  import fight, { jump, dance} from 'script'
+  console.log(fight('ron', 'hedwig'))
+</script>
+```
+The files should be served from server!
