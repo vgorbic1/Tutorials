@@ -14,9 +14,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/includes/filename.php;
 ```
 Another way is to find the path to the main index.php file:
 ```php
-<?php // index.php in the root of applicaton
-  $root = realpath(dirname(__FILE__));
-?>
+// index.php in the root of applicaton
+$root = realpath(dirname(__FILE__));
 ```
 Now ```$root``` value is the absolute path to the index.php and the root of the application. 
 
