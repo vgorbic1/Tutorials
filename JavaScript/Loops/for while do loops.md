@@ -48,7 +48,7 @@ if (; i<len; i++) {
 ### break statement
 Use break statement to jump from the loop. Usually used with a conditional statement:
 ```javascript
-for (i=0; i<10; i++) {
+for (i = 0; i < 10; i++) {
   if (i == 3) break;
   document.write("Not three");
 }
@@ -57,7 +57,7 @@ for (i=0; i<10; i++) {
 ### continue statement
 Continue statement breaks one iteration in the loop and continues with the next one. In other words, it skips one iteration.
 ```javascript
-for (i=0; i<10; i++) {
+for (i = 0; i < 10; i++) {
   if (i == 3) continue;
   document.write("Never three");
 }
