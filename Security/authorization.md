@@ -37,3 +37,18 @@ Facebook first; however, this assurance is not written anywhere: considering how
 are using it for authentication purposes we can assume that Facebook won’t likely change their 
 actual behaviour, yet we have no guarantees about it.
 
+### Proprietary vs Third-Party
+Theoretically speaking, it’s possible to entirely delegate the authentication and/or authorization tasks to existing external, third-party providers such as those we mentioned before: there are a lot of web and mobile applications that proudly follow this route nowadays. There are a number of undeniable advantages in using such an approach, including the following:
+- No user-specific DB tables/data models, just some provider-based identifiers to use here and there as reference keys.
+- Immediate registration, since there’s no need to fill in a registration form and wait for a confirmation e-mail: no username, no password. This will be appreciated by most users and probably increase our conversion rates as well.
+- Little or no privacy issues, as there’s no personal or sensitive data on the application server.
+- No need to handle usernames and passwords and implement automatic recovery processes.
+- Fewer security-related issues such as form-based hacking attempts or brute force login attempts.
+Of course, there are also some downsides:
+- There won’t be an actual user base so it would be hard to get an overview of active users, get their e-mail address, do statistics, and so on.
+- The login phase might be resource-intensive, since it will always require an external, back and forth secure connection with a third-party server.
+- All users will need to have (or open) an account with the chosen third-party provider(s) in order to log in.
+- All users will need to trust our application because the third-party provider will ask them to authorize it for accessing their data.
+- We will have to register our application with the provider in order to be able to perform a number of required or optional tasks, such as receive our public and secret keys, authorize one or more URI initiators, and choose the information we want to collect.
+
+[SOURCE](https://www.ryadel.com/en/user-authentication-authorization-web-development-login-auth-identity/)
