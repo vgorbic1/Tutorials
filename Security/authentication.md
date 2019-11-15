@@ -56,3 +56,5 @@ OpenID providers, and even session management. In short, it’s still useful eno
 of relying to pure OAuth2.
 
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html)
+
+[SOURCE](https://www.ryadel.com/en/user-authentication-authorization-web-development-login-auth-identity/)
