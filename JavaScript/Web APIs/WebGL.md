@@ -10,3 +10,9 @@ with other parts of the page or page background.
 WebGL 2 is a major update to WebGL which is provided through the WebGL2RenderingContext interface with new rich features.
 
 In order to draw graphics on the canvas we use a JavaScript context object, which creates graphics on the fly.
+
+### Shader 
+A shader (a set of vertex and fragment shaders) is a program, written using the OpenGL ES Shading Language (GLSL), that takes information about the vertices that make up a shape and generates the data needed to render the pixels onto the screen: namely, the positions of the pixels and their colors.
+
+### Lighting
+WebGL doesn't have much built-in knowledge. It just runs two functions you supply — a vertex shader and a fragment shader — and expects you to write creative functions to get the results you want. In other words, if you want lighting you have to calculate it yourself.
