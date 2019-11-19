@@ -95,3 +95,30 @@ Removing an element is the same as it is in HTML. Get the element by id (or howe
 var element = document.getElementById('item');
 svg.removeChild(element);
 ```
+#### Example
+```html
+<section class="section-block block-html">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <rect width="300" height="300" fill="#eee"></rect>
+  <circle id="target" cx="100" cy="100" r="30"></circle>
+</svg>
+
+<script type="text/javascript">
+  var moveSlider = function(slider, direction) {
+	  var value = slider.value;
+	  var circle = document.getElementById("target");
+	  circle.setAttributeNS(null, "c" + direction, value * 5);
+  }
+</script>
+  
+<div>
+  <label for="slider-x">X</label>:
+  <input id="slider-x" type="range" min="1" max="60" value="20" oninput="moveSlider(this, 'x')">
+</div>
+<div>
+  <label for="slider-y">Y</label>:
+  <input id="slider-y" type="range" min="1" max="40" value="10" oninput="moveSlider(this, 'y')">
+</div>
+</section>
+```
+[MORE ...](http://www.petercollingridge.co.uk/tutorials/svg/interactive/)
