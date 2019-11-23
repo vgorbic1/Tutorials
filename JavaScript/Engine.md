@@ -74,6 +74,9 @@ This is the order of a script compilation:
 
 When you run a function a new **Funnction execution context** is created.
 
+Each **execution context** has a link to its outside world (it's parent). The chiled
+is linked to parent with a **Scope Chain**.
+
 ### Lexical Environment
 (Same as Lexical Scope or Lexical Analysis) this is where you write something. Everytime 
 an **Execution context**, a new Lexical Environment is also created for that scope.
