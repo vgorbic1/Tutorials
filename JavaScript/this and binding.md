@@ -21,6 +21,11 @@ const obj = {
 
 obj.sing()
 ```
+To fix that, use either:
+- *bind()*
+- a placeholder variable (that copies *this* that refers to the object)
+- an arrow function (that always have a lexical scope)
+
 ### Binding with *new*
 Used with a constructor function. Assign *this* to the object to be instanciated:
 ```js
@@ -30,8 +35,7 @@ function Person(name, age) {
 }
 const person = new Person('John', 25)
 ```
-To fix that, use either *bind()*, a placeholder variable (that copies *this* that refers to the object), or an arrow function,
-that always have a lexical scope.
+
 ### Implicit binding
 Here *this* keyword is applied to the ogject:
 ```js
