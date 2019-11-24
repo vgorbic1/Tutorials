@@ -19,3 +19,18 @@ arr4.flat(Infinity);
 // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 [MORE &rarr;](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+
+#### How to turn an array into an object?
+The **Object.fromEntries()** method transforms a list of key-value pairs into an object.
+```js
+const entries = [
+  ['foo', 'bar'],
+  ['baz', 42]
+];
+
+const obj = Object.fromEntries(entries);
+
+console.log(obj);
+// expected output: Object { foo: "bar", baz: 42 }
+```
+[MORE &rarr;](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries)
