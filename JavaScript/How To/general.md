@@ -1,6 +1,4 @@
-## How to
-
-### Create a script based local scope?
+### Create a script-based local scope?
 ```js
 function main() {
   // this variables will be in local scope for the main() function
