@@ -1,4 +1,4 @@
-## Flatten an Array
+#### Flatten an Array
 Use **flat()** method on the array. You can set a depth level specifying how 
 deep a nested array structure should be flattened. Defaults to 1.
 ```js
