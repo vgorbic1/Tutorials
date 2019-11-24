@@ -20,3 +20,22 @@ const originalString = "How are you?"
 // Replace the first instance of "How" with "Where"
 const newString = originalString.replace("How", "Where");
 ```
+### Convert String To Number
+```js
+function stringToNumber(input) {
+  return Number(input)
+}
+```
+### Remove Last Character From String
+```js
+function removeLastCharacter(str){
+  let charcter_arr = str.split('');
+  return charcter_arr.slice(0, charcter_arr.length - 1).join('');
+}
+```
+or
+```js
+function removeLastCharacter(str){
+  return str.substring(0, str.length - 1);
+}
+```
