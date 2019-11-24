@@ -113,3 +113,41 @@ console.log(filtered_students);
 /* Output
 [ { first_name: 'Hari', age: 13 }, { first_name: 'Suriel', age: 12 }]
 ```
+### How To Sort Array Of Objects
+```js
+let arr = [
+  {'name' : 'Roy'},
+  {'name' : 'James'},
+  {'name' : 'Andrew'}
+];
+
+let sorted = sortData(arr, 'desc');
+console.log(sorted)
+
+function sortData(data, order = 'asc'){
+  if(order == 'asc'){
+    return data.sort((a,b)=>{ 
+      if(a.name < b.name) return -1; // a comes first
+      if(a.name > b.name) return 1; // b comes first
+      return 0;
+    });
+  } else {
+    return data.sort((a,b)=>{ 
+      if(a.name < b.name) return 1; // b comes first
+      if(a.name > b.name) return -1; // a comes first
+      return 0;
+    });
+  }
+  return data;
+}
+```
+### How To Empty An Array
+```js
+let fruits = ["Orange", "Apple", "Pineapple"];
+fruits.length = 0;
+```
+or
+```js
+let fruits = ["Orange", "Apple", "Pineapple"];
+fruits = [];
+```
