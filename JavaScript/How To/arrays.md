@@ -1,4 +1,4 @@
-#### Flatten an Array
+### Flatten an Array
 Use **flat()** method on the array. You can set a depth level specifying how 
 deep a nested array structure should be flattened. Defaults to 1.
 ```js
@@ -20,7 +20,7 @@ arr4.flat(Infinity);
 ```
 [MORE &rarr;](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
 
-#### How to turn an array into an object?
+### Turn an array into an object
 The **Object.fromEntries()** method transforms a list of key-value pairs into an object.
 ```js
 const entries = [
