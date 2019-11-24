@@ -1,6 +1,27 @@
 ## *this* keyword and binding
+*this* is the object that the function is a property of:
+```
+object.aFunction(this) // *this* refers to the object that the function is a property of
+```
+
 The keyword *this* is dynamically scoped, meaning that its scope is determied when it is called.
-### New Binding
+
+*this* usually refers to *window* object, unless another object calls it:
+```js
+const obj = {
+  name: 'Billy',
+  sing: function() {
+    console.log(this) // in this case, it's a method on an object *obj*
+    var anotherFunc = function() {
+      console.log(this) // this points to *windows*, because the sing() function calls it!
+    }
+    anotherFunc()
+  }
+}
+
+obj.sing()
+```
+### Binding with *new*
 Used with a constructor function. Assign *this* to the object to be instanciated:
 ```js
 function Person(name, age) {
@@ -9,7 +30,8 @@ function Person(name, age) {
 }
 const person = new Person('John', 25)
 ```
-
+To fix that, use either *bind()*, a placeholder variable (that copies *this* that refers to the object), or an arrow function,
+that always have a lexical scope.
 ### Implicit binding
 Here *this* keyword is applied to the ogject:
 ```js
