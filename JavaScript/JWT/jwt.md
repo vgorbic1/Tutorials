@@ -1,5 +1,5 @@
 ## Jason Web Token (JWT)
-JWT is an open standard defined by (RFC 7519)[https://tools.ietf.org/html/rfc7519]
+JWT is an open standard defined by [RFC 7519](https://tools.ietf.org/html/rfc7519).
 JWT is considered by its authors to be a **compact and self-contained way for securely 
 transmitting information between parties as a JSON object**. JWT itself is composed of a Header, a 
 Payload, and a Signature that proves the integrity of the message to the receiving server.
