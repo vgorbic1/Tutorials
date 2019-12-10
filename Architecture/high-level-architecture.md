@@ -1,4 +1,4 @@
-##High Level Architecture
+## High Level Architecture
 Use a drawing to define the flow.
 - Define a user
 - Define application layers (View, Web, Services, Persistence)
