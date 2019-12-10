@@ -1,4 +1,6 @@
-## The Big Picture of Application Flow
+## Application Flow
+
+### The Big Picture
 This may be represented in a drawing.
 - Define a user. 
 - Define the verbs/actions the user is goig to do. For example: *Sign up*, *Log in*, *Check info*, *Send*, *View*.
