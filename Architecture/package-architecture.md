@@ -1,4 +1,4 @@
-##Package Architecture
+## Package Architecture
 #### src/main/java
 ![packaging](https://cloud.githubusercontent.com/assets/13823751/23345031/c435b4d4-fc4c-11e6-8658-c7c0f4e31605.jpg)
 
