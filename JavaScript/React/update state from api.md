@@ -9,3 +9,5 @@ componentDidMount() {
 }
 ...
 ```
+When a component mounts (renders on the page) it calls the block of code that
+is written in `componentDidMount()`.
