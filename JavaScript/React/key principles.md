@@ -11,5 +11,5 @@ classes or functions that receive props and return JSX.
 ### Uniderectional Data flow
 Anytime we want something to change on our web page, React changes the state and updates the DOM accordingly. The data only
 flows one way from state to all components. (unlike Angular). It is easier to debug the code.
-### UI Libbrary
+### UI Library
 React only works with user interface. It is a multiplatform concept.
