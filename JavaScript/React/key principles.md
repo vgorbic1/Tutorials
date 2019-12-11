@@ -2,7 +2,7 @@
 ### Declarative vs. Imperative
 Don't touch the DOM. I'll do it. Imerative paradigm is when 
 you directly change parts of app in response to user's events) Updating the DOM is one of the biggest performance constrains.
-It takes a lot of time. Browser has to repaint (remove annd replace) the element and reflow (recalculate the layout) the page 
+It takes a lot of time. Browser has to repaint (remove and replace) the element and reflow (recalculate the layout) the page 
 and move things around. Declarative style (React style) just let React know how the app should look like and React will do 
 the rest.
 ### Componet Architecture
