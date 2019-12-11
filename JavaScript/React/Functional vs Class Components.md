@@ -1,4 +1,4 @@
-## Functional vs Class-Components
+## Functional vs Class Components
 The simplest way to define a component in React is to write a JavaScript function.
 It’s just a function which accepts props and returns a React element:
 ```js
