@@ -57,7 +57,8 @@ class SignIn extends React.Component {
 
 export default SignIn;
 ```
-```css
+```sass
+// sign-in.styles.scss
 .sign-in {
   width: 30vw;
   display: flex;
@@ -69,7 +70,7 @@ export default SignIn;
 }
 ```
 ### Custom Button (with styles)
-```
+```js
 import React from 'react';
 import './custom-buttom.styles.scss';
 
@@ -81,7 +82,8 @@ const CustomButton = ({ children, ...otherProps }) => (
 
 export default CustomButton;
 ```
-```css
+```sass
+// custom-buttom.styles.scss
 .custom-button {
   min-width: 165px;
   width: auto;
