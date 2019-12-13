@@ -1,6 +1,6 @@
 ## Simple Sign-In
 ### Sign-in component with the form (and styles)
-```js
+```javascript
 import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
@@ -57,7 +57,7 @@ class SignIn extends React.Component {
 
 export default SignIn;
 ```
-```sass
+```css
 // sign-in.styles.scss
 .sign-in {
   width: 30vw;
@@ -70,7 +70,7 @@ export default SignIn;
 }
 ```
 ### Custom Button (with styles)
-```js
+```javascript
 import React from 'react';
 import './custom-buttom.styles.scss';
 
@@ -82,7 +82,7 @@ const CustomButton = ({ children, ...otherProps }) => (
 
 export default CustomButton;
 ```
-```sass
+```css
 // custom-buttom.styles.scss
 .custom-button {
   min-width: 165px;
