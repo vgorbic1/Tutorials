@@ -21,3 +21,14 @@ const MenuItem = ({title, subtitle}) => (
   </div>
 })
 ```
+If a component needs one of many props, and others are passed to its child:
+```js
+const MenuItem = ({title, ...otherProps}) => (
+  <div className='menu-item'>
+    <div className='content'>
+      <h1 className='title'>{title}</h1>
+      <Button {...otherProps} />
+    </div>
+  </div>
+})
+```
