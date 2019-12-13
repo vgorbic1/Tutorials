@@ -15,3 +15,4 @@ return (
 )
 ...
 ```
+This is good to show pop-ups, footers, and other sections that are always present on a page.
