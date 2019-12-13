@@ -1,0 +1,9 @@
+## Import an SVG file into a React Component
+Use `ReactComponent` keyword for this:
+```js
+...
+import { ReactComponent as Logo } from '../assets/logo.svg'
+...
+  <Logo />
+...
+```
