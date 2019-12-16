@@ -41,3 +41,8 @@ const userReducer => (state, action) {
   }
 }
 ```
+
+### Middleware
+With middleware the flow of Redux is like this:
+
+action &rarr; middleware &rarr; root reducer &rarr; store &rarr; DOM changes
