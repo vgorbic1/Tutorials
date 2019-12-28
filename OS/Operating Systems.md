@@ -31,5 +31,5 @@ each process.
 or network sockets.
 
 ### Virtual Machines (VM)
-The OS Kernel gives a **virtual machine* to each process, so the process "believes" that it runs
+The OS Kernel gives a **virtual machine** to each process, so the process "believes" that it runs
 on its own (physical) hardware, but VS is just an abstraction.
