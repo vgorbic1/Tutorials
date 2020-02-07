@@ -1,5 +1,5 @@
-### File API
-The spec provides several interfaces for accessing files from a 'local' filesystem:
+### File API 
+The [Spec](https://www.w3.org/TR/file-upload/) provides several interfaces for accessing files from a 'local' filesystem:
 - **File**: an individual file; provides readonly information such as name, file size, mimetype, 
 and a reference to the file handle.
 - **FileList**: an array-like sequence of File objects. (Think `<input type="file" multiple>` or 
