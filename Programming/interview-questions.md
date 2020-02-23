@@ -77,3 +77,34 @@ var buffer = new ArrayBuffer(4); // 4-bytes buffer
 
 A Blob is a file-like object of immutable raw-binary data but in memory.
 
+**Count bynary 0110 1101 in Decimal number**
+
+0*2^7 + 1*2^6 + 1*2^5 + 0*2^4 + 1*2^3 + 0*2^2 + 1*2^1 + 1*2^0 = 109.
+
+**What is the smallest value of 1-byte in Decimal, Binary and Hexadecimal?**
+
+0, 0000 0000, and 00
+
+**What is the largest value of 1-byte in Binary and waht is it in Hexadecimal?**
+
+255, 1111 1111 and FF
+
+**How many distinct values 1-byte memory can represent?**
+256
+
+**How many unsigned integers 1-byte memory can hold?**
+
+256 from 0 to 255
+
+**What is the maximum signed integer value 1-byte memory can hold?**
+
+From 0111 1111 where very first 0 means positive sign which is 127 in Decimal,
+to 1111 1111 where very first 1 means negative sign, which is -127 in Decimal.
+But since we have 0000 0000 as +0 and 1000 0000 as -0 the latter is meaningless.
+So we use 1000 0000 as -128.
+
+**Why MIME (Multipurpose Internet Mail Extensions) Types useful?**
+
+When a file or data does not have an extension like in case of an HTTP 
+response body or buffer in memory, MIME Types are very useful to identify 
+what kind of data we are dealing with.
