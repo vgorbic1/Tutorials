@@ -45,12 +45,12 @@ Now mycustomdomain.com will work as a local DNS address for your localhost
 Now a `worker process` will be associated with sites that run on this application pool
 - Check running worker processes: Server name > Worker processes (central window)
 
-## Virtual Directory
+### Virtual Directory
 - Go to IIS Manager and expand the server name > Site >
 - Right-click on any existing site and select Add Virtual Directory
 - Name it and add a physical path to the directory
 
-## Install and Set FTP Service
+### Install and Set FTP Service
 - Open Server Manager: Start > Server Manager tile.
 - Manage > Add Roles and Features (right top corner)
 - Click "Next" until you get to Server Roles.
@@ -59,3 +59,31 @@ Now a `worker process` will be associated with sites that run on this applicatio
 - Right-click the site name and select `Add FTP Publishing`.
 - Set Basic authentication and Specific users.
 - Set Username and Permissions for this user.
+
+### Set Default Document
+- Go to IIS Manager and expand the server name > Default Document (center window)
+- Set a new default document (for example index.php to handle PHP directory index file)
+- Move all other files according to importance.
+
+### Add PHP handler
+- Go to IIS Manager and expand the server name > Handler Mappings (center window)
+- Click `Add Module Mapping` on the right side of the page.
+```
+Request path: *.php
+Module: FastCgiModule
+Executable: "C:\PHP\php-cgi.exe" (here should be the full path to php-cgi.exe of PHP installation)
+Name: PHP via FastCGI
+```
+- You should note that if you don’t see in the modules space, "FastCgiModule" drop-down menu, it entails that
+the module has either not been enabled or registered. To confirm that FastCGI module has been registered, 
+access the IIS configuration `file%WINDIR%windowssystem32configapplicationHost.config`and confirm the line is 
+also in the section of the <globalmodules>.
+```
+<add name="FastCgiModule" image="%windir%System32inetsrviisfcgi.dll" />
+```
+In that exact file, confirm that the <modules> section has had the FastCGI module added to it like the highlighted path below.
+```
+<add name="FastCgiModule" />
+```
+- Click "Yes"
+- Check the PHP availability with `phpinfo();`
