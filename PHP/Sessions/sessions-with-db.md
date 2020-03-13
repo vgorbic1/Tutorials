@@ -1,4 +1,4 @@
-##Sessions
+## Sessions
 By default, PHP stores all session data in text files in the server in a temporary folder with filenames matching the session IDs. To improve security, store the session data in a database, which also allows to store more info about sessions. Another improvement is ability to use the same session data fed from different servers.
 
 To store session data use a separate table on a database. The table has to have at least three columns:
