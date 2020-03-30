@@ -33,3 +33,5 @@ namespace {
 The namespace itself remains within the global namespace, so it must remain unique; however, it can contain any number of classes, which can reuse class names that are in the global namespace, or within other namespaces.
 
 Namespaces are not a requirement of the MVC design pattern, but they certainly do help to avoid class and function name collisions. Some popular MVC frameworks (such as Symphony) already organize their classes in namespaces.
+
+[MORE](https://www.thoughtfulcode.com/a-complete-guide-to-php-namespaces/)
