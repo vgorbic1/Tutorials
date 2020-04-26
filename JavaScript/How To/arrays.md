@@ -217,7 +217,7 @@ const count = fruitBasket.reduce( (tally, fruit) => {
 
 count // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
 ```
-### Pipe several functions in one order using array as a for piping
+### Pipe several functions in one order using array
 A pipeline is a term used for a list of functions that transform some initial 
 value into a final value:
 ```js
